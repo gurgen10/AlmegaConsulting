@@ -1,0 +1,87 @@
+{
+  "header": {
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "aboutUs": "About us",
+    "contactUs": "Contact us",
+    "login": "Log in",
+    "getFreeProposals": "Get {count} FREE Proposals"
+  },
+  "heroSection": {
+    "makingSolarSimple": "Making Solar Simple",
+    "description": "Transform your solar sales process with an advanced <bold>AI-driven tool</bold> that generates accurate, instant proposals helping you <bold>close more deals.</bold>",
+    "getStartedFree": "Get Started Free",
+    "bookDemo": "Book a Demo",
+    "noCreditCardRequired": "*No credit card required"
+  },
+  "productDescription": {
+    "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",
+    "description": "SolarGenix.ai is a fully automated, AI-powered platform built to make solar sales faster, smarter, and more effective. It eliminates the slow, manual steps in proposal creation-helping teams move from lead to proposal in minutes, not hours."
+  },
+  "featuresSection": {
+    "roofDetection": {
+      "title": "AI-Driven Roof Detection",
+      "subtitle": "Understand Every Residential Roof - Automatically",
+      "description": "Our AI-powered roof detection is built exclusively for residential solar. It analyzes aerial imagery to instantly model the roof’s shape, slope, and structure - no site visit, no manual sketching.",
+      "list": {
+        "option_1": "Auto-detect roof dimensions for any home",
+        "option_2": "Analyze pitch and orientation for sun-facing accuracy",
+        "option_3": "Identify obstacles like chimneys, pipes, etc."
+      },
+      "imgText": "With precise rooftop modeling handled by AI, your proposal starts with a foundation of speed, accuracy, and zero manual effort."
+    },
+    "shadingAnalysis": {
+      "title": "AI-Powered Shading Analysis",
+      "subtitle": "Shadow-Smart Insights for Every Home",
+      "description": "Shade matters - and our AI makes sure it doesn’t cost your customers energy. Using sun-path modeling and visual data, the system simulates how shadows affect a roof throughout the day and across seasons.",
+      "list": {
+        "option_1": "Dynamic shading maps based on real-world sun movement",
+        "option_2": "Obstacle detection from trees, neighboring homes, and roof features",
+        "option_3": "Exposure scoring to find high-performance panel zones"
+      },
+      "imgText": "This shading intelligence ensures panels are placed where they’ll perform best, maximizing output and customer satisfaction."
+    },
+    "financialForecasting": {
+      "title": "Intelligent Financial Forecasting",
+      "subtitle": "Homeowners Want Clarity - Our AI Delivers It",
+      "description": "No spreadsheets, no guesswork. Our AI builds clear, compelling financial forecasts tailored to each home and utility rate. Every proposal includes a personalized savings story backed by real numbers.",
+      "list": {
+        "option_1": "Customized savings estimates using local energy rates",
+        "option_2": "ROI and payback period based on homeowner usage",
+        "option_3": "Local incentives and rebates applied automatically"
+      },
+      "imgText": "Homeowners see exactly what they’ll save and when it pays off—building trust and helping close deals faster."
+    },
+    "panelPlacement": {
+      "title": "AI-Optimized Panel Placement",
+      "subtitle": "Smarter Layouts, Maximum Output - No Effort",
+      "description": "Designing layouts is a thing of the past. Our AI instantly places panels on each roof in the most effective pattern for sunlight, spacing, and aesthetic fit.",
+      "list": {
+        "option_1": "Fully automated panel positioning with no manual input",
+        "option_2": "Avoids shaded or inefficient areas with data-backed logic",
+        "option_3": "Maximizes production per roof with precision spacing"
+      },
+      "imgText": "This final step connects all the data - roof layout, shading, and performance prediction to deliver a smart, sales-ready design without touching a layout tool."
+    },
+    "proposalGeneration": {
+      "title": "Stylish, Sales-Ready Proposal Generation",
+      "subtitle": "Beautiful Proposals That Speak Clearly",
+      "description": "All the insights, calculations, and design decisions come together in a clean, modern proposal that’s built to win trust. Designed for clarity and visual appeal, each proposal makes it easy for homeowners to understand their system, savings, and investment.",
+      "list": {
+        "option_1": "Professional layout",
+        "option_2": "Simple, readable structure for homeowners",
+        "option_3": "Clear breakdown of savings, system details & ROI",
+        "option_4": "Visually stylish and clean"
+      },
+      "imgText": "It's more than just data - it’s a tool to win trust and drive action. Send proposals that not only inform, but convert."
+    },
+    "muchMoreToCome": {
+      "title": "And much more to come",
+      "description": "Create high-converting, AI-powered proposals in seconds. Sign up now and get 5 proposals free!"
+    },
+    "getStartedFree": "Get Started Free",
+    "bookDemo": "Book a Demo"
+  }
+}
