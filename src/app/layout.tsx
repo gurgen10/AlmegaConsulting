@@ -118,6 +118,8 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
 
+  console.log('cscscs');
+
   return (
     <html lang={locale} className={alexandriaFont.variable}>
       <body>
