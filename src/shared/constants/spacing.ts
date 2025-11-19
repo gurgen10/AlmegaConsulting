@@ -2,7 +2,7 @@ export const HEADER_STYLES = {
   maxWidth: 1400,
   width: '100%',
   margin: 'auto',
-  px: { xs: 2, lg: 10 },
+  px: { xs: 2, sm: 4, lg: 10 },
 };
 
 export const CONTAINER_STYLES = {
