@@ -36,10 +36,7 @@ export default function Header() {
   }, []);
 
   return (
-    <AppBar
-      position="sticky"
-      sx={{ backgroundColor: 'tertiary.900', zIndex: 1201, boxShadow: 'none' }}
-    >
+    <AppBar position="sticky" sx={{ backgroundColor: 'grey.200', zIndex: 1201, boxShadow: 'none' }}>
       <Toolbar
         ref={headerRef}
         sx={{
@@ -63,7 +60,7 @@ export default function Header() {
         }}
       >
         <Box component={Link} href="/" lineHeight={1}>
-          <Image width={165} height={34} src="/icons/solar-genix.svg" alt="SolarGenix Logo" />
+          <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
         </Box>
         <Box display="flex" alignItems="center" gap={2} mr="auto" ml={2} width="100%">
           <Box

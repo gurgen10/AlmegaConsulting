@@ -7,7 +7,8 @@
     "aboutUs": "About us",
     "contactUs": "Contact us",
     "login": "Log in",
-    "getFreeProposals": "Get {count} FREE Proposals"
+    "getFreeProposals": "Get {count} FREE Proposals",
+    "bookDemo": "Book a Demo"
   },
   "heroSection": {
     "makingSolarSimple": "Making Solar Simple",

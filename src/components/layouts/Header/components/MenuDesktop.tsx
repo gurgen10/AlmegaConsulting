@@ -1,4 +1,4 @@
-import { Button, Divider } from '@mui/material';
+import { Button, Divider, Link as MuiLink } from '@mui/material';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
@@ -10,23 +10,52 @@ export default function MenuDesktop() {
   return (
     <>
       {menuItems.map(item => (
-        <Button component={Link} color="inherit" key={item.key} href={item.url} size="medium">
+        <MuiLink
+          sx={{
+            padding: '6px 8px',
+            color: 'opacityDark.90',
+            '&:hover': {
+              color: 'primary.500',
+            },
+          }}
+          underline="none"
+          color="inherit"
+          key={item.key}
+          href={item.url}
+        >
           {t(item.key)}
-        </Button>
+        </MuiLink>
       ))}
-      <Button color="inherit" href={LOGIN_URL} size="medium" sx={{ ml: 'auto' }}>
-        {t('login')}
-      </Button>
-      <Divider orientation="vertical" sx={{ height: 32, borderColor: 'tertiary.700' }} />
       <Button
         component={Link}
         color="primary"
         href={REGISTER_URL}
         size="medium"
-        variant="outlined"
-        sx={{ borderColor: 'primary.light', color: 'primary.300' }}
+        sx={{
+          ml: 'auto',
+          backgroundColor: 'secondary.500',
+          color: 'grey.50',
+          '&:hover': {
+            backgroundColor: 'secondary.700',
+          },
+        }}
       >
-        {t('getFreeProposals', { count: 5 })}
+        {t('bookDemo')}
+      </Button>
+      <Button
+        color="inherit"
+        href={LOGIN_URL}
+        size="medium"
+        sx={{
+          backgroundColor: 'primary.500',
+          borderRadius: '4px',
+          color: 'grey.50',
+          '&:hover': {
+            backgroundColor: 'primary.600',
+          },
+        }}
+      >
+        {t('login')}
       </Button>
     </>
   );
