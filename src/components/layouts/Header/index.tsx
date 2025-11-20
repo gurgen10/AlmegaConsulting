@@ -62,7 +62,7 @@ export default function Header() {
         <Box component={Link} href="/" lineHeight={1}>
           <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mr="auto" ml={2} width="100%">
+        <Box display="flex" alignItems="center" gap={2} mr="auto" ml={6} width="100%">
           <Box
             ml="auto"
             alignItems="center"
