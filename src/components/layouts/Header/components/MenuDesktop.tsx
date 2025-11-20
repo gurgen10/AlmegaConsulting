@@ -46,7 +46,6 @@ export default function MenuDesktop() {
             sx={{
               padding: '6px 8px',
               color: isActive ? 'primary.500' : 'opacityDark.90',
-              fontWeight: isActive ? 600 : 400,
               position: 'relative',
               cursor: 'pointer',
               '&:hover': {
@@ -62,7 +61,7 @@ export default function MenuDesktop() {
           </MuiLink>
         );
 
-        const menuItem = item.submenuItems?.length ? (
+        return item.submenuItems?.length ? (
           <MenuTooltip key={item.key} subMenuItems={item.submenuItems}>
             {link}
           </MenuTooltip>
@@ -71,8 +70,6 @@ export default function MenuDesktop() {
             {link}
           </Box>
         );
-
-        return menuItem;
       })}
       <Button
         component={Link}

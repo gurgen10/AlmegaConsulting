@@ -1,7 +1,7 @@
 'use client';
 
 import { AppBar, Box, Drawer, Toolbar, useMediaQuery, useTheme } from '@mui/material';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Burger from '@/components/ui/Burger';
@@ -22,10 +22,23 @@ export default function Header() {
   useLayoutEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(() => {
-        if (window.scrollY > 60) {
-          headerRef.current?.classList.add('header-shrink');
-        } else {
-          headerRef.current?.classList.remove('header-shrink');
+        if (headerRef.current && 'IntersectionObserver' in window) {
+          const sentinel = document.createElement('div');
+          sentinel.style.position = 'absolute';
+          sentinel.style.top = '0';
+          document.body.prepend(sentinel);
+
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              headerRef.current?.classList.toggle('header-shrink', !entry.isIntersecting);
+            },
+            { threshold: 0 }
+          );
+          observer.observe(sentinel);
+        } else if (headerRef.current) {
+          window.addEventListener('scroll', () => {
+            headerRef.current?.classList.toggle('header-shrink', window.scrollY > 60);
+          });
         }
       });
     };
@@ -33,7 +46,14 @@ export default function Header() {
     document.addEventListener('scroll', handleScroll);
 
     return () => document.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [drawerOpen]);
+
+  useEffect(() => {
+    if (window.scrollY > 0 && window.scrollY < 100) {
+      window.scrollTo(0, 0);
+    }
+    document.body.style.overflow = drawerOpen ? 'hidden' : 'auto';
+  }, [drawerOpen]);
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: 'grey.200', zIndex: 1201, boxShadow: 'none' }}>
@@ -87,7 +107,7 @@ export default function Header() {
               open={drawerOpen}
               onClose={toggleDrawer}
             >
-              <MenuMobile />
+              <MenuMobile onClose={toggleDrawer} />
             </Drawer>
           ) : (
             <Box

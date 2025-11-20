@@ -82,10 +82,10 @@ export const menuItems = [
   },
   {
     key: 'blog',
-    url: '#/blog',
+    url: '/#blog',
   },
   {
     key: 'aboutUs',
-    url: '#/about-us',
+    url: '/#about-us',
   },
 ];
