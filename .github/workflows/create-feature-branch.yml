@@ -15,7 +15,7 @@ on:
 
 jobs:
   caller_create_feature_branch:
-    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-create-feature-branch.yml@a2a93e12bf9a9a87653d4725334930c11ac0bf53
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-create-feature-branch.yml@main
     with:
       jira_key: ${{ inputs.jira_key }}
       base_branch: ${{ inputs.base_branch }}
