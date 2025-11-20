@@ -14,7 +14,7 @@ on:
         default: 'staging'
 
 jobs:
-  reusable_create_feature_branch:
+  caller_create_feature_branch:
     # 🔁 Call the reusable workflow from the Infra_CI_Templates repo
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/create-feature-branch.yml@main
     with:
