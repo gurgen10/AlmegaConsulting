@@ -1,0 +1,22 @@
+name: Create Feature Branch (Website)
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira_key:
+        description: 'Jira Key (e.g., DEV-42) to create a branch for.'
+        required: true
+        type: string
+      base_branch:
+        description: 'The branch from which to create the new feature branch.'
+        required: false
+        type: string
+        default: 'staging'
+
+jobs:
+  reusable_create_feature_branch:
+    # 🔁 Call the reusable workflow from the Infra_CI_Templates repo
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/frontend/create-feature-branch.yml@main
+    with:
+      jira_key: ${{ inputs.jira_key }}
+      base_branch: ${{ inputs.base_branch }}
