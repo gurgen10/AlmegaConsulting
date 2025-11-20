@@ -1,7 +1,31 @@
-name: Create Feature Branch (Website)
+# name: Create Feature Branch (Website)
+
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       jira_key:
+#         description: 'Jira Key (e.g., DEV-42) to create a branch for.'
+#         required: true
+#         type: string
+#       base_branch:
+#         description: 'The branch from which to create the new feature branch.'
+#         required: false
+#         type: string
+#         default: 'staging'
+
+# jobs:
+#   reusable_create_feature_branch:
+#     # 🔁 Call the reusable workflow from the Infra_CI_Templates repo
+#     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/create-feature-branch.yml@main
+#     with:
+#       jira_key: ${{ inputs.jira_key }}
+#       base_branch: ${{ inputs.base_branch }}
+
+
+name: Create Feature Branch from Jira Issue
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       jira_key:
         description: 'Jira Key (e.g., DEV-42) to create a branch for.'
@@ -14,9 +38,61 @@ on:
         default: 'staging'
 
 jobs:
-  reusable_create_feature_branch:
-    # 🔁 Call the reusable workflow from the Infra_CI_Templates repo
-    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/create-feature-branch.yml@main
-    with:
-      jira_key: ${{ inputs.jira_key }}
-      base_branch: ${{ inputs.base_branch }}
+  create_feature_branch:
+    name: Create Feature Branch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 🛒 Checkout Base Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.base_branch }}
+      - name: 🔧 Prepare Branch Name
+        id: prepare_branch_name
+        run: |
+          JIRA_KEY_UPPER=$(echo "${{ github.event.inputs.jira_key }}" | tr '[:lower:]' '[:upper:]')
+          NEW_BRANCH_NAME="feature/${JIRA_KEY_UPPER}"
+
+          echo "new_branch_name=${NEW_BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "jira_key_upper=${JIRA_KEY_UPPER}" >> $GITHUB_OUTPUT
+      - name: 🌳 Create and Push New Branch
+        run: |
+          NEW_BRANCH_NAME="${{ steps.prepare_branch_name.outputs.new_branch_name }}"
+          BASE_BRANCH_TO_USE="${{ github.event.inputs.base_branch }}"
+
+          echo "Attempting to create branch: $NEW_BRANCH_NAME from $BASE_BRANCH_TO_USE"
+
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          if git ls-remote --exit-code --heads origin "$NEW_BRANCH_NAME"; then
+            echo "::warning::Branch $NEW_BRANCH_NAME already exists on remote. No action taken."
+            exit 0
+          fi
+
+          git checkout -b "$NEW_BRANCH_NAME"
+          git push --set-upstream origin "$NEW_BRANCH_NAME"
+          echo "Successfully created and pushed branch $NEW_BRANCH_NAME"
+      - name: ➡️ Login to Jira
+        if: success()
+        uses: atlassian/gajira-login@v3
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+      - name: 📝 Comment on Jira Ticket about Branch Creation
+        if: success()
+        uses: atlassian/gajira-comment@v3
+        with:
+          issue: ${{ github.event.inputs.jira_key }}
+          comment: |
+            🌳 GitHub branch `${{ steps.prepare_branch_name.outputs.new_branch_name }}` has been automatically created from `${{ github.event.inputs.base_branch }}`. 
+            You can find it here: ${{ github.server_url }}/${{ github.repository }}/tree/${{ steps.prepare_branch_name.outputs.new_branch_name }}
+
+            To checkout this branch locally, run:
+            ```
+            git fetch origin
+            git checkout ${{ steps.prepare_branch_name.outputs.new_branch_name }}
+            ```
