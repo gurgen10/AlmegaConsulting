@@ -13,6 +13,9 @@ on:
         type: string
         default: 'staging'
 
+permissions:
+  contents: write
+
 jobs:
   caller_create_feature_branch:
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-create-feature-branch.yml@main
