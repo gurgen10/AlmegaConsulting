@@ -16,7 +16,7 @@ on:
 jobs:
   caller_create_feature_branch:
     # 🔁 Call the reusable workflow from the Infra_CI_Templates repo
-    uses: "EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-create-feature-branch.yml@main"
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-create-feature-branch.yml@main
     with:
       jira_key: ${{ inputs.jira_key }}
       base_branch: ${{ inputs.base_branch }}
