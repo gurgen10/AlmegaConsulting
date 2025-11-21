@@ -1,6 +1,6 @@
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
 
-const featureSubmenuItems: SubMenuItem[] = [
+export const featureSubmenuItems: SubMenuItem[] = [
   {
     key: 'roofDetection',
     title: 'roofDetection',
@@ -45,7 +45,7 @@ const featureSubmenuItems: SubMenuItem[] = [
   },
 ];
 
-const productSubmenuItems: SubMenuItem[] = [
+export const productSubmenuItems: SubMenuItem[] = [
   {
     key: 'solarProposal',
     title: 'solarProposal',
@@ -80,10 +80,6 @@ export const menuItems = [
   {
     key: 'blog',
     url: '/#blog',
-  },
-  {
-    key: 'aboutUs',
-    url: '/#about-us',
   },
   {
     key: 'aboutUs',

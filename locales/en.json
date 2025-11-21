@@ -1,5 +1,6 @@
 {
   "header": {
+    "company": "Company",
     "product": "Product",
     "features": "Features",
     "pricing": "Pricing",
@@ -26,6 +27,12 @@
     "proposalGenerationDescription": "Calculate ROI and payback period based on homeowner usage",
     "solarProposalDescription": "Create sales-ready solar proposals instantly to close more deals",
     "leadCaptureDescription": "Capture and qualify solar leads with instant quote delivery"
+  },
+  "footer": {
+    "followUs": "Follow Us",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms and Conditions",
+    "allRightsReserved": "All rights reserved"
   },
   "heroSection": {
     "makingSolarSimple": "Making Solar Simple",

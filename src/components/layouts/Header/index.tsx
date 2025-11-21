@@ -77,8 +77,7 @@ export default function Header() {
               width: 124,
             },
           },
-        }}
-      >
+        }}>
         <Box component={Link} href="/" lineHeight={1}>
           <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
         </Box>
@@ -87,8 +86,7 @@ export default function Header() {
             ml="auto"
             alignItems="center"
             onClick={toggleDrawer}
-            display={{ xs: 'flex', lg: 'none' }}
-          >
+            display={{ xs: 'flex', lg: 'none' }}>
             <Burger open={drawerOpen} />
           </Box>
           {isMobile ? (
@@ -105,8 +103,7 @@ export default function Header() {
               }}
               anchor="top"
               open={drawerOpen}
-              onClose={toggleDrawer}
-            >
+              onClose={toggleDrawer}>
               <MenuMobile onClose={toggleDrawer} />
             </Drawer>
           ) : (
@@ -116,8 +113,7 @@ export default function Header() {
               alignItems="center"
               gap={2}
               mr="auto"
-              width="100%"
-            >
+              width="100%">
               <MenuDesktop />
             </Box>
           )}

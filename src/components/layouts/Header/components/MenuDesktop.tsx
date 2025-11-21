@@ -3,7 +3,7 @@ import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Heade
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LOGIN_URL, REGISTER_URL } from '@/shared/constants/common';
+import { LOGIN_URL } from '@/shared/constants/common';
 import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { MenuItem } from '@/components/layouts/Header/header.types';
 import { useState, useEffect } from 'react';
@@ -42,7 +42,6 @@ export default function MenuDesktop() {
         const isActive = activeItem === item.key;
         const link = (
           <MuiLink
-            key={item.key}
             sx={{
               padding: '6px 8px',
               color: isActive ? 'primary.500' : 'opacityDark.90',
@@ -55,8 +54,7 @@ export default function MenuDesktop() {
             underline="none"
             component="button"
             onClick={() => handleItemClick(item)}
-            className={isActive ? 'active' : ''}
-          >
+            className={isActive ? 'active' : ''}>
             {t(item.key)}
           </MuiLink>
         );
@@ -84,8 +82,7 @@ export default function MenuDesktop() {
             backgroundColor: 'secondary.700',
           },
         }}
-        onClick={() => handleItemClick('bookDemo' as unknown as MenuItem)}
-      >
+        onClick={() => handleItemClick('bookDemo' as unknown as MenuItem)}>
         {t('bookDemo')}
       </Button>
       <Button
@@ -99,8 +96,7 @@ export default function MenuDesktop() {
           '&:hover': {
             backgroundColor: 'primary.600',
           },
-        }}
-      >
+        }}>
         {t('login')}
       </Button>
     </>
