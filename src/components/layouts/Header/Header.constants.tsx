@@ -3,46 +3,43 @@ import { SubMenuItem } from '@/components/layouts/Header/header.types';
 const featureSubmenuItems: SubMenuItem[] = [
   {
     key: 'roofDetection',
-    title: 'Roof Detection',
-    description:
-      'Analyze aerial imagery and instantly model the roof’s shape and slope with AI-powered roof detection',
+    title: 'roofDetection',
+    description: 'roofDetectionDescription',
     url: '/#roofDetection',
     icon: '/icons/header/roof-detection.svg',
   },
   {
     key: 'obstructionDetection',
-    title: 'Obstruction Detection',
-    description:
-      'Fully automated obstacle and fire setback detection for safe, accurate panel placement',
+    title: 'obstructionDetection',
+    description: 'obstructionDetectionDescription',
     icon: '/icons/header/obstruction-detection.svg',
     url: '/#obstructionDetection',
   },
   {
     key: 'shadingAnalysis',
-    title: 'Shading Analysis',
-    description:
-      'Dynamic shading maps for panel zones, automatically generated from real-world sun movement',
+    title: 'shadingAnalysis',
+    description: 'shadingAnalysisDescription',
     icon: '/icons/header/shading-analysis.svg',
     url: '/#shadingAnalysis',
   },
   {
     key: 'panelPlacement',
-    title: 'Panel Placement',
-    description: 'Get fully automated panel positioning with no manual input',
+    title: 'panelPlacement',
+    description: 'panelPlacementDescription',
     icon: '/icons/header/panel-placement.svg',
     url: '/#panelPlacement',
   },
   {
     key: 'financialForecasting',
-    title: 'Financial Forecasting ',
-    description: 'Calculate ROI and payback period based on homeowner usage',
+    title: 'financialForecasting',
+    description: 'financialForecastingDescription',
     icon: '/icons/header/financial-forecasting.svg',
     url: '/#financialForecasting',
   },
   {
     key: 'proposalGeneration',
-    title: 'Proposal Generation',
-    description: 'Calculate ROI and payback period based on homeowner usage',
+    title: 'proposalGeneration',
+    description: 'proposalGenerationDescription',
     icon: '/icons/header/proposal-generation.svg',
     url: '/#proposalGeneration',
   },
@@ -51,15 +48,15 @@ const featureSubmenuItems: SubMenuItem[] = [
 const productSubmenuItems: SubMenuItem[] = [
   {
     key: 'solarProposal',
-    title: 'Solar Proposal',
-    description: 'Create sales-ready solar proposals instantly to close more deals',
-    url: '/#product',
+    title: 'solarProposal',
+    description: 'solarProposalDescription',
+    url: '/#solarProposal',
     icon: '/icons/header/solar-proposal.svg',
   },
   {
     key: 'leadCapture',
-    title: 'Lead Capture',
-    description: 'Capture and qualify solar leads with instant quote delivery',
+    title: 'leadCapture',
+    description: 'leadCaptureDescription',
     url: '/#leadCapture',
     icon: '/icons/header/lead-capture.svg',
   },
@@ -83,6 +80,10 @@ export const menuItems = [
   {
     key: 'blog',
     url: '/#blog',
+  },
+  {
+    key: 'aboutUs',
+    url: '/#about-us',
   },
   {
     key: 'aboutUs',

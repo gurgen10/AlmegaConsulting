@@ -13,18 +13,9 @@ export type ColorShade =
   | 'A100'
   | 'A200'
   | 'A400'
-  | 'A700'
-  | 4
-  | 8
-  | 12
-  | 16
-  | 20
-  | 30
-  | 38
-  | 42
-  | 60
-  | 70
-  | 90;
+  | 'A700';
+
+export type ColorOpacity = 4 | 8 | 12 | 16 | 20 | 30 | 38 | 42 | 50 | 60 | 70 | 90;
 
 export type ColorPaletteKey =
   | 'primary'
@@ -34,7 +25,7 @@ export type ColorPaletteKey =
   | 'opacityDark'
   | 'opacityLight';
 
-export type ColorPalette = Partial<Record<ColorShade, string>>;
+export type ColorPalette = Partial<Record<ColorShade | ColorOpacity, string>>;
 
 export const COLORS: Record<ColorPaletteKey, ColorPalette> = {
   primary: {

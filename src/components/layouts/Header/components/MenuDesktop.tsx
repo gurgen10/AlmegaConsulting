@@ -74,7 +74,7 @@ export default function MenuDesktop() {
       <Button
         component={Link}
         color="primary"
-        href={REGISTER_URL}
+        href="/#book-a-demo"
         size="medium"
         sx={{
           ml: 'auto',
@@ -84,6 +84,7 @@ export default function MenuDesktop() {
             backgroundColor: 'secondary.700',
           },
         }}
+        onClick={() => handleItemClick('bookDemo' as unknown as MenuItem)}
       >
         {t('bookDemo')}
       </Button>

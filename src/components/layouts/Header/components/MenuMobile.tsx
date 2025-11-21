@@ -11,8 +11,8 @@ import {
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { LOGIN_URL, REGISTER_URL } from '@/shared/constants/common';
-import { MenuItem } from '@/components/layouts/Header/header.types';
+import { LOGIN_URL } from '@/shared/constants/common';
+import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
@@ -28,8 +28,11 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [activeItem, setActiveItem] = useState<string>('');
+  const [expandedKey, setExpandedKey] = useState<string | false>(false);
+  const [activeSubKey, setActiveSubKey] = useState<string | null>(null);
   const theme = useTheme();
   const [hash, setHash] = useState('');
+  const bookDemoUrl = '#book-a-demo';
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -50,7 +53,22 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         return currentUrl === itemUrl || (itemUrl !== '/' && currentUrl.startsWith(itemUrl));
       });
 
-      setActiveItem(activeMenuItem?.key ?? menuItems[0].key);
+      let activeKey = currentHash === bookDemoUrl ? bookDemoUrl : activeMenuItem?.key;
+
+      if (!activeKey) {
+        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
+        for (const item of menuItems) {
+          const sub = item.submenuItems?.find(sub => sub.url === currentUrl);
+          if (sub) {
+            activeKey = item.key;
+            setActiveSubKey(sub.key);
+            setExpandedKey(item.key);
+            break;
+          }
+        }
+      }
+
+      setActiveItem(activeKey ?? menuItems[0].key);
     }
   }, [pathname, hash]);
 
@@ -59,8 +77,25 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
       const activeMenuItem = menuItems.find(
         item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
       );
-      if (activeMenuItem) {
-        setActiveItem(activeMenuItem.key);
+
+      let activeKey = hash === bookDemoUrl ? bookDemoUrl : activeMenuItem?.key;
+
+      if (!activeKey) {
+        const currentHash = window.location.hash || '';
+        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
+        for (const item of menuItems) {
+          const sub = item.submenuItems?.find(sub => sub.url === currentUrl);
+          if (sub) {
+            activeKey = item.key;
+            setActiveSubKey(sub.key);
+            setExpandedKey(item.key);
+            break;
+          }
+        }
+      }
+
+      if (activeKey) {
+        setActiveItem(activeKey);
       }
     }
   }, [pathname]);
@@ -72,6 +107,14 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
     }
     if (item.url) {
       router.push(item.url);
+    }
+  };
+
+  const handleSubItemClick = (parent: MenuItem, subItem: SubMenuItem) => {
+    setActiveItem(parent.key);
+    onClose();
+    if (subItem.url) {
+      router.push(subItem.url);
     }
   };
 
@@ -111,8 +154,15 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
               }}
               underline="none"
               variant="button"
-              component={item.submenuItems?.length ? 'a' : 'button'}
-              onClick={() => !item.submenuItems?.length && handleItemClick(item)}
+              component={item.submenuItems?.length ? 'span' : 'button'}
+              onClick={() => {
+                if (item.submenuItems?.length) {
+                  setExpandedKey(prev => (prev === item.key ? false : item.key));
+                } else {
+                  setActiveSubKey(null);
+                  handleItemClick(item);
+                }
+              }}
               className={isActive ? 'active' : ''}
             >
               {t(item.key)}
@@ -122,6 +172,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           return item.submenuItems?.length ? (
             <Accordion
               key={item.key}
+              expanded={expandedKey === item.key}
+              onChange={(_, isExpanded) => setExpandedKey(isExpanded ? item.key : false)}
               sx={{
                 backgroundColor: 'transparent',
                 border: 'none',
@@ -155,7 +207,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                     textAlign: 'left',
                   }}
                 >
-                  {item.submenuItems?.map((subItem, index) => (
+                  {item.submenuItems?.map(subItem => (
                     <Box
                       key={subItem.key}
                       sx={{
@@ -166,15 +218,17 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                     >
                       <MuiLink
                         href={subItem.url}
-                        onClick={() => handleItemClick(item, true)}
+                        onClick={() => handleSubItemClick(item, subItem)}
                         sx={{
                           display: 'flex',
                           alignItems: 'flex-start',
                           p: 2,
                           textDecoration: 'none',
                           color: 'grey.900',
+                          '& .MuiTypography-h6': {
+                            color: activeSubKey === subItem.key ? 'primary.main' : 'inherit',
+                          },
                           '&:hover': {
-                            backgroundColor: 'action.hover',
                             '& .MuiTypography-h6': {
                               color: 'primary.main',
                             },
@@ -194,11 +248,11 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                         )}
                         <Box>
                           <Typography variant="h6" gutterBottom>
-                            {subItem.title}
+                            {t(subItem.title)}
                           </Typography>
                           {subItem.description && (
                             <Typography variant="body2" color="text.secondary">
-                              {subItem.description}
+                              {t(subItem.description)}
                             </Typography>
                           )}
                         </Box>
@@ -241,7 +295,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         <Button
           component={Link}
           color="primary"
-          href={REGISTER_URL}
+          href="/#book-a-demo"
           size="medium"
           sx={{
             backgroundColor: 'secondary.500',
@@ -255,6 +309,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
               backgroundColor: 'secondary.700',
             },
           }}
+          onClick={() => handleItemClick('bookDemo' as unknown as MenuItem)}
         >
           {t('bookDemo')}
         </Button>

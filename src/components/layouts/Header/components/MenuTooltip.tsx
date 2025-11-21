@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
-import { Box, Link as MuiLink, Typography, styled, Theme } from '@mui/material';
+import { Box, Link as MuiLink, Typography, styled } from '@mui/material';
+import { useTranslations } from 'next-intl';
+
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
 import Image from 'next/image';
@@ -14,7 +16,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
       tooltip: 'tooltip',
       arrow: 'tooltip-arrow',
     }}
-    componentsProps={{
+    slotProps={{
       tooltip: {
         sx: theme => ({
           borderTop: `2px solid ${theme.palette.primary.main}  !important`,
@@ -84,6 +86,8 @@ const MenuTooltip = ({
   children: ReactElement;
   subMenuItems: SubMenuItem[];
 }) => {
+  const t = useTranslations('header');
+
   return (
     <HtmlTooltip
       title={
@@ -119,10 +123,10 @@ const MenuTooltip = ({
                 </Box>
                 <Box>
                   <Typography variant="h6" gutterBottom color="grey.900">
-                    {item.title}
+                    {t(item.title)}
                   </Typography>
                   <Typography variant="body2" color="grey.900">
-                    {item.description}
+                    {t(item.description)}
                   </Typography>
                 </Box>
               </MenuItemCard>
@@ -130,7 +134,7 @@ const MenuTooltip = ({
           </Box>
         </Box>
       }
-      componentsProps={{
+      slotProps={{
         tooltip: {
           sx: {
             '& .MuiTooltip-arrow': {
