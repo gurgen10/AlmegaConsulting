@@ -14,10 +14,14 @@ import { useMemo } from 'react';
 import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 import { useTheme } from '@mui/material/styles';
 import {
+  FooterLogoContainer,
   FooterContainer,
   FooterLink,
   FooterLinkBlock,
   FooterLinkContainer,
+  FooterLinkItems,
+  FooterFollowUsContainerMobile,
+  FooterCopyRightContainer,
 } from '@/components/layouts/Footer/components/Footer.style';
 import FollowUs from '@/components/layouts/Footer/components/FollowUs';
 
@@ -46,25 +50,18 @@ export default function Footer() {
             paddingBottom: 4,
           }}>
           <FooterContainer>
-            <Box
-              component={Link}
-              href="/"
-              lineHeight={1}
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                marginBottom: 4,
-              }}>
-              <Image width={165} height={34} src="/icons/solar-genix.svg" alt="SolarGenix Logo" />
+            <FooterLogoContainer>
+              <Link href="/">
+                <Image width={165} height={34} src="/icons/solar-genix.svg" alt="SolarGenix Logo" />
+              </Link>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <FollowUs />
               </Box>
-            </Box>
+            </FooterLogoContainer>
             <FooterLinkContainer>
               <FooterLinkBlock>
                 <FooterMenuWrapper>{t('header.product')}</FooterMenuWrapper>
-                <Box sx={{ display: 'flex', flexDirection: 'column', pr: '20%' }}>
+                <FooterLinkItems>
                   {productSubmenuItems.map(item => (
                     <Box key={item.key}>
                       <FooterLink variant="body2" href={item.url}>
@@ -72,11 +69,11 @@ export default function Footer() {
                       </FooterLink>
                     </Box>
                   ))}
-                </Box>
+                </FooterLinkItems>
               </FooterLinkBlock>
               <FooterLinkBlock>
                 <FooterMenuWrapper>{t('header.features')}</FooterMenuWrapper>
-                <Box sx={{ display: 'flex', flexDirection: 'column', pr: '20%' }}>
+                <FooterLinkItems>
                   {featureSubmenuItems.map(item => (
                     <Box key={item.key}>
                       <FooterLink variant="body2" href={item.url}>
@@ -84,11 +81,11 @@ export default function Footer() {
                       </FooterLink>
                     </Box>
                   ))}
-                </Box>
+                </FooterLinkItems>
               </FooterLinkBlock>
               <FooterLinkBlock>
                 <FooterMenuWrapper>{t('header.company')}</FooterMenuWrapper>
-                <Box sx={{ display: 'flex', flexDirection: 'column', pr: '20%' }}>
+                <FooterLinkItems>
                   {filteredMenuItems.map(item => (
                     <Box key={item.key}>
                       <FooterLink variant="body2" href={item.url}>
@@ -96,16 +93,16 @@ export default function Footer() {
                       </FooterLink>
                     </Box>
                   ))}
-                </Box>
+                </FooterLinkItems>
               </FooterLinkBlock>
             </FooterLinkContainer>
           </FooterContainer>
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%' }}>
+          <FooterFollowUsContainerMobile>
             <FollowUs />
-          </Box>
+          </FooterFollowUsContainerMobile>
         </Box>
-        <Box sx={{ marginTop: 2, display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="caption" color="grey.300">
+        <FooterCopyRightContainer>
+          <Typography className="copy-right" variant="caption" color="grey.300">
             SolarGenix © 2025, {t('footer.allRightsReserved')}.
           </Typography>
           <Box>
@@ -131,7 +128,7 @@ export default function Footer() {
               {t('footer.terms')}
             </MuiLink>
           </Box>
-        </Box>
+        </FooterCopyRightContainer>
       </Box>
     </Box>
   );

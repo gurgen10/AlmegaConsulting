@@ -16,7 +16,15 @@ export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null);
 
   const toggleDrawer = () => {
-    setDrawerOpen(open => !open);
+    setDrawerOpen(open => {
+      if (!open) {
+        headerRef.current?.classList?.add('drawer-open');
+      } else {
+        headerRef.current?.classList?.remove('drawer-open');
+      }
+
+      return !open;
+    });
   };
 
   useLayoutEffect(() => {
@@ -75,6 +83,14 @@ export default function Header() {
             img: {
               height: 24,
               width: 124,
+            },
+          },
+          '&.drawer-open': {
+            py: 2,
+
+            img: {
+              height: 34,
+              width: 165,
             },
           },
         }}>
