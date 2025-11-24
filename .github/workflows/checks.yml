@@ -16,3 +16,6 @@ jobs:
     with:
       main_branch: staging
       node_version: 20
+      validate_pr: true
+      source_branch: ${{ github.head_ref }}
+      target_branch: ${{ github.base_ref }}
