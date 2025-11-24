@@ -10,23 +10,23 @@ profile:
 # Paths to analyze / ignore
 # (Qodana starts from repo root by default)
 include:
-  - src
-  - app
-  - pages
-  - components
-  - shared
-  - theme
+  - name: src
+  - name: app
+  - name: pages
+  - name: components
+  - name: shared
+  - name: theme
 
 exclude:
-  - .next
-  - .git
-  - .turbo
-  - .yarn
-  - .pnpm-store
-  - node_modules
-  - coverage
-  - dist
-  - build
+  - name: .next
+  - name: .git
+  - name: .turbo
+  - name: .yarn
+  - name: .pnpm-store
+  - name: node_modules
+  - name: coverage
+  - name: dist
+  - name: build
 
 
 # Optional: treat warnings as failures – tweak if too strict
