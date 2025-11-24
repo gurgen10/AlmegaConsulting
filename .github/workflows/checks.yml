@@ -1,4 +1,4 @@
-name: Create Feature Branch (Website)
+name: Checks
 
 on:
   pull_request:
