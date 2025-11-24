@@ -1,0 +1,46 @@
+version: "1.0"
+
+# JS/TS/Next.js projects → use the JS linter image
+linter: jetbrains/qodana-js:2025.1
+
+# Optional, but recommended – use the default recommended profile
+profile:
+  name: qodana.recommended
+
+# Paths to analyze / ignore
+# (Qodana starts from repo root by default)
+include:
+  - src
+  - app
+  - pages
+  - components
+  - shared
+  - theme
+
+exclude:
+  - .next
+  - .git
+  - .turbo
+  - .yarn
+  - .pnpm-store
+  - node_modules
+  - coverage
+  - dist
+  - build
+
+
+# Optional: treat warnings as failures – tweak if too strict
+failureConditions:
+  severityThreshold: "WARNING"
+
+# Optional: disable license audit & dependency check if you don’t need them
+# (uncomment if you want to explicitly turn them off)
+# licenseAudit:
+#   enabled: false
+# dependencyAnalysis:
+#   enabled: false
+
+# Optional: pass extra CLI args to Qodana
+# For example, enable SARIF output (useful with GitHub Code Scanning)
+args:
+  - --sarif-output
