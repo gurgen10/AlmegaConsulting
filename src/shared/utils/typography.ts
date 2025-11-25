@@ -4,7 +4,7 @@ import { TypeScaleKey, TypeScaleValue } from '@/shared/constants/typography';
 const toRem = (px: number): string => `${px / 16}rem`;
 
 export const makeVariant = ([mob, tabletMid, tab, mid, big, lh]: TypeScaleValue) => ({
-  lineHeight: `${lh}%`,
+  lineHeight: lh,
   fontSize: toRem(mob),
   [`@media (min-width:0px)`]: { fontSize: toRem(mob) },
   [`@media (min-width:${BREAKPOINTS.tabletMid}px)`]: { fontSize: toRem(tabletMid) },

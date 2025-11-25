@@ -8,6 +8,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme, lightTheme } from '@/theme';
 import Header from '@/components/layouts/Header';
 import { CssBaseline } from '@mui/material';
+import Footer from '@/components/layouts/Footer';
 
 const alexandriaFont = Alexandria({
   weight: ['200', '300', '400', '500', '700'],
@@ -127,6 +128,7 @@ export default async function RootLayout({
               <CssBaseline />
               <Header />
               {children}
+              <Footer />
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

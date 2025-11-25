@@ -61,9 +61,26 @@ const commonConfigs: ThemeOptions = {
           textTransform: 'none',
           borderRadius: 4,
         },
+        sizeLarge: {
+          padding: '8px 22px',
+          '&.text-button': {
+            padding: '8px 11px',
+          },
+        },
+        sizeMedium: {
+          padding: '6px 16px',
+          '&.text-button': {
+            padding: '6px 8px',
+          },
+        },
+        sizeSmall: {
+          padding: '4px 10px',
+          '&.text-button': {
+            padding: '4px 5px',
+          },
+        },
       },
     },
-
     MuiTypography: {
       styleOverrides: {
         root: {
@@ -117,6 +134,9 @@ export const darkTheme = createTheme({
     secondary: makePalette('secondary'),
     grey: makePalette('grey'),
     tertiary: makePalette('tertiary'),
+    opacityDark: makePalette('opacityDark'),
+    opacityLight: makePalette('opacityLight'),
+
     background: {
       default: '#FCFCFC',
     },
@@ -132,6 +152,9 @@ export const lightTheme = createTheme({
     secondary: makePalette('secondary'),
     grey: makePalette('grey'),
     tertiary: makePalette('tertiary'),
+    opacityDark: makePalette('opacityDark'),
+    opacityLight: makePalette('opacityLight'),
+
     background: {
       default: '#FCFCFC',
     },

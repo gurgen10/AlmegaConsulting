@@ -15,9 +15,17 @@ export type ColorShade =
   | 'A400'
   | 'A700';
 
-export type ColorPaletteKey = 'primary' | 'secondary' | 'grey' | 'tertiary';
+export type ColorOpacity = 4 | 8 | 12 | 16 | 20 | 30 | 38 | 42 | 50 | 60 | 70 | 90;
 
-export type ColorPalette = Partial<Record<ColorShade, string>>;
+export type ColorPaletteKey =
+  | 'primary'
+  | 'secondary'
+  | 'grey'
+  | 'tertiary'
+  | 'opacityDark'
+  | 'opacityLight';
+
+export type ColorPalette = Partial<Record<ColorShade | ColorOpacity, string>>;
 
 export const COLORS: Record<ColorPaletteKey, ColorPalette> = {
   primary: {
@@ -72,13 +80,41 @@ export const COLORS: Record<ColorPaletteKey, ColorPalette> = {
   tertiary: {
     50: '#F7FCFC',
     100: '#E8F4F4',
-    200: '#B9D9D9',
-    300: '#A8C5C5',
-    400: '#96B0B0',
-    500: '#758A8A',
+    200: '#D8EBEB',
+    300: '#B9D9D9',
+    400: '#A8C5C5',
+    500: '#96B0B0',
     600: '#758A8A',
     700: '#556565',
     800: '#374242',
     900: '#1C2323',
+  },
+  opacityDark: {
+    4: '#0005050A', // 4%
+    8: '#00050514', // 8%
+    12: '#0005051F', // 12%
+    16: '#00050529', // 16%
+    20: '#00050533', // 20%
+    30: '#0005054D', // 30%
+    38: '#00050561', // 38%
+    42: '#0005056B', // 42%
+    50: '#00050580', // 50%
+    60: '#00050599', // 60%
+    70: '#000505B3', // 70%
+    90: '#000505E6', // 90%
+  },
+  opacityLight: {
+    4: '#F7FCFC0A', // 4%
+    8: '#F7FCFC14', // 8%
+    12: '#F7FCFC1F', // 12%
+    16: '#F7FCFC29', // 16%
+    20: '#F7FCFC33', // 20%
+    30: '#F7FCFC4D', // 30%
+    38: '#F7FCFC61', // 38%
+    42: '#F7FCFC6B', // 42%
+    50: '#F7FCFC80', // 50%
+    60: '#F7FCFC99', // 60%
+    70: '#F7FCFCB3', // 70%
+    90: '#F7FCFCE6', // 90%
   },
 };
