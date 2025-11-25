@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/solargenix_website_next.iml" filepath="$PROJECT_DIR$/.idea/solargenix_website_next.iml" />
+      <module fileurl="file://$PROJECT_DIR$/restore/.idea/solargenix_website_next.iml" filepath="$PROJECT_DIR$/restore/.idea/solargenix_website_next.iml" />
     </modules>
   </component>
 </project>
