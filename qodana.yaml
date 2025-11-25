@@ -23,6 +23,3 @@ exclude:
   - name: coverage
   - name: dist
   - name: build
-
-failureConditions:
-  severityThreshold: "WARNING"
