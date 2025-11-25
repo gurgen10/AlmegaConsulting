@@ -1,12 +1,13 @@
-import { Button, Link as MuiLink, Box } from '@mui/material';
-import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
-import { useTranslations } from 'next-intl';
+import { Box, Button, Link as MuiLink } from '@mui/material';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LOGIN_URL } from '@/shared/constants/common';
+import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
+
 import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
+import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem } from '@/components/layouts/Header/header.types';
-import { useState, useEffect } from 'react';
+import { LOGIN_URL } from '@/shared/constants/common';
 
 export default function MenuDesktop() {
   const t = useTranslations('header');
@@ -48,7 +49,7 @@ export default function MenuDesktop() {
               position: 'relative',
               cursor: 'pointer',
               '&:hover': {
-                background: 'rgba(0, 5, 5, 0.04)',
+                background: 'rgba(0, 5, 5, 0.9)',
               },
             }}
             underline="none"
@@ -76,7 +77,7 @@ export default function MenuDesktop() {
         size="medium"
         sx={{
           ml: 'auto',
-          backgroundColor: 'secondary.500',
+          backgroundColor: 'secondary.400',
           color: 'grey.50',
           '&:hover': {
             backgroundColor: 'secondary.700',
