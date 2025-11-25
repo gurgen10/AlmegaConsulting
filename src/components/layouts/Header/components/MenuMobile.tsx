@@ -1,23 +1,24 @@
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
-  Typography,
   Link as MuiLink,
   Stack,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
+  Typography,
 } from '@mui/material';
-import { menuItems } from '@/components/layouts/Header/Header.constants';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { LOGIN_URL } from '@/shared/constants/common';
-import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
-import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
+
+import ArrowRight from '@/components/common/Icons/ArrowRight';
+import { menuItems } from '@/components/layouts/Header/Header.constants';
+import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
+import { LOGIN_URL } from '@/shared/constants/common';
 
 interface MenuMobileProps {
   onClose: () => void;
@@ -192,6 +193,12 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                 sx={{
                   marginLeft: 0,
                   paddingLeft: '6px',
+                  '&.MuiAccordionSummary-root.Mui-expanded': {
+                    minHeight: '48px',
+                  },
+                  '& .MuiAccordionSummary-content.Mui-expanded': {
+                    margin: theme.spacing(0, 0),
+                  },
                 }}>
                 {link}
               </AccordionSummary>
@@ -289,10 +296,11 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           size="medium"
           sx={{
             backgroundColor: 'secondary.500',
-            display: 'block',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             width: '100%',
             maxWidth: '173px',
-            textAlign: 'center',
             flex: 1,
             color: 'grey.50',
             '&:hover': {
@@ -307,11 +315,13 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           href={LOGIN_URL}
           size="medium"
           sx={{
-            display: 'block',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             width: '100%',
             maxWidth: '173px',
+            minHeight: 48,
             flex: 1,
-            textAlign: 'center',
             backgroundColor: 'primary.500',
             borderRadius: '4px',
             color: 'grey.50',
