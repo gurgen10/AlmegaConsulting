@@ -1,4 +1,4 @@
-import { dirname } from 'path';
+﻿import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
@@ -20,21 +20,18 @@ const eslintConfig = [
     'next',
     'next/core-web-vitals',
     'next/typescript',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
     'prettier'
   ),
   {
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
         sourceType: 'module',
         project: './tsconfig.json',
-        ecmaVersion: 2021,
       },
       globals: {
-        // browser globals
+        // Browser globals
         window: 'readonly',
         document: 'readonly',
         navigator: 'readonly',
@@ -52,25 +49,19 @@ const eslintConfig = [
       },
     },
     rules: {
-      // Prettier enforcement
-      'prettier/prettier': 'error',
-      // React SVG attribute exceptions
+      // React SVG attribute exceptions (camelCase)
       'react/no-unknown-property': [
         'error',
-        { ignore: ['stroke-width', 'fill-rule', 'clip-rule', 'stroke-linecap', 'stroke-linejoin'] }
+        { ignore: ['fillRule', 'clipRule', 'strokeLinecap', 'strokeLinejoin'] },
       ],
       // TypeScript: warn on unused vars
       '@typescript-eslint/no-unused-vars': ['warn'],
-      // Simple import sort rules
+      // Import sorting
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
-    },
-  },
-  {
-    files: ['**/*.tsx', '**/*.jsx'],
-    rules: {
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error',
+      // Prettier enforcement
+      'prettier/prettier': 'error',
+      // React rules for JSX
       'react/react-in-jsx-scope': 'off', // Not needed in Next.js
     },
   },

@@ -1,29 +1,30 @@
 'use client';
 
-import { Box, Typography, Link as MuiLink } from '@mui/material';
-import { FOOTER_STYLES } from '@/shared/constants/spacing';
-import Link from 'next/link';
+import { Box, Link as MuiLink, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
+
+import FollowUs from '@/components/layouts/Footer/components/FollowUs';
+import {
+  FooterContainer,
+  FooterCopyRightContainer,
+  FooterFollowUsContainerMobile,
+  FooterLink,
+  FooterLinkBlock,
+  FooterLinkContainer,
+  FooterLinkItems,
+  FooterLogoContainer,
+} from '@/components/layouts/Footer/components/Footer.style';
+import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 import {
   featureSubmenuItems,
   menuItems,
   productSubmenuItems,
 } from '@/components/layouts/Header/Header.constants';
-import { useMemo } from 'react';
-import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
-import { useTheme } from '@mui/material/styles';
-import {
-  FooterLogoContainer,
-  FooterContainer,
-  FooterLink,
-  FooterLinkBlock,
-  FooterLinkContainer,
-  FooterLinkItems,
-  FooterFollowUsContainerMobile,
-  FooterCopyRightContainer,
-} from '@/components/layouts/Footer/components/Footer.style';
-import FollowUs from '@/components/layouts/Footer/components/FollowUs';
+import { FOOTER_STYLES } from '@/shared/constants/spacing';
 
 export default function Footer() {
   const t = useTranslations();
@@ -36,19 +37,22 @@ export default function Footer() {
     <Box
       sx={{
         backgroundColor: 'tertiary.700',
-      }}>
+      }}
+    >
       <Box
         component="footer"
         sx={{
           ...FOOTER_STYLES,
-        }}>
+        }}
+      >
         <Box
           sx={{
             borderBottomWidth: '1px',
             borderBottomStyle: 'solid',
             borderBottomColor: 'opacityLight.30',
             paddingBottom: 4,
-          }}>
+          }}
+        >
           <FooterContainer>
             <FooterLogoContainer>
               <Link href="/">
@@ -113,7 +117,8 @@ export default function Footer() {
                 textDecoration: 'underline',
                 '&:hover': { color: 'primary.500' },
               }}
-              href="/#policy">
+              href="/#policy"
+            >
               {t('footer.privacyPolicy')}
             </MuiLink>
             <MuiLink
@@ -124,7 +129,8 @@ export default function Footer() {
                 color: 'grey.300',
                 '&:hover': { color: 'primary.500' },
               }}
-              href="/#term">
+              href="/#term"
+            >
               {t('footer.terms')}
             </MuiLink>
           </Box>
