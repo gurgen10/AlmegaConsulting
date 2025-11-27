@@ -12,8 +12,7 @@ export default async function ProductDescriptionSection() {
       sx={{
         borderTop: '1px solid var(--mui-palette-grey-25)',
         background: 'var(--mui-palette-primary-900)',
-      }}
-    >
+      }}>
       <Box {...CONTAINER_STYLES}>
         <Typography variant="h2" fontWeight={250} color="secondary.400">
           {t('title')}
@@ -23,8 +22,7 @@ export default async function ProductDescriptionSection() {
           fontWeight={300}
           color="grey.25"
           mt={{ xs: 3, lg: 4 }}
-          pb={{ xs: 7, sm: 0 }}
-        >
+          pb={{ xs: 7, sm: 0 }}>
           {t('description')}
         </Typography>
       </Box>
