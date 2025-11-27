@@ -12,7 +12,6 @@ import {
 } from '@/components/layouts/Header/Header.constants';
 import { useMemo } from 'react';
 import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
-import { useTheme } from '@mui/material/styles';
 import {
   FooterLogoContainer,
   FooterContainer,
@@ -27,7 +26,6 @@ import FollowUs from '@/components/layouts/Footer/components/FollowUs';
 
 export default function Footer() {
   const t = useTranslations();
-  const theme = useTheme();
 
   const filteredMenuItems = useMemo(() => {
     return menuItems.filter(item => !item.submenuItems);

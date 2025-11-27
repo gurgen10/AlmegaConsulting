@@ -108,8 +108,7 @@ const MenuTooltip = ({
               '& > *': {
                 backgroundColor: theme => theme.palette.background.paper,
               },
-            }}
-          >
+            }}>
             {subMenuItems.map(item => (
               <MenuItemCard key={item.key} href={item.url}>
                 <Box sx={{ mr: 2, mt: 0.5 }}>
@@ -146,8 +145,7 @@ const MenuTooltip = ({
             },
           },
         },
-      }}
-    >
+      }}>
       {children}
     </HtmlTooltip>
   );

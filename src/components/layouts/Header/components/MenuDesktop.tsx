@@ -19,7 +19,7 @@ export default function MenuDesktop() {
     if (defaultMenuItems.length > 0 && !activeItem) {
       setActiveItem(defaultMenuItems[0].key);
     }
-  }, []);
+  }, [activeItem]);
 
   useEffect(() => {
     if (pathname) {
