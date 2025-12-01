@@ -130,7 +130,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         display: 'flex',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
         flexDirection: 'column',
-      }}>
+      }}
+    >
       <Stack
         mb={3}
         gap={1}
@@ -138,7 +139,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           overflowY: 'auto',
           flex: 1,
           pb: '120px',
-        }}>
+        }}
+      >
         {menuItems.map(item => {
           const isActive = activeItem === item.key;
           const link = (
@@ -162,7 +164,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                   handleItemClick(item);
                 }
               }}
-              className={isActive ? 'active' : ''}>
+              className={isActive ? 'active' : ''}
+            >
               {t(item.key)}
             </MuiLink>
           );
@@ -185,7 +188,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                   content: "''",
                   height: 0,
                 },
-              }}>
+              }}
+            >
               <AccordionSummary
                 expandIcon={<ArrowRight />}
                 aria-controls="panel1-content"
@@ -199,7 +203,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                   '& .MuiAccordionSummary-content.Mui-expanded': {
                     margin: theme.spacing(0, 0),
                   },
-                }}>
+                }}
+              >
                 {link}
               </AccordionSummary>
               <AccordionDetails sx={{ p: 0 }}>
@@ -207,7 +212,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                   sx={{
                     p: 2,
                     textAlign: 'left',
-                  }}>
+                  }}
+                >
                   {item.submenuItems?.map(subItem => (
                     <Box
                       key={subItem.key}
@@ -215,7 +221,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                         '&:not(:last-child)': {
                           borderBottom: theme => `1px solid ${theme.palette.divider}`,
                         },
-                      }}>
+                      }}
+                    >
                       <MuiLink
                         href={subItem.url}
                         onClick={() => handleSubItemClick(item, subItem)}
@@ -233,7 +240,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                               color: 'primary.main',
                             },
                           },
-                        }}>
+                        }}
+                      >
                         {subItem.icon && (
                           <Box sx={{ mr: 2, mt: 0.5 }}>
                             <Image
@@ -268,7 +276,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                 padding: '6px 8px',
                 textAlign: 'left',
                 borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
-              }}>
+              }}
+            >
               {link}
             </Box>
           );
@@ -288,7 +297,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           display: 'flex',
           gap: 2,
           justifyContent: 'center',
-        }}>
+        }}
+      >
         <Button
           component={Link}
           color="primary"
@@ -304,10 +314,11 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             flex: 1,
             color: 'grey.50',
             '&:hover': {
-              backgroundColor: 'secondary.700',
+              backgroundColor: 'secondary.300',
             },
           }}
-          onClick={() => handleItemClick('bookDemo' as unknown as MenuItem)}>
+          onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
+        >
           {t('bookDemo')}
         </Button>
         <Button
@@ -328,7 +339,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             '&:hover': {
               backgroundColor: 'primary.600',
             },
-          }}>
+          }}
+        >
           {t('login')}
         </Button>
       </Box>

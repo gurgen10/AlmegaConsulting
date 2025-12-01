@@ -1,12 +1,13 @@
 'use client';
 
 import { AppBar, Box, Drawer, Toolbar, useMediaQuery, useTheme } from '@mui/material';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import Burger from '@/components/ui/Burger';
+import Link from 'next/link';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+
 import MenuDesktop from '@/components/layouts/Header/components/MenuDesktop';
 import MenuMobile from '@/components/layouts/Header/components/MenuMobile';
+import Burger from '@/components/ui/Burger';
 import { HEADER_STYLES } from '@/shared/constants/spacing';
 
 export default function Header() {
@@ -64,7 +65,20 @@ export default function Header() {
   }, [drawerOpen]);
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: 'grey.200', zIndex: 1201, boxShadow: 'none' }}>
+    <AppBar
+      sx={{
+        position: 'sticky',
+        backgroundColor: 'grey.200',
+        zIndex: 1201,
+        boxShadow: 'none',
+        '&.MuiAppBar-root ~ .MuiTooltip-popper .MuiTooltip-tooltip': {
+          marginTop: '18px !important',
+        },
+        '&.MuiAppBar-root:has(.header-shrink) ~ .MuiTooltip-popper .MuiTooltip-tooltip': {
+          marginTop: '14px !important',
+        },
+      }}
+    >
       <Toolbar
         ref={headerRef}
         sx={{
@@ -93,7 +107,8 @@ export default function Header() {
               width: 165,
             },
           },
-        }}>
+        }}
+      >
         <Box component={Link} href="/" lineHeight={1}>
           <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
         </Box>
@@ -102,7 +117,8 @@ export default function Header() {
             ml="auto"
             alignItems="center"
             onClick={toggleDrawer}
-            display={{ xs: 'flex', lg: 'none' }}>
+            display={{ xs: 'flex', lg: 'none' }}
+          >
             <Burger open={drawerOpen} />
           </Box>
           {isMobile ? (
@@ -119,7 +135,8 @@ export default function Header() {
               }}
               anchor="top"
               open={drawerOpen}
-              onClose={toggleDrawer}>
+              onClose={toggleDrawer}
+            >
               <MenuMobile onClose={toggleDrawer} />
             </Drawer>
           ) : (
@@ -129,7 +146,8 @@ export default function Header() {
               alignItems="center"
               gap={2}
               mr="auto"
-              width="100%">
+              width="100%"
+            >
               <MenuDesktop />
             </Box>
           )}

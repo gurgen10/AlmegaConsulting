@@ -49,13 +49,14 @@ export default function MenuDesktop() {
               position: 'relative',
               cursor: 'pointer',
               '&:hover': {
-                background: 'rgba(0, 5, 5, 0.9)',
+                background: 'rgba(0, 5, 5, 0.04)',
               },
             }}
             underline="none"
             component="button"
             onClick={() => handleItemClick(item)}
-            className={isActive ? 'active' : ''}>
+            className={isActive ? 'active' : ''}
+          >
             {t(item.key)}
           </MuiLink>
         );
@@ -72,7 +73,6 @@ export default function MenuDesktop() {
       })}
       <Button
         component={Link}
-        color="primary"
         href="/#book-a-demo"
         size="medium"
         sx={{
@@ -80,10 +80,11 @@ export default function MenuDesktop() {
           backgroundColor: 'secondary.400',
           color: 'grey.50',
           '&:hover': {
-            backgroundColor: 'secondary.700',
+            backgroundColor: 'secondary.300',
           },
         }}
-        onClick={() => handleItemClick('bookDemo' as unknown as MenuItem)}>
+        onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
+      >
         {t('bookDemo')}
       </Button>
       <Button
@@ -97,7 +98,8 @@ export default function MenuDesktop() {
           '&:hover': {
             backgroundColor: 'primary.600',
           },
-        }}>
+        }}
+      >
         {t('login')}
       </Button>
     </>

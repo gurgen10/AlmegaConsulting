@@ -1,32 +1,11 @@
-{
+﻿{
   "semi": true,
   "singleQuote": true,
   "printWidth": 100,
   "tabWidth": 2,
   "trailingComma": "es5",
   "bracketSpacing": true,
+  "insertFinalNewline": true,
   "arrowParens": "avoid",
-  "endOfLine": "lf",
-  "overrides": [
-    {
-      "files": [
-        "*.tsx",
-        "*.jsx"
-      ],
-      "options": {
-        "parser": "typescript",
-        "bracketSameLine": true,
-        "jsxBracketSameLine": true,
-        "jsxSingleAttributePerLine": false
-      }
-    },
-    {
-      "files": [
-        "*.svg"
-      ],
-      "options": {
-        "parser": "html"
-      }
-    }
-  ]
+  "endOfLine": "lf"
 }

@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
-import { Box, Link as MuiLink, Typography, styled } from '@mui/material';
-import { useTranslations } from 'next-intl';
-
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import { SubMenuItem } from '@/components/layouts/Header/header.types';
+import { Box, Link as MuiLink, styled, Typography } from '@mui/material';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { ReactElement } from 'react';
+
+import { SubMenuItem } from '@/components/layouts/Header/header.types';
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip
@@ -51,7 +51,6 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     border: `1px solid ${theme.palette.divider}`,
     overflow: 'visible',
     position: 'relative',
-    marginTop: '8px !important',
   },
 }));
 
@@ -108,7 +107,8 @@ const MenuTooltip = ({
               '& > *': {
                 backgroundColor: theme => theme.palette.background.paper,
               },
-            }}>
+            }}
+          >
             {subMenuItems.map(item => (
               <MenuItemCard key={item.key} href={item.url}>
                 <Box sx={{ mr: 2, mt: 0.5 }}>
@@ -145,7 +145,8 @@ const MenuTooltip = ({
             },
           },
         },
-      }}>
+      }}
+    >
       {children}
     </HtmlTooltip>
   );

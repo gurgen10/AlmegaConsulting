@@ -11,7 +11,8 @@ const FooterMenuWrapper = ({ children }: { children: React.ReactNode | string })
         py: '6px',
         marginBottom: '6px',
         textAlign: 'left',
-      }}>
+      }}
+    >
       <Typography color="tertiary.300" variant="body1">
         {children}
       </Typography>

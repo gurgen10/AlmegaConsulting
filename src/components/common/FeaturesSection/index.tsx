@@ -18,14 +18,16 @@ export default async function FeaturesSection() {
               display="grid"
               gridTemplateColumns={{ md: '1fr 1fr' }}
               columnGap={7.5}
-              rowGap={3}>
+              rowGap={3}
+            >
               <Typography
                 variant="h3"
                 component="h3"
                 color="secondary.500"
                 fontWeight="250"
                 order={index}
-                fontSize={{ xs: 24, sm: 28, md: 38, lg: 42, xl: 48 }}>
+                fontSize={{ xs: 24, sm: 28, md: 38, lg: 42, xl: 48 }}
+              >
                 {t(`${key}.title`)}
               </Typography>
 
@@ -38,7 +40,8 @@ export default async function FeaturesSection() {
                   color="grey.800"
                   fontWeight={250}
                   display={{ xs: 'none', md: 'block' }}
-                  mt={3}>
+                  mt={3}
+                >
                   {t(`${key}.imgText`)}
                 </Typography>
               </Box>
