@@ -1,11 +1,11 @@
 'use client';
 
 import { Box, Link as MuiLink, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
+import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 
 import FollowUs from '@/components/layouts/Footer/components/FollowUs';
 import {
@@ -18,7 +18,6 @@ import {
   FooterLinkItems,
   FooterLogoContainer,
 } from '@/components/layouts/Footer/components/Footer.style';
-import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 import {
   featureSubmenuItems,
   menuItems,
@@ -28,7 +27,6 @@ import { FOOTER_STYLES } from '@/shared/constants/spacing';
 
 export default function Footer() {
   const t = useTranslations();
-  const theme = useTheme();
 
   const filteredMenuItems = useMemo(() => {
     return menuItems.filter(item => !item.submenuItems);

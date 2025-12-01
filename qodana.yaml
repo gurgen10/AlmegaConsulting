@@ -1,0 +1,25 @@
+version: "1.0"
+
+linter: jetbrains/qodana-js:2025.1
+
+profile:
+  name: qodana.recommended
+
+include:
+  - name: src
+  - name: app
+  - name: pages
+  - name: components
+  - name: shared
+  - name: theme
+
+exclude:
+  - name: .next
+  - name: .git
+  - name: .turbo
+  - name: .yarn
+  - name: .pnpm-store
+  - name: node_modules
+  - name: coverage
+  - name: dist
+  - name: build

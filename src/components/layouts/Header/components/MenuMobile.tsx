@@ -99,7 +99,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         setActiveItem(activeKey);
       }
     }
-  }, [pathname]);
+  }, [pathname, hash]);
 
   const handleItemClick = (item: MenuItem, isSubmenuItem = false) => {
     setActiveItem(item.key);
