@@ -8,6 +8,11 @@ on:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+*"
 
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
 jobs:
   caller-deploy:
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-deploy.yml@main
