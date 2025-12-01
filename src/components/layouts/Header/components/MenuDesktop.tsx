@@ -44,6 +44,7 @@ export default function MenuDesktop() {
         const link = (
           <MuiLink
             sx={{
+              backgroundColor: 'transparent',
               padding: '6px 8px',
               color: isActive ? 'primary.500' : 'opacityDark.90',
               position: 'relative',
@@ -77,10 +78,9 @@ export default function MenuDesktop() {
         size="medium"
         sx={{
           ml: 'auto',
-          backgroundColor: 'secondary.400',
-          color: 'grey.50',
+          color: 'secondary.400',
           '&:hover': {
-            backgroundColor: 'secondary.300',
+            backgroundColor: 'secondary.400',
           },
         }}
         onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}

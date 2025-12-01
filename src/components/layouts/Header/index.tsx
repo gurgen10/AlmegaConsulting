@@ -66,26 +66,42 @@ export default function Header() {
 
   return (
     <AppBar
-      sx={{
-        position: 'sticky',
-        backgroundColor: 'grey.200',
-        zIndex: 1201,
-        boxShadow: 'none',
-        '&.MuiAppBar-root ~ .MuiTooltip-popper .MuiTooltip-tooltip': {
-          marginTop: '18px !important',
-        },
-        '&.MuiAppBar-root:has(.header-shrink) ~ .MuiTooltip-popper .MuiTooltip-tooltip': {
-          marginTop: '14px !important',
-        },
-      }}
+      position="sticky"
+      sx={{ position: 'sticky', backgroundColor: 'transparent', zIndex: 1201, boxShadow: 'none' }}
     >
       <Toolbar
         ref={headerRef}
-        sx={{
+        data-header="site-header"
+        sx={theme => ({
           ...HEADER_STYLES,
           transition: '0.2s linear',
           minHeight: '48px !important',
           py: 2,
+
+          // Liquid glass background
+          background: `linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))`,
+          borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)'}`,
+          boxShadow: '0 6px 20px rgba(2,6,23,0.25)',
+          backdropFilter: 'blur(5px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(2px) saturate(120%)',
+          position: 'relative',
+          overflow: 'hidden',
+
+          // Sheen overlay
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background:
+              'linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02), rgba(255,255,255,0.06))',
+            transform: 'translateX(-40%)',
+            filter: 'blur(0px)',
+            transition: 'transform 0.9s ease',
+          },
+          '&:hover::before': {
+            transform: 'translateX(40%)',
+          },
 
           img: {
             transition: '0.2s linear',
@@ -93,11 +109,24 @@ export default function Header() {
 
           '&.header-shrink': {
             py: 1.5,
+            background: `linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))`,
 
             img: {
               height: 24,
               width: 124,
             },
+            '&::before': {
+              transform: 'translateX(-20%)',
+              opacity: 0.9,
+            },
+          },
+          // When a tooltip is open, increase fogginess
+          '&.tooltip-open': {
+            backdropFilter: 'blur(16px) saturate(140%)',
+            WebkitBackdropFilter: 'blur(16px) saturate(140%)',
+            background: `linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))`,
+            boxShadow: '0 10px 30px rgba(2,6,23,0.35)',
+            borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)'}`,
           },
           '&.drawer-open': {
             py: 2,
@@ -107,7 +136,7 @@ export default function Header() {
               width: 165,
             },
           },
-        }}
+        })}
       >
         <Box component={Link} href="/" lineHeight={1}>
           <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
