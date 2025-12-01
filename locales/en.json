@@ -35,11 +35,10 @@
     "allRightsReserved": "All rights reserved"
   },
   "heroSection": {
-    "makingSolarSimple": "Making Solar Simple",
+    "createSolarPanel": "Create Solar Proposals in Seconds with Our Solar Design Software",
     "description": "Transform your solar sales process with an advanced <bold>AI-driven tool</bold> that generates accurate, instant proposals helping you <bold>close more deals.</bold>",
     "getStartedFree": "Get Started Free",
-    "bookDemo": "Book a Demo",
-    "noCreditCardRequired": "*No credit card required"
+    "bookDemo": "Book a Demo"
   },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",

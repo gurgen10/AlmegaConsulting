@@ -13,22 +13,19 @@ export default async function HeroSection() {
       component="section"
       sx={{
         minHeight: '93vh',
-        color: 'grey.25',
         display: 'flex',
         alignItems: 'center',
-        background:
-          'linear-gradient(271deg, rgba(0, 0, 0, 0.00) 42.2%, rgba(0, 0, 0, 0.45) 64.87%, rgba(0, 0, 0, 0.50) 98.88%), url(/images/bg-foto.webp) center / cover',
       }}
     >
       <Box {...CONTAINER_STYLES}>
         <Stack maxWidth={{ xs: 494, md: 520, xl: 616 }} gap={2.75}>
-          <Typography variant="h1" fontWeight={250}>
-            {t('makingSolarSimple')}
+          <Typography component="h1" variant="h3" fontWeight={500}>
+            {t('createSolarPanel')}
           </Typography>
-          <Typography variant="h5" fontWeight={250}>
+          <Typography variant="subtitle2" fontWeight={250}>
             {t.rich('description', {
               bold: chunks => (
-                <Typography variant="inherit" component="strong" fontWeight={500}>
+                <Typography variant="inherit" component="strong" fontWeight={700}>
                   {chunks}
                 </Typography>
               ),
@@ -54,9 +51,6 @@ export default async function HeroSection() {
                 {t('bookDemo')}
               </DarkPrimaryButton>
             </Stack>
-            <Typography variant="subtitle2" mt={1} fontWeight={250}>
-              {t('noCreditCardRequired')}
-            </Typography>
           </div>
         </Stack>
       </Box>

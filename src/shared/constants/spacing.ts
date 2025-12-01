@@ -15,7 +15,7 @@ export const FOOTER_STYLES = {
 };
 
 export const CONTAINER_STYLES = {
-  maxWidth: 1400,
+  maxWidth: 1296,
   width: '100%',
   margin: 'auto',
   px: { xs: 2, sm: 7.5, lg: 15 },
