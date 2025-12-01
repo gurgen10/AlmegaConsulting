@@ -21,7 +21,8 @@ const FollowUs = () => {
         <Link href="https://www.youtube.com/@SolarGenixai" target="_blank">
           <Box
             component={'span'}
-            sx={{ color: 'grey.25', '&:hover': { color: theme.palette.primary.main } }}>
+            sx={{ color: 'grey.25', '&:hover': { color: theme.palette.primary.main } }}
+          >
             <YouTube />
           </Box>
         </Link>
@@ -32,7 +33,8 @@ const FollowUs = () => {
               ml: 2,
               color: 'grey.25',
               '&:hover': { color: theme.palette.primary.main },
-            }}>
+            }}
+          >
             <TikTok />
           </Box>
         </Link>
@@ -43,7 +45,8 @@ const FollowUs = () => {
               ml: 2,
               color: 'grey.25',
               '&:hover': { color: theme.palette.primary.main },
-            }}>
+            }}
+          >
             <Instagram />
           </Box>
         </Link>
@@ -54,7 +57,8 @@ const FollowUs = () => {
               ml: 2,
               color: 'grey.25',
               '&:hover': { color: theme.palette.primary.main },
-            }}>
+            }}
+          >
             <Facebook />
           </Box>
         </Link>
@@ -65,7 +69,8 @@ const FollowUs = () => {
               ml: 2,
               color: 'grey.25',
               '&:hover': { color: theme.palette.primary.main },
-            }}>
+            }}
+          >
             <Linkedin />
           </Box>
         </Link>
