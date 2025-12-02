@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Accordion,
   AccordionDetails,
@@ -139,6 +141,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           overflowY: 'auto',
           flex: 1,
           pb: '120px',
+          backdropFilter: 'blur(10px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
         }}
       >
         {menuItems.map(item => {

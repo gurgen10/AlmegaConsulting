@@ -1,5 +1,5 @@
 export const HEADER_STYLES = {
-  maxWidth: 1376,
+  maxWidth: 1296,
   width: '100%',
   margin: 'auto',
   px: { xs: 2, sm: 4, lg: 10 },

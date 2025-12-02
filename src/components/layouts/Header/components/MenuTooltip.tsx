@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Link as MuiLink, styled, Typography } from '@mui/material';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Image from 'next/image';
@@ -11,20 +13,20 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
     {...props}
     arrow
     placement="bottom"
-    onOpen={e => {
-      if (typeof document !== 'undefined') {
-        document.querySelector('[data-header="site-header"]')?.classList.add('tooltip-open');
-      }
-      const userOnOpen = (props as unknown).onOpen;
-      if (typeof userOnOpen === 'function') userOnOpen(e);
-    }}
-    onClose={e => {
-      if (typeof document !== 'undefined') {
-        document.querySelector('[data-header="site-header"]')?.classList.remove('tooltip-open');
-      }
-      const userOnClose = (props as unknown).onClose;
-      if (typeof userOnClose === 'function') userOnClose(e);
-    }}
+    // onOpen={e => {
+    //   if (typeof document !== 'undefined') {
+    //     document.querySelector('[data-header="site-header"]')?.classList.add('tooltip-open');
+    //   }
+    //   const userOnOpen = (props as unknown).onOpen;
+    //   if (typeof userOnOpen === 'function') userOnOpen(e);
+    // }}
+    // onClose={e => {
+    //   if (typeof document !== 'undefined') {
+    //     document.querySelector('[data-header="site-header"]')?.classList.remove('tooltip-open');
+    //   }
+    //   const userOnClose = (props as unknown).onClose;
+    //   if (typeof userOnClose === 'function') userOnClose(e);
+    // }}
     classes={{
       popper: className,
       tooltip: 'tooltip',

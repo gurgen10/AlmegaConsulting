@@ -66,26 +66,34 @@ export default function Header() {
 
   return (
     <AppBar
-      position="sticky"
-      sx={{ position: 'sticky', backgroundColor: 'transparent', zIndex: 1201, boxShadow: 'none' }}
+      sx={{
+        position: 'sticky',
+        backgroundColor: 'transparent',
+        zIndex: 1201,
+        boxShadow: 'none',
+        height: '78px',
+      }}
     >
       <Toolbar
         ref={headerRef}
         data-header="site-header"
-        sx={theme => ({
+        sx={{
           ...HEADER_STYLES,
           transition: '0.2s linear',
           minHeight: '48px !important',
           py: 2,
 
-          // Liquid glass background
-          background: `linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))`,
-          borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)'}`,
-          boxShadow: '0 6px 20px rgba(2,6,23,0.25)',
-          backdropFilter: 'blur(5px) saturate(120%)',
+          backdropFilter: 'blur(2px) saturate(120%)',
           WebkitBackdropFilter: 'blur(2px) saturate(120%)',
           position: 'relative',
           overflow: 'hidden',
+          backgroundBlendMode: 'plus-lighter',
+          maxWidth: '1232px',
+          px: '32px',
+          height: '100%',
+          borderTop: '1px solid #FFF',
+          borderBottom: '1px solid #FFF',
+          backgroundColor: 'opacityDark.20',
 
           // Sheen overlay
           '&::before': {
@@ -93,8 +101,7 @@ export default function Header() {
             position: 'absolute',
             inset: 0,
             pointerEvents: 'none',
-            background:
-              'linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02), rgba(255,255,255,0.06))',
+
             transform: 'translateX(-40%)',
             filter: 'blur(0px)',
             transition: 'transform 0.9s ease',
@@ -106,42 +113,54 @@ export default function Header() {
           img: {
             transition: '0.2s linear',
           },
+          '.nav-menu-items': {
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2,
+            mr: 'auto',
+            ml: 6,
+            width: '100%',
+            transition: '0.2s linear',
+          },
 
           '&.header-shrink': {
-            py: 1.5,
-            background: `linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))`,
+            my: 1.5,
+            maxWidth: '1296px',
 
-            img: {
-              height: 24,
-              width: 124,
-            },
             '&::before': {
               transform: 'translateX(-20%)',
               opacity: 0.9,
             },
+            '.nav-menu-items': {
+              ml: 4,
+            },
           },
           // When a tooltip is open, increase fogginess
           '&.tooltip-open': {
+            left: '4%',
             backdropFilter: 'blur(16px) saturate(140%)',
             WebkitBackdropFilter: 'blur(16px) saturate(140%)',
-            background: `linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))`,
-            boxShadow: '0 10px 30px rgba(2,6,23,0.35)',
-            borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)'}`,
           },
-          '&.drawer-open': {
-            py: 2,
 
+          '&.drawer-open': {
             img: {
               height: 34,
               width: 165,
             },
           },
-        })}
+          my: isMobile ? 0 : 1,
+          borderRadius: isMobile ? 0 : '8px',
+          [theme.breakpoints.down('lg')]: {
+            my: '0 !important',
+            backgroundColor: 'opacityLight.90',
+            borderBottom: `1px solid ${theme.palette.primary.main}`,
+          },
+        }}
       >
         <Box component={Link} href="/" lineHeight={1}>
           <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mr="auto" ml={6} width="100%">
+        <Box className="nav-menu-items">
           <Box
             ml="auto"
             alignItems="center"

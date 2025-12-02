@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Button, Link as MuiLink } from '@mui/material';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -8,6 +10,7 @@ import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem } from '@/components/layouts/Header/header.types';
 import { LOGIN_URL } from '@/shared/constants/common';
+import { alpha } from '@mui/system';
 
 export default function MenuDesktop() {
   const t = useTranslations('header');
@@ -78,9 +81,9 @@ export default function MenuDesktop() {
         size="medium"
         sx={{
           ml: 'auto',
-          color: 'secondary.400',
+          color: 'secondary.main',
           '&:hover': {
-            backgroundColor: 'secondary.400',
+            backgroundColor: theme => alpha(theme.palette.secondary.main, 0.04),
           },
         }}
         onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
