@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Box, Typography } from '@mui/material';
-import { CONTAINER_STYLES } from '@/shared/constants/spacing';
+import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 
 export default async function ProductDescriptionSection() {
   const t = await getTranslations('productDescription');
@@ -10,6 +10,8 @@ export default async function ProductDescriptionSection() {
       component="section"
       textAlign="center"
       sx={{
+        ...SECTION_STYLES_Y,
+        ...SECTION_STYLES_X,
         borderTop: '1px solid var(--mui-palette-grey-25)',
         background: 'var(--mui-palette-primary-900)',
       }}

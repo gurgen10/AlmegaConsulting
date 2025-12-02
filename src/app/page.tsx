@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import HeroSection from '@/components/common/HeroSection';
 import ProductDescriptionSection from '@/components/common/ProductDescriptionSection';
 import FeaturesSection from '@/components/common/FeaturesSection';
+import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -22,6 +23,7 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
+      <TrustedIndustrySection />
       <ProductDescriptionSection />
       <FeaturesSection />
     </>

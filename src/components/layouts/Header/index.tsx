@@ -72,6 +72,10 @@ export default function Header() {
         zIndex: 1201,
         boxShadow: 'none',
         height: '78px',
+        px: '80px',
+        [theme.breakpoints.down('lg')]: {
+          px: '0',
+        },
       }}
     >
       <Toolbar

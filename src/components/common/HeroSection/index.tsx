@@ -1,12 +1,18 @@
+'use client';
+
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { getTranslations } from 'next-intl/server';
+
+import Image from 'next/image';
 import { CONTAINER_STYLES } from '@/shared/constants/spacing';
 import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
+import { useTheme } from '@mui/material/styles';
+import { useTranslations } from 'next-intl';
 
-export default async function HeroSection() {
-  const t = await getTranslations('heroSection');
+export default function HeroSection() {
+  const t = useTranslations('heroSection');
+  const theme = useTheme();
 
   return (
     <Box
@@ -15,6 +21,8 @@ export default async function HeroSection() {
         minHeight: '93vh',
         display: 'flex',
         alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <Box {...CONTAINER_STYLES}>
@@ -53,6 +61,40 @@ export default async function HeroSection() {
             </Stack>
           </div>
         </Stack>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '10%',
+            right: '-1%',
+            width: '60vw',
+            maxWidth: '800px',
+            [theme.breakpoints.down('lg')]: {
+              width: '65vw',
+            },
+            [theme.breakpoints.down('md')]: {
+              width: '75vw',
+              top: '20%',
+            },
+            [theme.breakpoints.down('sm')]: {
+              width: '85vw',
+            },
+            [theme.breakpoints.down('xs')]: {
+              width: '100vw',
+            },
+          }}
+        >
+          <Image
+            src="/images/hero-section.png"
+            alt="hero-section"
+            width={815}
+            height={600}
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
+            priority
+          />
+        </Box>
       </Box>
     </Box>
   );
