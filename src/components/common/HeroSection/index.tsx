@@ -3,7 +3,7 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 
 import Image from 'next/image';
-import { CONTAINER_STYLES } from '@/shared/constants/spacing';
+import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
@@ -18,6 +18,8 @@ export default function HeroSection() {
     <Box
       component="section"
       sx={{
+        ...SECTION_STYLES_Y,
+        ...SECTION_STYLES_X,
         minHeight: '93vh',
         display: 'flex',
         alignItems: 'center',
