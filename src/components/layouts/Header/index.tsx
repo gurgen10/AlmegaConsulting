@@ -66,13 +66,22 @@ export default function Header() {
 
   return (
     <AppBar
-      position="sticky"
-      sx={{ position: 'sticky', backgroundColor: 'transparent', zIndex: 1201, boxShadow: 'none' }}
+      sx={{
+        position: 'sticky',
+        backgroundColor: 'transparent',
+        zIndex: 1201,
+        boxShadow: 'none',
+        height: '78px',
+        px: '80px',
+        [theme.breakpoints.down('lg')]: {
+          px: '0',
+        },
+      }}
     >
       <Toolbar
         ref={headerRef}
         data-header="site-header"
-        sx={theme => ({
+        sx={{
           ...HEADER_STYLES,
           transition: '0.2s linear',
           minHeight: '48px !important',
@@ -84,6 +93,12 @@ export default function Header() {
           WebkitBackdropFilter: 'blur(2px) saturate(120%)',
           position: 'relative',
           overflow: 'hidden',
+          backgroundBlendMode: 'plus-lighter',
+          maxWidth: '1232px',
+          px: '32px',
+          height: '100%',
+          borderTop: '1px solid #FFF',
+          borderBottom: '1px solid #FFF',
           [theme.breakpoints.down('lg')]: {
             borderBottom: `2px solid ${theme.palette.primary.main}`,
           },
@@ -103,40 +118,54 @@ export default function Header() {
             transform: 'translateX(40%)',
           },
 
-          img: {
+          '.nav-menu-items': {
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2,
+            mr: 'auto',
+            ml: 6,
+            width: '100%',
             transition: '0.2s linear',
           },
 
           '&.header-shrink': {
-            py: 1.5,
-            img: {
-              height: 24,
-              width: 124,
-            },
+            my: 1.5,
+            maxWidth: '1296px',
+
             '&::before': {
               transform: 'translateX(-20%)',
               opacity: 0.9,
             },
+            '.nav-menu-items': {
+              ml: 4,
+            },
           },
           // When a tooltip is open, increase fogginess
           '&.tooltip-open': {
+            left: '5%',
             backdropFilter: 'blur(16px) saturate(140%)',
             WebkitBackdropFilter: 'blur(16px) saturate(140%)',
-            boxShadow: '0 10px 30px rgba(2,6,23,0.35)',
           },
+
           '&.drawer-open': {
-            py: 2,
             img: {
               height: 34,
               width: 165,
             },
           },
-        })}
+          my: isMobile ? 0 : 1,
+          borderRadius: isMobile ? 0 : '8px',
+          [theme.breakpoints.down('lg')]: {
+            my: '0 !important',
+            backgroundColor: 'opacityLight.90',
+            borderBottom: `1px solid ${theme.palette.primary.main}`,
+          },
+        }}
       >
         <Box component={Link} href="/" lineHeight={1}>
           <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
         </Box>
-        <Box display="flex" alignItems="center" gap={2} mr="auto" ml={6} width="100%">
+        <Box className="nav-menu-items">
           <Box
             ml="auto"
             alignItems="center"

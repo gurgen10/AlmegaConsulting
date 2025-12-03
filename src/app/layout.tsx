@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import { darkTheme, lightTheme } from '@/theme';
 import Header from '@/components/layouts/Header';
-import { CssBaseline } from '@mui/material';
+import { Box, CssBaseline } from '@mui/material';
 import Footer from '@/components/layouts/Footer';
 
 const alexandriaFont = Alexandria({
@@ -121,7 +121,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={alexandriaFont.variable}>
-      <body>
+      <Box component="body" sx={{ backgroundColor: 'grey.200' }}>
         <NextIntlClientProvider>
           <AppRouterCacheProvider>
             <ThemeProvider theme={themes.light}>
@@ -132,7 +132,7 @@ export default async function RootLayout({
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>
-      </body>
+      </Box>
     </html>
   );
 }
