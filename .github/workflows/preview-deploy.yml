@@ -19,7 +19,9 @@ jobs:
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-preview-deploy.yml@main
     with:
       jira_task: ${{ inputs.jira_task }}
+      node_version: 20
       git_sync: false
+      JIRA_BASE_URL: ${{ vars.ORG_JIRA_BASE_URL }}
     secrets:
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
