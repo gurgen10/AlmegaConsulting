@@ -19,9 +19,9 @@ permissions:
 jobs:
   caller_create_feature_branch:
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-create-feature-branch.yml@main
-    secrets:
-      JIRA_TOKEN: ${{ secrets.ORG_JIRA_TOKEN }}
-      JIRA_USER_EMAIL: ${{ secrets.ORG_JIRA_USER_EMAIL }}
     with:
       jira_key: ${{ inputs.jira_key }}
       base_branch: ${{ inputs.base_branch }}
+    secrets:
+      JIRA_TOKEN: ${{ secrets.ORG_JIRA_TOKEN }}
+      JIRA_USER_EMAIL: ${{ secrets.ORG_JIRA_USER_EMAIL }}
