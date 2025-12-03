@@ -81,9 +81,24 @@ export default function MenuDesktop() {
         size="medium"
         sx={{
           ml: 'auto',
+          px: 2,
           color: 'secondary.main',
+          position: 'relative',
           '&:hover': {
             backgroundColor: theme => alpha(theme.palette.secondary.main, 0.04),
+          },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            display: 'block',
+            width: '1px',
+            height: '100%',
+            backgroundColor: 'opacityDark.12',
+            transition: 'width 0.3s',
+            marginTop: '4px',
           },
         }}
         onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
