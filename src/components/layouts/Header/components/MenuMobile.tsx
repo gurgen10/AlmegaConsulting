@@ -14,7 +14,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
@@ -25,8 +24,8 @@ interface MenuMobileProps {
 }
 
 export default function MenuMobile({ onClose }: MenuMobileProps) {
-  const t = useTranslations('header');
   const pathname = usePathname();
+  const t = useTranslations('header');
   const router = useRouter();
   const [activeItem, setActiveItem] = useState<string>('');
   const [expandedKey, setExpandedKey] = useState<string | false>(false);
@@ -125,7 +124,6 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
       sx={{
         width: '100%',
         height: 'calc(100vh - 68px)',
-        backgroundColor: 'grey.50',
         position: 'relative',
         display: 'flex',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
@@ -285,19 +283,20 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
       </Stack>
 
       <Box
-        sx={{
+        sx={theme => ({
           position: 'fixed',
           bottom: 0,
           left: 0,
           right: 0,
           p: 2,
-          backgroundColor: 'grey.50',
-          borderTop: '1px solid',
-          borderColor: 'divider',
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(8px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(8px) saturate(120%)',
+          borderTop: `1px solid ${theme.palette.divider}`,
           display: 'flex',
           gap: 2,
           justifyContent: 'center',
-        }}
+        })}
       >
         <Button
           component={Link}

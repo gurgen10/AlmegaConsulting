@@ -79,13 +79,14 @@ export default function Header() {
           py: 2,
 
           // Liquid glass background
-          background: `linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))`,
-          borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)'}`,
-          boxShadow: '0 6px 20px rgba(2,6,23,0.25)',
+          backgroundColor: 'opacityDark.4',
           backdropFilter: 'blur(5px) saturate(120%)',
           WebkitBackdropFilter: 'blur(2px) saturate(120%)',
           position: 'relative',
           overflow: 'hidden',
+          [theme.breakpoints.down('lg')]: {
+            borderBottom: `2px solid ${theme.palette.primary.main}`,
+          },
 
           // Sheen overlay
           '&::before': {
@@ -93,8 +94,7 @@ export default function Header() {
             position: 'absolute',
             inset: 0,
             pointerEvents: 'none',
-            background:
-              'linear-gradient(120deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02), rgba(255,255,255,0.06))',
+
             transform: 'translateX(-40%)',
             filter: 'blur(0px)',
             transition: 'transform 0.9s ease',
@@ -109,8 +109,6 @@ export default function Header() {
 
           '&.header-shrink': {
             py: 1.5,
-            background: `linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))`,
-
             img: {
               height: 24,
               width: 124,
@@ -124,13 +122,10 @@ export default function Header() {
           '&.tooltip-open': {
             backdropFilter: 'blur(16px) saturate(140%)',
             WebkitBackdropFilter: 'blur(16px) saturate(140%)',
-            background: `linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06))`,
             boxShadow: '0 10px 30px rgba(2,6,23,0.35)',
-            borderBottom: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)'}`,
           },
           '&.drawer-open': {
             py: 2,
-
             img: {
               height: 34,
               width: 165,
@@ -157,8 +152,20 @@ export default function Header() {
                   sx: {
                     marginTop: `68px`,
                     maxHeight: `calc(100% - 68px)`,
-                    backgroundColor: 'tertiary.900',
+                    backgroundColor: 'transparent',
+                    backdropFilter: 'blur(10px) saturate(120%)',
+                    WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+                    borderTop: theme => `1px solid ${theme.palette.divider}`,
+                    boxShadow: 'none',
                     borderRadius: '0 0 20px 20px',
+                  },
+                },
+              }}
+              ModalProps={{
+                BackdropProps: {
+                  sx: {
+                    // match MenuTooltip: transparent frosted look
+                    backgroundColor: 'transparent',
                   },
                 },
               }}
