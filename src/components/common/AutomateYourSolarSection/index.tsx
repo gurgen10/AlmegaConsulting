@@ -4,14 +4,10 @@ import { Box, Button, Typography } from '@mui/material';
 
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
-import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
-import { display } from '@mui/system';
-import { REGISTER_URL } from '@/shared/constants/common';
 
 export default function AutomateYourSolarSection() {
   const t = useTranslations('heroSection');
-  const theme = useTheme();
   const makeStunningArray = [
     {
       title: t('roofDetection'),
@@ -43,7 +39,7 @@ export default function AutomateYourSolarSection() {
     >
       <Box {...CONTAINER_STYLES}>
         <Typography
-          component="h1"
+          component="h2"
           variant="h3"
           sx={{
             fontWeight: 500,

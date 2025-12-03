@@ -21,7 +21,7 @@ export default function VideoBlockSection() {
     >
       <Box {...CONTAINER_STYLES}>
         <Typography
-          component="h1"
+          component="h2"
           variant="h3"
           sx={{
             maxWidth: '768px',
