@@ -1,0 +1,30 @@
+name: Destroy Amplify Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira_task:
+        description: 'Jira Key (e.g., DEV-42) to create a branch for.'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  caller-preivew-deploy:
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-preview-destroy.yml@main
+    with:
+      jira_task: ${{ inputs.jira_task }}
+      git_sync: true
+      JIRA_BASE_URL: ${{ vars.ORG_JIRA_BASE_URL }}
+    secrets:
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ARTIFACT_BUCKET: ${{ secrets.AWS_ARTIFACT_BUCKET }}
+      AWS_AMPLIFY_APP_ID: ${{ secrets.AWS_AMPLIFY_APP_ID }}
+      QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+      JIRA_TOKEN: ${{ secrets.ORG_JIRA_TOKEN }}
+      JIRA_USER_EMAIL: ${{ secrets.ORG_JIRA_USER_EMAIL }}
+      STAGING_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_STAGING_GOOGLE_CHAT_WEBHOOK_URL }}
