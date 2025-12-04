@@ -40,11 +40,9 @@ export default function VideoBlockSection() {
             textAlign: 'center',
             borderRadius: '16px',
             border: `2px solid ${theme.palette.tertiary.light}`,
-
             padding: 1,
             width: '100%',
             maxWidth: '900px',
-
             mx: 'auto',
           }}
         >
