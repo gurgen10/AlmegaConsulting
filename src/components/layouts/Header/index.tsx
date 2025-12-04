@@ -87,9 +87,7 @@ export default function Header() {
           minHeight: '48px !important',
           py: 2,
 
-          // Liquid glass background
-          backgroundColor: 'opacityDark.4',
-          backdropFilter: 'blur(5px) saturate(120%)',
+          backdropFilter: 'blur(2px) saturate(120%)',
           WebkitBackdropFilter: 'blur(2px) saturate(120%)',
           position: 'relative',
           overflow: 'hidden',
@@ -99,9 +97,7 @@ export default function Header() {
           height: '100%',
           borderTop: '1px solid #FFF',
           borderBottom: '1px solid #FFF',
-          [theme.breakpoints.down('lg')]: {
-            borderBottom: `2px solid ${theme.palette.primary.main}`,
-          },
+          backgroundColor: 'opacityDark.20',
 
           // Sheen overlay
           '&::before': {
@@ -118,6 +114,9 @@ export default function Header() {
             transform: 'translateX(40%)',
           },
 
+          img: {
+            transition: '0.2s linear',
+          },
           '.nav-menu-items': {
             display: 'flex',
             alignItems: 'center',
@@ -142,7 +141,7 @@ export default function Header() {
           },
           // When a tooltip is open, increase fogginess
           '&.tooltip-open': {
-            left: '5%',
+            left: '4%',
             backdropFilter: 'blur(16px) saturate(140%)',
             WebkitBackdropFilter: 'blur(16px) saturate(140%)',
           },
@@ -181,20 +180,8 @@ export default function Header() {
                   sx: {
                     marginTop: `68px`,
                     maxHeight: `calc(100% - 68px)`,
-                    backgroundColor: 'transparent',
-                    backdropFilter: 'blur(10px) saturate(120%)',
-                    WebkitBackdropFilter: 'blur(10px) saturate(120%)',
-                    borderTop: theme => `1px solid ${theme.palette.divider}`,
-                    boxShadow: 'none',
+                    backgroundColor: 'tertiary.900',
                     borderRadius: '0 0 20px 20px',
-                  },
-                },
-              }}
-              ModalProps={{
-                BackdropProps: {
-                  sx: {
-                    // match MenuTooltip: transparent frosted look
-                    backgroundColor: 'transparent',
                   },
                 },
               }}

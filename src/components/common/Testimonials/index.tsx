@@ -18,14 +18,14 @@ export default function Testimonials() {
       image: '/images/Testimonials/1.jpg',
     },
     {
-      name: 'John Doe',
+      name: 'John Smith',
       position: 'CEO, SolarGenix',
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus vel ante bibendum facilisis. Nullam nec metus vel ante bibendum facilisis.',
       image: '/images/Testimonials/2.jpg',
     },
     {
-      name: 'John Doe',
+      name: 'John Carter',
       position: 'CEO, SolarGenix',
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus vel ante bibendum facilisis. Nullam nec metus vel ante bibendum facilisis.',
