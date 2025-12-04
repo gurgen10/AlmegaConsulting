@@ -22,7 +22,6 @@ jobs:
       node_version: 20
       git_sync: true
       JIRA_BASE_URL: ${{ vars.ORG_JIRA_BASE_URL }}
-      AMPLIFY_APP_ID: ${{ vars.AWS_AMPLIFY_APP_ID_V2 }}
     secrets:
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
