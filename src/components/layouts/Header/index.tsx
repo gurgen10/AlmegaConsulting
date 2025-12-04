@@ -32,10 +32,11 @@ export default function Header() {
     const handleScroll = () => {
       requestAnimationFrame(() => {
         if (headerRef.current && 'IntersectionObserver' in window) {
-          const sentinel = document.createElement('div');
-          sentinel.style.position = 'absolute';
-          sentinel.style.top = '0';
-          document.body.prepend(sentinel);
+          const sentinel = document.getElementById('header-observer');
+
+          if (!sentinel) {
+            return;
+          }
 
           const observer = new IntersectionObserver(
             ([entry]) => {
@@ -65,146 +66,154 @@ export default function Header() {
   }, [drawerOpen]);
 
   return (
-    <AppBar
-      sx={{
-        position: 'sticky',
-        backgroundColor: 'transparent',
-        zIndex: 1201,
-        boxShadow: 'none',
-        height: '78px',
-        px: '80px',
-        [theme.breakpoints.down('lg')]: {
-          px: '0',
-        },
-      }}
-    >
-      <Toolbar
-        ref={headerRef}
-        data-header="site-header"
+    <>
+      <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
+      <AppBar
         sx={{
-          ...HEADER_STYLES,
-          transition: '0.2s linear',
-          minHeight: '48px !important',
-          py: 2,
-
-          backdropFilter: 'blur(2px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(2px) saturate(120%)',
-          position: 'relative',
-          overflow: 'hidden',
-          backgroundBlendMode: 'plus-lighter',
-          maxWidth: '1232px',
-          px: '32px',
-          height: '100%',
-          borderTop: '1px solid #FFF',
-          borderBottom: '1px solid #FFF',
-          backgroundColor: 'opacityDark.20',
-
-          // Sheen overlay
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            pointerEvents: 'none',
-
-            transform: 'translateX(-40%)',
-            filter: 'blur(0px)',
-            transition: 'transform 0.9s ease',
-          },
-          '&:hover::before': {
-            transform: 'translateX(40%)',
-          },
-
-          img: {
-            transition: '0.2s linear',
-          },
-          '.nav-menu-items': {
-            display: 'flex',
-            alignItems: 'center',
-            gap: 2,
-            mr: 'auto',
-            ml: 6,
-            width: '100%',
-            transition: '0.2s linear',
-          },
-
-          '&.header-shrink': {
-            my: 1.5,
-            maxWidth: '1296px',
-
-            '&::before': {
-              transform: 'translateX(-20%)',
-              opacity: 0.9,
-            },
-            '.nav-menu-items': {
-              ml: 4,
-            },
-          },
-          // When a tooltip is open, increase fogginess
-          '&.tooltip-open': {
-            left: '4%',
-            backdropFilter: 'blur(16px) saturate(140%)',
-            WebkitBackdropFilter: 'blur(16px) saturate(140%)',
-          },
-
-          '&.drawer-open': {
-            img: {
-              height: 34,
-              width: 165,
-            },
-          },
-          my: isMobile ? 0 : 1,
-          borderRadius: isMobile ? 0 : '8px',
+          position: 'sticky',
+          backgroundColor: 'transparent',
+          zIndex: 1201,
+          boxShadow: 'none',
+          height: '78px',
+          px: '80px',
           [theme.breakpoints.down('lg')]: {
-            my: '0 !important',
-            backgroundColor: 'opacityLight.90',
-            borderBottom: `1px solid ${theme.palette.primary.main}`,
+            px: '0',
           },
         }}
       >
-        <Box component={Link} href="/" lineHeight={1}>
-          <Image width={165} height={34} src="/icons/solar-genix-dark.svg" alt="SolarGenix Logo" />
-        </Box>
-        <Box className="nav-menu-items">
-          <Box
-            ml="auto"
-            alignItems="center"
-            onClick={toggleDrawer}
-            display={{ xs: 'flex', lg: 'none' }}
-          >
-            <Burger open={drawerOpen} />
+        <Toolbar
+          ref={headerRef}
+          data-header="site-header"
+          sx={{
+            ...HEADER_STYLES,
+            transition: '0.2s linear',
+            minHeight: '48px !important',
+            py: 2,
+
+            backdropFilter: 'blur(2px) saturate(120%)',
+            WebkitBackdropFilter: 'blur(2px) saturate(120%)',
+            position: 'relative',
+            overflow: 'hidden',
+            backgroundBlendMode: 'plus-lighter',
+            maxWidth: '1232px',
+            px: '32px',
+            height: '100%',
+            borderTop: '1px solid #FFF',
+            borderBottom: '1px solid #FFF',
+            backgroundColor: 'opacityDark.20',
+
+            // Sheen overlay
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              pointerEvents: 'none',
+
+              transform: 'translateX(-40%)',
+              filter: 'blur(0px)',
+              transition: 'transform 0.9s ease',
+            },
+            '&:hover::before': {
+              transform: 'translateX(40%)',
+            },
+
+            img: {
+              transition: '0.2s linear',
+            },
+            '.nav-menu-items': {
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+              mr: 'auto',
+              ml: 6,
+              width: '100%',
+              transition: '0.2s linear',
+            },
+
+            '&.header-shrink': {
+              my: 1.5,
+              maxWidth: '1296px',
+
+              '&::before': {
+                transform: 'translateX(-20%)',
+                opacity: 0.9,
+              },
+              '.nav-menu-items': {
+                ml: 4,
+              },
+            },
+            // When a tooltip is open, increase fogginess
+            '&.tooltip-open': {
+              left: '4%',
+              backdropFilter: 'blur(16px) saturate(140%)',
+              WebkitBackdropFilter: 'blur(16px) saturate(140%)',
+            },
+
+            '&.drawer-open': {
+              img: {
+                height: 34,
+                width: 165,
+              },
+            },
+            my: isMobile ? 0 : 1,
+            borderRadius: isMobile ? 0 : '8px',
+            [theme.breakpoints.down('lg')]: {
+              my: '0 !important',
+              backgroundColor: 'opacityLight.90',
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
+            },
+          }}
+        >
+          <Box component={Link} href="/" lineHeight={1}>
+            <Image
+              width={165}
+              height={34}
+              src="/icons/solar-genix-dark.svg"
+              alt="SolarGenix Logo"
+            />
           </Box>
-          {isMobile ? (
-            <Drawer
-              slotProps={{
-                paper: {
-                  sx: {
-                    marginTop: `68px`,
-                    maxHeight: `calc(100% - 68px)`,
-                    backgroundColor: 'tertiary.900',
-                    borderRadius: '0 0 20px 20px',
-                  },
-                },
-              }}
-              anchor="top"
-              open={drawerOpen}
-              onClose={toggleDrawer}
-            >
-              <MenuMobile onClose={toggleDrawer} />
-            </Drawer>
-          ) : (
+          <Box className="nav-menu-items">
             <Box
-              component="nav"
-              display={{ xs: 'none', lg: 'flex' }}
+              ml="auto"
               alignItems="center"
-              gap={2}
-              mr="auto"
-              width="100%"
+              onClick={toggleDrawer}
+              display={{ xs: 'flex', lg: 'none' }}
             >
-              <MenuDesktop />
+              <Burger open={drawerOpen} />
             </Box>
-          )}
-        </Box>
-      </Toolbar>
-    </AppBar>
+            {isMobile ? (
+              <Drawer
+                slotProps={{
+                  paper: {
+                    sx: {
+                      marginTop: `68px`,
+                      maxHeight: `calc(100% - 68px)`,
+                      backgroundColor: 'tertiary.900',
+                      borderRadius: '0 0 20px 20px',
+                    },
+                  },
+                }}
+                anchor="top"
+                open={drawerOpen}
+                onClose={toggleDrawer}
+              >
+                <MenuMobile onClose={toggleDrawer} />
+              </Drawer>
+            ) : (
+              <Box
+                component="nav"
+                display={{ xs: 'none', lg: 'flex' }}
+                alignItems="center"
+                gap={2}
+                mr="auto"
+                width="100%"
+              >
+                <MenuDesktop />
+              </Box>
+            )}
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </>
   );
 }

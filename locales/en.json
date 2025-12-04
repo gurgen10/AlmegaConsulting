@@ -79,6 +79,8 @@
     "instantSolarQuotingSystemDescription3": "Improve conversion rates sending automatic quoting",
     "whatOurCustomerAreSayingAboutOurSolarSalesSoftware": "What Our Customer Are Saying About Our Solar Sales Software",
     "whatMakesUsUnique": "What Makes Us Unique",
+    "startNow": "Start Now",
+    "whatMakesUsUniqueDescription": "We combine deep industry knowledge with cutting-edge AI to deliver a tool that truly understands and solves real solar sales challenges. Here's what sets us apart from the rest:",
     "unique1Title": "Decades of Solar Engineering Expertise",
     "unique1Text": "Years of hands-on experience in solar design and installation shape our tech. We speak kilowatts, pitch angles, and PV optimization fluently.",
     "unique2Title": "We Understand Solar Sales",
@@ -86,7 +88,8 @@
     "unique3Title": "Fully Automated, Zero Manual Layouts",
     "unique3Text": "Most tools still need human tweaking. Ours doesn’t. From roof to layout, every panel is placed by AI in the most efficient way - no guessing, no dragging, just results.",
     "unique4Title": "Smarter AI Trained on Real AutoCAD Blueprints",
-    "unique4Text": "Our AI is trained on tens of thousands of real CAD project files, giving it engineer-level insight into roof layouts, shading, and solar constraints - mirroring the vision of a real solar engineer."
+    "unique4Text": "Our AI is trained on tens of thousands of real CAD project files, giving it engineer-level insight into roof layouts, shading, and solar constraints - mirroring the vision of a real solar engineer.",
+    "unique4AiText": "Powered by our <bold>Patent-Pending</bold>, in-house AI engine. SolarGenix sets a new industry standard for smarter, faster, precise and more reliable solar solutions."
   },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",

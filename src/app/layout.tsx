@@ -121,7 +121,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={alexandriaFont.variable}>
-      <Box component="body" sx={{ backgroundColor: 'grey.200' }}>
+      <body>
         <NextIntlClientProvider>
           <AppRouterCacheProvider>
             <ThemeProvider theme={themes.light}>
@@ -132,7 +132,7 @@ export default async function RootLayout({
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>
-      </Box>
+      </body>
     </html>
   );
 }

@@ -1,79 +1,96 @@
 import { Box, Card, Typography } from '@mui/material';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const Unique = ({
-  name,
-  position,
-  review,
+  title,
+  text,
   image,
+  textAi,
 }: {
-  name: string;
-  position: string;
-  review: string;
+  title: string;
+  text: string;
   image: string;
+  textAi?: string;
 }) => {
+  const t = useTranslations('heroSection');
   return (
-    <Card>
-      <Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 2,
-            pt: 3,
-            px: 4,
-          }}
-        >
+    <Card
+      sx={theme => ({
+        borderRadius: '16px',
+        borderLeftWidth: '8px',
+        borderLeftStyle: 'solid',
+        borderLeftColor: theme.palette.secondary.light,
+        position: 'relative',
+        backgroundColor: 'primary.700',
+        height: '100%',
+        boxShadow: '0 0 8px 0 rgba(0, 0, 0, 0.32)',
+      })}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: {
+            xl: 'center',
+            xs: 'start',
+          },
+          gap: 2,
+          p: 3,
+        }}
+      >
+        {!textAi && (
           <Box>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Image
-                key={index}
-                src="/images/Testimonials/star.svg"
-                alt="star"
-                width={18}
-                height={18}
-              />
-            ))}
+            <Image src={image} alt="image" width={48} height={48} />
           </Box>
-          <Box>
-            <Image
-              src="/images/Testimonials/blockquote.svg"
-              alt="blockquote"
-              width={20}
-              height={18}
-            />
-          </Box>
-        </Box>
+        )}
         <Box>
-          <Typography variant="subtitle2" sx={{ py: 2, color: 'grey.800', fontWeight: 300, px: 4 }}>
-            {review}
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            {textAi && (
+              <Box sx={{ width: { xl: 48, xs: 'auto' } }}>
+                <Image src={image} alt="image" width={48} height={48} />
+              </Box>
+            )}
+            <Typography variant="h6" sx={{ fontWeight: 500, color: 'grey.50', mb: 1 }}>
+              {title}
+            </Typography>
+          </Box>
+          <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
+            {text}
           </Typography>
-        </Box>
-        <Box
-          sx={theme => ({
-            borderTop: `1px solid ${theme.palette.tertiary.main}`,
-            py: 2,
-            px: 4,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 2,
-          })}
-        >
-          <Box sx={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden' }}>
-            {/*<Image src={image} alt={image.split('/').pop() ?? ''} width={48} height={48} />*/}
-            <Box sx={{ width: '48px', height: '48px', backgroundColor: 'primary.main' }}></Box>
-          </Box>
-          <Box>
-            <Typography variant="subtitle1" color="grey.800" fontWeight={700}>
-              {name}
-            </Typography>
-            <Typography variant="subtitle2" color="grey.600" fontWeight={300}>
-              {position}
-            </Typography>
-          </Box>
+          {textAi && (
+            <Box
+              sx={{
+                padding: 2,
+                backgroundColor: 'opacityLight.8',
+                borderRadius: '8px',
+                borderStyle: 'solid',
+                borderWidth: '1px',
+                borderColor: 'opacityLight.50',
+              }}
+            >
+              <Typography variant="subtitle1" sx={{ fontWeight: 300, color: 'grey.25' }}>
+                {t.rich(textAi, {
+                  bold: chunks => (
+                    <Typography variant="inherit" component="strong" fontWeight={500}>
+                      {chunks}
+                    </Typography>
+                  ),
+                })}
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
+      {textAi && (
+        <Box sx={{ position: 'absolute', bottom: 0, right: 0 }}>
+          <Image
+            src="/images/what-makes-us-unique/patent-pending.svg"
+            alt="image"
+            width="134"
+            height="105"
+          />
+        </Box>
+      )}
     </Card>
   );
 };
