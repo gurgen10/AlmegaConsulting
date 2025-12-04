@@ -1,8 +1,6 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const StatisticBlock = ({ label, value }: { label: string; value: string }) => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
