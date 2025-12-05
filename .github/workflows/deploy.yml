@@ -19,30 +19,32 @@ jobs:
     name: Get Environment Variables
     runs-on: ubuntu-latest
 
+    env:
+      STAGING_ENV_PACK: ${{ vars.STAGING_ENV_PACK }}
+
     steps:
       - name: 📌 Set Environment Variables
         shell: bash
         run: |
-          env
+          BRANCH="${GITHUB_REF_NAME}"
+          ENV_PACK=""
 
-          case "$GITHUB_REF_NAME" in
-            staging)
-              ENV_STRING=""
-              while IFS='=' read -r key value; do
-                if [[ "$key" != STAGING_* ]]; then
-                  countinue
-                fi
+          if [ "$BRANCH" = "staging" ]; then
+            ENV_PACK="$STAGING_ENV_PACK"
+          fi
 
-                echo "📍 Found: $key=$value"
+          echo "Loaded ENV_PACK:"
+          echo "$ENV_PACK"
 
-                if [ -z "$ENV_STRING" ]; then
-                  ENV_STRING="${key#STAGING_}=$value"
-                else
-                  ENV_STRING="$ENV_STRING,${key#STAGING_}=$value"
-                fi
-              done < <(env)
-            ;;
-          esac
+          while IFS='=' read -r key value; do
+            [ -z "$key" ] && continue
+            echo "$key=$value"
+            echo "$key=$value" >> "$GITHUB_ENV"
+          done <<< "$ENV_PACK"
+
+          # 2) Also build comma-separated string for Amplify
+          ENV_STRING=$(echo "$ENV_PACK" | tr '\n' ',' | sed 's/,$//')
+          echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
   # caller-deploy:
   #   uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-deploy.yml@main
   #   with:
