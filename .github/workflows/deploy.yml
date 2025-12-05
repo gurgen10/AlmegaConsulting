@@ -50,9 +50,6 @@ jobs:
           # 3) Build a single-line comma-separated ENV_STRING
           ENV_STRING=$(printf '%s\n' "$CLEAN_PACK" | paste -sd, -)
 
-          # echo "Final ENV_STRING (for debug, single line):"
-          # echo "$ENV_STRING"
-
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
   caller-deploy:
