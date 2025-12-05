@@ -1,0 +1,11 @@
+name: Validate Commits
+
+on:
+  push:
+    branches:
+      - feature/*
+      - chore/**
+
+jobs:
+  caller-validate-commits:
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-validate-commits.yml@main
