@@ -38,15 +38,27 @@ jobs:
             ENV_PACK="${PRODUCTION_ENV_PACK}"
           fi
 
-          # Export each KEY=VALUE line as env var
+          # Remove empty lines just in case
+          CLEAN_PACK=$(echo "$ENV_PACK" | sed '/^\s*$/d')
+
+          # Export each KEY=VALUE line, and build clean ENV_STRING
           while IFS='=' read -r key value; do
             [ -z "$key" ] && continue
+
             echo "➡️ [Environment variable] $key: $value"
-            ENV_STRING="${ENV_STRING},$key=$value"
-          done <<< "$ENV_PACK"
 
-          echo $ENV_STRING
+            # Build comma-separated string without leading comma
+            if [ -z "$ENV_STRING" ]; then
+              ENV_STRING="$key=$value"
+            else
+              ENV_STRING="$ENV_STRING,$key=$value"
+            fi
+          done <<< "$CLEAN_PACK"
 
+          echo "Final ENV_STRING (for debug):"
+          echo "$ENV_STRING"
+
+          # Available for later steps in THIS job
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
   # caller-deploy:
