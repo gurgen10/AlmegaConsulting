@@ -41,13 +41,11 @@ jobs:
           # Export each KEY=VALUE line as env var
           while IFS='=' read -r key value; do
             [ -z "$key" ] && continue
-            echo "$key=$value" >> "$GITHUB_ENV"
+            echo "➡️ [Environment variable] $key: $value"
           done <<< "$ENV_PACK"
 
           # Build comma-separated string for Amplify
           ENV_STRING=$(echo "$ENV_PACK" | tr '\n' ',' | sed 's/,$//')
-          echo $ENV_STRING
-
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
   caller-deploy:
@@ -56,6 +54,7 @@ jobs:
     with:
       node_version: 20
       git_sync: true
+      environment_vars: ${{ github.env.ENV_STRING }}
     secrets:
       AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
