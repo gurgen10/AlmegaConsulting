@@ -28,22 +28,24 @@ jobs:
         run: |
           ENV_PACK=""
 
-          if [ "$GITHUB_REF_TYPE" = "branch" && "$GITHUB_REF_NAME" = "staging" ]; then
+          # branch + staging
+          if [ "$GITHUB_REF_TYPE" = "branch" ] && [ "$GITHUB_REF_NAME" = "staging" ]; then
             ENV_PACK="${STAGING_ENV_PACK}"
           fi
 
-          if [ "$GITHUB_REF_TYPE" = "tag"]; then
+          # tags -> production
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
             ENV_PACK="${PRODUCTION_ENV_PACK}"
           fi
 
+          # Export each KEY=VALUE line as env var
           while IFS='=' read -r key value; do
             [ -z "$key" ] && continue
             echo "$key=$value" >> "$GITHUB_ENV"
           done <<< "$ENV_PACK"
 
-          # 2) Also build comma-separated string for Amplify
+          # Build comma-separated string for Amplify
           ENV_STRING=$(echo "$ENV_PACK" | tr '\n' ',' | sed 's/,$//')
-
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
   # caller-deploy:
