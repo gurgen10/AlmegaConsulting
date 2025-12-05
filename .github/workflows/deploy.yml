@@ -42,10 +42,8 @@ jobs:
           while IFS='=' read -r key value; do
             [ -z "$key" ] && continue
             echo "➡️ [Environment variable] $key: $value"
+            ENV_STRING="${ENV_STRING},$key=$value"
           done <<< "$ENV_PACK"
-
-          # Build comma-separated string for Amplify
-          ENV_STRING=$(echo "$ENV_PACK" | sed '/^\s*$/d' | tr '\n' ',' | sed 's/,$//')
 
           echo $ENV_STRING
 
