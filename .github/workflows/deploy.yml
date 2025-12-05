@@ -22,6 +22,7 @@ jobs:
       env_string: ${{ steps.setup_env.outputs.env_string }}
     env:
       STAGING_ENV_PACK: ${{ vars.STAGING_ENV_PACK }}
+      PRODUCTION_ENV_PACK: ${{ vars.PRODUCTION_ENV_PACK }}
 
     steps:
       - name: 📌 Set Environment Variables
