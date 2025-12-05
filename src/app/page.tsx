@@ -8,6 +8,7 @@ import AutomateYourSolarSection from '@/components/common/AutomateYourSolarSecti
 import AIPoweredSolarSales from '@/components/common/AIPoweredSolarSales';
 import Testimonials from '@/components/common/Testimonials';
 import WhatMakesUsUnique from '@/components/common/WhatMakesUsUnique';
+import SeeWhatYourProposalWillLookLike from '@/components/common/SeeWhatYourProposalWillLookLike';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -34,6 +35,7 @@ export default async function Home() {
       <AIPoweredSolarSales />
       <Testimonials />
       <WhatMakesUsUnique />
+      <SeeWhatYourProposalWillLookLike />
       <ProductDescriptionSection />
       <FeaturesSection />
     </>

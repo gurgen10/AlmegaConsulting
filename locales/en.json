@@ -89,7 +89,14 @@
     "unique3Text": "Most tools still need human tweaking. Ours doesn’t. From roof to layout, every panel is placed by AI in the most efficient way - no guessing, no dragging, just results.",
     "unique4Title": "Smarter AI Trained on Real AutoCAD Blueprints",
     "unique4Text": "Our AI is trained on tens of thousands of real CAD project files, giving it engineer-level insight into roof layouts, shading, and solar constraints - mirroring the vision of a real solar engineer.",
-    "unique4AiText": "Powered by our <bold>Patent-Pending</bold>, in-house AI engine. SolarGenix sets a new industry standard for smarter, faster, precise and more reliable solar solutions."
+    "unique4AiText": "Powered by our <bold>Patent-Pending</bold>, in-house AI engine. SolarGenix sets a new industry standard for smarter, faster, precise and more reliable solar solutions.",
+    "seeWhatYourProposalWillLookLike": "See What Your Proposal Will Look Like",
+    "seeWhatYourProposalWillLookLikeDescription": "All the insights, calculations and design decisions come together in a clean, modern proposal that’s built to win trust. Designed for clarity and visual appeal, each solar sales proposal makes it easy for homeowners to understand their system, savings and investment.",
+    "seeWhatYourProposalWillLookLikePoint1": "Professional layout",
+    "seeWhatYourProposalWillLookLikePoint2": "Simple, readable structure for homeowners",
+    "seeWhatYourProposalWillLookLikePoint3": "Clear breakdown of savings, system details & ROI",
+    "seeWhatYourProposalWillLookLikePoint4": "Visually stylish and clean",
+    "downloadSampleProposal": "Download Sample Proposal"
   },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",
