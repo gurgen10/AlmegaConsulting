@@ -45,7 +45,7 @@ jobs:
           done <<< "$ENV_PACK"
 
           # Build comma-separated string for Amplify
-          ENV_STRING=$(echo "$ENV_PACK" | tr '\n' ',' | sed 's/,$//')
+          ENV_STRING=$(echo "$ENV_PACK" | sed '/^\s*$/d' | tr '\n' ',' | sed 's/,$//')
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
   caller-deploy:
