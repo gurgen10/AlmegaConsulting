@@ -3,11 +3,7 @@ import Image from 'next/image';
 
 const LovePoints = ({ title, text, image }: { title: string; text: string; image: string }) => {
   return (
-    <Box
-      sx={{
-        backgroundColor: 'transparent',
-      }}
-    >
+    <Box>
       <Box
         sx={theme => ({
           display: 'flex',
