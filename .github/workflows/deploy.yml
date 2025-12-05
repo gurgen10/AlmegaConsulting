@@ -50,18 +50,18 @@ jobs:
 
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
-  # caller-deploy:
-  #   uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-deploy.yml@main
-  #   needs: setup-env-variables
-  #   with:
-  #     node_version: 20
-  #     git_sync: true
-  #   secrets:
-  #     AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
-  #     AWS_REGION: ${{ secrets.AWS_REGION }}
-  #     AWS_ARTIFACT_BUCKET: ${{ secrets.AWS_ARTIFACT_BUCKET }}
-  #     AWS_AMPLIFY_APP_ID: ${{ secrets.AWS_AMPLIFY_APP_ID }}
-  #     QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-  #     STAGING_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_STAGING_GOOGLE_CHAT_WEBHOOK_URL }}
-  #     PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL }}
+  caller-deploy:
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-deploy.yml@main
+    needs: setup-env-variables
+    with:
+      node_version: 20
+      git_sync: true
+    secrets:
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ARTIFACT_BUCKET: ${{ secrets.AWS_ARTIFACT_BUCKET }}
+      AWS_AMPLIFY_APP_ID: ${{ secrets.AWS_AMPLIFY_APP_ID }}
+      QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+      STAGING_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_STAGING_GOOGLE_CHAT_WEBHOOK_URL }}
+      PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL }}
 
