@@ -15,17 +15,45 @@ permissions:
   id-token: write
 
 jobs:
-  caller-deploy:
-    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-deploy.yml@main
-    with:
-      node_version: 20
-      git_sync: true
-    secrets:
-      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
-      AWS_REGION: ${{ secrets.AWS_REGION }}
-      AWS_ARTIFACT_BUCKET: ${{ secrets.AWS_ARTIFACT_BUCKET }}
-      AWS_AMPLIFY_APP_ID: ${{ secrets.AWS_AMPLIFY_APP_ID }}
-      QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-      STAGING_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_STAGING_GOOGLE_CHAT_WEBHOOK_URL }}
-      PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL }}
+  setup-env-variables:
+    name: Get Environment Variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📌 Set Environment Variables
+        shell: bash
+        run: |
+          env
+
+          case "$GITHUB_REF_NAME" in
+            staging)
+              ENV_STRING=""
+              while IFS='=' read -r key value; do
+                if [[ "$key" != STAGING_* ]]; then
+                  countinue
+                fi
+
+                echo "📍 Found: $key=$value"
+
+                if [ -z "$ENV_STRING" ]; then
+                  ENV_STRING="${key#STAGING_}=$value"
+                else
+                  ENV_STRING="$ENV_STRING,${key#STAGING_}=$value"
+                fi
+              done < <(env)
+            ;;
+          esac
+  # caller-deploy:
+  #   uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-deploy.yml@main
+  #   with:
+  #     node_version: 20
+  #     git_sync: true
+  #   secrets:
+  #     AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+  #     AWS_REGION: ${{ secrets.AWS_REGION }}
+  #     AWS_ARTIFACT_BUCKET: ${{ secrets.AWS_ARTIFACT_BUCKET }}
+  #     AWS_AMPLIFY_APP_ID: ${{ secrets.AWS_AMPLIFY_APP_ID }}
+  #     QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+  #     STAGING_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_STAGING_GOOGLE_CHAT_WEBHOOK_URL }}
+  #     PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.ORG_PRODUCTION_GOOGLE_CHAT_WEBHOOK_URL }}
 
