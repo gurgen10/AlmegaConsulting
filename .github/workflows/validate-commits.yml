@@ -1,0 +1,16 @@
+name: Validate Commits
+
+on:
+  push:
+    branches:
+      - staging
+      - main
+      - release/**
+      - feature/*
+      - chore/**
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+
+jobs:
+  caller-validate-commits:
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-validate-commits.yml@main
