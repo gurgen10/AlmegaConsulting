@@ -51,7 +51,7 @@ jobs:
           ENV_STRING=$(printf '%s\n' "$CLEAN_PACK" | paste -sd, -)
 
           echo "Final ENV_STRING (for debug, single line):"
-          printf '%q\n' "$ENV_STRING"
+          echo "$ENV_STRING"
 
           echo "ENV_STRING=$ENV_STRING" >> "$GITHUB_ENV"
 
