@@ -2,12 +2,14 @@ name: Create Tag on Release/Hotfix Merge
 
 on:
   pull_request:
-    types: [closed]
+    types: 
+      - closed
     branches:
       - main
 
 jobs:
   caller-tag-create:
+    if: github.event.pull_request.merged == true
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/rusable-tag-create.yml@main
     with:
       branch: ${{ github.event.pull_request.head.ref }}
