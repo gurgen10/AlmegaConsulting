@@ -1,73 +1,70 @@
-﻿import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-import tsParser from '@typescript-eslint/parser';
-import prettierPlugin from 'eslint-plugin-prettier';
+﻿import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import nextPlugin from '@next/eslint-plugin-next';
 import reactPlugin from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import prettierPlugin from 'eslint-plugin-prettier';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+export default [
+  // Base JS rules
+  js.configs.recommended,
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
+  // TypeScript rules
+  ...tseslint.configs.recommended,
 
-const eslintConfig = [
-  ...compat.extends(
-    'next',
-    'next/core-web-vitals',
-    'next/typescript',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'prettier'
-  ),
+  // Next.js recommended rules (flat config)
+  nextPlugin.configs.recommended,
+
+  // React Flat Config
+  reactPlugin.configs.flat.recommended,
+
   {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+
     languageOptions: {
-      parser: tsParser,
-      globals: {
-        // browser globals
-        window: 'readonly',
-        document: 'readonly',
-        navigator: 'readonly',
-        console: 'readonly',
-      },
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parser: tseslint.parser,
     },
+
     plugins: {
-      prettier: prettierPlugin,
       react: reactPlugin,
+      'react-hooks': reactHooks,
+      prettier: prettierPlugin,
     },
+
     settings: {
       react: {
         version: 'detect',
       },
     },
+
     rules: {
-      // Prettier enforcement
+      // Prettier
       'prettier/prettier': 'error',
-      // React SVG attribute exceptions
+
+      // SVG exceptions
       'react/no-unknown-property': [
         'error',
-        { ignore: ['stroke-width', 'fill-rule', 'clip-rule', 'stroke-linecap', 'stroke-linejoin'] },
+        {
+          ignore: ['stroke-width', 'fill-rule', 'clip-rule', 'stroke-linecap', 'stroke-linejoin'],
+        },
       ],
-      // TypeScript: warn on unused vars
-      '@typescript-eslint/no-unused-vars': ['warn'],
-    },
-  },
-  {
-    files: ['**/*.tsx', '**/*.jsx'],
-    rules: {
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error',
-      'react/react-in-jsx-scope': 'off', // Not needed in Next.js
+
+      // Hooks
+      'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+
+      // TypeScript
+      '@typescript-eslint/no-unused-vars': 'warn',
+
+      // React (Next.js does not require React import)
+      'react/react-in-jsx-scope': 'off',
     },
   },
+
+  // Ignored files
   {
     ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
   },
 ];
-
-export default eslintConfig;
