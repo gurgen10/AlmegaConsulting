@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 
-export default function Linear({ color = 'grey.900' }: { color?: string }) {
+export default function FaqArrow({ color = 'grey.900' }: { color?: string }) {
   return (
     <Box color={color}>
       <svg
@@ -13,9 +13,9 @@ export default function Linear({ color = 'grey.900' }: { color?: string }) {
         <path
           d="M25.3327 12L15.9993 20L6.66602 12"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </Box>

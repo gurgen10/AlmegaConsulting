@@ -11,8 +11,8 @@ import {
 
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
-import Linear from '@/components/common/Faq/Linear';
-import { useState } from 'react';
+import FaqArrow from '@/components/common/Faq/FaqArrow';
+import { SyntheticEvent, useState } from 'react';
 
 const faqs = [
   {
@@ -35,9 +35,9 @@ const faqs = [
 
 export default function Faq() {
   const t = useTranslations('heroSection');
-  const [expanded, setExpanded] = useState<string | false>('panel1');
+  const [expanded, setExpanded] = useState<string | false>('faq1');
 
-  const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+  const handleChange = (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
 
@@ -51,7 +51,17 @@ export default function Faq() {
       }}
     >
       <Box {...CONTAINER_STYLES}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 5 }}>
+        <Box
+          sx={theme => ({
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 5,
+            [theme.breakpoints.down('md')]: {
+              gridTemplateColumns: '1fr',
+              gap: 0,
+            },
+          })}
+        >
           <Box>
             <Typography
               component="h2"
@@ -78,11 +88,42 @@ export default function Faq() {
           </Box>
           <Stack rowGap={1}>
             {faqs.map((faq, index) => (
-              <Accordion defaultExpanded={index === 0} key={faq.title}>
+              <Accordion
+                expanded={expanded === `faq${index + 1}`}
+                onChange={handleChange(`faq${index + 1}`)}
+                key={faq.title}
+                sx={{
+                  borderRadius: '8px !important',
+                  borderWidth: '1px',
+                  borderStyle: 'solid',
+                  borderColor: 'tertiary.400',
+                  backgroundColor: 'tertiary.100',
+                  boxShadow: '0 0 17.3px 4px rgba(0, 43, 43, 0.06)',
+                  '&:before': {
+                    display: 'none',
+                  },
+                  '&.Mui-expanded': {
+                    margin: 0,
+                    backgroundColor: 'tertiary.50',
+                  },
+                }}
+              >
                 <AccordionSummary
-                  expandIcon={<Linear />}
-                  aria-controls={`panel${index + 1}-content`}
-                  id={`panel${index + 1}-header`}
+                  expandIcon={
+                    <FaqArrow
+                      color={expanded === `faq${index + 1}` ? 'primary.main' : 'grey.900'}
+                    />
+                  }
+                  aria-controls={`faq-content`}
+                  id={`faq${index + 1}-header`}
+                  sx={{
+                    '& .MuiAccordionSummary-content': {
+                      my: 2,
+                      '&.Mui-expanded': {
+                        my: 2,
+                      },
+                    },
+                  }}
                 >
                   <Typography component="h2" variant="subtitle2" fontWeight={500} color="grey.900">
                     {faq.title}
