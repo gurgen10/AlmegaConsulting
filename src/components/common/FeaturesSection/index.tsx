@@ -33,7 +33,7 @@ export default async function FeaturesSection() {
 
               <Box gridRow="span 3" order={index % 2 ? index - 1 : index}>
                 <Box position="relative" sx={{ aspectRatio: '550 / 410' }}>
-                  <Image src={imgUrl} alt={t(`${key}.title`)} fill objectFit="cover" />
+                  <Image src={imgUrl} alt={t(`${key}.title`)} fill style={{ objectFit: 'cover' }} />
                 </Box>
                 <Typography
                   variant="subtitle2"

@@ -1,12 +1,14 @@
+'use client';
+
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { CONTAINER_STYLES } from '@/shared/constants/spacing';
-import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
+import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 
-export default async function HeroSection() {
-  const t = await getTranslations('heroSection');
+export default function HeroSection() {
+  const t = useTranslations('heroSection');
 
   return (
     <Box
