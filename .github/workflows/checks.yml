@@ -1,12 +1,13 @@
-name: Checks
+name: Checks (Website)
 
 on:
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
     branches:
-      - 'staging'
-      - 'release/*'
-      - 'main'
+      - staging
+      - main
+      - release/*
+      - hotfix/*
 
 jobs:
   caller-checks:

@@ -7,7 +7,6 @@ import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/c
 import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
-import { useTheme } from '@mui/material/styles';
 import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
