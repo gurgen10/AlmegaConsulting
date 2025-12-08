@@ -1,4 +1,4 @@
-name: Create Tag on Release/Hotfix Merge
+name: Create Tag on Release/Hotfix Merge (Website)
 
 on:
   pull_request:

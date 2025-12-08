@@ -1,10 +1,10 @@
-name: Validate Commits
+name: Validate Commits (Website)
 
 on:
   push:
     branches:
       - feature/*
-      - chore/**
+      - chore/*
 
 jobs:
   caller-validate-commits:

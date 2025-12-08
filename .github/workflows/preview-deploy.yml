@@ -1,4 +1,4 @@
-name: Deploy Amplify Preview
+name: Deploy Amplify Preview (Website)
 
 on:
   workflow_dispatch:
