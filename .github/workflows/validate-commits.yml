@@ -9,3 +9,5 @@ on:
 jobs:
   caller-validate-commits:
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-validate-commits.yml@main
+    with:
+      checkout_ref: ${{ github.ref_name }}

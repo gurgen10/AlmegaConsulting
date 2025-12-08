@@ -17,6 +17,8 @@ permissions:
 jobs:
   caller-reusable-validate-commits:
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-validate-commits.yml@main
+    with:
+      checkout_ref: "feature/${{ inputs.jira_task }}"
 
   setup-env-variables:
     name: Get Environment Variables
