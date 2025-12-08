@@ -100,7 +100,7 @@ export default function Header() {
             height: '100%',
             borderTop: '1px solid #FFF',
             borderBottom: '1px solid #FFF',
-            backgroundColor: 'opacityDark.20',
+            backgroundColor: 'opacityDark.4',
 
             // Sheen overlay
             '&::before': {
