@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import LovePoints from '@/components/common/WhySolarTeamsLoveOurSalesSoftware/LovePoints';
 
 export default function WhySolarTeamsLoveOurSalesSoftware() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
 
   const points = [
     {

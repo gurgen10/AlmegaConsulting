@@ -34,7 +34,7 @@
     "terms": "Terms and Conditions",
     "allRightsReserved": "All rights reserved"
   },
-  "heroSection": {
+  "homePage": {
     "createSolarPanel": "Create Solar Proposals in Seconds with Our Solar Design Software",
     "description": "Transform your solar sales process with an advanced <bold>AI-driven tool</bold> that generates accurate, instant proposals helping you <bold>close more deals.</bold>",
     "getStartedFree": "Get Started Free",
@@ -107,7 +107,8 @@
     "whySolarTeamsLoveOurSalesSoftwareTitle4": "Simple Enough for New Hires, ",
     "whySolarTeamsLoveOurSalesSoftwareDescription4": "New team members can pick it up quickly, and experienced reps get the depth they need. Everyone follows the same process, uses the same proposal format, and sees the same data, which keeps your sales and ops teams on the same page.",
     "faq": "FAQ",
-    "faqSubtitle": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency."
+    "faqSubtitle": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
+    "bottomCallToActionTitle": "Sell Solar Faster, Smarter, Better with SolarGenix"
   },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",

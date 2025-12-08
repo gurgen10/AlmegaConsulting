@@ -9,7 +9,7 @@ import { REGISTER_URL } from '@/shared/constants/common';
 import Image from 'next/image';
 
 export default function SeeWhatYourProposalWillLookLike() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const theme = useTheme();
   const points = [
     t('seeWhatYourProposalWillLookLikePoint1'),

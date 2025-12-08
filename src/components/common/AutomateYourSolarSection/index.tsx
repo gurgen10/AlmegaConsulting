@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export default function AutomateYourSolarSection() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const makeStunningArray = [
     {
       title: t('roofDetection'),

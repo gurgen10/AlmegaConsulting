@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import Review from '@/components/common/Testimonials/Review';
 
 export default function Testimonials() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
 
   const reviewers = [
     {

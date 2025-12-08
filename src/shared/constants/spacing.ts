@@ -25,5 +25,5 @@ export const SECTION_STYLES_Y = {
 export const CONTAINER_STYLES = {
   maxWidth: 1296,
   width: '100%',
-  margin: 'auto',
+  mx: 'auto',
 };

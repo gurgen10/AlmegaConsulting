@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from '@mui/material/styles';
 
 export default function VideoBlockSection() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const theme = useTheme();
 
   return (

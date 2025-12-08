@@ -34,7 +34,7 @@ const faqs = [
 ];
 
 export default function Faq() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const [expanded, setExpanded] = useState<string | false>('faq1');
 
   const handleChange = (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
@@ -48,6 +48,7 @@ export default function Faq() {
         ...SECTION_STYLES_Y,
         ...SECTION_STYLES_X,
         backgroundColor: 'tertiary.50',
+        boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
       }}
     >
       <Box {...CONTAINER_STYLES}>

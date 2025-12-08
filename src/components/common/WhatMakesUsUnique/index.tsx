@@ -10,7 +10,7 @@ import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import Link from 'next/link';
 
 export default function WhatMakesUsUnique() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
 
   const uniques = [
     {

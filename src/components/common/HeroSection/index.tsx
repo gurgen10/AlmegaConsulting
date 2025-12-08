@@ -11,7 +11,8 @@ import { useTheme } from '@mui/material/styles';
 import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
+  const theme = useTheme();
   return (
     <Box
       component="section"
@@ -69,52 +70,26 @@ export default function HeroSection() {
               </Stack>
             </div>
           </Stack>
-          {/*<Box*/}
-          {/*  sx={{*/}
-          {/*    position: 'absolute',*/}
-          {/*    top: '10%',*/}
-          {/*    right: '-1%',*/}
-          {/*    width: '60vw',*/}
-          {/*    maxWidth: '800px',*/}
-          {/*    [theme.breakpoints.down('lg')]: {*/}
-          {/*      width: '65vw',*/}
-          {/*    },*/}
-          {/*    [theme.breakpoints.down('md')]: {*/}
-          {/*      width: '75vw',*/}
-          {/*      top: '20%',*/}
-          {/*    },*/}
-          {/*    [theme.breakpoints.down('sm')]: {*/}
-          {/*      width: '85vw',*/}
-          {/*    },*/}
-          {/*    [theme.breakpoints.down('xs')]: {*/}
-          {/*      width: '100vw',*/}
-          {/*    },*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*<Image*/}
-          {/*  src="/images/hero-section.png"*/}
-          {/*  alt="hero-section"*/}
-          {/*  width={815}*/}
-          {/*  height={600}*/}
-          {/*  style={{*/}
-          {/*    width: '100%',*/}
-          {/*    height: 'auto',*/}
-          {/*  }}*/}
-          {/*  priority*/}
-          {/*/>*/}
-
-          {/*</Box>*/}
           <Box
             sx={{
-              width: '100%',
-              height: 'auto',
-              aspectRatio: '1 / 1',
-              backgroundImage: 'url(/images/hero-section.png)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'bottom right',
-              backgroundRepeat: 'no-repeat',
+              position: 'relative',
             }}
-          ></Box>
+          >
+            <Image
+              src="/images/hero-section.png"
+              alt="hero-section"
+              width={815}
+              height={600}
+              style={{
+                width: '100%',
+                height: 'auto',
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+              }}
+              priority
+            />
+          </Box>
         </Box>
       </Box>
     </Box>

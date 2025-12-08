@@ -7,7 +7,7 @@ import { CONTAINER_STYLES, SECTION_STYLES_X } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 
 export default function TrustedIndustrySection() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>(0);
   const isScrolling = useRef<boolean>(true);

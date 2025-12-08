@@ -8,7 +8,7 @@ interface DescriptionBlockProps {
   url: string;
 }
 export default function DescriptionBlock({ title, points, url }: DescriptionBlockProps) {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   return (
     <Box>
       <Typography variant="h5" sx={{ fontWeight: 700, color: 'grey.900' }}>

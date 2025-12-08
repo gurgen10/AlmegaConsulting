@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
@@ -9,7 +9,7 @@ import DescriptionBlock from '@/components/common/AIPoweredSolarSales/Descriptio
 import VerticalGradient from '@/components/common/AIPoweredSolarSales/VerticalGradient';
 
 export default function AIPoweredSolarSales() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const aIDrivenRoofDetection = {
     title: 'aIDrivenRoofDetection',
     points: [
