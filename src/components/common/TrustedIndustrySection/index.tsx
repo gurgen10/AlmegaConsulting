@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 export default function TrustedIndustrySection() {
   const t = useTranslations('homePage');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number>(0);
+  const animationFrameRef = useRef<number | null>(null);
   const isScrolling = useRef<boolean>(true);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number>(0);
@@ -40,7 +40,7 @@ export default function TrustedIndustrySection() {
   const startAutoScroll = useCallback(() => {
     if (!isScrolling.current || isDragging) return;
 
-    const animate = (timestamp: number) => {
+    const animate = () => {
       if (!scrollContainerRef.current || !isScrolling.current || isDragging) return;
 
       // Auto-scroll logic
@@ -60,8 +60,9 @@ export default function TrustedIndustrySection() {
 
   const stopAutoScroll = useCallback(() => {
     isScrolling.current = false;
-    if (animationFrameRef.current) {
+    if (animationFrameRef.current !== null) {
       cancelAnimationFrame(animationFrameRef.current);
+      animationFrameRef.current = null;
     }
   }, []);
 
@@ -82,11 +83,11 @@ export default function TrustedIndustrySection() {
     [stopAutoScroll]
   );
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging || !scrollContainerRef.current) return;
+  const updateScrollPosition = useCallback(
+    (clientX: number) => {
+      if (!scrollContainerRef.current) return;
 
-      const x = e.pageX - scrollContainerRef.current.offsetLeft;
+      const x = clientX - scrollContainerRef.current.offsetLeft;
       const walk = (x - dragStartX.current) * 1.5; // Scroll speed multiplier
       const newPosition = dragScrollLeft.current - walk;
 
@@ -100,7 +101,15 @@ export default function TrustedIndustrySection() {
 
       scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
     },
-    [isDragging, totalWidth]
+    [totalWidth]
+  );
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging) return;
+      updateScrollPosition(e.pageX);
+    },
+    [isDragging, updateScrollPosition]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -136,22 +145,10 @@ export default function TrustedIndustrySection() {
 
   const handleTouchMove = useCallback(
     (e: TouchEvent) => {
-      if (!isDragging || !scrollContainerRef.current) return;
-
-      const touch = e.touches[0];
-      const x = touch.pageX - scrollContainerRef.current.offsetLeft;
-      const walk = (x - dragStartX.current) * 1.5;
-      const newPosition = dragScrollLeft.current - walk;
-
-      scrollPosition.current = Math.max(0, newPosition);
-
-      if (scrollPosition.current >= totalWidth) {
-        scrollPosition.current = scrollPosition.current % totalWidth;
-      }
-
-      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
+      if (!isDragging) return;
+      updateScrollPosition(e.touches[0].pageX);
     },
-    [isDragging, totalWidth]
+    [isDragging, updateScrollPosition]
   );
 
   const handleTouchEnd = useCallback(() => {

@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
 const LovePoints = ({ title, text, image }: { title: string; text: string; image: string }) => {

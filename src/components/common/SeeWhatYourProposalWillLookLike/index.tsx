@@ -5,7 +5,6 @@ import { Box, Button, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import { useTheme } from '@mui/material/styles';
-import { REGISTER_URL } from '@/shared/constants/common';
 import Image from 'next/image';
 
 export default function SeeWhatYourProposalWillLookLike() {

@@ -6,7 +6,6 @@ import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/c
 import { useTranslations } from 'next-intl';
 import Unique from '@/components/common/WhatMakesUsUnique/Unique';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
-import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import Link from 'next/link';
 
 export default function WhatMakesUsUnique() {

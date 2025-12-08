@@ -12,7 +12,6 @@ import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
   const t = useTranslations('homePage');
-  const theme = useTheme();
   return (
     <Box
       component="section"
