@@ -38,9 +38,14 @@ jobs:
         run: |
           ENV_PACK=""
 
-          # branch + staging or release/*
-          if [ "$GITHUB_REF_TYPE" = "branch" ] && { [ "$GITHUB_REF_NAME" = "staging" ] || [[ "$GITHUB_REF_NAME" == release/* ]]; }; then
+          # branch + staging
+          if [ "$GITHUB_REF_TYPE" = "branch" ] && [ "$GITHUB_REF_NAME" = "staging" ]; then
             ENV_PACK="${STAGING_ENV_PACK}"
+          fi
+
+          # branch + release/*
+          if [ "$GITHUB_REF_TYPE" = "branch" ] && [[ "$GITHUB_REF_NAME" == release/* ]]; then
+            ENV_PACK="${PRODUCTION_ENV_PACK}"
           fi
 
           # tags -> production
