@@ -3,10 +3,10 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
-import StatisticBlock from './StatisticBlok';
+import StatisticBlock from './StatisticBlock';
 
 export default function Statistics() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const theme = useTheme();
   const statistics = [
     {
@@ -40,10 +40,13 @@ export default function Statistics() {
         <Box
           sx={{
             display: 'grid',
-            alignItems: 'center',
+            alignItems: 'start',
             gridTemplateColumns: '1fr 1fr',
             columnGap: 5,
             justifyContent: 'space-between',
+            [theme.breakpoints.down('lg')]: {
+              alignItems: 'center',
+            },
             [theme.breakpoints.down('md')]: {
               gridTemplateColumns: '1fr',
               textAlign: 'center',
