@@ -41,13 +41,18 @@ export default function VideoBlockSection() {
             borderRadius: '16px',
             border: `2px solid ${theme.palette.tertiary.light}`,
             padding: 1,
-            width: '100%',
-            maxWidth: '900px',
+            maxHeight: '575px',
+            height: '100%',
+            aspectRatio: '16/10',
             mx: 'auto',
           }}
         >
           <Box
-            sx={{ width: '100%', aspectRatio: '16/10', borderRadius: '8px' }}
+            sx={{
+              width: '100%',
+              height: '100%',
+              borderRadius: '8px',
+            }}
             component="video"
             controls
             preload="none"
