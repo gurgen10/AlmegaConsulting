@@ -76,6 +76,12 @@ export const FooterLinkBlock = styled(Box)(({ theme }) => ({
 }));
 
 export const FooterLinkHeader = styled(Box)(({ theme }) => ({
+  padding: '6px 0',
+  borderBottomWidth: '1px',
+  borderBottomStyle: 'solid',
+  borderBottomColor: theme.palette.opacityLight[30],
+  marginBottom: '6px',
+  textAlign: 'left',
   [theme.breakpoints.down('sm')]: {
     textAlign: 'center',
   },

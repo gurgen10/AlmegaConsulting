@@ -4,33 +4,20 @@ import { Box, Link as MuiLink, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
-import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 
 import FollowUs from '@/components/layouts/Footer/components/FollowUs';
 import {
   FooterContainer,
   FooterCopyRightContainer,
   FooterFollowUsContainerMobile,
-  FooterLink,
-  FooterLinkBlock,
-  FooterLinkContainer,
-  FooterLinkItems,
   FooterLogoContainer,
 } from '@/components/layouts/Footer/components/Footer.style';
-import {
-  featureSubmenuItems,
-  menuItems,
-  productSubmenuItems,
-} from '@/components/layouts/Header/Header.constants';
+
 import { FOOTER_STYLES } from '@/shared/constants/spacing';
 
 export default function LandingFooter() {
   const t = useTranslations();
 
-  const filteredMenuItems = useMemo(() => {
-    return menuItems.filter(item => !item.submenuItems);
-  }, []);
   return (
     <Box
       sx={{

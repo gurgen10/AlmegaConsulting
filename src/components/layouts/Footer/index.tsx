@@ -25,24 +25,18 @@ import {
 } from '@/components/layouts/Header/Header.constants';
 import { FOOTER_STYLES } from '@/shared/constants/spacing';
 
+const filteredMenuItems = menuItems.filter(item => !item.submenuItems);
+
 export default function Footer() {
   const t = useTranslations();
 
-  const filteredMenuItems = useMemo(() => {
-    return menuItems.filter(item => !item.submenuItems);
-  }, []);
   return (
     <Box
       sx={{
         backgroundColor: 'tertiary.700',
       }}
     >
-      <Box
-        component="footer"
-        sx={{
-          ...FOOTER_STYLES,
-        }}
-      >
+      <Box component="footer" sx={FOOTER_STYLES}>
         <Box
           sx={{
             borderBottomWidth: '1px',
