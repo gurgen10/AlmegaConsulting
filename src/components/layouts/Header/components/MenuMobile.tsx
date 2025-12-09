@@ -344,7 +344,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             },
           }}
         >
-          {t('login')}
+          {t('signUp')}
         </Button>
       </Box>
     </Box>

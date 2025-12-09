@@ -4,7 +4,6 @@ import { Box, Button, Stack, Typography } from '@mui/material';
 
 import Image from 'next/image';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
-import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -57,14 +56,9 @@ export default function HeroSection() {
                 >
                   {t('getStartedFree')}
                 </Button>
-                <DarkPrimaryButton
-                  size="large"
-                  variant="contained"
-                  component={Link}
-                  href={BOOK_DEMO_URL}
-                >
+                <Button size="large" variant="contained" component={Link} href={BOOK_DEMO_URL}>
                   {t('bookDemo')}
-                </DarkPrimaryButton>
+                </Button>
               </Stack>
             </div>
           </Stack>
