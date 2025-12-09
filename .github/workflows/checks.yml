@@ -17,7 +17,7 @@ jobs:
       security-events: write
     uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-checks.yml@main
     with:
-      main_branch: staging
+      main_branch: main
       node_version: 20
       checkout_ref: ${{ github.event.pull_request.head.sha || github.sha }}
       validate_pr: true
