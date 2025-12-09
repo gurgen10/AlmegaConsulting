@@ -54,7 +54,7 @@ export default function LandingFooter() {
         </Box>
         <FooterCopyRightContainer>
           <Typography className="copy-right" variant="caption" color="grey.300">
-            SolarGenix © 2025, {t('footer.allRightsReserved')}.
+            SolarGenix © 2026, {t('footer.allRightsReserved')}.
           </Typography>
           <Box>
             <MuiLink
