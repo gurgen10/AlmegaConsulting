@@ -1,14 +1,11 @@
-import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { Alexandria } from 'next/font/google';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
-
 import { darkTheme, lightTheme } from '@/theme';
-import Header from '@/components/layouts/Header';
-import { Box, CssBaseline } from '@mui/material';
-import Footer from '@/components/layouts/Footer';
+import { CssBaseline } from '@mui/material';
 
 const alexandriaFont = Alexandria({
   weight: ['200', '300', '400', '500', '700'],
@@ -17,7 +14,7 @@ const alexandriaFont = Alexandria({
   variable: '--font-alexandria',
 });
 
-const themes = {
+export const themes = {
   dark: darkTheme,
   light: lightTheme,
 };
@@ -30,23 +27,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'SolarGenix.ai' }],
   icons: {
     icon: [
-      {
-        url: '/favicons/favicon-16.png',
-        sizes: '16x16',
-        type: 'image/png',
-      },
-      {
-        url: '/favicons/favicon-32.png',
-        sizes: '32x32',
-        type: 'image/png',
-      },
+      { url: '/favicons/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicons/favicon-32.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: [
-      {
-        url: '/favicons/favicon-180.png',
-        sizes: '180x180',
-        type: 'image/png',
-      },
+      { url: '/favicons/favicon-180.png', sizes: '180x180', type: 'image/png' },
       {
         url: '/favicons/favicon-180-dark.png',
         sizes: '180x180',
@@ -110,13 +95,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<{
+type BaseLayoutProps = {
   children: ReactNode;
+  header: ReactNode;
+  footer: ReactNode;
   params: Promise<{ locale?: string }>;
-}>) {
+};
+
+export default async function BaseLayout({ children, header, footer, params }: BaseLayoutProps) {
   const { locale } = await params;
 
   return (
@@ -126,9 +112,9 @@ export default async function RootLayout({
           <AppRouterCacheProvider>
             <ThemeProvider theme={themes.light}>
               <CssBaseline />
-              <Header />
+              {header}
               {children}
-              <Footer />
+              {footer}
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

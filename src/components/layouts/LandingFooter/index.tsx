@@ -4,30 +4,18 @@ import { Box, Link as MuiLink, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
-import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 
 import FollowUs from '@/components/layouts/Footer/components/FollowUs';
 import {
   FooterContainer,
   FooterCopyRightContainer,
   FooterFollowUsContainerMobile,
-  FooterLink,
-  FooterLinkBlock,
-  FooterLinkContainer,
-  FooterLinkItems,
   FooterLogoContainer,
 } from '@/components/layouts/Footer/components/Footer.style';
-import {
-  featureSubmenuItems,
-  menuItems,
-  productSubmenuItems,
-} from '@/components/layouts/Header/Header.constants';
+
 import { FOOTER_STYLES } from '@/shared/constants/spacing';
 
-const filteredMenuItems = menuItems.filter(item => !item.submenuItems);
-
-export default function Footer() {
+export default function LandingFooter() {
   const t = useTranslations();
 
   return (
@@ -36,7 +24,12 @@ export default function Footer() {
         backgroundColor: 'tertiary.700',
       }}
     >
-      <Box component="footer" sx={FOOTER_STYLES}>
+      <Box
+        component="footer"
+        sx={{
+          ...FOOTER_STYLES,
+        }}
+      >
         <Box
           sx={{
             borderBottomWidth: '1px',
@@ -54,44 +47,6 @@ export default function Footer() {
                 <FollowUs />
               </Box>
             </FooterLogoContainer>
-            <FooterLinkContainer>
-              <FooterLinkBlock>
-                <FooterMenuWrapper>{t('header.product')}</FooterMenuWrapper>
-                <FooterLinkItems>
-                  {productSubmenuItems.map(item => (
-                    <Box key={item.key}>
-                      <FooterLink variant="body2" href={item.url}>
-                        {t(`header.${item.key}`)}
-                      </FooterLink>
-                    </Box>
-                  ))}
-                </FooterLinkItems>
-              </FooterLinkBlock>
-              <FooterLinkBlock>
-                <FooterMenuWrapper>{t('header.features')}</FooterMenuWrapper>
-                <FooterLinkItems>
-                  {featureSubmenuItems.map(item => (
-                    <Box key={item.key}>
-                      <FooterLink variant="body2" href={item.url}>
-                        {t(`header.${item.key}`)}
-                      </FooterLink>
-                    </Box>
-                  ))}
-                </FooterLinkItems>
-              </FooterLinkBlock>
-              <FooterLinkBlock>
-                <FooterMenuWrapper>{t('header.company')}</FooterMenuWrapper>
-                <FooterLinkItems>
-                  {filteredMenuItems.map(item => (
-                    <Box key={item.key}>
-                      <FooterLink variant="body2" href={item.url}>
-                        {t(`header.${item.key}`)}
-                      </FooterLink>
-                    </Box>
-                  ))}
-                </FooterLinkItems>
-              </FooterLinkBlock>
-            </FooterLinkContainer>
           </FooterContainer>
           <FooterFollowUsContainerMobile>
             <FollowUs />

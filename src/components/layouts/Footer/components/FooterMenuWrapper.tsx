@@ -1,18 +1,10 @@
 import { Typography } from '@mui/material';
 import { FooterLinkHeader } from './Footer.style';
+import { ReactNode } from 'react';
 
-const FooterMenuWrapper = ({ children }: { children: React.ReactNode | string }) => {
+const FooterMenuWrapper = ({ children }: { children: ReactNode | string }) => {
   return (
-    <FooterLinkHeader
-      sx={{
-        borderBottomWidth: '1px',
-        borderBottomStyle: 'solid',
-        borderBottomColor: 'opacityLight.30',
-        py: '6px',
-        marginBottom: '6px',
-        textAlign: 'left',
-      }}
-    >
+    <FooterLinkHeader>
       <Typography color="tertiary.300" variant="body1">
         {children}
       </Typography>
