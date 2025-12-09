@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from '@mui/material/styles';
 
 export default function VideoBlockSection() {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   const theme = useTheme();
 
   return (
@@ -53,7 +53,7 @@ export default function VideoBlockSection() {
             preload="none"
           >
             <source src="/" type="video/mp4" />
-            <track src="/path/to/captions.vtt" kind="subtitles" srcLang="en" label="English" />
+            <track src="/" kind="subtitles" srcLang="en" label="English" />
             Your browser does not support the video tag.
           </Box>
         </Box>

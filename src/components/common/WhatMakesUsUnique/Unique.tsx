@@ -13,7 +13,7 @@ const Unique = ({
   image: string;
   textAi?: string;
 }) => {
-  const t = useTranslations('heroSection');
+  const t = useTranslations('homePage');
   return (
     <Card
       sx={theme => ({

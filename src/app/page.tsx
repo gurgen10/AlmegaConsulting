@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import HeroSection from '@/components/common/HeroSection';
-import ProductDescriptionSection from '@/components/common/ProductDescriptionSection';
-import FeaturesSection from '@/components/common/FeaturesSection';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import VideoBlockSection from '@/components/common/VideoBlockSection';
 import AutomateYourSolarSection from '@/components/common/AutomateYourSolarSection';
@@ -9,6 +7,11 @@ import AIPoweredSolarSales from '@/components/common/AIPoweredSolarSales';
 import Testimonials from '@/components/common/Testimonials';
 import WhatMakesUsUnique from '@/components/common/WhatMakesUsUnique';
 import Statistics from '@/components/common/Statistics';
+import SeeWhatYourProposalWillLookLike from '@/components/common/SeeWhatYourProposalWillLookLike';
+import WhySolarTeamsLoveOurSalesSoftware from '@/components/common/WhySolarTeamsLoveOurSalesSoftware';
+import Faq from '@/components/common/Faq';
+import BottomCallToAction from '@/components/common/BottomCallToAction';
+import ProductDescriptionSection from '@/components/common/ProductDescriptionSection';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -37,7 +40,10 @@ export default async function Home() {
       <WhatMakesUsUnique />
       <Statistics />
       <ProductDescriptionSection />
-      <FeaturesSection />
+      <SeeWhatYourProposalWillLookLike />
+      <WhySolarTeamsLoveOurSalesSoftware />
+      <Faq />
+      <BottomCallToAction />
     </>
   );
 }

@@ -5,7 +5,7 @@ const Review = ({
   name,
   position,
   review,
-  image,
+  image, // TODO: add image
 }: {
   name: string;
   position: string;

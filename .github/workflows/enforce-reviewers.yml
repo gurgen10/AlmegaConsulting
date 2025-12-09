@@ -1,12 +1,12 @@
-name: Enforce Reviewers
+name: Enforce Reviewers (Website)
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
-      - 'staging'
-      - 'main'
-      - 'release/**'
+      - staging
+      - main
+      - release/*
 
 permissions:
   pull-requests: read
