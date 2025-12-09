@@ -43,6 +43,11 @@ jobs:
             ENV_PACK="${STAGING_ENV_PACK}"
           fi
 
+          # branch + release/*
+          if [ "$GITHUB_REF_TYPE" = "branch" ] && [[ "$GITHUB_REF_NAME" == release/* ]]; then
+            ENV_PACK="${PRODUCTION_ENV_PACK}"
+          fi
+
           # tags -> production
           if [ "$GITHUB_REF_TYPE" = "tag" ]; then
             ENV_PACK="${PRODUCTION_ENV_PACK}"

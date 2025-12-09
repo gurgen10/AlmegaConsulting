@@ -13,7 +13,7 @@ export default function MainLayout({
   params,
 }: {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale?: string }>;
 }) {
   return (
     <BaseLayout header={<Header />} footer={<Footer />} params={Promise.resolve(params)}>
