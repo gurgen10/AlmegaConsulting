@@ -16,7 +16,6 @@ export default function HeroSection() {
       sx={{
         ...SECTION_STYLES_Y,
         ...SECTION_STYLES_X,
-        minHeight: '93vh',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
@@ -32,7 +31,16 @@ export default function HeroSection() {
             [theme.breakpoints.down('lg')]: { gridTemplateColumns: '1fr' },
           })}
         >
-          <Stack maxWidth={{ xs: 494, md: 520, xl: 616 }} gap={2.75}>
+          <Stack
+            sx={theme => ({
+              maxWidth: {
+                [theme.breakpoints.down('lg')]: 494,
+                [theme.breakpoints.up('lg')]: 520,
+                [theme.breakpoints.up('xl')]: 616,
+              },
+            })}
+            gap={2.75}
+          >
             <Typography component="h1" variant="h3" fontWeight={500}>
               {t('createSolarPanel')}
             </Typography>

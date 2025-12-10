@@ -9,8 +9,7 @@ import { useEffect, useState } from 'react';
 import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem } from '@/components/layouts/Header/header.types';
-import { LOGIN_URL } from '@/shared/constants/common';
-import { alpha } from '@mui/system';
+import { REGISTER_URL } from '@/shared/constants/common';
 
 export default function MenuDesktop() {
   const t = useTranslations('header');
@@ -75,51 +74,39 @@ export default function MenuDesktop() {
           </Box>
         );
       })}
-      <Button
-        component={Link}
-        href="/#book-a-demo"
-        size="medium"
-        sx={{
-          ml: 'auto',
-          px: 2,
-          color: 'secondary.main',
-          position: 'relative',
-          '&:hover': {
-            backgroundColor: theme => alpha(theme.palette.secondary.main, 0.04),
-          },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            right: 0,
-            display: 'block',
+      <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
+        <Button
+          component={Link}
+          href="/#book-a-demo"
+          size="medium"
+          color="secondary"
+          sx={{
+            px: 1,
+          }}
+          onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
+        >
+          {t('bookDemo')}
+        </Button>
+        <Box
+          sx={{
             width: '1px',
-            height: '100%',
+            height: '38px',
             backgroundColor: 'opacityDark.12',
             transition: 'width 0.3s',
             marginTop: '4px',
-          },
-        }}
-        onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
-      >
-        {t('bookDemo')}
-      </Button>
-      <Button
-        color="inherit"
-        href={LOGIN_URL}
-        size="medium"
-        sx={{
-          backgroundColor: 'primary.500',
-          borderRadius: '4px',
-          color: 'grey.50',
-          '&:hover': {
-            backgroundColor: 'primary.600',
-          },
-        }}
-      >
-        {t('signUp')}
-      </Button>
+            mx: 2,
+          }}
+        ></Box>
+        <Button
+          href={REGISTER_URL}
+          component={Link}
+          variant="outlined"
+          size="medium"
+          color="primary"
+        >
+          {t('signUp')}
+        </Button>
+      </Box>
     </>
   );
 }

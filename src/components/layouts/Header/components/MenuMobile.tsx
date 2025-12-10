@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
-import { LOGIN_URL } from '@/shared/constants/common';
+import { LOGIN_URL, REGISTER_URL } from '@/shared/constants/common';
 
 interface MenuMobileProps {
   onClose: () => void;
@@ -316,18 +316,17 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             maxWidth: '173px',
             flex: 1,
             color: 'grey.50',
-            '&:hover': {
-              backgroundColor: 'secondary.300',
-            },
           }}
           onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
         >
           {t('bookDemo')}
         </Button>
         <Button
-          color="inherit"
-          href={LOGIN_URL}
+          href={REGISTER_URL}
+          component={Link}
+          variant="outlined"
           size="medium"
+          color="primary"
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -336,12 +335,6 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             maxWidth: '173px',
             minHeight: 48,
             flex: 1,
-            backgroundColor: 'primary.500',
-            borderRadius: '4px',
-            color: 'grey.50',
-            '&:hover': {
-              backgroundColor: 'primary.600',
-            },
           }}
         >
           {t('signUp')}

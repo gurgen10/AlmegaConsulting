@@ -11,7 +11,14 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      exclude: ['node_modules/', 'src/pages/_app.tsx', 'src/pages/_document.tsx', 'src/pages/api/'],
+      reportsDirectory: './coverage',
+      exclude: ['node_modules/'],
+      thresholds: {
+        statements: 0.7,
+        branches: 0.7,
+        functions: 0.7,
+        lines: 0.7,
+      },
     },
   },
   resolve: {

@@ -1,7 +1,6 @@
 import { ColorPaletteKey, COLORS, ColorShade } from '@/shared/constants/colors';
 
 const mainColors: { [key in ColorPaletteKey]?: ColorShade } = {
-  secondary: 400,
   grey: 700,
 };
 
