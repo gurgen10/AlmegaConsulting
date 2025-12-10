@@ -20,9 +20,9 @@ const LovePoints = ({ title, text, image }: { title: string; text: string; image
       >
         <Box
           sx={theme => ({
-            width: 32,
-            height: 32,
-            [theme.breakpoints.down('sm')]: { width: 24, height: 24 },
+            width: 48,
+            height: 48,
+            [theme.breakpoints.down('sm')]: { width: 32, height: 32 },
           })}
         >
           <Image
@@ -36,7 +36,11 @@ const LovePoints = ({ title, text, image }: { title: string; text: string; image
 
         <Box>
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <Typography variant="h6" sx={{ fontWeight: 700, color: 'primary.900', mb: 1 }}>
+            <Typography
+              component="h3"
+              variant="h6"
+              sx={{ fontWeight: 700, color: 'primary.900', mb: 1 }}
+            >
               {title}
             </Typography>
           </Box>

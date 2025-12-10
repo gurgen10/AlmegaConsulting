@@ -111,6 +111,7 @@ export default function SeeWhatYourProposalWillLookLike() {
                 background:
                   'url(/images/see-what-your-proposal-will-look-like/perfect-proposal.png) lightgray 50% / cover no-repeat',
                 boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.08)',
+                aspectRatio: '354 / 368',
                 [theme.breakpoints.down('lg')]: {
                   maxWidth: '340px',
                   height: 'auto',

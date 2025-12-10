@@ -19,6 +19,15 @@ export default function AIPoweredSolarSales() {
     ],
     url: '#',
   };
+  const obstacleDetection = {
+    title: 'obstacleDetection',
+    points: [
+      'obstacleDetectionDescription1',
+      'obstacleDetectionDescription2',
+      'obstacleDetectionDescription3',
+    ],
+    url: '#',
+  };
   const aIPoweredShadingAnalysis = {
     title: 'aIPoweredShadingAnalysis',
     points: [
@@ -43,24 +52,6 @@ export default function AIPoweredSolarSales() {
       'aIOptimizedPanelPlacementDescription1',
       'aIOptimizedPanelPlacementDescription2',
       'aIOptimizedPanelPlacementDescription3',
-    ],
-    url: '#',
-  };
-  const stylishSalesReadyProposalGeneration = {
-    title: 'stylishSalesReadyProposalGeneration',
-    points: [
-      'stylishSalesReadyProposalGenerationDescription1',
-      'stylishSalesReadyProposalGenerationDescription2',
-      'stylishSalesReadyProposalGenerationDescription3',
-    ],
-    url: '#',
-  };
-  const instantSolarQuotingSystem = {
-    title: 'instantSolarQuotingSystem',
-    points: [
-      'instantSolarQuotingSystemDescription1',
-      'instantSolarQuotingSystemDescription2',
-      'instantSolarQuotingSystemDescription3',
     ],
     url: '#',
   };
@@ -161,6 +152,47 @@ export default function AIPoweredSolarSales() {
               padding: { xs: 0, md: 4, xl: 6 },
               mt: { xs: 3, md: 0 },
               position: 'relative',
+            }}
+          >
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                left: 0,
+                width: '100%',
+                height: '80px',
+                backgroundImage:
+                  'linear-gradient(180deg, rgba(250, 250, 250, 0.00) 0%, rgba(250, 250, 250, 0.64) 38.94%, #FAFAFA 87.98%)',
+              }}
+            ></Box>
+            <DescriptionBlock
+              title={obstacleDetection.title}
+              points={obstacleDetection.points}
+              url=""
+            />
+            <Box
+              sx={{
+                padding: { xs: 0, md: 4, xl: 6 },
+                mb: { xs: 3, md: 0 },
+                overflow: 'hidden',
+                position: 'relative',
+              }}
+            >
+              <Image
+                src="/images/aI-powered-solar-sales/obstacle.svg"
+                alt="obstacle"
+                width={386}
+                height={342}
+                style={{ width: '100%', height: '100%' }}
+              />
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              padding: { xs: 0, md: 4, xl: 6 },
+              mt: { xs: 3, md: 0 },
+              position: 'relative',
               '&::before': {
                 content: '""',
                 position: 'absolute',
@@ -224,6 +256,30 @@ export default function AIPoweredSolarSales() {
               />
             </Box>
           </Box>
+        </Box>
+        {/* Third */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              md: '1fr 1fr',
+            },
+            position: 'relative',
+            marginBottom: '1px',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              width: '100%',
+              height: '1px',
+              backgroundImage: 'linear-gradient(90deg, #FAFAFA 0%, #96B0B0 50.15%, #FAFAFA 100%)',
+            },
+          }}
+        >
+          <VerticalGradient />
           <Box
             sx={{
               padding: { xs: 0, md: 4, xl: 6 },
@@ -265,152 +321,49 @@ export default function AIPoweredSolarSales() {
               />
             </Box>
           </Box>
-        </Box>
-        {/* Third */}
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              md: '1fr 1fr',
-            },
-            position: 'relative',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              width: '100%',
-              height: '1px',
-              backgroundImage: 'linear-gradient(90deg, #FAFAFA 0%, #96B0B0 50.15%, #FAFAFA 100%)',
-            },
-          }}
-        >
           <Box
             sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
-            }}
-          >
-            <DescriptionBlock
-              title={aIOptimizedPanelPlacement.title}
-              points={aIOptimizedPanelPlacement.points}
-              url=""
-            />
-          </Box>
-          <Box
-            sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mb: { xs: 3, md: 0 },
-              overflow: 'hidden',
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                md: '1fr 1fr',
+              },
               position: 'relative',
-            }}
-          >
-            <Image
-              src="/images/aI-powered-solar-sales/placement.svg"
-              alt="placement"
-              width={386}
-              height={342}
-              style={{ width: '100%', height: '100%' }}
-            />
-          </Box>
-        </Box>
-        {/* Fourth */}
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              md: '1fr 1fr',
-            },
-            position: 'relative',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              width: '100%',
-              height: '1px',
-              backgroundImage: 'linear-gradient(90deg, #FAFAFA 0%, #96B0B0 50.15%, #FAFAFA 100%)',
-            },
-          }}
-        >
-          <Box
-            sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
-              position: 'relative',
-              marginRight: '1px',
               '&::before': {
                 content: '""',
                 position: 'absolute',
                 top: 0,
+                left: 0,
                 right: 0,
-                width: {
-                  xs: '0',
-                  md: '1px',
-                },
-                height: '100%',
-                backgroundImage: 'linear-gradient(180deg, #96B0B0 0%, #FAFAFA 74.5%)',
+                width: '100%',
+                height: '1px',
+                backgroundImage: 'linear-gradient(90deg, #FAFAFA 0%, #96B0B0 50.15%, #FAFAFA 100%)',
               },
             }}
           >
             <Box
               sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                left: 0,
-                width: '100%',
-                height: '80px',
-                backgroundImage:
-                  'linear-gradient(180deg, rgba(250, 250, 250, 0.00) 0%, rgba(250, 250, 250, 0.64) 38.94%, #FAFAFA 87.98%)',
+                padding: { xs: 0, md: 4, xl: 6 },
+                mt: { xs: 3, md: 0 },
               }}
-            ></Box>
-            <DescriptionBlock
-              title={stylishSalesReadyProposalGeneration.title}
-              points={stylishSalesReadyProposalGeneration.points}
-              url=""
-            />
-            <Box sx={{ mb: { xs: 3, md: 0 }, position: 'relative', overflow: 'hidden' }}>
-              <Image
-                src="/images/aI-powered-solar-sales/proposal.svg"
-                alt="roofDetection"
-                width={386}
-                height={342}
-                style={{ width: '100%', height: '100%' }}
+            >
+              <DescriptionBlock
+                title={aIOptimizedPanelPlacement.title}
+                points={aIOptimizedPanelPlacement.points}
+                url=""
               />
             </Box>
-          </Box>
-          <Box
-            sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
-            }}
-          >
             <Box
               sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                left: 0,
-                width: '100%',
-                height: '80px',
-                backgroundImage:
-                  'linear-gradient(180deg, rgba(250, 250, 250, 0.00) 0%, rgba(250, 250, 250, 0.64) 38.94%, #FAFAFA 87.98%)',
+                padding: { xs: 0, md: 4, xl: 6 },
+                mb: { xs: 3, md: 0 },
+                overflow: 'hidden',
+                position: 'relative',
               }}
-            ></Box>
-            <DescriptionBlock
-              title={instantSolarQuotingSystem.title}
-              points={instantSolarQuotingSystem.points}
-              url=""
-            />
-            <Box sx={{ mb: { xs: 3, md: 0 }, position: 'relative', overflow: 'hidden' }}>
+            >
               <Image
-                src="/images/aI-powered-solar-sales/quote.jpg"
-                alt="roofDetection"
+                src="/images/aI-powered-solar-sales/placement.svg"
+                alt="placement"
                 width={386}
                 height={342}
                 style={{ width: '100%', height: '100%' }}

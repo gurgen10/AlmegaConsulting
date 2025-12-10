@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
-import { LOGIN_URL, REGISTER_URL } from '@/shared/constants/common';
+import { REGISTER_URL } from '@/shared/constants/common';
 
 interface MenuMobileProps {
   onClose: () => void;
@@ -128,17 +128,18 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         height: 'calc(100vh - 68px)',
         position: 'relative',
         display: 'flex',
+        backgroundColor: 'opacityLight.90',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
         flexDirection: 'column',
       }}
     >
       <Stack
         mb={3}
-        gap={1}
         sx={{
           overflowY: 'auto',
           flex: 1,
           pb: '120px',
+          mt: '62px',
           backdropFilter: 'blur(10px) saturate(120%)',
           WebkitBackdropFilter: 'blur(10px) saturate(120%)',
         }}
@@ -183,12 +184,19 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                 boxShadow: 'none',
                 padding: 0,
                 borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
+                '&.MuiAccordion-root.Mui-expanded': {
+                  margin: 0,
+                },
                 '&.Mui-expanded .MuiAccordionSummary-expandIconWrapper': {
                   transform: 'rotate(-90deg)',
                 },
                 '&.MuiPaper-root::before': {
                   content: "''",
                   height: 0,
+                },
+                '& .MuiButtonBase-root': {
+                  py: 2,
+                  px: 0,
                 },
               }}
             >
@@ -198,16 +206,13 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                 id="panel1-header"
                 sx={{
                   marginLeft: 0,
-                  paddingLeft: '6px',
-                  '&.MuiAccordionSummary-root.Mui-expanded': {
-                    minHeight: '48px',
-                  },
-                  '& .MuiAccordionSummary-content.Mui-expanded': {
-                    margin: theme.spacing(0, 0),
+                  py: 2,
+                  '& .MuiAccordionSummary-content': {
+                    margin: 0,
                   },
                 }}
               >
-                {link}
+                <Typography variant="button">{link}</Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ p: 0 }}>
                 <Box
@@ -275,7 +280,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             <Box
               key={item.key}
               sx={{
-                padding: '6px 8px',
+                py: 2,
                 textAlign: 'left',
                 borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
               }}

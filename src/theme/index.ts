@@ -6,8 +6,7 @@ import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { buildTypography } from '@/shared/utils/typography';
 import { TYPE_SCALE } from '@/shared/constants/typography';
 import { makePalette } from '@/shared/utils/colors';
-import { Theme, ThemeOptions } from '@mui/material';
-import { alpha } from '@mui/system';
+import { ThemeOptions } from '@mui/material';
 
 const commonConfigs: ThemeOptions = {
   breakpoints: {
@@ -33,6 +32,13 @@ const commonConfigs: ThemeOptions = {
           [`@media (max-width:${BREAKPOINTS.tabletMid}px)`]: {
             fontSize: 13,
           },
+        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: 'var(--mui-palette-grey-200)',
         },
       },
     },
@@ -64,24 +70,21 @@ const commonConfigs: ThemeOptions = {
         },
         sizeLarge: {
           padding: '8px 22px',
-          '&.text-button': {
+          '&.MuiButton-text': {
             padding: '8px 11px',
           },
         },
         sizeMedium: {
           padding: '6px 16px',
-          '&.text-button': {
+          '&.MuiButton-text': {
             padding: '6px 8px',
           },
         },
         sizeSmall: {
           padding: '4px 10px',
-          '&.text-button': {
+          '&.MuiButton-text': {
             padding: '4px 5px',
           },
-        },
-        text: {
-          '&:hover': (theme: Theme) => alpha(theme.palette.secondary.main, 0.04),
         },
       },
     },
@@ -142,7 +145,7 @@ export const darkTheme = createTheme({
     opacityLight: makePalette('opacityLight'),
 
     background: {
-      default: '#FCFCFC',
+      default: 'var(--mui-palette-grey-200)',
     },
   },
   ...commonConfigs,

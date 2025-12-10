@@ -11,7 +11,6 @@ import SeeWhatYourProposalWillLookLike from '@/components/common/SeeWhatYourProp
 import WhySolarTeamsLoveOurSalesSoftware from '@/components/common/WhySolarTeamsLoveOurSalesSoftware';
 import Faq from '@/components/common/Faq';
 import BottomCallToAction from '@/components/common/BottomCallToAction';
-import ProductDescriptionSection from '@/components/common/ProductDescriptionSection';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -39,7 +38,6 @@ export default async function Home() {
       <Testimonials />
       <WhatMakesUsUnique />
       <Statistics />
-      <ProductDescriptionSection />
       <SeeWhatYourProposalWillLookLike />
       <WhySolarTeamsLoveOurSalesSoftware />
       <Faq />

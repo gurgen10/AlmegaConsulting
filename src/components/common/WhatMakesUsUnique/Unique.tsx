@@ -28,19 +28,31 @@ const Unique = ({
       })}
     >
       <Box
-        sx={{
+        sx={theme => ({
           display: 'flex',
-          alignItems: {
-            xl: 'center',
-            xs: 'start',
+          alignItems: 'center',
+          [theme.breakpoints.down('lg')]: {
+            alignItems: 'start',
           },
           gap: 2,
           p: 3,
-        }}
+        })}
       >
         {!textAi && (
-          <Box>
-            <Image src={image} alt="image" width={48} height={48} />
+          <Box
+            sx={theme => ({
+              width: 60,
+              height: 60,
+              [theme.breakpoints.down('md')]: { width: 48, height: 48 },
+            })}
+          >
+            <Image
+              src={image}
+              alt="image"
+              width={48}
+              height={48}
+              style={{ width: 'fit-content', height: '100%' }}
+            />
           </Box>
         )}
         <Box>
@@ -50,7 +62,11 @@ const Unique = ({
                 <Image src={image} alt="image" width={48} height={48} />
               </Box>
             )}
-            <Typography variant="h6" sx={{ fontWeight: 500, color: 'grey.50', mb: 1 }}>
+            <Typography
+              component="h3"
+              variant="h6"
+              sx={{ fontWeight: 500, color: 'grey.50', mb: 1 }}
+            >
               {title}
             </Typography>
           </Box>

@@ -79,11 +79,8 @@ export default function MenuDesktop() {
           component={Link}
           href="/#book-a-demo"
           size="medium"
+          variant="text"
           color="secondary"
-          sx={{
-            px: 1,
-          }}
-          onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
         >
           {t('bookDemo')}
         </Button>
@@ -93,7 +90,6 @@ export default function MenuDesktop() {
             height: '38px',
             backgroundColor: 'opacityDark.12',
             transition: 'width 0.3s',
-            marginTop: '4px',
             mx: 2,
           }}
         ></Box>

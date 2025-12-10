@@ -11,7 +11,7 @@ export default function DescriptionBlock({ title, points, url }: DescriptionBloc
   const t = useTranslations('homePage');
   return (
     <Box>
-      <Typography variant="h5" sx={{ fontWeight: 700, color: 'grey.900' }}>
+      <Typography component="h3" variant="h5" sx={{ fontWeight: 700, color: 'grey.900' }}>
         {t(title)}
       </Typography>
       <Box component="ul">

@@ -92,6 +92,7 @@ export default function AutomateYourSolarSection() {
               <Box sx={{ mt: 1 }}>
                 <Typography
                   variant="h4"
+                  component="h2"
                   sx={{
                     color: 'grey.25',
                     fontWeight: 500,
@@ -238,6 +239,7 @@ export default function AutomateYourSolarSection() {
               <Box sx={{ mt: 1 }}>
                 <Typography
                   variant="h4"
+                  component="h2"
                   sx={{
                     color: 'grey.25',
                     fontWeight: 500,

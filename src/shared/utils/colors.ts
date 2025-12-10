@@ -2,6 +2,9 @@ import { ColorPaletteKey, COLORS, ColorShade } from '@/shared/constants/colors';
 
 const mainColors: { [key in ColorPaletteKey]?: ColorShade } = {
   grey: 700,
+  error: 700,
+  success: 600,
+  warning: 700,
 };
 
 export const makePalette = (key: ColorPaletteKey) => {

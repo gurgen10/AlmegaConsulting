@@ -22,6 +22,9 @@ export type ColorPaletteKey =
   | 'secondary'
   | 'grey'
   | 'tertiary'
+  | 'error'
+  | 'success'
+  | 'warning'
   | 'opacityDark'
   | 'opacityLight';
 
@@ -116,5 +119,53 @@ export const COLORS: Record<ColorPaletteKey, ColorPalette> = {
     60: '#F7FCFC99', // 60%
     70: '#F7FCFCB3', // 70%
     90: '#F7FCFCE6', // 90%
+  },
+  error: {
+    50: '#feebee',
+    100: '#fecdd2',
+    200: '#ef9a9a',
+    300: '#e57373',
+    400: '#ef5350',
+    500: '#f44336',
+    600: '#e53935',
+    700: '#d32f2f',
+    800: '#c62828',
+    900: '#5f2120',
+    A700: '#d50000',
+    A400: '#ff1744',
+    A200: '#ff5252',
+    A100: '#ff8a80',
+  },
+  success: {
+    50: '#e8f5e9',
+    100: '#c8e6c9',
+    200: '#a5d6a7',
+    300: '#81c784',
+    400: '#66bb6a',
+    500: '#4caf50',
+    600: '#43a047',
+    700: '#388e3c',
+    800: '#2e7d32',
+    900: '#1e4620',
+    A700: '#00c853',
+    A400: '#00e676',
+    A200: '#69f0ae',
+    A100: '#b9f6ca',
+  },
+  warning: {
+    50: '#fbf6e7',
+    100: '#fce9b9',
+    200: '#fcdc89',
+    300: '#fed257',
+    400: '#fec735',
+    500: '#ffbe22',
+    600: '#ffb11d',
+    700: '#f28f0a',
+    800: '#d86f01',
+    900: '#663c00',
+    A700: '#fea91f',
+    A400: '#ffc221',
+    A200: '#ffd54d',
+    A100: '#ffe388',
   },
 };
