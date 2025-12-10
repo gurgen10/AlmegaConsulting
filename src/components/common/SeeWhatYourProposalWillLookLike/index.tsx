@@ -99,7 +99,7 @@ export default function SeeWhatYourProposalWillLookLike() {
             </Button>
           </Box>
           <Box
-            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}
+            sx={{ display: 'flex', justifyContent: 'right', alignItems: 'center', width: '100%' }}
           >
             <Box
               sx={{

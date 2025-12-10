@@ -324,10 +324,7 @@ export default function AIPoweredSolarSales() {
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: {
-                xs: '1fr',
-                md: '1fr 1fr',
-              },
+              gridTemplateColumns: '1fr',
               position: 'relative',
               '&::before': {
                 content: '""',

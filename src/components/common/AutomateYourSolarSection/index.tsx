@@ -1,7 +1,6 @@
 'use client';
 
-import { Box, Button, Typography } from '@mui/material';
-
+import { Box, Button, Theme, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -27,6 +26,56 @@ export default function AutomateYourSolarSection() {
     },
   ];
 
+  const gradientCardStyles = (theme: Theme) => ({
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: 4,
+    [theme.breakpoints.down('lg')]: {
+      gap: 2,
+    },
+    [theme.breakpoints.down('md')]: {
+      gridTemplateColumns: '1fr',
+    },
+    p: 0.5,
+    borderRadius: '16px',
+    backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
+    boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
+  });
+
+  const contentBoxStyles = {
+    borderRadius: '16px',
+    flex: 1,
+    px: { xs: 1, sm: 2, md: 3, lg: 4 },
+    py: { xs: 1.5, lg: 2, xl: 4 },
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  };
+
+  const imageContainerStyles = {
+    p: 1.5,
+    borderRadius: '12px',
+    backgroundColor: 'grey.50',
+    boxShadow: '-10px 0 21.3px 2px rgba(0, 43, 43, 0.30)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 'auto',
+    aspectRatio: '1 / 1',
+    position: 'relative',
+    alignSelf: 'center',
+    justifySelf: { xs: 'center', md: 'end' },
+    maxWidth: { xs: '100%', md: '500px', lg: '600px' },
+  };
+
+  const imageWrapperStyles = {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    aspectRatio: '1 / 1',
+  };
+
   return (
     <Box
       component="section"
@@ -51,41 +100,19 @@ export default function AutomateYourSolarSection() {
         >
           {t('automateYourSolar')}
         </Typography>
+
         <Box>
-          {/* First */}
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: '1fr',
-                md: '1fr 1fr',
-              },
-              gap: 4,
-              py: 0.5,
-              px: 0.5,
-              borderRadius: '16px',
-              backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
-              boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
-            }}
-          >
-            <Box
-              sx={{
-                borderRadius: '16px',
-                flex: 1,
-                px: { xs: 1, sm: 2, md: 3, lg: 4 },
-                py: { xs: 1.5, lg: 2, xl: 4 },
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
+          {/* First Card */}
+          <Box sx={gradientCardStyles}>
+            {/* Content Side */}
+            <Box sx={contentBoxStyles}>
               <Box sx={{ width: { xs: 32, lg: 48 }, height: { xs: 32, lg: 48 } }}>
                 <Image
                   src="/images/automate-solar/document.svg"
                   alt="document"
                   width={48}
                   height={48}
-                  style={{ width: '100%', height: '100%' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                   priority
                 />
               </Box>
@@ -124,7 +151,7 @@ export default function AutomateYourSolarSection() {
                           alt={el.title}
                           width={24}
                           height={24}
-                          style={{ width: '100%', height: '100%' }}
+                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                         />
                       </Box>
                       <Typography variant="body2" sx={{ fontWeight: 500, color: 'grey.25' }}>
@@ -136,130 +163,116 @@ export default function AutomateYourSolarSection() {
                 <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
                   {t('makeStunningSolarProposalsDescription2')}
                 </Typography>
-                <Button size="large" variant="contained" color="secondary" component="a" href="#">
-                  {t('learnMore')}{' '}
+                <Button
+                  size="medium"
+                  variant="contained"
+                  color="secondary"
+                  component="a"
+                  href="#"
+                  sx={{ gap: 1 }}
+                >
+                  {t('learnMore')}
                   <Image
                     src="/images/automate-solar/chevron-right.svg"
-                    width="20"
-                    height="20"
+                    width={20}
+                    height={20}
                     alt="chevron-right"
+                    style={{ width: '20px', height: '20px' }}
                   />
                 </Button>
               </Box>
             </Box>
-            <Box
-              sx={{
-                flex: 1,
-                padding: 1.5,
-                borderRadius: '12px',
-                backgroundColor: 'grey.50',
-                boxShadow: '-10px 0 21.3px 2px rgba(0, 43, 43, 0.30)',
-              }}
-            >
-              <Box sx={{ width: '100%', height: { xs: '100%', xl: 600 } }}>
+
+            {/* Image Side - Aligned to right */}
+            <Box sx={imageContainerStyles}>
+              <Box sx={imageWrapperStyles}>
                 <Image
                   src="/images/automate-solar/makeStunning.png"
                   alt="makeStunning"
-                  width={600}
-                  height={600}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: '600px',
-                  }}
+                  fill
+                  style={{ objectFit: 'contain' }}
                   priority
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </Box>
             </Box>
           </Box>
-          {/* Second */}
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: {
-                xs: '1fr',
-                md: '1fr 1fr',
-              },
-              mt: 3,
-              gap: 4,
-              py: 0.5,
-              px: 0.5,
-              borderRadius: '16px',
-              backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
-              boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
-            }}
-          >
-            <Box
-              sx={{
-                flex: 1,
-                order: { sm: 1, md: 0 },
-                padding: 1.5,
-                borderRadius: '12px',
-                backgroundColor: 'grey.50',
-                boxShadow: '-10px 0 21.3px 2px rgba(0, 43, 43, 0.30)',
-              }}
-            >
-              <Box sx={{ width: '100%', height: { xs: '100%', xl: 600 } }}>
-                <Image
-                  src="/images/automate-solar/makeStunning.png"
-                  alt="makeStunning"
-                  width={600}
-                  height={600}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: '600px',
-                  }}
-                  priority
-                />
-              </Box>
-            </Box>
-            <Box
-              sx={{
-                borderRadius: '16px',
-                flex: 1,
-                order: { sm: 0, md: 1 },
-                px: { xs: 1, sm: 2, md: 3, lg: 4 },
-                py: { xs: 1.5, lg: 2, xl: 4 },
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              <Box sx={{ width: { xs: 32, lg: 48 }, height: { xs: 32, lg: 48 } }}>
-                <Image
-                  src="/images/automate-solar/course-up.svg"
-                  alt="document"
-                  width={48}
-                  height={48}
-                  style={{ width: '100%', height: '100%' }}
-                  priority
-                />
-              </Box>
-              <Box sx={{ mt: 1 }}>
-                <Typography
-                  variant="h4"
-                  component="h2"
-                  sx={{
-                    color: 'grey.25',
-                    fontWeight: 500,
-                    mb: 2,
-                  }}
-                >
-                  {t('boostConversionsWithInstantQuotes')}
-                </Typography>
-                <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
-                  {t('boostConversionsWithInstantQuotesDescription')}
-                </Typography>
-                <Button size="large" variant="contained" color="secondary" component="a" href="#">
-                  {t('learnMore')}{' '}
+
+          {/* Second Card */}
+          <Box sx={{ mt: 3 }}>
+            <Box sx={gradientCardStyles}>
+              <Box
+                sx={theme => ({
+                  ...imageContainerStyles,
+                  order: 2,
+                  justifySelf: 'box-start',
+                  [theme.breakpoints.up('md')]: {
+                    order: 0,
+                  },
+                })}
+              >
+                <Box sx={imageWrapperStyles}>
                   <Image
-                    src="/images/automate-solar/chevron-right.svg"
-                    width="20"
-                    height="20"
-                    alt="chevron-right"
+                    src="/images/automate-solar/makeStunning.png"
+                    alt="makeStunning"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 600px"
                   />
-                </Button>
+                </Box>
+              </Box>
+
+              {/* Content Side */}
+              <Box
+                sx={{
+                  ...contentBoxStyles,
+                  order: { xs: 0, md: 1 },
+                }}
+              >
+                <Box sx={{ width: { xs: 32, lg: 48 }, height: { xs: 32, lg: 48 } }}>
+                  <Image
+                    src="/images/automate-solar/course-up.svg"
+                    alt="course up"
+                    width={48}
+                    height={48}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    priority
+                  />
+                </Box>
+                <Box sx={{ mt: 1 }}>
+                  <Typography
+                    variant="h4"
+                    component="h2"
+                    sx={{
+                      color: 'grey.25',
+                      fontWeight: 500,
+                      mb: 2,
+                    }}
+                  >
+                    {t('boostConversionsWithInstantQuotes')}
+                  </Typography>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
+                    {t('boostConversionsWithInstantQuotesDescription')}
+                  </Typography>
+                  <Button
+                    size="medium"
+                    variant="contained"
+                    color="secondary"
+                    component="a"
+                    href="#"
+                    sx={{ gap: 1 }}
+                  >
+                    {t('learnMore')}
+                    <Image
+                      src="/images/automate-solar/chevron-right.svg"
+                      width={20}
+                      height={20}
+                      alt="chevron-right"
+                      style={{ width: '20px', height: '20px' }}
+                    />
+                  </Button>
+                </Box>
               </Box>
             </Box>
           </Box>

@@ -2,42 +2,25 @@
 
 import { Box, Button, Link as MuiLink } from '@mui/material';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
-import { MenuItem } from '@/components/layouts/Header/header.types';
 import { REGISTER_URL } from '@/shared/constants/common';
 
 export default function MenuDesktop() {
   const t = useTranslations('header');
   const pathname = usePathname();
-  const router = useRouter();
-  const [activeItem, setActiveItem] = useState<string>('');
 
-  useEffect(() => {
-    if (defaultMenuItems.length > 0 && !activeItem) {
-      setActiveItem(defaultMenuItems[0].key);
-    }
-  }, [activeItem]);
+  const activeItem = useMemo(() => {
+    const activeMenuItem = defaultMenuItems.find(
+      item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
+    );
 
-  useEffect(() => {
-    if (pathname) {
-      const activeMenuItem = defaultMenuItems.find(
-        item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
-      );
-      if (activeMenuItem) {
-        setActiveItem(activeMenuItem.key);
-      }
-    }
+    return activeMenuItem ? activeMenuItem.key : '/';
   }, [pathname]);
-
-  const handleItemClick = (item: MenuItem) => {
-    setActiveItem(item.key);
-    router.push(item.url);
-  };
 
   return (
     <>
@@ -56,8 +39,8 @@ export default function MenuDesktop() {
               },
             }}
             underline="none"
-            component="button"
-            onClick={() => handleItemClick(item)}
+            href={item.url}
+            component={item.submenuItems?.length ? 'button' : 'a'}
             className={isActive ? 'active' : ''}
           >
             {t(item.key)}

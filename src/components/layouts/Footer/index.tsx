@@ -4,7 +4,6 @@ import { Box, Link as MuiLink, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
 import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 
 import FollowUs from '@/components/layouts/Footer/components/FollowUs';

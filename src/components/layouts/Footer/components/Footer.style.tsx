@@ -36,9 +36,10 @@ export const FooterLink = styled(Link)(({ theme }) => ({
 
 export const FooterContainer = styled(Box)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: '260px 1fr',
+  gridTemplateColumns: '260px auto',
   gap: theme.spacing(6),
   alignItems: 'start',
+  justifyContent: 'space-between',
 
   [theme.breakpoints.down('md')]: {
     gridTemplateColumns: '1fr',
@@ -49,8 +50,8 @@ export const FooterContainer = styled(Box)(({ theme }) => ({
 
 export const FooterLinkContainer = styled(Box)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, minmax(120px, 1fr))',
-  gap: theme.spacing(4),
+  gridTemplateColumns: 'repeat(3, minmax(120px, auto))',
+  gap: theme.spacing(8),
   [theme.breakpoints.down('md')]: {
     gridTemplateColumns: 'repeat(3, 1fr)',
   },
@@ -66,9 +67,10 @@ export const FooterLinkContainer = styled(Box)(({ theme }) => ({
 export const FooterLinkBlock = styled(Box)(({ theme }) => ({
   textAlign: 'left',
   minWidth: 0,
-  maxWidth: '100%',
+  maxWidth: '120%',
   margin: '0',
   position: 'relative',
+  width: '120%',
 
   [theme.breakpoints.down('sm')]: {
     textAlign: 'center',
@@ -90,7 +92,6 @@ export const FooterLinkHeader = styled(Box)(({ theme }) => ({
 export const FooterLinkItems = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  pr: '20%',
   [theme.breakpoints.down('sm')]: {
     textAlign: 'center',
     pr: theme.spacing(1),

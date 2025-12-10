@@ -13,14 +13,12 @@ import {
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
-import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
 import { REGISTER_URL } from '@/shared/constants/common';
-
 interface MenuMobileProps {
   onClose: () => void;
 }
@@ -28,97 +26,17 @@ interface MenuMobileProps {
 export default function MenuMobile({ onClose }: MenuMobileProps) {
   const pathname = usePathname();
   const t = useTranslations('header');
-  const router = useRouter();
-  const [activeItem, setActiveItem] = useState<string>('');
   const [expandedKey, setExpandedKey] = useState<string | false>(false);
   const [activeSubKey, setActiveSubKey] = useState<string | null>(null);
   const theme = useTheme();
-  const [hash, setHash] = useState('');
-  const bookDemoUrl = '#book-a-demo';
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      setHash(window.location.hash);
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  const activeItem = useMemo(() => {
+    const activeMenuItem = menuItems.find(
+      item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
+    );
 
-  useEffect(() => {
-    if (menuItems.length > 0) {
-      const currentHash = window.location.hash || '';
-      const activeMenuItem = menuItems.find(item => {
-        const itemUrl = item.url.startsWith('/#')
-          ? item.url
-          : pathname + (item.url === '/' ? '' : item.url);
-        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
-        return currentUrl === itemUrl || (itemUrl !== '/' && currentUrl.startsWith(itemUrl));
-      });
-
-      let activeKey = currentHash === bookDemoUrl ? bookDemoUrl : activeMenuItem?.key;
-
-      if (!activeKey) {
-        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
-        for (const item of menuItems) {
-          const sub = item.submenuItems?.find(sub => sub.url === currentUrl);
-          if (sub) {
-            activeKey = item.key;
-            setActiveSubKey(sub.key);
-            setExpandedKey(item.key);
-            break;
-          }
-        }
-      }
-
-      setActiveItem(activeKey ?? menuItems[0].key);
-    }
-  }, [pathname, hash]);
-
-  useEffect(() => {
-    if (pathname) {
-      const activeMenuItem = menuItems.find(
-        item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
-      );
-
-      let activeKey = hash === bookDemoUrl ? bookDemoUrl : activeMenuItem?.key;
-
-      if (!activeKey) {
-        const currentHash = window.location.hash || '';
-        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
-        for (const item of menuItems) {
-          const sub = item.submenuItems?.find(sub => sub.url === currentUrl);
-          if (sub) {
-            activeKey = item.key;
-            setActiveSubKey(sub.key);
-            setExpandedKey(item.key);
-            break;
-          }
-        }
-      }
-
-      if (activeKey) {
-        setActiveItem(activeKey);
-      }
-    }
-  }, [pathname, hash]);
-
-  const handleItemClick = (item: MenuItem, isSubmenuItem = false) => {
-    setActiveItem(item.key);
-    if (!item.submenuItems?.length || isSubmenuItem) {
-      onClose();
-    }
-    if (item.url) {
-      router.push(item.url);
-    }
-  };
-
-  const handleSubItemClick = (parent: MenuItem, subItem: SubMenuItem) => {
-    setActiveItem(parent.key);
-    onClose();
-    if (subItem.url) {
-      router.push(subItem.url);
-    }
-  };
+    return activeMenuItem ? activeMenuItem.key : '/';
+  }, [pathname]);
 
   return (
     <Box
@@ -158,15 +76,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
               }}
               underline="none"
               variant="button"
-              component={item.submenuItems?.length ? 'span' : 'button'}
-              onClick={() => {
-                if (item.submenuItems?.length) {
-                  setExpandedKey(prev => (prev === item.key ? false : item.key));
-                } else {
-                  setActiveSubKey(null);
-                  handleItemClick(item);
-                }
-              }}
+              component={item.submenuItems?.length ? 'button' : 'a'}
+              href={item.url}
               className={isActive ? 'active' : ''}
             >
               {t(item.key)}
@@ -232,7 +143,6 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                     >
                       <MuiLink
                         href={subItem.url}
-                        onClick={() => handleSubItemClick(item, subItem)}
                         sx={{
                           display: 'flex',
                           alignItems: 'flex-start',
@@ -310,7 +220,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         <Button
           component={Link}
           color="primary"
-          href="/#book-a-demo"
+          href="/book-a-demo"
           size="medium"
           sx={{
             backgroundColor: 'secondary.500',
@@ -322,14 +232,13 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             flex: 1,
             color: 'grey.50',
           }}
-          onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
         >
           {t('bookDemo')}
         </Button>
         <Button
           href={REGISTER_URL}
           component={Link}
-          variant="outlined"
+          variant="contained"
           size="medium"
           color="primary"
           sx={{
