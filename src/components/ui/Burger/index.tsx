@@ -1,3 +1,5 @@
+'use client';
+
 import { BurgerIcon } from '@/components/ui/Burger/Burger.styles';
 import { BurgerProps } from '@/components/ui/Burger/Burger.types';
 

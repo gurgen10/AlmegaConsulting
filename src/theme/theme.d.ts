@@ -13,6 +13,10 @@ declare module '@mui/material/styles' {
     opacityDark?: PaletteColorOptions;
     opacityLight?: PaletteColorOptions;
   }
+
+  interface Color {
+    25: string;
+  }
 }
 
 declare module '@mui/material/Button' {

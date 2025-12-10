@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Accordion,
   AccordionDetails,
@@ -14,19 +16,18 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
-import { LOGIN_URL } from '@/shared/constants/common';
+import { LOGIN_URL, REGISTER_URL } from '@/shared/constants/common';
 
 interface MenuMobileProps {
   onClose: () => void;
 }
 
 export default function MenuMobile({ onClose }: MenuMobileProps) {
-  const t = useTranslations('header');
   const pathname = usePathname();
+  const t = useTranslations('header');
   const router = useRouter();
   const [activeItem, setActiveItem] = useState<string>('');
   const [expandedKey, setExpandedKey] = useState<string | false>(false);
@@ -125,7 +126,6 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
       sx={{
         width: '100%',
         height: 'calc(100vh - 68px)',
-        backgroundColor: 'grey.50',
         position: 'relative',
         display: 'flex',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
@@ -139,6 +139,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
           overflowY: 'auto',
           flex: 1,
           pb: '120px',
+          backdropFilter: 'blur(10px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
         }}
       >
         {menuItems.map(item => {
@@ -285,19 +287,20 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
       </Stack>
 
       <Box
-        sx={{
+        sx={theme => ({
           position: 'fixed',
           bottom: 0,
           left: 0,
           right: 0,
           p: 2,
-          backgroundColor: 'grey.50',
-          borderTop: '1px solid',
-          borderColor: 'divider',
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(8px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(8px) saturate(120%)',
+          borderTop: `1px solid ${theme.palette.divider}`,
           display: 'flex',
           gap: 2,
           justifyContent: 'center',
-        }}
+        })}
       >
         <Button
           component={Link}
@@ -313,18 +316,17 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             maxWidth: '173px',
             flex: 1,
             color: 'grey.50',
-            '&:hover': {
-              backgroundColor: 'secondary.300',
-            },
           }}
           onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
         >
           {t('bookDemo')}
         </Button>
         <Button
-          color="inherit"
-          href={LOGIN_URL}
+          href={REGISTER_URL}
+          component={Link}
+          variant="outlined"
           size="medium"
+          color="primary"
           sx={{
             display: 'flex',
             alignItems: 'center',
@@ -333,15 +335,9 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             maxWidth: '173px',
             minHeight: 48,
             flex: 1,
-            backgroundColor: 'primary.500',
-            borderRadius: '4px',
-            color: 'grey.50',
-            '&:hover': {
-              backgroundColor: 'primary.600',
-            },
           }}
         >
-          {t('login')}
+          {t('signUp')}
         </Button>
       </Box>
     </Box>

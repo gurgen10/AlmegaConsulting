@@ -1,66 +1,96 @@
 'use client';
 
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { useTranslations } from 'next-intl';
-import { CONTAINER_STYLES } from '@/shared/constants/spacing';
+
+import Image from 'next/image';
+import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
-import DarkPrimaryButton from '@/components/ui/DarkPrimaryButton';
+import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
-  const t = useTranslations('heroSection');
-
+  const t = useTranslations('homePage');
   return (
     <Box
       component="section"
       sx={{
-        minHeight: '93vh',
-        color: 'grey.25',
+        ...SECTION_STYLES_Y,
+        ...SECTION_STYLES_X,
         display: 'flex',
         alignItems: 'center',
-        background:
-          'linear-gradient(271deg, rgba(0, 0, 0, 0.00) 42.2%, rgba(0, 0, 0, 0.45) 64.87%, rgba(0, 0, 0, 0.50) 98.88%), url(/images/bg-foto.webp) center / cover',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <Box {...CONTAINER_STYLES}>
-        <Stack maxWidth={{ xs: 494, md: 520, xl: 616 }} gap={2.75}>
-          <Typography variant="h1" fontWeight={250}>
-            {t('makingSolarSimple')}
-          </Typography>
-          <Typography variant="h5" fontWeight={250}>
-            {t.rich('description', {
-              bold: chunks => (
-                <Typography variant="inherit" component="strong" fontWeight={500}>
-                  {chunks}
-                </Typography>
-              ),
+        <Box
+          sx={theme => ({
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 2,
+            [theme.breakpoints.down('lg')]: { gridTemplateColumns: '1fr' },
+          })}
+        >
+          <Stack
+            sx={theme => ({
+              maxWidth: {
+                [theme.breakpoints.down('lg')]: 494,
+                [theme.breakpoints.up('lg')]: 520,
+                [theme.breakpoints.up('xl')]: 616,
+              },
             })}
-          </Typography>
-          <div>
-            <Stack direction="row" gap={2}>
-              <Button
-                size="large"
-                variant="contained"
-                color="secondary"
-                component="a"
-                href={REGISTER_URL}
-              >
-                {t('getStartedFree')}
-              </Button>
-              <DarkPrimaryButton
-                size="large"
-                variant="contained"
-                component={Link}
-                href={BOOK_DEMO_URL}
-              >
-                {t('bookDemo')}
-              </DarkPrimaryButton>
-            </Stack>
-            <Typography variant="subtitle2" mt={1} fontWeight={250}>
-              {t('noCreditCardRequired')}
+            gap={2.75}
+          >
+            <Typography component="h1" variant="h3" fontWeight={500}>
+              {t('createSolarPanel')}
             </Typography>
-          </div>
-        </Stack>
+            <Typography variant="subtitle2" fontWeight={250}>
+              {t.rich('description', {
+                bold: chunks => (
+                  <Typography variant="inherit" component="strong" fontWeight={700}>
+                    {chunks}
+                  </Typography>
+                ),
+              })}
+            </Typography>
+            <div>
+              <Stack direction="row" gap={2}>
+                <Button
+                  size="large"
+                  variant="contained"
+                  color="secondary"
+                  component="a"
+                  href={REGISTER_URL}
+                >
+                  {t('getStartedFree')}
+                </Button>
+                <Button size="large" variant="contained" component={Link} href={BOOK_DEMO_URL}>
+                  {t('bookDemo')}
+                </Button>
+              </Stack>
+            </div>
+          </Stack>
+          <Box
+            sx={{
+              position: 'relative',
+            }}
+          >
+            <Image
+              src="/images/hero-section.png"
+              alt="hero-section"
+              width={815}
+              height={600}
+              style={{
+                width: '100%',
+                height: 'auto',
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+              }}
+              priority
+            />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Button, Link as MuiLink } from '@mui/material';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -7,7 +9,7 @@ import { useEffect, useState } from 'react';
 import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { MenuItem } from '@/components/layouts/Header/header.types';
-import { LOGIN_URL } from '@/shared/constants/common';
+import { REGISTER_URL } from '@/shared/constants/common';
 
 export default function MenuDesktop() {
   const t = useTranslations('header');
@@ -44,6 +46,7 @@ export default function MenuDesktop() {
         const link = (
           <MuiLink
             sx={{
+              backgroundColor: 'transparent',
               padding: '6px 8px',
               color: isActive ? 'primary.500' : 'opacityDark.90',
               position: 'relative',
@@ -71,37 +74,39 @@ export default function MenuDesktop() {
           </Box>
         );
       })}
-      <Button
-        component={Link}
-        href="/#book-a-demo"
-        size="medium"
-        sx={{
-          ml: 'auto',
-          backgroundColor: 'secondary.400',
-          color: 'grey.50',
-          '&:hover': {
-            backgroundColor: 'secondary.300',
-          },
-        }}
-        onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
-      >
-        {t('bookDemo')}
-      </Button>
-      <Button
-        color="inherit"
-        href={LOGIN_URL}
-        size="medium"
-        sx={{
-          backgroundColor: 'primary.500',
-          borderRadius: '4px',
-          color: 'grey.50',
-          '&:hover': {
-            backgroundColor: 'primary.600',
-          },
-        }}
-      >
-        {t('login')}
-      </Button>
+      <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
+        <Button
+          component={Link}
+          href="/#book-a-demo"
+          size="medium"
+          color="secondary"
+          sx={{
+            px: 1,
+          }}
+          onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
+        >
+          {t('bookDemo')}
+        </Button>
+        <Box
+          sx={{
+            width: '1px',
+            height: '38px',
+            backgroundColor: 'opacityDark.12',
+            transition: 'width 0.3s',
+            marginTop: '4px',
+            mx: 2,
+          }}
+        ></Box>
+        <Button
+          href={REGISTER_URL}
+          component={Link}
+          variant="outlined"
+          size="medium"
+          color="primary"
+        >
+          {t('signUp')}
+        </Button>
+      </Box>
     </>
   );
 }

@@ -6,7 +6,8 @@ import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { buildTypography } from '@/shared/utils/typography';
 import { TYPE_SCALE } from '@/shared/constants/typography';
 import { makePalette } from '@/shared/utils/colors';
-import { ThemeOptions } from '@mui/material';
+import { Theme, ThemeOptions } from '@mui/material';
+import { alpha } from '@mui/system';
 
 const commonConfigs: ThemeOptions = {
   breakpoints: {
@@ -78,6 +79,9 @@ const commonConfigs: ThemeOptions = {
           '&.text-button': {
             padding: '4px 5px',
           },
+        },
+        text: {
+          '&:hover': (theme: Theme) => alpha(theme.palette.secondary.main, 0.04),
         },
       },
     },
