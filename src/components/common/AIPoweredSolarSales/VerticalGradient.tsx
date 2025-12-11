@@ -7,7 +7,7 @@ const VerticalGradient = () => {
         position: 'absolute',
         zIndex: 1,
         bottom: 0,
-        right: 0,
+        right: '1px',
         width: {
           xs: '32px',
           lg: '80px',

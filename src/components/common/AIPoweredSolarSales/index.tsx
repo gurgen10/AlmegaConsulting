@@ -1,15 +1,18 @@
 'use client';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import DescriptionBlock from '@/components/common/AIPoweredSolarSales/DescriptionBlock';
 import VerticalGradient from '@/components/common/AIPoweredSolarSales/VerticalGradient';
+import HorizontalGradient from '@/components/common/AIPoweredSolarSales/HorizontalGradient';
 
 export default function AIPoweredSolarSales() {
   const t = useTranslations('homePage');
+  const theme = useTheme();
+
   const aIDrivenRoofDetection = {
     title: 'aIDrivenRoofDetection',
     points: [
@@ -85,9 +88,14 @@ export default function AIPoweredSolarSales() {
           sx={{
             display: 'grid',
             position: 'relative',
-            gridTemplateColumns: {
-              xs: '1fr',
-              md: '1fr 1fr',
+            gridTemplateColumns: '1fr 1fr',
+            padding: 6,
+            [theme.breakpoints.down('lg')]: {
+              padding: 4,
+            },
+            [theme.breakpoints.down('md')]: {
+              gridTemplateColumns: '1fr',
+              padding: 0,
             },
             marginBottom: '1px',
           }}
@@ -95,8 +103,10 @@ export default function AIPoweredSolarSales() {
           <VerticalGradient />
           <Box
             sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
+              mt: 0,
+              [theme.breakpoints.down('md')]: {
+                mt: 3,
+              },
               overflow: 'hidden',
               position: 'relative',
             }}
@@ -109,8 +119,10 @@ export default function AIPoweredSolarSales() {
           </Box>
           <Box
             sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mb: { xs: 3, md: 0 },
+              mb: 0,
+              [theme.breakpoints.down('md')]: {
+                mb: 3,
+              },
               overflow: 'hidden',
               position: 'relative',
             }}
@@ -128,12 +140,13 @@ export default function AIPoweredSolarSales() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              md: '1fr 1fr',
+            gridTemplateColumns: '1fr 1fr',
+            [theme.breakpoints.down('md')]: {
+              gridTemplateColumns: '1fr',
             },
             position: 'relative',
             marginBottom: '1px',
+            marginTop: '-1px',
             '&::before': {
               content: '""',
               position: 'absolute',
@@ -146,26 +159,35 @@ export default function AIPoweredSolarSales() {
             },
           }}
         >
-          <VerticalGradient />
           <Box
             sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
+              mt: 0,
               position: 'relative',
+              padding: 6,
+              [theme.breakpoints.down('lg')]: {
+                padding: 4,
+              },
+              [theme.breakpoints.down('md')]: {
+                gridTemplateColumns: '1fr',
+                padding: 0,
+                mt: 3,
+              },
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: {
+                  xs: '0',
+                  md: '1px',
+                },
+                height: '100%',
+                backgroundColor: 'tertiary.main',
+              },
             }}
           >
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                left: 0,
-                width: '100%',
-                height: '80px',
-                backgroundImage:
-                  'linear-gradient(180deg, rgba(250, 250, 250, 0.00) 0%, rgba(250, 250, 250, 0.64) 38.94%, #FAFAFA 87.98%)',
-              }}
-            ></Box>
+            <VerticalGradient />
+            <HorizontalGradient />
             <DescriptionBlock
               title={obstacleDetection.title}
               points={obstacleDetection.points}
@@ -173,8 +195,10 @@ export default function AIPoweredSolarSales() {
             />
             <Box
               sx={{
-                padding: { xs: 0, md: 4, xl: 6 },
-                mb: { xs: 3, md: 0 },
+                mb: 0,
+                [theme.breakpoints.down('md')]: {
+                  mb: 3,
+                },
                 overflow: 'hidden',
                 position: 'relative',
               }}
@@ -190,21 +214,20 @@ export default function AIPoweredSolarSales() {
           </Box>
           <Box
             sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
-              position: 'relative',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                width: {
-                  xs: '0',
-                  md: '1px',
-                },
-                height: '100%',
-                backgroundColor: 'tertiary.main',
+              mt: 0,
+              [theme.breakpoints.down('md')]: {
+                mt: 3,
               },
+              position: 'relative',
+              padding: 6,
+              [theme.breakpoints.down('lg')]: {
+                padding: 4,
+              },
+              [theme.breakpoints.down('md')]: {
+                gridTemplateColumns: '1fr',
+                padding: 0,
+              },
+
               '&::after': {
                 content: '""',
                 position: 'absolute',
@@ -241,8 +264,10 @@ export default function AIPoweredSolarSales() {
             />
             <Box
               sx={{
-                padding: { xs: 0, md: 4, xl: 6 },
-                mb: { xs: 3, md: 0 },
+                mb: 0,
+                [theme.breakpoints.down('md')]: {
+                  mb: 3,
+                },
                 overflow: 'hidden',
                 position: 'relative',
               }}
@@ -261,9 +286,9 @@ export default function AIPoweredSolarSales() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              md: '1fr 1fr',
+            gridTemplateColumns: '1fr 1fr',
+            [theme.breakpoints.down('md')]: {
+              gridTemplateColumns: '1fr',
             },
             position: 'relative',
             marginBottom: '1px',
@@ -282,9 +307,28 @@ export default function AIPoweredSolarSales() {
           <VerticalGradient />
           <Box
             sx={{
-              padding: { xs: 0, md: 4, xl: 6 },
-              mt: { xs: 3, md: 0 },
               position: 'relative',
+              padding: 6,
+              [theme.breakpoints.down('lg')]: {
+                padding: 4,
+              },
+              [theme.breakpoints.down('md')]: {
+                gridTemplateColumns: '1fr',
+                padding: 0,
+                mt: 3,
+              },
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: {
+                  xs: '0',
+                  md: '1px',
+                },
+                height: '100%',
+                backgroundColor: 'tertiary.main',
+              },
             }}
           >
             <Box
@@ -306,8 +350,10 @@ export default function AIPoweredSolarSales() {
             />
             <Box
               sx={{
-                padding: { xs: 0, md: 4, xl: 6 },
-                mb: { xs: 3, md: 0 },
+                mb: 0,
+                [theme.breakpoints.down('md')]: {
+                  mb: 0,
+                },
                 overflow: 'hidden',
                 position: 'relative',
               }}
@@ -323,25 +369,25 @@ export default function AIPoweredSolarSales() {
           </Box>
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateColumns: '1fr',
+              mt: 0,
               position: 'relative',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                width: '100%',
-                height: '1px',
-                backgroundImage: 'linear-gradient(90deg, #FAFAFA 0%, #96B0B0 50.15%, #FAFAFA 100%)',
+              padding: 6,
+              [theme.breakpoints.down('lg')]: {
+                padding: 4,
+              },
+              [theme.breakpoints.down('md')]: {
+                gridTemplateColumns: '1fr',
+                padding: 0,
+                mt: 3,
               },
             }}
           >
             <Box
               sx={{
-                padding: { xs: 0, md: 4, xl: 6 },
-                mt: { xs: 3, md: 0 },
+                mt: 0,
+                [theme.breakpoints.down('md')]: {
+                  mt: 3,
+                },
               }}
             >
               <DescriptionBlock
@@ -352,8 +398,10 @@ export default function AIPoweredSolarSales() {
             </Box>
             <Box
               sx={{
-                padding: { xs: 0, md: 4, xl: 6 },
-                mb: { xs: 3, md: 0 },
+                mt: 0,
+                [theme.breakpoints.down('md')]: {
+                  mt: 3,
+                },
                 overflow: 'hidden',
                 position: 'relative',
               }}
