@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const Review = ({ name, position, review }: { name: string; position: string; review: string }) => {
   return (
-    <Card>
-      <Box>
+    <Card sx={{ height: '100%' }}>
+      <Box sx={{ height: '100%', position: 'relative' }}>
         <Box
           sx={{
             display: 'flex',
@@ -42,6 +42,8 @@ const Review = ({ name, position, review }: { name: string; position: string; re
         </Box>
         <Box
           sx={theme => ({
+            position: 'relative',
+            bottom: 0,
             borderTop: `1px solid ${theme.palette.tertiary.main}`,
             py: 2,
             px: 4,
