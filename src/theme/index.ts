@@ -1,6 +1,6 @@
 'use client';
 
-import { createTheme, lighten } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { buildTypography } from '@/shared/utils/typography';
@@ -32,6 +32,13 @@ const commonConfigs: ThemeOptions = {
           [`@media (max-width:${BREAKPOINTS.tabletMid}px)`]: {
             fontSize: 13,
           },
+        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: 'var(--mui-palette-grey-200)',
         },
       },
     },
