@@ -122,7 +122,7 @@ export default function Header() {
               alignItems: 'center',
               gap: 2,
               mr: 'auto',
-              ml: 6,
+              ml: 4,
               width: '100%',
               transition: '0.2s linear',
             },
@@ -137,7 +137,7 @@ export default function Header() {
                 opacity: 0.9,
               },
               '.nav-menu-items': {
-                ml: 4,
+                ml: 6,
               },
             },
             // When a tooltip is open, increase fogginess
