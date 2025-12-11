@@ -1,17 +1,7 @@
 import { Box, Card, Typography } from '@mui/material';
 import Image from 'next/image';
 
-const Review = ({
-  name,
-  position,
-  review,
-  image, // TODO: add image
-}: {
-  name: string;
-  position: string;
-  review: string;
-  image: string;
-}) => {
+const Review = ({ name, position, review }: { name: string; position: string; review: string }) => {
   return (
     <Card>
       <Box>

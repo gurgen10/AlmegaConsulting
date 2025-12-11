@@ -70,7 +70,7 @@ export const menuItems = [
   },
   {
     key: 'pricing',
-    url: '/#pricing',
+    url: '/pricing',
   },
   {
     key: 'features',
@@ -79,7 +79,7 @@ export const menuItems = [
   },
   {
     key: 'blog',
-    url: '/#blog',
+    url: '/blog',
   },
   {
     key: 'aboutUs',

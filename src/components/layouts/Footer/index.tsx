@@ -4,7 +4,6 @@ import { Box, Link as MuiLink, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
 import FooterMenuWrapper from '@/components/layouts/Footer/components/FooterMenuWrapper';
 
 import FollowUs from '@/components/layouts/Footer/components/FollowUs';
@@ -34,6 +33,9 @@ export default function Footer() {
     <Box
       sx={{
         backgroundColor: 'tertiary.700',
+        px: { xs: 2, sm: 7.5, lg: 15 },
+        pt: { xs: 5, sm: 6, lg: 6 },
+        pb: { xs: 2, sm: 3, lg: 3 },
       }}
     >
       <Box component="footer" sx={FOOTER_STYLES}>

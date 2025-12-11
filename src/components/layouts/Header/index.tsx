@@ -69,12 +69,12 @@ export default function Header() {
     <>
       <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
       <AppBar
+        id="site-header-appbar"
         sx={{
           position: 'sticky',
           backgroundColor: 'transparent',
           zIndex: 1201,
           boxShadow: 'none',
-          height: '78px',
           px: '80px',
           [theme.breakpoints.down('lg')]: {
             px: '0',
@@ -88,27 +88,24 @@ export default function Header() {
             ...HEADER_STYLES,
             transition: '0.2s linear',
             minHeight: '48px !important',
-            py: 2,
-
+            my: isMobile ? 0 : 1,
+            py: 1.5,
             backdropFilter: 'blur(2px) saturate(120%)',
             WebkitBackdropFilter: 'blur(2px) saturate(120%)',
             position: 'relative',
             overflow: 'hidden',
+            lineHeight: '26px',
             backgroundBlendMode: 'plus-lighter',
-            maxWidth: '1232px',
-            px: '32px',
-            height: '100%',
             borderTop: '1px solid #FFF',
             borderBottom: '1px solid #FFF',
             backgroundColor: 'opacityDark.4',
 
-            // Sheen overlay
             '&::before': {
               content: '""',
               position: 'absolute',
               inset: 0,
               pointerEvents: 'none',
-
+              height: '62px',
               transform: 'translateX(-40%)',
               filter: 'blur(0px)',
               transition: 'transform 0.9s ease',
@@ -131,8 +128,9 @@ export default function Header() {
             },
 
             '&.header-shrink': {
-              my: 1.5,
-              maxWidth: '1296px',
+              my: isMobile ? 0 : 1.5,
+              py: 1,
+              maxWidth: 1376,
 
               '&::before': {
                 transform: 'translateX(-20%)',
@@ -155,7 +153,6 @@ export default function Header() {
                 width: 165,
               },
             },
-            my: isMobile ? 0 : 1,
             borderRadius: isMobile ? 0 : '8px',
             [theme.breakpoints.down('lg')]: {
               my: '0 !important',
@@ -186,9 +183,8 @@ export default function Header() {
                 slotProps={{
                   paper: {
                     sx: {
-                      marginTop: `68px`,
                       maxHeight: `calc(100% - 68px)`,
-                      backgroundColor: 'tertiary.900',
+                      backgroundColor: 'opacityLight.4',
                       borderRadius: '0 0 20px 20px',
                     },
                   },
@@ -197,7 +193,7 @@ export default function Header() {
                 open={drawerOpen}
                 onClose={toggleDrawer}
               >
-                <MenuMobile onClose={toggleDrawer} />
+                <MenuMobile />
               </Drawer>
             ) : (
               <Box

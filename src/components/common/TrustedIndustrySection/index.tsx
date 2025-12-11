@@ -10,12 +10,13 @@ export default function TrustedIndustrySection() {
   const t = useTranslations('homePage');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isScrolling = useRef<boolean>(true);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number>(0);
   const dragScrollLeft = useRef<number>(0);
   const scrollPosition = useRef<number>(0);
-  const [isHovering, setIsHovering] = useState(false);
+  const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
 
   const [logos] = useState([
     '/images/trusted-industry/Logo0.svg',
@@ -30,39 +31,81 @@ export default function TrustedIndustrySection() {
   const isMobile = useMediaQuery('(max-width: 600px)');
   const logoWidth = isMobile ? 120 : 180;
   const gap = 8;
-  const scrollSpeed = useRef(0.5); // pixels per frame for auto-scroll
 
   // Calculate dimensions
   const logoWidthWithGap = logoWidth + gap;
   const totalWidth = logoWidthWithGap * logos.length;
 
-  // Start/stop auto-scroll
+  // Start auto-scroll with delay between logos
   const startAutoScroll = useCallback(() => {
     if (!isScrolling.current || isDragging) return;
+
+    let isPaused = false;
+    let targetPosition = logoWidthWithGap; // Start by moving to first logo
 
     const animate = () => {
       if (!scrollContainerRef.current || !isScrolling.current || isDragging) return;
 
-      // Auto-scroll logic
-      scrollPosition.current = scrollPosition.current + scrollSpeed.current;
+      if (!isPaused) {
+        // Smooth scroll to the current target position
+        const distanceToTarget = targetPosition - scrollPosition.current;
 
-      // Reset position when we've scrolled through one complete set
-      if (scrollPosition.current >= totalWidth) {
-        scrollPosition.current = 0;
+        if (Math.abs(distanceToTarget) < 0.5) {
+          // Reached target position, pause for 1 second
+          isPaused = true;
+
+          // Set timeout to resume after 1 second
+          timeoutRef.current = setTimeout(() => {
+            isPaused = false;
+
+            // Update to next logo
+            setCurrentLogoIndex(prev => {
+              const nextIndex = (prev + 1) % logos.length;
+              targetPosition = (nextIndex + 1) * logoWidthWithGap;
+
+              // If we've scrolled through all logos in the current set, reset position
+              if (targetPosition >= totalWidth) {
+                scrollPosition.current = 0;
+                targetPosition = logoWidthWithGap;
+                return 0;
+              }
+
+              return nextIndex;
+            });
+
+            // Continue animation
+            if (isScrolling.current && !isDragging) {
+              animationFrameRef.current = requestAnimationFrame(animate);
+            }
+          }, 1000); // 1 second delay
+        } else {
+          // Smoothly scroll towards target position
+          scrollPosition.current += distanceToTarget * 0.05; // Smooth easing
+
+          // Update container position
+          scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
+          scrollContainerRef.current.style.transition = 'transform 0.1s linear';
+        }
       }
 
-      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
-      animationFrameRef.current = requestAnimationFrame(animate);
+      // Continue animation if not paused
+      if (!isPaused) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
     };
 
     animationFrameRef.current = requestAnimationFrame(animate);
-  }, [isDragging, totalWidth]);
+  }, [isDragging, logoWidthWithGap, logos.length, totalWidth]);
 
   const stopAutoScroll = useCallback(() => {
     isScrolling.current = false;
     if (animationFrameRef.current !== null) {
       cancelAnimationFrame(animationFrameRef.current);
       animationFrameRef.current = null;
+    }
+    if (timeoutRef.current !== null) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
     }
   }, []);
 
@@ -88,11 +131,15 @@ export default function TrustedIndustrySection() {
       if (!scrollContainerRef.current) return;
 
       const x = clientX - scrollContainerRef.current.offsetLeft;
-      const walk = (x - dragStartX.current) * 1.5; // Scroll speed multiplier
+      const walk = (x - dragStartX.current) * 1.5;
       const newPosition = dragScrollLeft.current - walk;
 
       // Update scroll position with boundary checking
       scrollPosition.current = Math.max(0, newPosition);
+
+      // Calculate which logo is currently centered
+      const currentIndex = Math.round(scrollPosition.current / logoWidthWithGap) % logos.length;
+      setCurrentLogoIndex(currentIndex);
 
       // Allow infinite scrolling by resetting position
       if (scrollPosition.current >= totalWidth) {
@@ -100,8 +147,9 @@ export default function TrustedIndustrySection() {
       }
 
       scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
+      scrollContainerRef.current.style.transition = 'none'; // Remove transition during drag
     },
-    [totalWidth]
+    [logoWidthWithGap, logos.length, totalWidth]
   );
 
   const handleMouseMove = useCallback(
@@ -119,14 +167,23 @@ export default function TrustedIndustrySection() {
     document.body.style.cursor = '';
     document.body.style.userSelect = '';
 
-    // Resume auto-scroll after a delay if not hovering
-    if (!isHovering) {
-      setTimeout(() => {
-        isScrolling.current = true;
-        startAutoScroll();
-      }, 1000);
+    // Snap to nearest logo when releasing drag
+    if (scrollContainerRef.current) {
+      scrollPosition.current =
+        Math.round(scrollPosition.current / logoWidthWithGap) * logoWidthWithGap;
+      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
+      scrollContainerRef.current.style.transition = 'transform 0.3s ease';
+
+      const currentIndex = Math.round(scrollPosition.current / logoWidthWithGap) % logos.length;
+      setCurrentLogoIndex(currentIndex);
     }
-  }, [isDragging, isHovering, startAutoScroll]);
+
+    // Resume auto-scroll after a delay if not hovering
+    setTimeout(() => {
+      isScrolling.current = true;
+      startAutoScroll();
+    }, 1000);
+  }, [isDragging, startAutoScroll, logoWidthWithGap, logos.length]);
 
   // Touch handlers for mobile
   const handleTouchStart = useCallback(
@@ -154,22 +211,24 @@ export default function TrustedIndustrySection() {
   const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
 
-    if (!isHovering) {
-      setTimeout(() => {
-        isScrolling.current = true;
-        startAutoScroll();
-      }, 1000);
-    }
-  }, [isHovering, startAutoScroll]);
+    // Snap to nearest logo when releasing touch
+    if (scrollContainerRef.current) {
+      scrollPosition.current =
+        Math.round(scrollPosition.current / logoWidthWithGap) * logoWidthWithGap;
+      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
+      scrollContainerRef.current.style.transition = 'transform 0.3s ease';
 
-  // Hover handlers
-  const handleMouseEnter = useCallback(() => {
-    setIsHovering(true);
-    stopAutoScroll();
-  }, [stopAutoScroll]);
+      const currentIndex = Math.round(scrollPosition.current / logoWidthWithGap) % logos.length;
+      setCurrentLogoIndex(currentIndex);
+    }
+
+    setTimeout(() => {
+      isScrolling.current = true;
+      startAutoScroll();
+    }, 1000);
+  }, [startAutoScroll, logoWidthWithGap, logos.length]);
 
   const handleMouseLeave = useCallback(() => {
-    setIsHovering(false);
     if (!isDragging) {
       isScrolling.current = true;
       startAutoScroll();
@@ -234,7 +293,7 @@ export default function TrustedIndustrySection() {
             userSelect: 'none',
             cursor: isDragging ? 'grabbing' : 'grab',
           }}
-          onMouseEnter={handleMouseEnter}
+          // onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           {/* Gradient overlays */}
@@ -274,13 +333,32 @@ export default function TrustedIndustrySection() {
                 alignItems: 'center',
                 gap: 0.5,
                 zIndex: 3,
-                opacity: isHovering ? 1 : 0.6,
+                opacity: 0.6,
                 transition: 'opacity 0.3s ease',
               }}
             >
               <span>← Drag to scroll →</span>
             </Box>
           )}
+
+          {/* Current logo indicator */}
+          <Box
+            sx={{
+              position: 'absolute',
+              top: -30,
+              left: 20,
+              color: 'grey.400',
+              fontSize: '0.75rem',
+              zIndex: 3,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 0.5,
+            }}
+          >
+            <span>
+              {currentLogoIndex + 1} / {logos.length}
+            </span>
+          </Box>
 
           <Box
             ref={scrollContainerRef}
@@ -291,45 +369,49 @@ export default function TrustedIndustrySection() {
               alignItems: 'center',
               gap: `${gap}px`,
               willChange: 'transform',
-              touchAction: 'none', // Prevent browser touch actions
+              touchAction: 'none',
             }}
           >
             {/* Render logos multiple times for seamless infinite scroll */}
-            {[...logos, ...logos, ...logos].map((logo, index) => (
-              <Box
-                key={`${logo}-${index}`}
-                sx={{
-                  flexShrink: 0,
-                  width: `${logoWidth}px`,
-                  height: 'auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  filter: 'brightness(0) invert(1)',
-                  opacity: isDragging ? 1 : 0.9,
-                  transition: 'opacity 0.3s ease',
-                  transform: isDragging ? 'scale(1.02)' : 'scale(1)',
-                  transitionProperty: 'opacity, transform',
-                  '&:hover': {
-                    opacity: 1,
-                  },
-                }}
-              >
-                <Image
-                  src={logo}
-                  alt=""
-                  width={logoWidth}
-                  height={40}
-                  style={{
-                    width: '100%',
-                    height: '28px',
-                    objectFit: 'contain',
-                    pointerEvents: 'none',
+            {[...logos, ...logos, ...logos].map((logo, index) => {
+              const logoSetIndex = index % logos.length;
+              const isCurrentLogo = logoSetIndex === currentLogoIndex;
+
+              return (
+                <Box
+                  key={`${logo}-${index}`}
+                  sx={{
+                    flexShrink: 0,
+                    width: `${logoWidth}px`,
+                    height: 'auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    filter: 'brightness(0) invert(1)',
+                    opacity: 0.6,
+                    transform: isCurrentLogo ? 'scale(1.05)' : 'scale(1)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease',
+                    '&:hover': {
+                      opacity: 1,
+                    },
                   }}
-                  priority={index < 14}
-                />
-              </Box>
-            ))}
+                >
+                  <Image
+                    src={logo}
+                    alt=""
+                    width={logoWidth}
+                    height={40}
+                    style={{
+                      width: '100%',
+                      height: '28px',
+                      objectFit: 'contain',
+                      pointerEvents: 'none',
+                    }}
+                    priority={index < 14}
+                  />
+                </Box>
+              );
+            })}
           </Box>
         </Box>
       </Box>

@@ -13,112 +13,26 @@ import {
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
-import { MenuItem, SubMenuItem } from '@/components/layouts/Header/header.types';
-import { LOGIN_URL, REGISTER_URL } from '@/shared/constants/common';
+import { REGISTER_URL } from '@/shared/constants/common';
 
-interface MenuMobileProps {
-  onClose: () => void;
-}
-
-export default function MenuMobile({ onClose }: MenuMobileProps) {
+export default function MenuMobile() {
   const pathname = usePathname();
   const t = useTranslations('header');
-  const router = useRouter();
-  const [activeItem, setActiveItem] = useState<string>('');
   const [expandedKey, setExpandedKey] = useState<string | false>(false);
-  const [activeSubKey, setActiveSubKey] = useState<string | null>(null);
   const theme = useTheme();
-  const [hash, setHash] = useState('');
-  const bookDemoUrl = '#book-a-demo';
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      setHash(window.location.hash);
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  const activeItem = useMemo(() => {
+    const activeMenuItem = menuItems.find(
+      item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
+    );
 
-  useEffect(() => {
-    if (menuItems.length > 0) {
-      const currentHash = window.location.hash || '';
-      const activeMenuItem = menuItems.find(item => {
-        const itemUrl = item.url.startsWith('/#')
-          ? item.url
-          : pathname + (item.url === '/' ? '' : item.url);
-        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
-        return currentUrl === itemUrl || (itemUrl !== '/' && currentUrl.startsWith(itemUrl));
-      });
-
-      let activeKey = currentHash === bookDemoUrl ? bookDemoUrl : activeMenuItem?.key;
-
-      if (!activeKey) {
-        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
-        for (const item of menuItems) {
-          const sub = item.submenuItems?.find(sub => sub.url === currentUrl);
-          if (sub) {
-            activeKey = item.key;
-            setActiveSubKey(sub.key);
-            setExpandedKey(item.key);
-            break;
-          }
-        }
-      }
-
-      setActiveItem(activeKey ?? menuItems[0].key);
-    }
-  }, [pathname, hash]);
-
-  useEffect(() => {
-    if (pathname) {
-      const activeMenuItem = menuItems.find(
-        item => pathname === item.url || (item.url !== '/' && pathname.startsWith(item.url))
-      );
-
-      let activeKey = hash === bookDemoUrl ? bookDemoUrl : activeMenuItem?.key;
-
-      if (!activeKey) {
-        const currentHash = window.location.hash || '';
-        const currentUrl = currentHash ? `/#${currentHash.substring(1)}` : pathname;
-        for (const item of menuItems) {
-          const sub = item.submenuItems?.find(sub => sub.url === currentUrl);
-          if (sub) {
-            activeKey = item.key;
-            setActiveSubKey(sub.key);
-            setExpandedKey(item.key);
-            break;
-          }
-        }
-      }
-
-      if (activeKey) {
-        setActiveItem(activeKey);
-      }
-    }
-  }, [pathname, hash]);
-
-  const handleItemClick = (item: MenuItem, isSubmenuItem = false) => {
-    setActiveItem(item.key);
-    if (!item.submenuItems?.length || isSubmenuItem) {
-      onClose();
-    }
-    if (item.url) {
-      router.push(item.url);
-    }
-  };
-
-  const handleSubItemClick = (parent: MenuItem, subItem: SubMenuItem) => {
-    setActiveItem(parent.key);
-    onClose();
-    if (subItem.url) {
-      router.push(subItem.url);
-    }
-  };
+    return activeMenuItem ? activeMenuItem.key : '/';
+  }, [pathname]);
 
   return (
     <Box
@@ -128,17 +42,18 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         height: 'calc(100vh - 68px)',
         position: 'relative',
         display: 'flex',
+        backgroundColor: 'opacityLight.90',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
         flexDirection: 'column',
       }}
     >
       <Stack
         mb={3}
-        gap={1}
         sx={{
           overflowY: 'auto',
           flex: 1,
           pb: '120px',
+          mt: '62px',
           backdropFilter: 'blur(10px) saturate(120%)',
           WebkitBackdropFilter: 'blur(10px) saturate(120%)',
         }}
@@ -157,15 +72,8 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
               }}
               underline="none"
               variant="button"
-              component={item.submenuItems?.length ? 'span' : 'button'}
-              onClick={() => {
-                if (item.submenuItems?.length) {
-                  setExpandedKey(prev => (prev === item.key ? false : item.key));
-                } else {
-                  setActiveSubKey(null);
-                  handleItemClick(item);
-                }
-              }}
+              component={item.submenuItems?.length ? 'button' : 'a'}
+              href={item.url}
               className={isActive ? 'active' : ''}
             >
               {t(item.key)}
@@ -183,12 +91,19 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                 boxShadow: 'none',
                 padding: 0,
                 borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
+                '&.MuiAccordion-root.Mui-expanded': {
+                  margin: 0,
+                },
                 '&.Mui-expanded .MuiAccordionSummary-expandIconWrapper': {
                   transform: 'rotate(-90deg)',
                 },
                 '&.MuiPaper-root::before': {
                   content: "''",
                   height: 0,
+                },
+                '& .MuiButtonBase-root': {
+                  py: 2,
+                  px: 0,
                 },
               }}
             >
@@ -198,16 +113,13 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                 id="panel1-header"
                 sx={{
                   marginLeft: 0,
-                  paddingLeft: '6px',
-                  '&.MuiAccordionSummary-root.Mui-expanded': {
-                    minHeight: '48px',
-                  },
-                  '& .MuiAccordionSummary-content.Mui-expanded': {
-                    margin: theme.spacing(0, 0),
+                  py: 2,
+                  '& .MuiAccordionSummary-content': {
+                    margin: 0,
                   },
                 }}
               >
-                {link}
+                <Typography variant="button">{link}</Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ p: 0 }}>
                 <Box
@@ -227,16 +139,12 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                     >
                       <MuiLink
                         href={subItem.url}
-                        onClick={() => handleSubItemClick(item, subItem)}
                         sx={{
                           display: 'flex',
                           alignItems: 'flex-start',
                           p: 2,
                           textDecoration: 'none',
                           color: 'grey.900',
-                          '& .MuiTypography-h6': {
-                            color: activeSubKey === subItem.key ? 'primary.main' : 'inherit',
-                          },
                           '&:hover': {
                             '& .MuiTypography-h6': {
                               color: 'primary.main',
@@ -275,7 +183,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             <Box
               key={item.key}
               sx={{
-                padding: '6px 8px',
+                py: 2,
                 textAlign: 'left',
                 borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
               }}
@@ -305,7 +213,7 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
         <Button
           component={Link}
           color="primary"
-          href="/#book-a-demo"
+          href="/book-a-demo"
           size="medium"
           sx={{
             backgroundColor: 'secondary.500',
@@ -317,14 +225,13 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
             flex: 1,
             color: 'grey.50',
           }}
-          onClick={() => handleItemClick({ key: 'bookDemo', url: '/#book-a-demo' })}
         >
           {t('bookDemo')}
         </Button>
         <Button
           href={REGISTER_URL}
           component={Link}
-          variant="outlined"
+          variant="contained"
           size="medium"
           color="primary"
           sx={{
