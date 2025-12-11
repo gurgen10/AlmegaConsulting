@@ -35,13 +35,6 @@ const commonConfigs: ThemeOptions = {
         },
       },
     },
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          backgroundColor: 'var(--mui-palette-grey-200)',
-        },
-      },
-    },
     MuiTextField: {
       styleOverrides: {
         root: {
@@ -143,10 +136,6 @@ export const darkTheme = createTheme({
     tertiary: makePalette('tertiary'),
     opacityDark: makePalette('opacityDark'),
     opacityLight: makePalette('opacityLight'),
-
-    background: {
-      default: 'var(--mui-palette-grey-200)',
-    },
   },
   ...commonConfigs,
 });
