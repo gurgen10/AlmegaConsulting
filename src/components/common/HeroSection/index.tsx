@@ -19,24 +19,32 @@ export default function HeroSection() {
         overflow: 'hidden',
         backgroundColor: theme.palette.grey[200],
         backgroundImage: 'url(/images/hero-section.png)',
-        backgroundPosition: 'calc(100% + 100px) 100%',
+        backgroundPosition: 'calc(50% + 350px) 100%',
         backgroundAttachment: 'scroll',
         backgroundRepeat: 'no-repeat',
-        [theme.breakpoints.down('xl')]: {
-          backgroundPosition: 'calc(100% + 400px) 115%',
+        backgroundSize: 'auto 80%',
+        backgroundPositionY: 'bottom',
+        [theme.breakpoints.up('xl')]: {
+          backgroundPosition: 'calc(50% + 600px) bottom',
+          backgroundSize: 'auto 90%',
         },
-        [theme.breakpoints.down('lg')]: {
-          backgroundPosition: 'calc(100% + 500px) 115%',
+        [theme.breakpoints.between('lg', 'xl')]: {
+          backgroundPosition: 'calc(30% + 700px) bottom',
+          backgroundSize: 'auto 85%',
+        },
+        [theme.breakpoints.between('md', 'lg')]: {
+          backgroundPosition: 'calc(50% + 500px) bottom',
+          backgroundSize: 'auto 75%',
         },
         [theme.breakpoints.down('md')]: {
-          backgroundSize: '465px auto',
-          backgroundPosition: '100% 100%',
+          backgroundSize: 'auto 50%',
+          backgroundPosition: 'calc(50% + 200px) bottom',
           minHeight: '740px',
         },
         [theme.breakpoints.down('sm')]: {
-          backgroundSize: '408px auto',
-          backgroundPosition: '100% 100%',
+          backgroundSize: 'auto 50%',
           minHeight: '631px',
+          backgroundPosition: 'calc(50% + 80px) bottom',
         },
       })}
     >
