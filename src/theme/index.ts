@@ -1,6 +1,6 @@
 'use client';
 
-import { createTheme } from '@mui/material/styles';
+import { createTheme, lighten } from '@mui/material/styles';
 
 import { BREAKPOINTS } from '@/shared/constants/breakpoints';
 import { buildTypography } from '@/shared/utils/typography';
@@ -57,10 +57,18 @@ const commonConfigs: ThemeOptions = {
     },
     MuiButton: {
       styleOverrides: {
-        root: {
+        root: ({ ownerState, theme }) => ({
           textTransform: 'none',
           borderRadius: 4,
-        },
+          ...(ownerState.variant === 'contained' && {
+            '&:hover': {
+              backgroundColor:
+                ownerState.color === 'inherit'
+                  ? 'inherit'
+                  : theme.palette[ownerState.color || 'primary']?.light,
+            },
+          }),
+        }),
         sizeLarge: {
           padding: '8px 22px',
           '&.MuiButton-text': {
