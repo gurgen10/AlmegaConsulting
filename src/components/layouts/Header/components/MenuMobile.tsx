@@ -19,15 +19,11 @@ import { useMemo, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
 import { REGISTER_URL } from '@/shared/constants/common';
-interface MenuMobileProps {
-  onClose: () => void;
-}
 
-export default function MenuMobile({ onClose }: MenuMobileProps) {
+export default function MenuMobile() {
   const pathname = usePathname();
   const t = useTranslations('header');
   const [expandedKey, setExpandedKey] = useState<string | false>(false);
-  const [activeSubKey, setActiveSubKey] = useState<string | null>(null);
   const theme = useTheme();
 
   const activeItem = useMemo(() => {
@@ -149,9 +145,6 @@ export default function MenuMobile({ onClose }: MenuMobileProps) {
                           p: 2,
                           textDecoration: 'none',
                           color: 'grey.900',
-                          '& .MuiTypography-h6': {
-                            color: activeSubKey === subItem.key ? 'primary.main' : 'inherit',
-                          },
                           '&:hover': {
                             '& .MuiTypography-h6': {
                               color: 'primary.main',

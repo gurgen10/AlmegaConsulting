@@ -193,7 +193,7 @@ export default function Header() {
                 open={drawerOpen}
                 onClose={toggleDrawer}
               >
-                <MenuMobile onClose={toggleDrawer} />
+                <MenuMobile />
               </Drawer>
             ) : (
               <Box

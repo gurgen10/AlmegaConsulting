@@ -71,12 +71,7 @@ export default function Testimonials() {
         >
           {reviewers.map(review => (
             <Box key={review.name}>
-              <Review
-                name={review.name}
-                position={review.position}
-                review={review.review}
-                image={review.image}
-              />
+              <Review name={review.name} position={review.position} review={review.review} />
             </Box>
           ))}
         </Box>
