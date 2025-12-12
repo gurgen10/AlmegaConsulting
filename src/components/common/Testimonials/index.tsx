@@ -17,10 +17,9 @@ export default function Testimonials() {
   const [isPaused, setIsPaused] = useState(false);
   const [itemWidth, setItemWidth] = useState(400); // Default width for desktop
 
-  // Scroll configuration
   const SCROLL_CONFIG = {
-    itemDuration: 3000, // 3 seconds to scroll one item
-    pauseDuration: 3000, // 3 second pause after scrolling all items
+    itemDuration: 3000,
+    pauseDuration: 3000,
   };
 
   const reviewers = [
