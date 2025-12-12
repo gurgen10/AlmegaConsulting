@@ -1,0 +1,2 @@
+export const WEBSITE_PREVIEW_WIDTH = 1536;
+export const WEBSITE_PREVIEW_HEIGHT = 982;

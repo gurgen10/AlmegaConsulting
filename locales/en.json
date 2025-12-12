@@ -178,5 +178,52 @@
     },
     "getStartedFree": "Get Started Free",
     "bookDemo": "Book a Demo"
+  },
+  "quotingSystemPage": {
+    "tryMeSection": {
+      "title": "Capture Leads and Send Instant Quotes with Our Solar <primary>Lead Capture</primary> Platform",
+      "description": "Boost your solar conversions by capturing qualified leads on your website and sending instant quotes at the perfect moment.",
+      "signUp": "Sign Up",
+      "bookDemo": "Book a Demo"
+    },
+    "quoteConfiguration": {
+      "layout": "Layout",
+      "pickLayout": "Pick a layout for your landing page.",
+      "brandingColors": "Branding Colors",
+      "companyLogo": "Company Logo",
+      "background": "Background",
+      "upload": "Upload",
+      "layoutOptions": {
+        "background": "Background",
+        "sideImage": "Side Image",
+        "minimalistic": "Minimalistic",
+        "elegant": "Elegant"
+      },
+      "colorsOptions": {
+        "button": "Button",
+        "buttonText": "Button Text",
+        "title": "Title"
+      }
+    },
+    "quotePreview": {
+      "title": "Ready to start?",
+      "description": "Enter your details below and instantly receive an accurate solar quote for your home.",
+      "fullName": "Full Name",
+      "email": "Email",
+      "address": "Address",
+      "consumption": "Last Month Consumption ($)",
+      "isOwner": "I Own My House",
+      "requestQuote": "Request a Quote",
+      "contactUs": "Contact Us:",
+      "termsOfUse": "By Requesting a quote you agree with our <link>Terms of Use</link> | <link>Privacy Policy</link>",
+      "poweredBy": "Powered by <primary>SolarGenix.ai</primary> © {year}, All rights reserved."
+    }
+  },
+  "colorPicker": {
+    "red": "Red",
+    "green": "Green",
+    "blue": "Blue",
+    "hex": "Hex",
+    "title": "ColorPicker"
   }
 }
