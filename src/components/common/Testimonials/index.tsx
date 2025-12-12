@@ -69,7 +69,6 @@ export default function Testimonials() {
   // Duplicate reviewers for seamless scrolling
   const allReviewers = [...reviewers, ...reviewers];
 
-  // Update item width on resize and mobile changes
   useEffect(() => {
     const updateItemWidth = () => {
       if (!scrollContainerRef.current) return;
@@ -85,13 +84,10 @@ export default function Testimonials() {
       setItemWidth(itemWidth + gap);
     };
 
-    // Update initially
     updateItemWidth();
 
-    // Update on resize
     window.addEventListener('resize', updateItemWidth);
 
-    // Update when isMobile changes
     const timeoutId = setTimeout(updateItemWidth, 100);
 
     return () => {
@@ -143,9 +139,7 @@ export default function Testimonials() {
         // Add the progress within the current item and Apply scroll
         container.scrollLeft = basePosition + itemWidth * easedProgress;
       } else {
-        // We're in the pause phase
         if (!isInPause) {
-          // Just entered pause phase - scroll to start of next cycle
           container.scrollLeft = 0;
           isInPause = true;
         }
@@ -154,7 +148,6 @@ export default function Testimonials() {
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    // Reset scroll position to start
     container.scrollLeft = 0;
     animationRef.current = requestAnimationFrame(animate);
   }, [
@@ -166,7 +159,6 @@ export default function Testimonials() {
     SCROLL_CONFIG.pauseDuration,
   ]);
 
-  // Handle mouse events for pause on hover
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
 
@@ -174,7 +166,6 @@ export default function Testimonials() {
     if (!isMobile) {
       startAnimation();
     } else {
-      // On mobile, disable animation and reset scroll position
       if (scrollContainerRef.current) {
         scrollContainerRef.current.scrollLeft = 0;
       }
@@ -187,7 +178,6 @@ export default function Testimonials() {
     };
   }, [startAnimation, isMobile]);
 
-  // Reset animation when pause state changes
   useEffect(() => {
     if (!isPaused && !isMobile) {
       if (animationRef.current) {
