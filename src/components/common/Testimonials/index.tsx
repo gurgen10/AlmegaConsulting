@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Typography } from '@mui/material';
-import { useRef } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { useTheme, useMediaQuery } from '@mui/material';
 
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
@@ -13,6 +13,15 @@ export default function Testimonials() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const scrollContainerRef = useRef(null);
+  const animationRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [itemWidth, setItemWidth] = useState(400); // Default width for desktop
+
+  // Scroll configuration
+  const SCROLL_CONFIG = {
+    itemDuration: 3000, // 3 seconds to scroll one item
+    pauseDuration: 3000, // 3 second pause after scrolling all items
+  };
 
   const reviewers = [
     {
@@ -61,6 +70,135 @@ export default function Testimonials() {
   // Duplicate reviewers for seamless scrolling
   const allReviewers = [...reviewers, ...reviewers];
 
+  // Update item width on resize and mobile changes
+  useEffect(() => {
+    const updateItemWidth = () => {
+      if (!scrollContainerRef.current) return;
+
+      const container = scrollContainerRef.current;
+      if (!container.firstChild?.firstChild) return;
+
+      const item = container.firstChild.firstChild;
+      const itemWidth = item.offsetWidth;
+      const computedStyle = window.getComputedStyle(container.firstChild);
+      const gap = parseInt(computedStyle.gap) || 24;
+
+      setItemWidth(itemWidth + gap);
+    };
+
+    // Update initially
+    updateItemWidth();
+
+    // Update on resize
+    window.addEventListener('resize', updateItemWidth);
+
+    // Update when isMobile changes
+    const timeoutId = setTimeout(updateItemWidth, 100);
+
+    return () => {
+      window.removeEventListener('resize', updateItemWidth);
+      clearTimeout(timeoutId);
+    };
+  }, [isMobile]);
+
+  const startAnimation = useCallback(() => {
+    if (!scrollContainerRef.current || isMobile || isPaused) {
+      return;
+    }
+
+    const container = scrollContainerRef.current;
+    let startTime = null;
+    const currentItemIndex = 0;
+    let isInPause = false;
+    let cycleStartTime = null;
+
+    const animate = timestamp => {
+      if (!startTime) {
+        startTime = timestamp;
+        cycleStartTime = timestamp;
+      }
+      if (isPaused) return;
+
+      const elapsed = timestamp - startTime;
+      const totalCycleTime =
+        reviewers.length * SCROLL_CONFIG.itemDuration + SCROLL_CONFIG.pauseDuration;
+      const cycleElapsed = timestamp - cycleStartTime;
+
+      // Calculate which cycle we're in
+      const cycleProgress = (cycleElapsed % totalCycleTime) / totalCycleTime;
+
+      if (cycleElapsed % totalCycleTime < reviewers.length * SCROLL_CONFIG.itemDuration) {
+        // We're in the scrolling phase
+        isInPause = false;
+
+        // Calculate which item we should be showing
+        const scrollPhaseTime = cycleElapsed % totalCycleTime;
+        const itemIndex = Math.floor(scrollPhaseTime / SCROLL_CONFIG.itemDuration);
+
+        // Calculate progress within current item
+        const itemProgress =
+          (scrollPhaseTime % SCROLL_CONFIG.itemDuration) / SCROLL_CONFIG.itemDuration;
+
+        // Calculate scroll position with easing
+        const easeInOut = t => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+        const easedProgress = easeInOut(itemProgress);
+
+        // Calculate the base position for the current item
+        const basePosition = itemIndex * itemWidth;
+        // Add the progress within the current item
+        const scrollPosition = basePosition + itemWidth * easedProgress;
+
+        // Apply scroll
+        container.scrollLeft = scrollPosition;
+      } else {
+        // We're in the pause phase
+        if (!isInPause) {
+          // Just entered pause phase - scroll to start of next cycle
+          container.scrollLeft = 0;
+          isInPause = true;
+        }
+        // During pause, maintain position at start
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    // Reset scroll position to start
+    container.scrollLeft = 0;
+    animationRef.current = requestAnimationFrame(animate);
+  }, [isMobile, isPaused, reviewers.length, itemWidth]);
+
+  // Handle mouse events for pause on hover
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  useEffect(() => {
+    if (!isMobile) {
+      startAnimation();
+    } else {
+      // On mobile, disable animation and reset scroll position
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft = 0;
+      }
+    }
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [startAnimation, isMobile]);
+
+  // Reset animation when pause state changes
+  useEffect(() => {
+    if (!isPaused && !isMobile) {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      startAnimation();
+    }
+  }, [isPaused, startAnimation, isMobile]);
+
   return (
     <Box
       component="section"
@@ -87,40 +225,48 @@ export default function Testimonials() {
         </Typography>
         <Box
           ref={scrollContainerRef}
+          onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+          onMouseLeave={!isMobile ? handleMouseLeave : undefined}
           sx={{
             position: 'relative',
-            overflow: 'hidden',
-            '&:hover .scroll-content': {
-              animationPlayState: 'paused',
+            overflowX: isMobile ? 'auto' : 'auto',
+            overflowY: 'hidden',
+            whiteSpace: 'nowrap',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+            cursor: isMobile ? 'grab' : 'grab',
+            '&:active': {
+              cursor: 'grabbing',
             },
           }}
         >
           <Box
-            className="scroll-content"
             sx={{
-              display: 'flex',
+              display: 'inline-flex',
               gap: 3,
               py: 2,
-              animation: !isMobile ? 'scroll 30s linear infinite' : 'none',
-              '@keyframes scroll': {
-                '0%': {
-                  transform: 'translateX(0)',
-                },
-                '100%': {
-                  transform: 'translateX(-50%)',
-                },
-              },
+              minWidth: 'max-content',
             }}
           >
             {allReviewers.map((review, index) => (
               <Box
                 key={`${review.name}-${index}`}
                 sx={{
-                  flex: '0 0 auto',
+                  display: 'inline-block',
+                  flexShrink: 0,
                   width: {
-                    xs: '100%',
+                    xs: 'calc(100vw - 48px)', // Full viewport width minus padding
+                    sm: 'calc(100vw - 96px)', // Adjust for tablet
                     md: '400px',
                   },
+                  maxWidth: {
+                    xs: '400px', // Maximum width on mobile
+                    md: '400px',
+                  },
+                  whiteSpace: 'normal',
+                  verticalAlign: 'top',
                 }}
               >
                 <Review name={review.name} position={review.position} review={review.review} />

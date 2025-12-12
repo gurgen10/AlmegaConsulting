@@ -3,47 +3,62 @@ import Image from 'next/image';
 
 const Review = ({ name, position, review }: { name: string; position: string; review: string }) => {
   return (
-    <Card sx={{ height: '100%' }}>
-      <Box sx={{ height: '100%', position: 'relative' }}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 2,
-            pt: 3,
-            px: 4,
-          }}
-        >
-          <Box>
-            {Array.from({ length: 5 }).map((_, index) => (
+    <Card sx={{ height: '100%', maxWidth: 400 }}>
+      <Box
+        sx={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Box>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 2,
+              pt: 3,
+              px: 4,
+            }}
+          >
+            <Box>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Image
+                  key={index}
+                  src="/images/Testimonials/star.svg"
+                  alt="star"
+                  width={18}
+                  height={18}
+                />
+              ))}
+            </Box>
+            <Box>
               <Image
-                key={index}
-                src="/images/Testimonials/star.svg"
-                alt="star"
-                width={18}
+                src="/images/Testimonials/blockquote.svg"
+                alt="blockquote"
+                width={20}
                 height={18}
               />
-            ))}
+            </Box>
           </Box>
           <Box>
-            <Image
-              src="/images/Testimonials/blockquote.svg"
-              alt="blockquote"
-              width={20}
-              height={18}
-            />
+            <Typography
+              variant="subtitle2"
+              sx={{
+                py: 2,
+                color: 'grey.800',
+                fontWeight: 300,
+                px: 4,
+              }}
+            >
+              {review}
+            </Typography>
           </Box>
-        </Box>
-        <Box>
-          <Typography variant="subtitle2" sx={{ py: 2, color: 'grey.800', fontWeight: 300, px: 4 }}>
-            {review}
-          </Typography>
         </Box>
         <Box
           sx={theme => ({
-            position: 'relative',
-            bottom: 0,
             borderTop: `1px solid ${theme.palette.tertiary.main}`,
             py: 2,
             px: 4,
