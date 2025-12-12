@@ -69,7 +69,6 @@ export default function Header() {
     <>
       <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
       <AppBar
-        id="site-header-appbar"
         sx={{
           position: 'sticky',
           backgroundColor: 'transparent',
