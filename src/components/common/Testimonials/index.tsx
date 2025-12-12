@@ -12,14 +12,14 @@ export default function Testimonials() {
   const t = useTranslations('homePage');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const scrollContainerRef = useRef(null);
-  const animationRef = useRef(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [itemWidth, setItemWidth] = useState(400); // Default width for desktop
+  const [itemWidth, setItemWidth] = useState(1000); // Default width for desktop
 
   const SCROLL_CONFIG = {
     itemDuration: 3000,
-    pauseDuration: 3000,
+    pauseDuration: 0,
   };
 
   const reviewers = [
@@ -77,9 +77,9 @@ export default function Testimonials() {
       const container = scrollContainerRef.current;
       if (!container.firstChild?.firstChild) return;
 
-      const item = container.firstChild.firstChild;
+      const item = container.firstChild.firstChild as HTMLDivElement;
       const itemWidth = item.offsetWidth;
-      const computedStyle = window.getComputedStyle(container.firstChild);
+      const computedStyle = window.getComputedStyle(container.firstChild as Element);
       const gap = parseInt(computedStyle.gap) || 24;
 
       setItemWidth(itemWidth + gap);
@@ -106,28 +106,23 @@ export default function Testimonials() {
     }
 
     const container = scrollContainerRef.current;
-    let startTime = null;
-    const currentItemIndex = 0;
+    let startTime: number | null = null;
     let isInPause = false;
-    let cycleStartTime = null;
+    let cycleStartTime: number | null = null;
 
-    const animate = timestamp => {
+    const animate = (timestamp: number) => {
       if (!startTime) {
         startTime = timestamp;
         cycleStartTime = timestamp;
       }
       if (isPaused) return;
 
-      const elapsed = timestamp - startTime;
       const totalCycleTime =
         reviewers.length * SCROLL_CONFIG.itemDuration + SCROLL_CONFIG.pauseDuration;
-      const cycleElapsed = timestamp - cycleStartTime;
+      const cycleElapsed = timestamp - (cycleStartTime ?? 0);
 
       // Calculate which cycle we're in
-      const cycleProgress = (cycleElapsed % totalCycleTime) / totalCycleTime;
-
       if (cycleElapsed % totalCycleTime < reviewers.length * SCROLL_CONFIG.itemDuration) {
-        // We're in the scrolling phase
         isInPause = false;
 
         // Calculate which item we should be showing
@@ -139,16 +134,14 @@ export default function Testimonials() {
           (scrollPhaseTime % SCROLL_CONFIG.itemDuration) / SCROLL_CONFIG.itemDuration;
 
         // Calculate scroll position with easing
-        const easeInOut = t => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+        const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
         const easedProgress = easeInOut(itemProgress);
 
         // Calculate the base position for the current item
         const basePosition = itemIndex * itemWidth;
-        // Add the progress within the current item
-        const scrollPosition = basePosition + itemWidth * easedProgress;
 
-        // Apply scroll
-        container.scrollLeft = scrollPosition;
+        // Add the progress within the current item and Apply scroll
+        container.scrollLeft = basePosition + itemWidth * easedProgress;
       } else {
         // We're in the pause phase
         if (!isInPause) {
@@ -156,7 +149,6 @@ export default function Testimonials() {
           container.scrollLeft = 0;
           isInPause = true;
         }
-        // During pause, maintain position at start
       }
 
       animationRef.current = requestAnimationFrame(animate);
@@ -165,7 +157,14 @@ export default function Testimonials() {
     // Reset scroll position to start
     container.scrollLeft = 0;
     animationRef.current = requestAnimationFrame(animate);
-  }, [isMobile, isPaused, reviewers.length, itemWidth]);
+  }, [
+    isMobile,
+    isPaused,
+    reviewers.length,
+    itemWidth,
+    SCROLL_CONFIG.itemDuration,
+    SCROLL_CONFIG.pauseDuration,
+  ]);
 
   // Handle mouse events for pause on hover
   const handleMouseEnter = () => setIsPaused(true);
@@ -199,34 +198,49 @@ export default function Testimonials() {
   }, [isPaused, startAnimation, isMobile]);
 
   return (
-    <Box
-      component="section"
-      sx={{
-        ...SECTION_STYLES_Y,
-        ...SECTION_STYLES_X,
-        backgroundColor: 'primary.800',
-        boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
-      }}
-    >
-      <Box {...CONTAINER_STYLES}>
-        <Typography
-          component="h2"
-          variant="h3"
-          sx={{
-            fontWeight: 500,
-            textAlign: 'center',
-            color: 'grey.25',
-            mb: 5,
-            px: 3,
-          }}
-        >
-          {t('whatOurCustomerAreSayingAboutOurSolarSalesSoftware')}
-        </Typography>
+    <Box sx={{ backgroundColor: 'primary.800', boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)' }}>
+      <Box
+        component="section"
+        sx={{
+          ...SECTION_STYLES_Y,
+          ...SECTION_STYLES_X,
+          paddingBottom: '0 !important',
+        }}
+      >
+        <Box {...CONTAINER_STYLES}>
+          <Typography
+            component="h2"
+            variant="h3"
+            sx={{
+              fontWeight: 500,
+              textAlign: 'center',
+              color: 'grey.25',
+              mb: 5,
+              px: 3,
+            }}
+          >
+            {t('whatOurCustomerAreSayingAboutOurSolarSalesSoftware')}
+          </Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={theme => ({
+          ...SECTION_STYLES_X,
+          ...SECTION_STYLES_Y,
+          paddingTop: '0 !important',
+          backgroundColor: 'primary.800',
+          marginTop: -1,
+          [theme.breakpoints.down('lg')]: {
+            paddingRight: '0 !important',
+          },
+        })}
+      >
         <Box
           ref={scrollContainerRef}
           onMouseEnter={!isMobile ? handleMouseEnter : undefined}
           onMouseLeave={!isMobile ? handleMouseLeave : undefined}
           sx={{
+            ...CONTAINER_STYLES,
             position: 'relative',
             overflowX: isMobile ? 'auto' : 'auto',
             overflowY: 'hidden',
@@ -244,7 +258,7 @@ export default function Testimonials() {
           <Box
             sx={{
               display: 'inline-flex',
-              gap: 3,
+              gap: 1,
               py: 2,
               minWidth: 'max-content',
             }}
@@ -252,21 +266,22 @@ export default function Testimonials() {
             {allReviewers.map((review, index) => (
               <Box
                 key={`${review.name}-${index}`}
-                sx={{
+                sx={theme => ({
                   display: 'inline-block',
                   flexShrink: 0,
-                  width: {
-                    xs: 'calc(100vw - 48px)', // Full viewport width minus padding
-                    sm: 'calc(100vw - 96px)', // Adjust for tablet
-                    md: '400px',
-                  },
-                  maxWidth: {
-                    xs: '400px', // Maximum width on mobile
-                    md: '400px',
-                  },
+                  maxWidth: '427px',
                   whiteSpace: 'normal',
                   verticalAlign: 'top',
-                }}
+                  [theme.breakpoints.down('xl')]: {
+                    width: 315,
+                  },
+                  [theme.breakpoints.down('lg')]: {
+                    width: 380,
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    width: 300,
+                  },
+                })}
               >
                 <Review name={review.name} position={review.position} review={review.review} />
               </Box>

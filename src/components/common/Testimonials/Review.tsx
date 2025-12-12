@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Review = ({ name, position, review }: { name: string; position: string; review: string }) => {
   return (
-    <Card sx={{ height: '100%', maxWidth: 400 }}>
+    <Card sx={{ height: '100%' }}>
       <Box
         sx={{
           height: '100%',
