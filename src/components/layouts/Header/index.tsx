@@ -15,6 +15,7 @@ export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const headerRef = useRef<HTMLDivElement>(null);
+  const [headerWidth, setHeaderWidth] = useState<number>(0);
 
   const toggleDrawer = () => {
     setDrawerOpen(open => {
@@ -59,6 +60,29 @@ export default function Header() {
   }, [drawerOpen]);
 
   useEffect(() => {
+    // This will run after the component mounts and when the ref is set
+    if (headerRef.current) {
+      // Get the width of the header
+      const width = headerRef.current.offsetWidth;
+      setHeaderWidth(width);
+
+      // If you need to handle window resize
+      const handleResize = () => {
+        if (headerRef.current) {
+          setHeaderWidth(headerRef.current.offsetWidth);
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup function to remove the event listener
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
     if (window.scrollY > 0 && window.scrollY < 100) {
       window.scrollTo(0, 0);
     }
@@ -82,7 +106,6 @@ export default function Header() {
       >
         <Toolbar
           ref={headerRef}
-          data-header="site-header"
           sx={{
             ...HEADER_STYLES,
             transition: '0.2s linear',
@@ -95,8 +118,8 @@ export default function Header() {
             overflow: 'hidden',
             lineHeight: '26px',
             backgroundBlendMode: 'plus-lighter',
-            borderTop: '1px solid #FFF',
-            borderBottom: '1px solid #FFF',
+            borderTop: `1px solid ${theme.palette.grey[25]}`,
+            borderBottom: `1px solid ${theme.palette.grey[25]}`,
             backgroundColor: 'opacityDark.4',
 
             '&::before': {
@@ -151,16 +174,16 @@ export default function Header() {
                 height: 34,
                 width: 165,
               },
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
             },
             borderRadius: isMobile ? 0 : '8px',
             [theme.breakpoints.down('lg')]: {
               my: '0 !important',
               backgroundColor: 'opacityLight.90',
-              borderBottom: `1px solid ${theme.palette.primary.main}`,
             },
           }}
         >
-          <Box component={Link} href="/" lineHeight={1}>
+          <Box id="header-logo" component={Link} href="/" lineHeight={1}>
             <Image
               width={165}
               height={34}
@@ -203,7 +226,7 @@ export default function Header() {
                 mr="auto"
                 width="100%"
               >
-                <MenuDesktop />
+                <MenuDesktop headerWidth={headerWidth} />
               </Box>
             )}
           </Box>

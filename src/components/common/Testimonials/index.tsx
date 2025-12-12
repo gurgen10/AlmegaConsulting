@@ -16,9 +16,40 @@ export default function Testimonials() {
   const animationRef = useRef<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [itemWidth, setItemWidth] = useState(1000); // Default width for desktop
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsPaused(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setTimeout(() => setIsPaused(false), 1000);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Adjust the multiplier for faster/slower scrolling
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   const SCROLL_CONFIG = {
-    itemDuration: 3000,
+    itemDuration: 1000,
     pauseDuration: 0,
   };
 
@@ -105,6 +136,7 @@ export default function Testimonials() {
     let startTime: number | null = null;
     let isInPause = false;
     let cycleStartTime: number | null = null;
+    const PAUSE_DURATION = 3000;
 
     const animate = (timestamp: number) => {
       if (!startTime) {
@@ -114,53 +146,62 @@ export default function Testimonials() {
       if (isPaused) return;
 
       const totalCycleTime =
-        reviewers.length * SCROLL_CONFIG.itemDuration + SCROLL_CONFIG.pauseDuration;
+        reviewers.length * SCROLL_CONFIG.itemDuration + reviewers.length * PAUSE_DURATION;
       const cycleElapsed = timestamp - (cycleStartTime ?? 0);
+      const cyclePosition = cycleElapsed % totalCycleTime;
 
-      // Calculate which cycle we're in
-      if (cycleElapsed % totalCycleTime < reviewers.length * SCROLL_CONFIG.itemDuration) {
-        isInPause = false;
+      let accumulatedTime = 0;
+      let currentItem = 0;
+      let itemProgress = 0;
 
-        // Calculate which item we should be showing
-        const scrollPhaseTime = cycleElapsed % totalCycleTime;
-        const itemIndex = Math.floor(scrollPhaseTime / SCROLL_CONFIG.itemDuration);
+      for (let i = 0; i < reviewers.length; i++) {
+        const itemEnd = accumulatedTime + SCROLL_CONFIG.itemDuration;
+        const pauseEnd = itemEnd + PAUSE_DURATION;
 
-        // Calculate progress within current item
-        const itemProgress =
-          (scrollPhaseTime % SCROLL_CONFIG.itemDuration) / SCROLL_CONFIG.itemDuration;
+        if (cyclePosition < itemEnd) {
+          currentItem = i;
+          itemProgress = (cyclePosition - accumulatedTime) / SCROLL_CONFIG.itemDuration;
+          isInPause = false;
+          break;
+        } else if (cyclePosition < pauseEnd) {
+          currentItem = i;
+          isInPause = true;
+          itemProgress = 1;
+          break;
+        }
+        accumulatedTime = pauseEnd;
+      }
 
-        // Calculate scroll position with easing
+      if (!isInPause) {
+        // Easing function for smooth scrolling
         const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
         const easedProgress = easeInOut(itemProgress);
 
         // Calculate the base position for the current item
-        const basePosition = itemIndex * itemWidth;
+        const basePosition = currentItem * itemWidth;
 
-        // Add the progress within the current item and Apply scroll
+        // Add the progress within the current item and apply scroll
         container.scrollLeft = basePosition + itemWidth * easedProgress;
-      } else {
-        if (!isInPause) {
-          container.scrollLeft = 0;
-          isInPause = true;
-        }
+      } else if (currentItem === reviewers.length - 1 && itemProgress === 1) {
+        // If we're at the last item and fully scrolled, reset to start
+        container.scrollLeft = 0;
       }
 
       animationRef.current = requestAnimationFrame(animate);
     };
 
+    // Reset scroll position to start
     container.scrollLeft = 0;
     animationRef.current = requestAnimationFrame(animate);
-  }, [
-    isMobile,
-    isPaused,
-    reviewers.length,
-    itemWidth,
-    SCROLL_CONFIG.itemDuration,
-    SCROLL_CONFIG.pauseDuration,
-  ]);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isMobile, isPaused, reviewers.length, itemWidth, SCROLL_CONFIG.itemDuration]);
 
   const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
 
   useEffect(() => {
     if (!isMobile) {
@@ -246,7 +287,13 @@ export default function Testimonials() {
           }}
         >
           <Box
+            ref={scrollContainerRef}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
             sx={{
+              cursor: isDragging ? 'grabbing' : 'grab',
               display: 'inline-flex',
               gap: 1,
               py: 2,

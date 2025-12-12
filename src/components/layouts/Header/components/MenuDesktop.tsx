@@ -10,7 +10,7 @@ import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { REGISTER_URL } from '@/shared/constants/common';
 
-export default function MenuDesktop() {
+export default function MenuDesktop({ headerWidth }: { headerWidth: number }) {
   const t = useTranslations('header');
   const pathname = usePathname();
 
@@ -35,7 +35,7 @@ export default function MenuDesktop() {
               position: 'relative',
               cursor: 'pointer',
               '&:hover': {
-                background: 'rgba(0, 5, 5, 0.04)',
+                color: 'primary.500',
               },
             }}
             underline="none"
@@ -48,7 +48,7 @@ export default function MenuDesktop() {
         );
 
         return item.submenuItems?.length ? (
-          <MenuTooltip key={item.key} subMenuItems={item.submenuItems}>
+          <MenuTooltip key={item.key} subMenuItems={item.submenuItems} headerWidth={headerWidth}>
             {link}
           </MenuTooltip>
         ) : (
