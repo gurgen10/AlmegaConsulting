@@ -76,7 +76,7 @@ export default function HeroSection() {
           <Typography component="h1" variant="h3" fontWeight={500}>
             {t('createSolarPanel')}
           </Typography>
-          <Typography variant="subtitle2" fontWeight={250}>
+          <Typography variant="subtitle2" fontWeight={300}>
             {t.rich('description', {
               bold: chunks => (
                 <Typography variant="inherit" component="strong" fontWeight={700}>

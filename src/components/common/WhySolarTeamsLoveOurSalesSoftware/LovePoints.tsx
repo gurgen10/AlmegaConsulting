@@ -14,7 +14,7 @@ const LovePoints = ({ title, text, image }: { title: string; text: string; image
           },
           [theme.breakpoints.down('sm')]: {
             flexDirection: 'row',
-            columnGap: 4,
+            columnGap: 2,
           },
         })}
       >
