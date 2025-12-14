@@ -144,10 +144,22 @@ const MenuTooltip = ({
     <HtmlTooltip
       offset={offset}
       title={
-        <Box sx={{ width: headerWidth - 32 }}>
+        <Box
+          sx={theme => {
+            const itemW = 379;
+            const gapPx = Number(theme.spacing(4).replace('px', '')) || 32;
+            const items = subMenuItems.length;
+            const compactWidth = items * itemW + Math.max(0, items - 1) * gapPx;
+            const maxAllowed = Math.max(0, headerWidth - 32);
+            // For 3 or more items, let the tooltip span the available header width.
+            return {
+              width: items >= 3 ? maxAllowed : compactWidth,
+            };
+          }}
+        >
           <Box
             sx={{
-              width: '100%',
+              width: 'auto',
               background: 'transparent',
               paddingTop: theme => theme.spacing(3),
               paddingLeft: theme => theme.spacing(3),
@@ -155,39 +167,41 @@ const MenuTooltip = ({
               display: 'grid',
               gap: 4,
               gridTemplateColumns:
-                subMenuItems.length < 3
-                  ? `repeat(${subMenuItems.length}, 379px)`
-                  : 'repeat(3, 379px)',
+                subMenuItems.length < 3 ? `repeat(${subMenuItems.length}, 1fr)` : 'repeat(3, 1fr)',
               '& > *': {
                 backdropFilter: 'blur(4px) saturate(120%)',
                 WebkitBackdropFilter: 'blur(4px) saturate(120%)',
               },
             }}
           >
-            {subMenuItems.map(item => (
-              <MenuItemCard
-                className="tooltip-item"
-                key={item.key}
-                href={item.url}
-                width={379}
-                sx={{
-                  position: 'relative',
-                  pr: 4,
-                }}
-              >
-                <Box sx={{ mr: 1.5, mt: 0.5 }}>
-                  <Image src={item.icon} alt={item.title} width={32} height={32} />
-                </Box>
-                <Box>
-                  <Typography variant="h6" gutterBottom color="grey.900" fontWeight={300}>
-                    {t(item.title)}
-                  </Typography>
-                  <Typography variant="body2" color="grey.900" fontWeight={300}>
-                    {t(item.description)}
-                  </Typography>
-                </Box>
-              </MenuItemCard>
-            ))}
+            {subMenuItems.map((item, idx) => {
+              const columns = subMenuItems.length < 3 ? subMenuItems.length : 3;
+              const isRowEnd = (idx + 1) % columns === 0 || idx === subMenuItems.length - 1;
+              return (
+                <MenuItemCard
+                  className="tooltip-item"
+                  key={item.key}
+                  href={item.url}
+                  sx={{
+                    position: 'relative',
+                    pr: 4,
+                    '&::after': isRowEnd ? { display: 'none' } : undefined,
+                  }}
+                >
+                  <Box sx={{ mr: 1.5, mt: 0.5 }}>
+                    <Image src={item.icon} alt={item.title} width={32} height={32} />
+                  </Box>
+                  <Box>
+                    <Typography variant="h6" gutterBottom color="grey.900" fontWeight={300}>
+                      {t(item.title)}
+                    </Typography>
+                    <Typography variant="body2" color="grey.900" fontWeight={300}>
+                      {t(item.description)}
+                    </Typography>
+                  </Box>
+                </MenuItemCard>
+              );
+            })}
           </Box>
         </Box>
       }
