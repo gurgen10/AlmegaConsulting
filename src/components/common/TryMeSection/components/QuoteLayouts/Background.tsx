@@ -12,11 +12,7 @@ export default function Background(props: QuoteLayoutProps) {
   const { settings } = useQuoteSettings();
 
   return (
-    <BackgroundLayoutWrapper
-      data-mode={settings.mode}
-      sx={{ backgroundImage: `url(${settings.background})` }}
-      {...props}
-    >
+    <BackgroundLayoutWrapper sx={{ backgroundImage: `url(${settings.background})` }} {...props}>
       <div className="lm-form">
         <div>
           {settings.companyLogo ? (

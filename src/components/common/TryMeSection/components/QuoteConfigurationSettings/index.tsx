@@ -1,10 +1,11 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Fragment } from 'react';
 import {
   LayoutOptions,
   QuoteConfigurationSettingsWrapper,
   SettingBlock,
 } from '@/components/common/TryMeSection/TryMeSection.styles';
 import {
+  Box,
   Button,
   ButtonGroup,
   ButtonProps,
@@ -23,12 +24,6 @@ import { TypographyProps } from '@mui/system';
 import ColorInput from '@/components/ui/ColorInput';
 import { LayoutTypes, Mode } from '@/providers/QuoteSettingsProvider/QuoteSettingsProvider.types';
 import { useQuoteSettings } from '@/providers/QuoteSettingsProvider';
-
-const brandingLabelProps = {
-  variant: 'caption',
-  fontWeight: 300,
-  component: 'div',
-} as TypographyProps;
 
 export default function QuoteConfigurationSettings() {
   const t = useTranslations('quotingSystemPage.quoteConfiguration');
@@ -50,15 +45,15 @@ export default function QuoteConfigurationSettings() {
   };
 
   return (
-    <QuoteConfigurationSettingsWrapper spacing={0.75}>
-      <SettingBlock>
+    <QuoteConfigurationSettingsWrapper>
+      <SettingBlock className="layout-block">
         <div>
           <Stack
             direction="row"
             spacing={1}
             alignItems="center"
             justifyContent="space-between"
-            mb={0.75}
+            mb={{ md: 0, lg: 0.75 }}
           >
             <Typography variant="caption" fontWeight={500}>
               {t('layout')}
@@ -91,7 +86,11 @@ export default function QuoteConfigurationSettings() {
                 value={item}
                 control={<Radio color="primary" />}
                 labelPlacement="bottom"
-                label={<Typography variant="caption">{t(`layoutOptions.${item}`)}</Typography>}
+                label={
+                  <Typography variant="caption" color="textSecondary" fontWeight={500}>
+                    {t(`layoutOptions.${item}`)}
+                  </Typography>
+                }
               />
             ))}
           </RadioGroup>
@@ -101,66 +100,99 @@ export default function QuoteConfigurationSettings() {
         <Typography variant="caption" fontWeight={500}>
           {t('brandingColors')}
         </Typography>
-        <Stack
-          gap={1.5}
+        <Box
+          rowGap={{ xs: 1, sm: 1.5, md: 0.2, lg: 1.5 }}
           display="grid"
-          gridTemplateColumns={{ xs: '1fr 90px' }}
+          columnGap={{ xs: 2, sm: 1.5 }}
+          gridAutoFlow={{ xs: 'row', md: 'column', lg: 'row' }}
+          gridTemplateRows={{
+            xs: 'repeat(3, 1fr)',
+            md: '1fr 1fr',
+            lg: 'repeat(3, 1fr)',
+          }}
+          gridTemplateColumns={{
+            xs: '1fr minmax(42px, 80px)',
+            md: 'repeat(3, 1fr)',
+            lg: '1fr 50px',
+            xl: '1fr 90px',
+          }}
+          textAlign={{ xs: 'left', md: 'center', lg: 'left' }}
           alignItems="center"
         >
-          <Typography {...brandingLabelProps}>{t('colorsOptions.button')}</Typography>
-          <ColorInput
-            title={t('colorsOptions.button')}
-            value={settings.buttonColor}
-            onChange={color => setSettings(settings => ({ ...settings, buttonColor: color }))}
-          />
-          <Typography {...brandingLabelProps}>{t('colorsOptions.buttonText')}</Typography>
-          <ColorInput
-            title={t('colorsOptions.buttonText')}
-            value={settings.buttonTextColor}
-            onChange={color => setSettings(settings => ({ ...settings, buttonTextColor: color }))}
-          />
-          <Typography {...brandingLabelProps}>{t('colorsOptions.title')}</Typography>
-          <ColorInput
-            title={t('colorsOptions.title')}
-            value={settings.titleColor}
-            onChange={color => setSettings(settings => ({ ...settings, titleColor: color }))}
-          />
-        </Stack>
+          {['buttonColor', 'buttonTextColor', 'titleColor'].map(item => (
+            <Fragment key={item}>
+              <Typography
+                sx={{ textWrap: 'nowrap' }}
+                variant="caption"
+                fontWeight={300}
+                component="div"
+              >
+                {t(`colorsOptions.${item}`)}
+              </Typography>
+              <ColorInput
+                title={t(`colorsOptions.${item}`)}
+                value={settings[item as keyof typeof settings]}
+                onChange={color => setSettings(settings => ({ ...settings, [item]: color }))}
+              />
+            </Fragment>
+          ))}
+        </Box>
       </SettingBlock>
-      <SettingBlock>
-        <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
-          <Typography variant="caption" fontWeight={500}>
-            {t('companyLogo')}
-          </Typography>
-          <Link component="label" underline="always" sx={{ cursor: 'pointer' }} variant="body2">
-            {t('upload')}
-            <input
-              type="file"
-              hidden
-              onChange={handleFileChange}
-              name="companyLogo"
-              accept=".svg,.png,.jpg,.jpeg,.gif,image/svg+xml,image/png,image/jpeg"
-            />
-          </Link>
-        </Stack>
-      </SettingBlock>
-      <SettingBlock>
-        <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
-          <Typography variant="caption" fontWeight={500}>
-            {t('background')}
-          </Typography>
-          <Link component="label" underline="always" sx={{ cursor: 'pointer' }} variant="body2">
-            {t('upload')}
-            <input
-              type="file"
-              hidden
-              name="background"
-              onChange={handleFileChange}
-              accept=".png,.jpg,.jpeg,.gif,image/png,image/jpeg"
-            />
-          </Link>
-        </Stack>
-      </SettingBlock>
+      <Stack
+        direction={{ md: 'row', lg: 'column' }}
+        gap={0.75}
+        display="grid"
+        gridTemplateColumns={{ md: '1fr 1fr', lg: '1fr' }}
+      >
+        <SettingBlock>
+          <Stack
+            direction={{ xs: 'column', sm: 'row', md: 'column', lg: 'row' }}
+            columnGap={1}
+            rowGap="2px"
+            textAlign="center"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Typography variant="caption" fontWeight={500}>
+              {t('companyLogo')}
+            </Typography>
+            <Link component="label" underline="always" sx={{ cursor: 'pointer' }} variant="body2">
+              {t('upload')}
+              <input
+                type="file"
+                hidden
+                onChange={handleFileChange}
+                name="companyLogo"
+                accept=".svg,.png,.jpg,.jpeg,.gif,image/svg+xml,image/png,image/jpeg"
+              />
+            </Link>
+          </Stack>
+        </SettingBlock>
+        <SettingBlock>
+          <Stack
+            direction={{ xs: 'column', sm: 'row', md: 'column', lg: 'row' }}
+            columnGap={1}
+            rowGap="2px"
+            textAlign="center"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Typography variant="caption" fontWeight={500}>
+              {t('background')}
+            </Typography>
+            <Link component="label" underline="always" sx={{ cursor: 'pointer' }} variant="body2">
+              {t('upload')}
+              <input
+                type="file"
+                hidden
+                name="background"
+                onChange={handleFileChange}
+                accept=".png,.jpg,.jpeg,.gif,image/png,image/jpeg"
+              />
+            </Link>
+          </Stack>
+        </SettingBlock>
+      </Stack>
     </QuoteConfigurationSettingsWrapper>
   );
 }

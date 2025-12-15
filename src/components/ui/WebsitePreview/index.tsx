@@ -26,7 +26,7 @@ export default function WebsitePreview({ children, domain }: WebsitePreviewProps
           </Typography>
           <ReloadIcon />
         </div>
-        <Stack spacing={1.5} direction="row" color="#616161">
+        <Stack spacing={1.5} direction="row">
           <DownloadCircleOutlined />
           <UploadIcon />
           <PlusIcon height={12} width={12} />

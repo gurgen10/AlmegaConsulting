@@ -200,9 +200,9 @@
         "elegant": "Elegant"
       },
       "colorsOptions": {
-        "button": "Button",
-        "buttonText": "Button Text",
-        "title": "Title"
+        "buttonColor": "Button",
+        "buttonTextColor": "Button Text",
+        "titleColor": "Title"
       }
     },
     "quotePreview": {
@@ -216,7 +216,8 @@
       "requestQuote": "Request a Quote",
       "contactUs": "Contact Us:",
       "termsOfUse": "By Requesting a quote you agree with our <link>Terms of Use</link> | <link>Privacy Policy</link>",
-      "poweredBy": "Powered by <primary>SolarGenix.ai</primary> © {year}, All rights reserved."
+      "poweredBy": "Powered by <primary>SolarGenix.ai</primary> © {year}, All rights reserved.",
+      "tryMe": "TRY ME!"
     }
   },
   "colorPicker": {

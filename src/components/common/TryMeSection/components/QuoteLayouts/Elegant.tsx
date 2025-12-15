@@ -1,43 +1,51 @@
 import Typography from '@mui/material/Typography';
-import { ForwardedRef, forwardRef, memo } from 'react';
-import { useWatch } from 'react-hook-form';
-import { z } from 'zod';
 import Box from '@mui/material/Box';
+import { QuoteLayoutProps } from '@/components/common/TryMeSection/components/QuoteLayouts/QuoteLayouts.types';
+import { useTranslations } from 'next-intl';
+import { useQuoteSettings } from '@/providers/QuoteSettingsProvider';
+import { ElegantLayoutWrapper } from '@/components/common/TryMeSection/components/QuoteLayouts/QuoteLayouts.styles';
+import Image from 'next/image';
+import QuoteForm from '@/components/common/TryMeSection/components/QuoteLayouts/QuoteForm';
+import QuoteFooter from '@/components/common/TryMeSection/components/QuoteLayouts/QuoteFooter';
 
-import { QuoteLayoutProps } from '@/components/LeadMagnetConfiguration/QuoteLayouts/QuoteLayouts.types';
-import { ElegantLayoutWrapper } from '@/components/LeadMagnetConfiguration/QuoteLayouts/QuoteLayouts.styles';
-import QuoteForm from '@/components/LeadMagnetConfiguration/QuoteLayouts/QuoteForm';
-import QuoteFooter from '@/components/LeadMagnetConfiguration/QuoteLayouts/QuoteFooter';
-import { leadMagnetSettingsSchema } from '@/components/LeadMagnetSettings/leadMagnetSettingsSchema';
+export default function Elegant(props: QuoteLayoutProps) {
+  const t = useTranslations('quotingSystemPage.quotePreview');
+  const { settings } = useQuoteSettings();
 
-export default memo(
-  forwardRef(function Elegant(props: QuoteLayoutProps, ref: ForwardedRef<HTMLDivElement>) {
-    const pageSettings = useWatch<z.infer<typeof leadMagnetSettingsSchema>>({
-      name: 'pageSettings',
-    });
-
-    return (
-      <ElegantLayoutWrapper data-mode={pageSettings.mode} ref={ref} {...props}>
-        <Box display="flex" flexDirection="column" justifyContent="center" gap={2}>
-          <img src={pageSettings.logo} alt="Logo" className="lm-logo" />
-          <Typography variant="body2" mb={3} fontWeight={300}>
-            {pageSettings.description}
-          </Typography>
-        </Box>
-        <div className="lm-form">
-          <Typography mb={5} variant="h4" fontWeight={300} color={pageSettings.titleColor}>
-            {pageSettings.title}
-          </Typography>
-          <QuoteForm
-            buttonColor={pageSettings.buttonColor}
-            buttonTextColor={pageSettings.buttonTextColor}
+  return (
+    <ElegantLayoutWrapper {...props}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="flex"
+        textAlign="left"
+        alignItems="flex-start"
+        gap={2}
+      >
+        {settings.companyLogo ? (
+          <Image
+            width={0}
+            height={0}
+            src={settings.companyLogo}
+            alt="Website preview logo"
+            className="lm-logo"
           />
-        </div>
-        <QuoteFooter
-          privacyPolicyUrl={pageSettings.privacyPolicyUrl}
-          termsAndConditionsUrl={pageSettings.termsAndConditionsUrl}
-        />
-      </ElegantLayoutWrapper>
-    );
-  })
-);
+        ) : (
+          <Typography fontSize="26px !important" fontWeight={500}>
+            Your Logo Here
+          </Typography>
+        )}
+        <Typography variant="body2" mb={3} fontWeight={300}>
+          {t('description')}
+        </Typography>
+      </Box>
+      <div className="lm-form">
+        <Typography mb={5} variant="h4" fontWeight={300} color={settings.titleColor}>
+          {t('title')}
+        </Typography>
+        <QuoteForm buttonColor={settings.buttonColor} buttonTextColor={settings.buttonTextColor} />
+      </div>
+      <QuoteFooter />
+    </ElegantLayoutWrapper>
+  );
+}
