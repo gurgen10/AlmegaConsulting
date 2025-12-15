@@ -25,6 +25,8 @@ export default function Testimonials() {
   const isInitializedRef = useRef(false);
   const isHoveringRef = useRef(false);
   const lastScrollLeftRef = useRef(0);
+  const shouldPauseAfterCurrentAnimationRef = useRef(false);
+  const currentAnimationPhaseRef = useRef<'scrolling' | 'pausing'>('scrolling');
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
@@ -34,7 +36,6 @@ export default function Testimonials() {
     setScrollLeft(scrollContainerRef.current.scrollLeft);
     setIsPaused(true);
 
-    // Cancel any ongoing animation immediately
     if (animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
@@ -49,7 +50,6 @@ export default function Testimonials() {
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    // Don't immediately resume - let the user decide
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -63,7 +63,7 @@ export default function Testimonials() {
 
   const SCROLL_CONFIG = {
     itemDuration: 1000,
-    pauseDuration: 0,
+    pauseDuration: 1500,
   };
 
   const reviewers = [
@@ -146,30 +146,18 @@ export default function Testimonials() {
 
     const container = scrollContainerRef.current;
 
-    // Initialize animation state
     if (!cycleStartTimeRef.current) {
       cycleStartTimeRef.current = performance.now();
       isInitializedRef.current = true;
 
-      // Start from the beginning
       container.scrollLeft = 0;
     }
 
-    const PAUSE_DURATION = 3000;
     const totalCycleTime =
-      reviewers.length * SCROLL_CONFIG.itemDuration + reviewers.length * PAUSE_DURATION;
+      reviewers.length * SCROLL_CONFIG.itemDuration +
+      reviewers.length * SCROLL_CONFIG.pauseDuration;
 
     const animate = (timestamp: number) => {
-      if (isPaused) {
-        // Store current time to continue from same position when resumed
-        if (cycleStartTimeRef.current) {
-          const elapsed = timestamp - cycleStartTimeRef.current;
-          // Adjust cycle start time to maintain position
-          cycleStartTimeRef.current = timestamp - (elapsed % totalCycleTime);
-        }
-        return;
-      }
-
       if (!cycleStartTimeRef.current) {
         cycleStartTimeRef.current = timestamp;
       }
@@ -184,7 +172,7 @@ export default function Testimonials() {
 
       for (let i = 0; i < reviewers.length; i++) {
         const itemEnd = accumulatedTime + SCROLL_CONFIG.itemDuration;
-        const pauseEnd = itemEnd + PAUSE_DURATION;
+        const pauseEnd = itemEnd + SCROLL_CONFIG.pauseDuration;
 
         if (cyclePosition < itemEnd) {
           currentItem = i;
@@ -200,13 +188,28 @@ export default function Testimonials() {
         accumulatedTime = pauseEnd;
       }
 
+      currentAnimationPhaseRef.current = isInPause ? 'pausing' : 'scrolling';
+
+      if (shouldPauseAfterCurrentAnimationRef.current && isInPause) {
+        shouldPauseAfterCurrentAnimationRef.current = false;
+        setIsPaused(true);
+        return;
+      }
+
+      if (isPaused) {
+        // Store current time to continue from same position when resumed
+        const elapsed = timestamp - cycleStartTimeRef.current;
+        // Adjust cycle start time to maintain position
+        cycleStartTimeRef.current = timestamp - (elapsed % totalCycleTime);
+        return;
+      }
+
       if (!isInPause) {
-        const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
-        const easedProgress = easeInOut(itemProgress);
+        const liner = (t: number) => t;
+        const easedProgress = liner(itemProgress);
         const basePosition = currentItem * itemWidth;
         container.scrollLeft = basePosition + itemWidth * easedProgress;
 
-        // Store the last scroll position
         lastScrollLeftRef.current = container.scrollLeft;
       } else if (currentItem === reviewers.length - 1 && itemProgress === 1) {
         container.scrollLeft = 0;
@@ -223,11 +226,25 @@ export default function Testimonials() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isMobile, isPaused, reviewers.length, itemWidth, SCROLL_CONFIG.itemDuration]);
+  }, [
+    isMobile,
+    isPaused,
+    reviewers.length,
+    itemWidth,
+    SCROLL_CONFIG.itemDuration,
+    SCROLL_CONFIG.pauseDuration,
+  ]);
 
   const handleMouseEnter = () => {
     isHoveringRef.current = true;
-    setIsPaused(true);
+
+    // Request to pause after current animation completes
+    shouldPauseAfterCurrentAnimationRef.current = true;
+
+    if (currentAnimationPhaseRef.current === 'pausing') {
+      setIsPaused(true);
+      shouldPauseAfterCurrentAnimationRef.current = false;
+    }
 
     // Store current scroll position
     if (scrollContainerRef.current) {
@@ -240,6 +257,9 @@ export default function Testimonials() {
 
     // Only resume if not dragging
     if (!isDragging) {
+      // Cancel any pending pause request
+      shouldPauseAfterCurrentAnimationRef.current = false;
+
       // Reset animation to start from current position
       if (scrollContainerRef.current && cycleStartTimeRef.current) {
         // Calculate which item we're currently showing
@@ -247,33 +267,17 @@ export default function Testimonials() {
         const currentItemIndex = Math.floor(currentScrollLeft / itemWidth);
         const itemProgress = (currentScrollLeft % itemWidth) / itemWidth;
 
-        // Reverse the easing to get linear progress
-        const reverseEase = (eased: number): number => {
-          if (eased < 0.5) {
-            return Math.sqrt(eased / 2);
-          }
-          return 1 - Math.sqrt((1 - eased) / 2);
-        };
-
-        const linearProgress = reverseEase(itemProgress);
-
         // Calculate the time position in the cycle
         const now = performance.now();
-        const PAUSE_DURATION = 3000;
-        const totalItemTime = SCROLL_CONFIG.itemDuration + PAUSE_DURATION;
+        const totalItemTime = SCROLL_CONFIG.itemDuration + SCROLL_CONFIG.pauseDuration;
 
         // Adjust cycle start time so animation continues from current position
         const cycleTimeForCurrentItem =
-          currentItemIndex * totalItemTime + linearProgress * SCROLL_CONFIG.itemDuration;
+          currentItemIndex * totalItemTime + itemProgress * SCROLL_CONFIG.itemDuration;
         cycleStartTimeRef.current = now - cycleTimeForCurrentItem;
       }
 
-      // Wait a bit before resuming to avoid immediate jump
-      setTimeout(() => {
-        if (!isHoveringRef.current && !isDragging) {
-          setIsPaused(false);
-        }
-      }, 100);
+      setIsPaused(false);
     }
   };
 
@@ -284,9 +288,9 @@ export default function Testimonials() {
       if (scrollContainerRef.current) {
         scrollContainerRef.current.scrollLeft = 0;
       }
-      // Reset animation state on mobile
       cycleStartTimeRef.current = null;
       isInitializedRef.current = false;
+      shouldPauseAfterCurrentAnimationRef.current = false;
     }
 
     return () => {
@@ -296,7 +300,6 @@ export default function Testimonials() {
     };
   }, [startAnimation, isMobile]);
 
-  // Reset animation when paused state changes
   useEffect(() => {
     if (isPaused && animationRef.current) {
       cancelAnimationFrame(animationRef.current);
@@ -306,7 +309,6 @@ export default function Testimonials() {
     }
   }, [isPaused, startAnimation, isMobile]);
 
-  // Clean up animation on unmount
   useEffect(() => {
     return () => {
       if (animationRef.current) {
