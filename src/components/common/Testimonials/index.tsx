@@ -20,7 +20,6 @@ export default function Testimonials() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Store animation state in refs
   const cycleStartTimeRef = useRef<number | null>(null);
   const isInitializedRef = useRef(false);
   const isHoveringRef = useRef(false);
