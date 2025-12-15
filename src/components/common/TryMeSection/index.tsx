@@ -1,7 +1,12 @@
 'use client';
 
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { CONTAINER_STYLES, SPACING_DEFAULT_X, SPACING_DEFAULT_Y } from '@/shared/constants/spacing';
+import {
+  CONTAINER_STYLES,
+  SPACING_DEFAULT_X,
+  SPACING_DEFAULT_Y,
+  TEXT_COLOR,
+} from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import { BOOK_DEMO_URL, REGISTER_URL } from '@/shared/constants/common';
 import Link from 'next/link';
@@ -12,7 +17,7 @@ export default function TryMeSection() {
 
   return (
     <Box py={SPACING_DEFAULT_Y} px={SPACING_DEFAULT_X}>
-      <Box sx={CONTAINER_STYLES} color="grey.900">
+      <Box sx={CONTAINER_STYLES} color={TEXT_COLOR}>
         <Typography variant="h2" component="h1" fontWeight={300} textAlign="center" mb={1}>
           {t.rich('title', {
             primary: chunks => (

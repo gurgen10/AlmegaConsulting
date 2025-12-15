@@ -218,6 +218,23 @@
       "termsOfUse": "By Requesting a quote you agree with our <link>Terms of Use</link> | <link>Privacy Policy</link>",
       "poweredBy": "Powered by <primary>SolarGenix.ai</primary> © {year}, All rights reserved.",
       "tryMe": "TRY ME!"
+    },
+    "leadProductInfo": {
+      "launchLandingPage": {
+        "title": "Launch Your Branded Solar Landing Page",
+        "description": "Create a custom landing page that matches your solar company’s branding and embed it directly on your website. It gives homeowners a simple way to submit their details when they’re ready to go solar.",
+        "cta": "Sign Up"
+      },
+      "captureVerifiedLeads": {
+        "title": "Capture Only Real, Verified Solar Leads",
+        "description": "Every lead is automatically qualified with built-in verification, including email confirmation. You get real homeowners, zero spam, and a cleaner, higher-quality lead pipeline.",
+        "cta": "Sign Up"
+      },
+      "sendQuotes": {
+        "title": "Send Instant Quotes and Convert Leads Faster",
+        "description": "Send instant, automated quotes the moment a homeowner submits the form. Responding at the perfect time keeps interest high and helps you convert more leads into paying solar customers.",
+        "cta": "Sign Up"
+      }
     }
   },
   "colorPicker": {

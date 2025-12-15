@@ -1,5 +1,6 @@
 export const SPACING_DEFAULT_Y = { xs: 4, sm: 8, lg: 10, xl: 12.5 };
 export const SPACING_DEFAULT_X = { xs: 2, sm: 7.5, lg: 15 };
+export const TEXT_COLOR = 'grey.900';
 
 export const HEADER_STYLES = {
   maxWidth: 1296,
