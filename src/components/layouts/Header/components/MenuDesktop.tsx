@@ -10,7 +10,11 @@ import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { REGISTER_URL } from '@/shared/constants/common';
 
-export default function MenuDesktop({ headerWidth }: { headerWidth: number }) {
+interface MenuDesktopProps {
+  headerWidth: number;
+  headerRef: HTMLDivElement | null;
+}
+export default function MenuDesktop({ headerWidth, headerRef }: MenuDesktopProps) {
   const t = useTranslations('header');
   const pathname = usePathname();
 
@@ -48,7 +52,12 @@ export default function MenuDesktop({ headerWidth }: { headerWidth: number }) {
         );
 
         return item.submenuItems?.length ? (
-          <MenuTooltip key={item.key} subMenuItems={item.submenuItems} headerWidth={headerWidth}>
+          <MenuTooltip
+            key={item.key}
+            subMenuItems={item.submenuItems}
+            headerWidth={headerWidth}
+            headerRef={headerRef}
+          >
             {link}
           </MenuTooltip>
         ) : (

@@ -36,13 +36,13 @@ export const featureSubmenuItems: SubMenuItem[] = [
     icon: '/icons/header/financial-forecasting.svg',
     url: '/#financialForecasting',
   },
-  {
-    key: 'proposalGeneration',
-    title: 'proposalGeneration',
-    description: 'proposalGenerationDescription',
-    icon: '/icons/header/proposal-generation.svg',
-    url: '/#proposalGeneration',
-  },
+  // {
+  //   key: 'proposalGeneration',
+  //   title: 'proposalGeneration',
+  //   description: 'proposalGenerationDescription',
+  //   icon: '/icons/header/proposal-generation.svg',
+  //   url: '/#proposalGeneration',
+  // },
 ];
 
 export const productSubmenuItems: SubMenuItem[] = [

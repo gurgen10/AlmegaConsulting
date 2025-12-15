@@ -39,10 +39,11 @@ export default function MenuMobile() {
       component="nav"
       sx={{
         width: '100%',
-        height: 'calc(100vh - 68px)',
+        height: '100%',
         position: 'relative',
         display: 'flex',
         backgroundColor: 'opacityLight.90',
+        backdropFilter: 'blur(5px)',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
         flexDirection: 'column',
       }}
@@ -54,8 +55,6 @@ export default function MenuMobile() {
           flex: 1,
           pb: '120px',
           mt: '62px',
-          backdropFilter: 'blur(10px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
         }}
       >
         {menuItems.map(item => {
@@ -72,7 +71,7 @@ export default function MenuMobile() {
               }}
               underline="none"
               variant="button"
-              component={item.submenuItems?.length ? 'button' : 'a'}
+              component="a"
               href={item.url}
               className={isActive ? 'active' : ''}
             >
@@ -119,7 +118,9 @@ export default function MenuMobile() {
                   },
                 }}
               >
-                <Typography variant="button">{link}</Typography>
+                <Typography component="span" variant="body2">
+                  {link}
+                </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ p: 0 }}>
                 <Box
@@ -195,20 +196,17 @@ export default function MenuMobile() {
       </Stack>
 
       <Box
-        sx={theme => ({
+        sx={{
           position: 'fixed',
-          bottom: 0,
+          bottom: 3,
           left: 0,
           right: 0,
           p: 2,
           backgroundColor: 'transparent',
-          backdropFilter: 'blur(8px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(8px) saturate(120%)',
-          borderTop: `1px solid ${theme.palette.divider}`,
           display: 'flex',
           gap: 2,
           justifyContent: 'center',
-        })}
+        }}
       >
         <Button
           component={Link}

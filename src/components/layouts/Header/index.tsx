@@ -3,7 +3,7 @@
 import { AppBar, Box, Drawer, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import MenuDesktop from '@/components/layouts/Header/components/MenuDesktop';
 import MenuMobile from '@/components/layouts/Header/components/MenuMobile';
@@ -29,6 +29,13 @@ export default function Header() {
     });
   };
 
+  const updateHeaderWidth = useCallback(() => {
+    if (headerRef.current) {
+      const width = headerRef.current.offsetWidth;
+      setHeaderWidth(width);
+    }
+  }, []);
+
   useLayoutEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(() => {
@@ -41,46 +48,86 @@ export default function Header() {
 
           const observer = new IntersectionObserver(
             ([entry]) => {
-              headerRef.current?.classList.toggle('header-shrink', !entry.isIntersecting);
+              const isShrunk = !entry.isIntersecting;
+              headerRef.current?.classList.toggle('header-shrink', isShrunk);
+              setTimeout(updateHeaderWidth, 200);
             },
             { threshold: 0 }
           );
           observer.observe(sentinel);
         } else if (headerRef.current) {
-          window.addEventListener('scroll', () => {
-            headerRef.current?.classList.toggle('header-shrink', window.scrollY > 60);
-          });
+          const scrollHandler = () => {
+            const isShrunk = window.scrollY > 60;
+            headerRef.current?.classList.toggle('header-shrink', isShrunk);
+            setTimeout(updateHeaderWidth, 200);
+          };
+
+          window.addEventListener('scroll', scrollHandler);
+
+          return () => {
+            window.removeEventListener('scroll', scrollHandler);
+          };
         }
       });
     };
+
     handleScroll();
     document.addEventListener('scroll', handleScroll);
 
     return () => document.removeEventListener('scroll', handleScroll);
-  }, [drawerOpen]);
+  }, [drawerOpen, updateHeaderWidth]);
 
   useEffect(() => {
-    // This will run after the component mounts and when the ref is set
+    updateHeaderWidth();
+
+    const handleResize = () => {
+      updateHeaderWidth();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [updateHeaderWidth]);
+
+  useEffect(() => {
     if (headerRef.current) {
-      // Get the width of the header
-      const width = headerRef.current.offsetWidth;
-      setHeaderWidth(width);
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            setTimeout(updateHeaderWidth, 200);
+          }
+        });
+      });
 
-      // If you need to handle window resize
-      const handleResize = () => {
-        if (headerRef.current) {
-          setHeaderWidth(headerRef.current.offsetWidth);
-        }
-      };
+      observer.observe(headerRef.current, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
 
-      window.addEventListener('resize', handleResize);
-
-      // Cleanup function to remove the event listener
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
+      return () => observer.disconnect();
     }
-  }, []);
+  }, [updateHeaderWidth]);
+
+  useEffect(() => {
+    const headerElement = headerRef.current;
+    const handleTransitionEnd = (e: TransitionEvent) => {
+      if (e.propertyName.includes('margin') || e.propertyName.includes('padding')) {
+        updateHeaderWidth();
+      }
+    };
+
+    if (headerElement) {
+      headerElement.addEventListener('transitionend', handleTransitionEnd as EventListener);
+    }
+
+    return () => {
+      if (headerElement) {
+        headerElement.removeEventListener('transitionend', handleTransitionEnd as EventListener);
+      }
+    };
+  }, [updateHeaderWidth]);
 
   useEffect(() => {
     if (window.scrollY > 0 && window.scrollY < 100) {
@@ -112,33 +159,16 @@ export default function Header() {
             minHeight: '48px !important',
             my: isMobile ? 0 : 1,
             py: 1.5,
-            backdropFilter: 'blur(2px) saturate(120%)',
-            WebkitBackdropFilter: 'blur(2px) saturate(120%)',
             position: 'relative',
             overflow: 'hidden',
             lineHeight: '26px',
-            backgroundBlendMode: 'plus-lighter',
-            borderTop: `1px solid ${theme.palette.grey[25]}`,
-            borderBottom: `1px solid ${theme.palette.grey[25]}`,
-            backgroundColor: 'opacityDark.4',
-
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              pointerEvents: 'none',
-              height: '62px',
-              transform: 'translateX(-40%)',
-              filter: 'blur(0px)',
-              transition: 'transform 0.9s ease',
-            },
-            '&:hover::before': {
-              transform: 'translateX(40%)',
-            },
+            backgroundColor: 'opacityLight.60',
+            backdropFilter: 'blur(5px)',
 
             img: {
               transition: '0.2s linear',
             },
+
             '.nav-menu-items': {
               display: 'flex',
               alignItems: 'center',
@@ -162,24 +192,19 @@ export default function Header() {
                 ml: 6,
               },
             },
-            // When a tooltip is open, increase fogginess
-            '&.tooltip-open': {
-              left: '4%',
-              backdropFilter: 'blur(16px) saturate(140%)',
-              WebkitBackdropFilter: 'blur(16px) saturate(140%)',
-            },
 
             '&.drawer-open': {
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
+              my: isMobile ? 0 : 1,
+              py: 1.5,
               img: {
                 height: 34,
                 width: 165,
               },
-              borderBottom: `1px solid ${theme.palette.primary.main}`,
             },
             borderRadius: isMobile ? 0 : '8px',
             [theme.breakpoints.down('lg')]: {
               my: '0 !important',
-              backgroundColor: 'opacityLight.90',
             },
           }}
         >
@@ -205,9 +230,8 @@ export default function Header() {
                 slotProps={{
                   paper: {
                     sx: {
-                      maxHeight: `calc(100% - 68px)`,
-                      backgroundColor: 'opacityLight.4',
-                      borderRadius: '0 0 20px 20px',
+                      height: '100vh',
+                      backgroundColor: 'transparent',
                     },
                   },
                 }}
@@ -226,7 +250,7 @@ export default function Header() {
                 mr="auto"
                 width="100%"
               >
-                <MenuDesktop headerWidth={headerWidth} />
+                <MenuDesktop headerWidth={headerWidth} headerRef={headerRef.current} />
               </Box>
             )}
           </Box>

@@ -9,7 +9,12 @@ import { ReactElement, useCallback, useRef, useState } from 'react';
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
 
 const HtmlTooltip = styled(
-  ({ className, offset, ...props }: TooltipProps & { offset?: number[] }) => (
+  ({
+    className,
+    offset,
+    isHeaderShrunk,
+    ...props
+  }: TooltipProps & { offset?: number[]; isHeaderShrunk: boolean }) => (
     <Tooltip
       {...props}
       arrow
@@ -24,20 +29,24 @@ const HtmlTooltip = styled(
           sx: theme => ({
             borderTop: `2px solid ${theme.palette.primary.main}  !important`,
             boxShadow: '0 8px 20px rgba(2,6,23,0.25) !important',
-            backdropFilter: 'blur(10px) saturate(120%)',
-            WebkitBackdropFilter: 'blur(10px) saturate(120%)',
-            marginTop: '10px !important',
+            marginTop: isHeaderShrunk ? '9px !important' : '11px !important',
+            borderRadius: '0 0 8px 8px',
+            backgroundColor: 'opacityLight.60',
+            backdropFilter: 'blur(5px)',
             '& .MuiTooltip-arrow': {
               color: theme.palette.background.paper,
+              display: 'inline-block',
+              width: 16,
               '&::before': {
                 border: `1px solid ${theme.palette.divider}`,
                 borderTop: 'none',
                 borderLeft: 'none',
                 backgroundColor: theme.palette.primary.main,
-                width: '32px',
+                display: 'inline-block',
+                width: '42px',
                 height: '10px',
                 position: 'relative',
-                top: '-1px',
+                top: '-8px',
               },
             },
           }),
@@ -57,30 +66,11 @@ const HtmlTooltip = styled(
   )
 )(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: 'transparent',
     color: theme.palette.text.primary,
     maxWidth: 'none',
     padding: 0,
     borderBottomLeftRadius: '8px !important',
     borderBottomRightRadius: '8px !important',
-    // Use a frosted backdrop + subtle border
-    border: `1px solid ${theme.palette.divider}`,
-    overflow: 'visible',
-    position: 'relative',
-    backdropFilter: 'blur(10px) saturate(120%)',
-    WebkitBackdropFilter: 'blur(10px) saturate(120%)',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      pointerEvents: 'none',
-      filter: 'blur(6px)',
-      transition: 'transform 0.9s ease, opacity 0.3s ease',
-      opacity: 0.9,
-    },
-    '&:hover::before': {
-      transform: 'translateX(10%)',
-    },
   },
 }));
 
@@ -92,6 +82,8 @@ const MenuItemCard = styled(MuiLink)(({ theme }) => ({
   textDecoration: 'none',
   transition: 'background-color 0.2s ease',
   position: 'relative',
+  backgroundColor: 'transparent',
+
   pr: 4,
   '&::after': {
     content: "' '",
@@ -99,7 +91,7 @@ const MenuItemCard = styled(MuiLink)(({ theme }) => ({
     right: 0,
     top: 0,
     width: '1px',
-    height: '100%',
+    height: '104px',
     backgroundColor: theme.palette.opacityDark[20],
   },
   '&:hover': {
@@ -119,7 +111,7 @@ const useDynamicOffset = () => {
 
     const logoOffset = headerLogo.getBoundingClientRect().left;
     const menuItemRect = element.getBoundingClientRect().left;
-    const xOffset = logoOffset - menuItemRect - 10;
+    const xOffset = logoOffset - menuItemRect - 7;
 
     setOffset([xOffset, 0]);
   }, []);
@@ -131,18 +123,28 @@ const MenuTooltip = ({
   children,
   subMenuItems,
   headerWidth,
+  headerRef,
 }: {
   children: ReactElement;
   subMenuItems: SubMenuItem[];
   headerWidth: number;
+  headerRef: HTMLDivElement | null;
 }) => {
   const t = useTranslations('header');
   const { offset, updateOffset } = useDynamicOffset();
   const anchorRef = useRef<HTMLElement>(null);
 
+  const isHeaderShrunk = useCallback(() => {
+    if (headerRef) {
+      return headerRef.classList.contains('header-shrink');
+    }
+    return false;
+  }, [headerRef]);
+
   return (
     <HtmlTooltip
       offset={offset}
+      isHeaderShrunk={isHeaderShrunk() ?? false}
       title={
         <Box
           sx={theme => {
@@ -161,17 +163,14 @@ const MenuTooltip = ({
             sx={{
               width: 'auto',
               background: 'transparent',
-              paddingTop: theme => theme.spacing(3),
-              paddingLeft: theme => theme.spacing(3),
-              paddingBottom: theme => theme.spacing(3),
+              pt: theme => theme.spacing(4),
+              pb: theme => theme.spacing(4),
+              pl: theme => theme.spacing(2),
+              pr: theme => theme.spacing(2),
               display: 'grid',
-              gap: 4,
+              gap: 2,
               gridTemplateColumns:
                 subMenuItems.length < 3 ? `repeat(${subMenuItems.length}, 1fr)` : 'repeat(3, 1fr)',
-              '& > *': {
-                backdropFilter: 'blur(4px) saturate(120%)',
-                WebkitBackdropFilter: 'blur(4px) saturate(120%)',
-              },
             }}
           >
             {subMenuItems.map((item, idx) => {
@@ -192,7 +191,13 @@ const MenuTooltip = ({
                     <Image src={item.icon} alt={item.title} width={32} height={32} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" gutterBottom color="grey.900" fontWeight={300}>
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      color="grey.900"
+                      fontWeight={300}
+                      sx={{ marginBottom: 0.5 }}
+                    >
                       {t(item.title)}
                     </Typography>
                     <Typography variant="body2" color="grey.900" fontWeight={300}>
