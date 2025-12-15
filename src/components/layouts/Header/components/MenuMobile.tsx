@@ -198,10 +198,11 @@ export default function MenuMobile() {
       <Box
         sx={{
           position: 'fixed',
-          bottom: 3,
+          bottom: 0,
           left: 0,
           right: 0,
-          p: 2,
+          px: 1,
+          py: 3,
           backgroundColor: 'transparent',
           display: 'flex',
           gap: 2,
