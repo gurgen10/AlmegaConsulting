@@ -1,24 +1,73 @@
 'use client';
 
-import { Box, Typography, useMediaQuery } from '@mui/material';
-import { useEffect, useRef, useState, useCallback } from 'react';
-import Image from 'next/image';
+import { Box, Typography } from '@mui/material';
+import { useRef, useEffect, useState, useCallback } from 'react';
+import { useTheme, useMediaQuery } from '@mui/material';
+
 import { CONTAINER_STYLES, SECTION_STYLES_X } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
+import TrustedLogo from '@/components/common/TrustedIndustrySection/TrustedLogo';
 
-export default function TrustedIndustrySection() {
+export default function Testimonials() {
   const t = useTranslations('homePage');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const isScrolling = useRef<boolean>(true);
+  const animationRef = useRef<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [itemWidth, setItemWidth] = useState(1000);
   const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef<number>(0);
-  const dragScrollLeft = useRef<number>(0);
-  const scrollPosition = useRef<number>(0);
-  const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-  const [logos] = useState([
+  const cycleStartTimeRef = useRef<number | null>(null);
+  const isInitializedRef = useRef(false);
+  const isHoveringRef = useRef(false);
+  const lastScrollLeftRef = useRef(0);
+  const shouldPauseAfterCurrentAnimationRef = useRef(false);
+  const currentAnimationPhaseRef = useRef<'scrolling' | 'pausing'>('scrolling');
+
+  const logoWidth = isMobile ? 150 : 180;
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    setIsPaused(true);
+
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsPaused(false);
+    isHoveringRef.current = false;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const SCROLL_CONFIG = {
+    itemDuration: 1000,
+    pauseDuration: 1500,
+  };
+
+  const logos = [
     '/images/trusted-industry/Logo0.svg',
     '/images/trusted-industry/Logo1.svg',
     '/images/trusted-industry/Logo2.svg',
@@ -26,239 +75,213 @@ export default function TrustedIndustrySection() {
     '/images/trusted-industry/Logo4.svg',
     '/images/trusted-industry/Logo5.svg',
     '/images/trusted-industry/Logo6.svg',
-  ]);
+  ];
 
-  const isMobile = useMediaQuery('(max-width: 600px)');
-  const logoWidth = isMobile ? 120 : 180;
-  const gap = 8;
+  const allLogos = [...logos, ...logos];
 
-  // Calculate dimensions
-  const logoWidthWithGap = logoWidth + gap;
-  const totalWidth = logoWidthWithGap * logos.length;
+  useEffect(() => {
+    const updateItemWidth = () => {
+      if (!scrollContainerRef.current) return;
 
-  // Start auto-scroll with delay between logos
-  const startAutoScroll = useCallback(() => {
-    if (!isScrolling.current || isDragging) return;
+      const container = scrollContainerRef.current;
+      if (!container.firstChild?.firstChild) return;
 
-    let isPaused = false;
-    let targetPosition = logoWidthWithGap; // Start by moving to first logo
+      const item = container.firstChild.firstChild as HTMLDivElement;
+      const itemWidth = item.offsetWidth;
+      const computedStyle = window.getComputedStyle(container.firstChild as Element);
+      const gap = parseInt(computedStyle.gap) || 24;
 
-    const animate = () => {
-      if (!scrollContainerRef.current || !isScrolling.current || isDragging) return;
-
-      if (!isPaused) {
-        // Smooth scroll to the current target position
-        const distanceToTarget = targetPosition - scrollPosition.current;
-
-        if (Math.abs(distanceToTarget) < 0.5) {
-          // Reached target position, pause for 1 second
-          isPaused = true;
-
-          // Set timeout to resume after 1 second
-          timeoutRef.current = setTimeout(() => {
-            isPaused = false;
-
-            // Update to next logo
-            setCurrentLogoIndex(prev => {
-              const nextIndex = (prev + 1) % logos.length;
-              targetPosition = (nextIndex + 1) * logoWidthWithGap;
-
-              // If we've scrolled through all logos in the current set, reset position
-              if (targetPosition >= totalWidth) {
-                scrollPosition.current = 0;
-                targetPosition = logoWidthWithGap;
-                return 0;
-              }
-
-              return nextIndex;
-            });
-
-            // Continue animation
-            if (isScrolling.current && !isDragging) {
-              animationFrameRef.current = requestAnimationFrame(animate);
-            }
-          }, 1000); // 1 second delay
-        } else {
-          // Smoothly scroll towards target position
-          scrollPosition.current += distanceToTarget * 0.05; // Smooth easing
-
-          // Update container position
-          scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
-          scrollContainerRef.current.style.transition = 'transform 0.1s linear';
-        }
-      }
-
-      // Continue animation if not paused
-      if (!isPaused) {
-        animationFrameRef.current = requestAnimationFrame(animate);
-      }
+      setItemWidth(itemWidth + gap);
     };
 
-    animationFrameRef.current = requestAnimationFrame(animate);
-  }, [isDragging, logoWidthWithGap, logos.length, totalWidth]);
+    updateItemWidth();
 
-  const stopAutoScroll = useCallback(() => {
-    isScrolling.current = false;
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    }
-    if (timeoutRef.current !== null) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
+    window.addEventListener('resize', updateItemWidth);
+
+    const timeoutId = setTimeout(updateItemWidth, 100);
+
+    return () => {
+      window.removeEventListener('resize', updateItemWidth);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
-  // Manual scrolling handlers
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (!scrollContainerRef.current) return;
+  const startAnimation = useCallback(() => {
+    if (!scrollContainerRef.current || isPaused) {
+      return;
+    }
 
-      setIsDragging(true);
-      stopAutoScroll();
+    const container = scrollContainerRef.current;
 
-      dragStartX.current = e.pageX - scrollContainerRef.current.offsetLeft;
-      dragScrollLeft.current = scrollPosition.current;
+    if (!cycleStartTimeRef.current) {
+      cycleStartTimeRef.current = performance.now();
+      isInitializedRef.current = true;
+      container.scrollLeft = 0;
+    }
 
-      document.body.style.cursor = 'grabbing';
-      document.body.style.userSelect = 'none';
-    },
-    [stopAutoScroll]
-  );
+    const totalCycleTime =
+      logos.length * SCROLL_CONFIG.itemDuration + logos.length * SCROLL_CONFIG.pauseDuration;
 
-  const updateScrollPosition = useCallback(
-    (clientX: number) => {
-      if (!scrollContainerRef.current) return;
-
-      const x = clientX - scrollContainerRef.current.offsetLeft;
-      const walk = (x - dragStartX.current) * 1.5;
-      const newPosition = dragScrollLeft.current - walk;
-
-      // Update scroll position with boundary checking
-      scrollPosition.current = Math.max(0, newPosition);
-
-      // Calculate which logo is currently centered
-      const currentIndex = Math.round(scrollPosition.current / logoWidthWithGap) % logos.length;
-      setCurrentLogoIndex(currentIndex);
-
-      // Allow infinite scrolling by resetting position
-      if (scrollPosition.current >= totalWidth) {
-        scrollPosition.current = scrollPosition.current % totalWidth;
+    const animate = (timestamp: number) => {
+      if (!cycleStartTimeRef.current) {
+        cycleStartTimeRef.current = timestamp;
       }
 
-      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
-      scrollContainerRef.current.style.transition = 'none'; // Remove transition during drag
-    },
-    [logoWidthWithGap, logos.length, totalWidth]
-  );
+      const cycleElapsed = timestamp - cycleStartTimeRef.current;
+      const cyclePosition = cycleElapsed % totalCycleTime;
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging) return;
-      updateScrollPosition(e.pageX);
-    },
-    [isDragging, updateScrollPosition]
-  );
+      let accumulatedTime = 0;
+      let currentItem = 0;
+      let itemProgress = 0;
+      let isInPause = false;
 
-  const handleMouseUp = useCallback(() => {
-    if (!isDragging) return;
+      for (let i = 0; i < logos.length; i++) {
+        const itemEnd = accumulatedTime + SCROLL_CONFIG.itemDuration;
+        const pauseEnd = itemEnd + SCROLL_CONFIG.pauseDuration;
 
-    setIsDragging(false);
-    document.body.style.cursor = '';
-    document.body.style.userSelect = '';
+        if (cyclePosition < itemEnd) {
+          currentItem = i;
+          itemProgress = (cyclePosition - accumulatedTime) / SCROLL_CONFIG.itemDuration;
+          isInPause = false;
+          break;
+        } else if (cyclePosition < pauseEnd) {
+          currentItem = i;
+          isInPause = true;
+          itemProgress = 1;
+          break;
+        }
+        accumulatedTime = pauseEnd;
+      }
 
-    // Snap to nearest logo when releasing drag
-    if (scrollContainerRef.current) {
-      scrollPosition.current =
-        Math.round(scrollPosition.current / logoWidthWithGap) * logoWidthWithGap;
-      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
-      scrollContainerRef.current.style.transition = 'transform 0.3s ease';
+      currentAnimationPhaseRef.current = isInPause ? 'pausing' : 'scrolling';
 
-      const currentIndex = Math.round(scrollPosition.current / logoWidthWithGap) % logos.length;
-      setCurrentLogoIndex(currentIndex);
+      if (shouldPauseAfterCurrentAnimationRef.current && isInPause) {
+        shouldPauseAfterCurrentAnimationRef.current = false;
+        setIsPaused(true);
+        return;
+      }
+
+      if (isPaused) {
+        // Store current time to continue from same position when resumed
+        const elapsed = timestamp - cycleStartTimeRef.current;
+        // Adjust cycle start time to maintain position
+        cycleStartTimeRef.current = timestamp - (elapsed % totalCycleTime);
+        return;
+      }
+
+      if (!isInPause) {
+        const liner = (t: number) => t;
+        const easedProgress = liner(itemProgress);
+        const basePosition = currentItem * itemWidth;
+        container.scrollLeft = basePosition + itemWidth * easedProgress;
+
+        lastScrollLeftRef.current = container.scrollLeft;
+      } else if (currentItem === logos.length - 1 && itemProgress === 1) {
+        container.scrollLeft = 0;
+        lastScrollLeftRef.current = 0;
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [
+    isMobile,
+    isPaused,
+    logos.length,
+    itemWidth,
+    SCROLL_CONFIG.itemDuration,
+    SCROLL_CONFIG.pauseDuration,
+  ]);
+
+  const handleMouseEnter = () => {
+    isHoveringRef.current = true;
+
+    // Request to pause after current animation completes
+    shouldPauseAfterCurrentAnimationRef.current = true;
+
+    if (currentAnimationPhaseRef.current === 'pausing') {
+      setIsPaused(true);
+      shouldPauseAfterCurrentAnimationRef.current = false;
     }
 
-    // Resume auto-scroll after a delay if not hovering
-    setTimeout(() => {
-      isScrolling.current = true;
-      startAutoScroll();
-    }, 1000);
-  }, [isDragging, startAutoScroll, logoWidthWithGap, logos.length]);
-
-  // Touch handlers for mobile
-  const handleTouchStart = useCallback(
-    (e: React.TouchEvent) => {
-      if (!scrollContainerRef.current) return;
-
-      setIsDragging(true);
-      stopAutoScroll();
-
-      const touch = e.touches[0];
-      dragStartX.current = touch.pageX - scrollContainerRef.current.offsetLeft;
-      dragScrollLeft.current = scrollPosition.current;
-    },
-    [stopAutoScroll]
-  );
-
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) => {
-      if (!isDragging) return;
-      updateScrollPosition(e.touches[0].pageX);
-    },
-    [isDragging, updateScrollPosition]
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    setIsDragging(false);
-
-    // Snap to nearest logo when releasing touch
+    // Store current scroll position
     if (scrollContainerRef.current) {
-      scrollPosition.current =
-        Math.round(scrollPosition.current / logoWidthWithGap) * logoWidthWithGap;
-      scrollContainerRef.current.style.transform = `translateX(-${scrollPosition.current}px)`;
-      scrollContainerRef.current.style.transition = 'transform 0.3s ease';
-
-      const currentIndex = Math.round(scrollPosition.current / logoWidthWithGap) % logos.length;
-      setCurrentLogoIndex(currentIndex);
+      lastScrollLeftRef.current = scrollContainerRef.current.scrollLeft;
     }
+  };
 
-    setTimeout(() => {
-      isScrolling.current = true;
-      startAutoScroll();
-    }, 1000);
-  }, [startAutoScroll, logoWidthWithGap, logos.length]);
+  const handleMouseLeaveContainer = () => {
+    isHoveringRef.current = false;
 
-  const handleMouseLeave = useCallback(() => {
+    // Only resume if not dragging
     if (!isDragging) {
-      isScrolling.current = true;
-      startAutoScroll();
+      // Cancel any pending pause request
+      shouldPauseAfterCurrentAnimationRef.current = false;
+
+      // Reset animation to start from current position
+      if (scrollContainerRef.current && cycleStartTimeRef.current) {
+        // Calculate which item we're currently showing
+        const currentScrollLeft = scrollContainerRef.current.scrollLeft;
+        const currentItemIndex = Math.floor(currentScrollLeft / itemWidth);
+        const itemProgress = (currentScrollLeft % itemWidth) / itemWidth;
+
+        // Calculate the time position in the cycle
+        const now = performance.now();
+        const totalItemTime = SCROLL_CONFIG.itemDuration + SCROLL_CONFIG.pauseDuration;
+
+        // Adjust cycle start time so animation continues from current position
+        const cycleTimeForCurrentItem =
+          currentItemIndex * totalItemTime + itemProgress * SCROLL_CONFIG.itemDuration;
+        cycleStartTimeRef.current = now - cycleTimeForCurrentItem;
+      }
+
+      setIsPaused(false);
     }
-  }, [isDragging, startAutoScroll]);
+  };
 
-  // Initialize auto-scroll
   useEffect(() => {
-    startAutoScroll();
-    return () => {
-      stopAutoScroll();
-    };
-  }, [startAutoScroll, stopAutoScroll]);
+    startAnimation();
+    // if (!isMobile) {
+    //   startAnimation();
+    // } else {
+    //   if (scrollContainerRef.current) {
+    //     scrollContainerRef.current.scrollLeft = 0;
+    //   }
+    //   cycleStartTimeRef.current = null;
+    //   isInitializedRef.current = false;
+    //   shouldPauseAfterCurrentAnimationRef.current = false;
+    // }
+    //
+    // return () => {
+    //   if (animationRef.current) {
+    //     cancelAnimationFrame(animationRef.current);
+    //   }
+    // };
+  }, [startAnimation]);
 
-  // Add global mouse/touch event listeners
   useEffect(() => {
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove);
-      document.addEventListener('touchend', handleTouchEnd);
+    if (isPaused && animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    } else if (!isPaused && !animationRef.current) {
+      startAnimation();
     }
+  }, [isPaused, startAnimation]);
 
+  useEffect(() => {
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
+  }, []);
 
   return (
     <Box
@@ -266,152 +289,77 @@ export default function TrustedIndustrySection() {
       sx={{
         ...SECTION_STYLES_X,
         backgroundColor: 'primary.800',
-        pt: 2,
-        pb: 4,
+        pt: 0,
+        pb: 0,
         overflow: 'hidden',
       }}
     >
-      <Box {...CONTAINER_STYLES}>
+      <Box
+        sx={theme => ({
+          ...CONTAINER_STYLES,
+          pt: 4,
+          pb: 6,
+          [theme.breakpoints.down('sm')]: {
+            pt: 3,
+            pb: 5,
+          },
+        })}
+      >
         <Typography
           component="h2"
           variant="h6"
           fontWeight={500}
           textAlign={'center'}
           color={'grey.25'}
-          sx={{
-            mb: 3,
-          }}
+          mb={3}
         >
           {t('trustedIndustry')}
         </Typography>
-
         <Box
+          ref={scrollContainerRef}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeaveContainer}
           sx={{
+            ...CONTAINER_STYLES,
             position: 'relative',
-            width: '100%',
-            overflow: 'hidden',
-            userSelect: 'none',
-            cursor: isDragging ? 'grabbing' : 'grab',
+            overflowY: 'hidden',
+            whiteSpace: 'nowrap',
+            scrollbarWidth: 'none',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+            '&:active': {
+              cursor: 'grabbing',
+            },
           }}
-          // onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
-          {/* Gradient overlays */}
           <Box
-            sx={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: '100px',
-              zIndex: 2,
-              pointerEvents: 'none',
-            }}
-          />
-          <Box
-            sx={{
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: '100px',
-              zIndex: 2,
-              pointerEvents: 'none',
-            }}
-          />
-
-          {/* Scroll instruction hint */}
-          {!isMobile && (
-            <Box
-              sx={{
-                position: 'absolute',
-                top: -30,
-                right: 20,
-                color: 'grey.400',
-                fontSize: '0.75rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0.5,
-                zIndex: 3,
-                opacity: 0.6,
-                transition: 'opacity 0.3s ease',
-              }}
-            >
-              <span>← Drag to scroll →</span>
-            </Box>
-          )}
-
-          {/* Current logo indicator */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: -30,
-              left: 20,
-              color: 'grey.400',
-              fontSize: '0.75rem',
-              zIndex: 3,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 0.5,
-            }}
-          >
-            <span>
-              {currentLogoIndex + 1} / {logos.length}
-            </span>
-          </Box>
-
-          <Box
-            ref={scrollContainerRef}
             onMouseDown={handleMouseDown}
-            onTouchStart={handleTouchStart}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: `${gap}px`,
-              willChange: 'transform',
-              touchAction: 'none',
+              cursor: isDragging ? 'grabbing' : 'grab',
+              display: 'inline-flex',
+              gap: 1,
+              minWidth: 'max-content',
             }}
           >
-            {/* Render logos multiple times for seamless infinite scroll */}
-            {[...logos, ...logos, ...logos].map((logo, index) => {
-              const logoSetIndex = index % logos.length;
-              const isCurrentLogo = logoSetIndex === currentLogoIndex;
-
-              return (
-                <Box
-                  key={`${logo}-${index}`}
-                  sx={{
-                    flexShrink: 0,
-                    width: `${logoWidth}px`,
-                    height: 'auto',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    filter: 'brightness(0) invert(1)',
-                    opacity: 0.6,
-                    transform: isCurrentLogo ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'opacity 0.3s ease, transform 0.3s ease',
-                    '&:hover': {
-                      opacity: 1,
-                    },
-                  }}
-                >
-                  <Image
-                    src={logo}
-                    alt=""
-                    width={logoWidth}
-                    height={40}
-                    style={{
-                      width: '100%',
-                      height: '28px',
-                      objectFit: 'contain',
-                      pointerEvents: 'none',
-                    }}
-                    priority={index < 14}
-                  />
-                </Box>
-              );
-            })}
+            {allLogos.map((review, index) => (
+              <Box
+                key={`${review}-${index}`}
+                sx={{
+                  display: 'inline-block',
+                  flexShrink: 0,
+                  maxWidth: '427px',
+                  whiteSpace: 'normal',
+                  verticalAlign: 'top',
+                  width: logoWidth,
+                }}
+              >
+                <TrustedLogo logo={review} logoWidth={logoWidth} />
+              </Box>
+            ))}
           </Box>
         </Box>
       </Box>
