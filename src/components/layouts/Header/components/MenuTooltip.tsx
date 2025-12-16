@@ -4,7 +4,7 @@ import { Box, Link as MuiLink, styled, Typography } from '@mui/material';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ReactElement, useCallback, useRef, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
 
@@ -133,6 +133,7 @@ const MenuTooltip = ({
   const t = useTranslations('header');
   const { offset, updateOffset } = useDynamicOffset();
   const anchorRef = useRef<HTMLElement>(null);
+  const [open, setOpen] = useState(false);
 
   const isHeaderShrunk = useCallback(() => {
     if (headerRef) {
@@ -141,8 +142,24 @@ const MenuTooltip = ({
     return false;
   }, [headerRef]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (open) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [open]);
+
   return (
     <HtmlTooltip
+      open={open}
+      onOpen={() => setOpen(true)}
+      onClose={() => setOpen(false)}
       offset={offset}
       isHeaderShrunk={isHeaderShrunk() ?? false}
       title={
@@ -226,9 +243,15 @@ const MenuTooltip = ({
     >
       <Box
         ref={anchorRef}
-        onMouseEnter={() => anchorRef.current && updateOffset(anchorRef.current)}
+        onMouseEnter={e => {
+          updateOffset(e.currentTarget);
+          setOpen(true);
+        }}
+        onClick={e => {
+          e.stopPropagation();
+          setOpen(prev => !prev);
+        }}
       >
-        {' '}
         {children}
       </Box>
     </HtmlTooltip>
