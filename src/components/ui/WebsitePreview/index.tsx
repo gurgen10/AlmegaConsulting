@@ -7,7 +7,7 @@ import LockIcon from '@/components/ui/icons/LockIcon';
 import ReloadIcon from '@/components/ui/icons/ReloadIcon';
 import DownloadCircleOutlined from '@/components/ui/icons/DownloadCircleOutlined';
 import UploadIcon from '@/components/ui/icons/UploadIcon';
-import PlusIcon from '@/components/ui/icons/PlusIcon';
+import PlusOutlined from '@/components/ui/icons/PlusOutlined';
 import BurgerIcon from '@/components/ui/icons/BurgerIcon';
 
 export default function WebsitePreview({ children, domain }: WebsitePreviewProps) {
@@ -29,7 +29,7 @@ export default function WebsitePreview({ children, domain }: WebsitePreviewProps
         <Stack spacing={1.5} direction="row">
           <DownloadCircleOutlined />
           <UploadIcon />
-          <PlusIcon height={12} width={12} />
+          <PlusOutlined height={12} width={12} />
           <BurgerIcon />
         </Stack>
       </div>

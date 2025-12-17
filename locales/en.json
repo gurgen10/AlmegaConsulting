@@ -235,6 +235,32 @@
         "description": "Send instant, automated quotes the moment a homeowner submits the form. Responding at the perfect time keeps interest high and helps you convert more leads into paying solar customers.",
         "cta": "Sign Up"
       }
+    },
+    "summarySection": {
+      "title": "The Fastest-Growing Solar Design Software",
+      "proposalsGenerated": "Solar sales proposals generated",
+      "quotesSent": "Solar leads captured and instant quotes sent",
+      "increaseProductivity": "Increase in sales team productivity",
+      "ledToProposalConversion": "Faster lead-to-proposal conversion"
+    },
+    "whyLeadCapture": {
+      "title": "Why Solar Teams Love Our Lead Capture and Instant Quoting Software",
+      "conversionRate": {
+        "title": "Higher Lead Conversion Rates",
+        "description": "Because homeowners receive clear, personalised solar information instantly, they stay engaged and move forward faster. This reduces drop-off, boosts trust, and significantly increases the percentage of leads who book a consultation or site survey."
+      },
+      "shorterSalesCycle": {
+        "title": "A Shorter, Streamlined Solar Sales Cycle",
+        "description": "Automated instant quoting removes the days-long delays common in traditional solar sales. With faster responses and verified leads, you dramatically compress the time from initial interest to scheduled appointment, helping you close more installs each month."
+      },
+      "timeUse": {
+        "title": "More Efficient Use of Your Solar Sales Team’s Time",
+        "description": "With only real, verified leads entering the pipeline, your team no longer wastes hours contacting fake submissions, chasing invalid emails, or manually qualifying low-intent prospects. This increases productivity and lets reps focus on high-value conversations that close faster."
+      },
+      "cost": {
+        "title": "Lower Cost per Acquisition (CPA)",
+        "description": "By filtering out junk leads and converting more real homeowners from the same traffic, your marketing spend goes further. You get more paying customers per campaign, which drives down your cost per acquired solar customer."
+      }
     }
   },
   "colorPicker": {

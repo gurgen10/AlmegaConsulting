@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import TryMeSection from '@/components/common/TryMeSection';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
-import LeadProductInfoSection from '@/components/common/LeadProductInfoSection';
+import LeadProductInfoSection from '@/components/common/SolarQuotingSystem/LeadProductInfoSection';
+import TryMeSection from '@/components/common/SolarQuotingSystem/TryMeSection';
+import Statistics from '@/components/common/Statistics';
+import WhyLeadCapture from '@/components/common/WhyLeadCapture';
+import Testimonials from '@/components/common/Testimonials';
 
 export const metadata: Metadata = {
   title: 'Leads | SolarGenix',
@@ -15,6 +18,9 @@ export default async function Leads() {
       <TryMeSection />
       <TrustedIndustrySection />
       <LeadProductInfoSection />
+      <Statistics dividerColor="primary.200" color="primary.400" />
+      <WhyLeadCapture />
+      <Testimonials />
     </>
   );
 }
