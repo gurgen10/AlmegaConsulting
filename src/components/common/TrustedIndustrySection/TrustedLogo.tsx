@@ -1,12 +1,11 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
 
-const TrustedLogo = ({ logo, logoWidth }: { logo: string; logoWidth: number }) => {
+const TrustedLogo = ({ logo }: { logo: string }) => {
   return (
     <Box
       sx={{
         flexShrink: 0,
-        width: `${logoWidth}px`,
         height: 32,
         display: 'flex',
         alignItems: 'center',
@@ -15,6 +14,7 @@ const TrustedLogo = ({ logo, logoWidth }: { logo: string; logoWidth: number }) =
         opacity: 0.6,
         transition: 'opacity 0.3s ease, transform 0.3s ease',
         '&:hover': {
+          cursor: 'grab',
           opacity: 1,
         },
       }}
@@ -22,13 +22,12 @@ const TrustedLogo = ({ logo, logoWidth }: { logo: string; logoWidth: number }) =
       <Image
         src={logo}
         alt="logo"
-        width={logoWidth}
+        width={180}
         height={32}
         style={{
-          width: 'auto',
+          width: '100%',
           height: '32px',
           objectFit: 'contain',
-          pointerEvents: 'none',
         }}
       />
     </Box>

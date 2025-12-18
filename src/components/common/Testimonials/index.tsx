@@ -71,41 +71,41 @@ export default function Testimonials() {
       position: 'CEO, SolarGenix',
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus vel ante bibendum facilisis. Nullam nec metus vel ante bibendum facilisis.',
-      image: '/images/Testimonials/1.jpg',
+      image: '/images/Testimonials/reviewer.svg',
     },
     {
       name: 'John Smith',
       position: 'CEO, SolarGenix',
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus vel ante bibendum facilisis. Nullam nec metus vel ante bibendum facilisis.',
-      image: '/images/Testimonials/2.jpg',
+      image: '/images/Testimonials/reviewer.svg',
     },
     {
       name: 'John Carter',
       position: 'CEO, SolarGenix',
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus vel ante bibendum facilisis. Nullam nec metus vel ante bibendum facilisis.',
-      image: '/images/Testimonials/3.jpg',
+      image: '/images/Testimonials/reviewer.svg',
     },
     {
       name: 'Sarah Johnson',
       position: 'CTO, SunPower',
       review:
         'Excellent software that streamlined our solar sales process. Highly recommended for any solar business.',
-      image: '/images/Testimonials/4.jpg',
+      image: '/images/Testimonials/reviewer.svg',
     },
     {
       name: 'Mike Wilson',
       position: 'Sales Director, SolarEdge',
       review:
         'The best investment we made this year. Increased our conversion rates by 40% in just 3 months.',
-      image: '/images/Testimonials/5.jpg',
+      image: '/images/Testimonials/reviewer.svg',
     },
     {
       name: 'Emma Davis',
       position: 'Operations Manager, GreenEnergy',
       review: 'User-friendly interface with powerful features. Our team adapted to it within days.',
-      image: '/images/Testimonials/6.jpg',
+      image: '/images/Testimonials/reviewer.svg',
     },
   ];
 
@@ -405,7 +405,12 @@ export default function Testimonials() {
                   },
                 })}
               >
-                <Review name={review.name} position={review.position} review={review.review} />
+                <Review
+                  name={review.name}
+                  position={review.position}
+                  review={review.review}
+                  image={review.image}
+                />
               </Box>
             ))}
           </Box>

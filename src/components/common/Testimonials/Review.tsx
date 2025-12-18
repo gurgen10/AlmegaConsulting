@@ -1,7 +1,14 @@
 import { Box, Card, Typography } from '@mui/material';
 import Image from 'next/image';
 
-const Review = ({ name, position, review }: { name: string; position: string; review: string }) => {
+interface Review {
+  name: string;
+  position: string;
+  review: string;
+  image: string;
+}
+
+const Review = ({ name, position, review, image }: Review) => {
   return (
     <Card sx={{ height: '100%' }}>
       <Box
@@ -10,6 +17,7 @@ const Review = ({ name, position, review }: { name: string; position: string; re
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
+          cursor: 'grab',
         }}
       >
         <Box>
@@ -23,7 +31,7 @@ const Review = ({ name, position, review }: { name: string; position: string; re
               px: 4,
             }}
           >
-            <Box>
+            <Box sx={{ display: 'flex' }}>
               {Array.from({ length: 5 }).map((_, index) => (
                 <Image
                   key={index}
@@ -51,6 +59,11 @@ const Review = ({ name, position, review }: { name: string; position: string; re
                 color: 'grey.800',
                 fontWeight: 300,
                 px: 4,
+                textAlign: 'left',
+                whiteSpace: 'normal',
+                wordWrap: 'break-word',
+                overflow: 'visible',
+                textOverflow: 'clip',
               }}
             >
               {review}
@@ -67,15 +80,56 @@ const Review = ({ name, position, review }: { name: string; position: string; re
             gap: 2,
           })}
         >
-          <Box sx={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden' }}>
-            {/*<Image src={image} alt={image.split('/').pop() ?? ''} width={48} height={48} />*/}
-            <Box sx={{ width: '48px', height: '48px', backgroundColor: 'primary.main' }}></Box>
+          <Box
+            sx={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              flexShrink: 0,
+              position: 'relative',
+            }}
+          >
+            <Image
+              src={image || ''}
+              alt={image ?? ''}
+              fill
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+            {/*<Box sx={{ width: '48px', height: '48px', backgroundColor: 'primary.main' }}></Box>*/}
           </Box>
           <Box>
-            <Typography variant="subtitle1" color="grey.800" fontWeight={700}>
+            <Typography
+              variant="subtitle1"
+              color="grey.800"
+              fontWeight={700}
+              textAlign="left"
+              sx={{
+                textAlign: 'left',
+                whiteSpace: 'normal',
+                wordWrap: 'break-word',
+                overflow: 'visible',
+                textOverflow: 'clip',
+              }}
+            >
               {name}
             </Typography>
-            <Typography variant="subtitle2" color="grey.600" fontWeight={300}>
+            <Typography
+              variant="subtitle2"
+              color="grey.600"
+              fontWeight={300}
+              textAlign="left"
+              sx={{
+                textAlign: 'left',
+                whiteSpace: 'normal',
+                wordWrap: 'break-word',
+                overflow: 'visible',
+                textOverflow: 'clip',
+              }}
+            >
               {position}
             </Typography>
           </Box>
