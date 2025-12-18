@@ -19,6 +19,7 @@ export default function Testimonials() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [isClient, setIsClient] = useState(false);
 
   const cycleStartTimeRef = useRef<number | null>(null);
   const isInitializedRef = useRef(false);
@@ -26,43 +27,12 @@ export default function Testimonials() {
   const lastScrollLeftRef = useRef(0);
   const shouldPauseAfterCurrentAnimationRef = useRef(false);
   const currentAnimationPhaseRef = useRef<'scrolling' | 'pausing'>('scrolling');
+  const touchStartXRef = useRef(0);
+  const touchScrollLeftRef = useRef(0);
 
-  const logoWidth = isMobile ? 150 : 180;
+  const logoWidth = 200;
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
-
-    setIsDragging(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-    setIsPaused(true);
-
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-      animationRef.current = null;
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-    setIsPaused(false);
-    isHoveringRef.current = false;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    e.preventDefault();
-
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const SCROLL_CONFIG = {
+  const SCROLL_CONFIG_TRUSTED = {
     itemDuration: 1000,
     pauseDuration: 1500,
   };
@@ -80,6 +50,71 @@ export default function Testimonials() {
   const allLogos = [...logos, ...logos];
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    setIsPaused(true);
+
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!scrollContainerRef.current) return;
+
+    setIsDragging(true);
+    const touch = e.touches[0];
+    touchStartXRef.current = touch.pageX - scrollContainerRef.current.offsetLeft;
+    touchScrollLeftRef.current = scrollContainerRef.current.scrollLeft;
+    setIsPaused(true);
+
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+
+    const touch = e.touches[0];
+    const x = touch.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - touchStartXRef.current) * 2;
+    scrollContainerRef.current.scrollLeft = touchScrollLeftRef.current - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsPaused(false);
+    isHoveringRef.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
     const updateItemWidth = () => {
       if (!scrollContainerRef.current) return;
 
@@ -89,29 +124,43 @@ export default function Testimonials() {
       const item = container.firstChild.firstChild as HTMLDivElement;
       const itemWidth = item.offsetWidth;
       const computedStyle = window.getComputedStyle(container.firstChild as Element);
-      const gap = parseInt(computedStyle.gap) || 24;
+      const gap = parseInt(computedStyle.gap) || 8;
 
       setItemWidth(itemWidth + gap);
     };
 
-    updateItemWidth();
+    if (typeof window !== 'undefined') {
+      updateItemWidth();
+      window.addEventListener('resize', updateItemWidth);
 
-    window.addEventListener('resize', updateItemWidth);
+      const timeoutId = setTimeout(updateItemWidth, 100);
 
-    const timeoutId = setTimeout(updateItemWidth, 100);
-
-    return () => {
-      window.removeEventListener('resize', updateItemWidth);
-      clearTimeout(timeoutId);
-    };
+      return () => {
+        window.removeEventListener('resize', updateItemWidth);
+        clearTimeout(timeoutId);
+      };
+    }
   }, []);
 
   const startAnimation = useCallback(() => {
-    if (!scrollContainerRef.current || isPaused) {
+    if (!scrollContainerRef.current || isPaused || !isClient) {
       return;
     }
 
     const container = scrollContainerRef.current;
+
+    // Reset animation if container doesn't exist or is on mobile
+    // if (isMobile) {
+    //   if (animationRef.current) {
+    //     cancelAnimationFrame(animationRef.current);
+    //     animationRef.current = null;
+    //   }
+    //   if (container) {
+    //     container.scrollLeft = 0;
+    //   }
+    //   cycleStartTimeRef.current = null;
+    //   return;
+    // }
 
     if (!cycleStartTimeRef.current) {
       cycleStartTimeRef.current = performance.now();
@@ -120,7 +169,8 @@ export default function Testimonials() {
     }
 
     const totalCycleTime =
-      logos.length * SCROLL_CONFIG.itemDuration + logos.length * SCROLL_CONFIG.pauseDuration;
+      logos.length * SCROLL_CONFIG_TRUSTED.itemDuration +
+      logos.length * SCROLL_CONFIG_TRUSTED.pauseDuration;
 
     const animate = (timestamp: number) => {
       if (!cycleStartTimeRef.current) {
@@ -136,12 +186,12 @@ export default function Testimonials() {
       let isInPause = false;
 
       for (let i = 0; i < logos.length; i++) {
-        const itemEnd = accumulatedTime + SCROLL_CONFIG.itemDuration;
-        const pauseEnd = itemEnd + SCROLL_CONFIG.pauseDuration;
+        const itemEnd = accumulatedTime + SCROLL_CONFIG_TRUSTED.itemDuration;
+        const pauseEnd = itemEnd + SCROLL_CONFIG_TRUSTED.pauseDuration;
 
         if (cyclePosition < itemEnd) {
           currentItem = i;
-          itemProgress = (cyclePosition - accumulatedTime) / SCROLL_CONFIG.itemDuration;
+          itemProgress = (cyclePosition - accumulatedTime) / SCROLL_CONFIG_TRUSTED.itemDuration;
           isInPause = false;
           break;
         } else if (cyclePosition < pauseEnd) {
@@ -162,10 +212,6 @@ export default function Testimonials() {
       }
 
       if (isPaused) {
-        // Store current time to continue from same position when resumed
-        const elapsed = timestamp - cycleStartTimeRef.current;
-        // Adjust cycle start time to maintain position
-        cycleStartTimeRef.current = timestamp - (elapsed % totalCycleTime);
         return;
       }
 
@@ -191,54 +237,26 @@ export default function Testimonials() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [
-    isMobile,
-    isPaused,
-    logos.length,
-    itemWidth,
-    SCROLL_CONFIG.itemDuration,
-    SCROLL_CONFIG.pauseDuration,
-  ]);
-
-  const handleMouseEnter = () => {
-    isHoveringRef.current = true;
-
-    // Request to pause after current animation completes
-    shouldPauseAfterCurrentAnimationRef.current = true;
-
-    if (currentAnimationPhaseRef.current === 'pausing') {
-      setIsPaused(true);
-      shouldPauseAfterCurrentAnimationRef.current = false;
-    }
-
-    // Store current scroll position
-    if (scrollContainerRef.current) {
-      lastScrollLeftRef.current = scrollContainerRef.current.scrollLeft;
-    }
-  };
+  }, [isPaused, logos.length, itemWidth, isMobile, isClient]);
 
   const handleMouseLeaveContainer = () => {
+    if (isMobile) return;
+
     isHoveringRef.current = false;
 
-    // Only resume if not dragging
     if (!isDragging) {
-      // Cancel any pending pause request
       shouldPauseAfterCurrentAnimationRef.current = false;
 
-      // Reset animation to start from current position
       if (scrollContainerRef.current && cycleStartTimeRef.current) {
-        // Calculate which item we're currently showing
         const currentScrollLeft = scrollContainerRef.current.scrollLeft;
         const currentItemIndex = Math.floor(currentScrollLeft / itemWidth);
         const itemProgress = (currentScrollLeft % itemWidth) / itemWidth;
 
-        // Calculate the time position in the cycle
         const now = performance.now();
-        const totalItemTime = SCROLL_CONFIG.itemDuration + SCROLL_CONFIG.pauseDuration;
-
-        // Adjust cycle start time so animation continues from current position
+        const totalItemTime =
+          SCROLL_CONFIG_TRUSTED.itemDuration + SCROLL_CONFIG_TRUSTED.pauseDuration;
         const cycleTimeForCurrentItem =
-          currentItemIndex * totalItemTime + itemProgress * SCROLL_CONFIG.itemDuration;
+          currentItemIndex * totalItemTime + itemProgress * SCROLL_CONFIG_TRUSTED.itemDuration;
         cycleStartTimeRef.current = now - cycleTimeForCurrentItem;
       }
 
@@ -246,34 +264,42 @@ export default function Testimonials() {
     }
   };
 
+  const handleMouseEnter = () => {
+    if (isMobile) return;
+
+    isHoveringRef.current = true;
+    shouldPauseAfterCurrentAnimationRef.current = true;
+
+    if (currentAnimationPhaseRef.current === 'pausing') {
+      setIsPaused(true);
+      shouldPauseAfterCurrentAnimationRef.current = false;
+    }
+
+    if (scrollContainerRef.current) {
+      lastScrollLeftRef.current = scrollContainerRef.current.scrollLeft;
+    }
+  };
+
   useEffect(() => {
-    startAnimation();
-    // if (!isMobile) {
-    //   startAnimation();
-    // } else {
-    //   if (scrollContainerRef.current) {
-    //     scrollContainerRef.current.scrollLeft = 0;
-    //   }
-    //   cycleStartTimeRef.current = null;
-    //   isInitializedRef.current = false;
-    //   shouldPauseAfterCurrentAnimationRef.current = false;
-    // }
-    //
-    // return () => {
-    //   if (animationRef.current) {
-    //     cancelAnimationFrame(animationRef.current);
-    //   }
-    // };
-  }, [startAnimation]);
+    if (isClient) {
+      startAnimation();
+    }
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [startAnimation, isClient]);
 
   useEffect(() => {
     if (isPaused && animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
-    } else if (!isPaused && !animationRef.current) {
+    } else if (!isPaused && !animationRef.current && !isMobile && isClient) {
       startAnimation();
     }
-  }, [isPaused, startAnimation]);
+  }, [isPaused, startAnimation, isMobile, isClient]);
 
   useEffect(() => {
     return () => {
@@ -282,6 +308,10 @@ export default function Testimonials() {
       }
     };
   }, []);
+
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <Box
@@ -292,16 +322,17 @@ export default function Testimonials() {
         pt: 0,
         pb: 0,
         overflow: 'hidden',
+        userSelect: 'none',
       }}
     >
       <Box
         sx={theme => ({
           ...CONTAINER_STYLES,
           pt: 4,
-          pb: 6,
+          pb: 5,
           [theme.breakpoints.down('sm')]: {
             pt: 3,
-            pb: 5,
+            pb: 4,
           },
         })}
       >
@@ -319,6 +350,9 @@ export default function Testimonials() {
           ref={scrollContainerRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeaveContainer}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           sx={{
             ...CONTAINER_STYLES,
             position: 'relative',
@@ -331,6 +365,8 @@ export default function Testimonials() {
             '&:active': {
               cursor: 'grabbing',
             },
+            touchAction: 'pan-x',
+            WebkitOverflowScrolling: 'touch',
           }}
         >
           <Box
@@ -339,15 +375,16 @@ export default function Testimonials() {
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
             sx={{
-              cursor: isDragging ? 'grabbing' : 'grab',
+              cursor: isDragging ? 'grabbing' : isMobile ? 'default' : 'grab',
               display: 'inline-flex',
-              gap: 1,
+              gap: 3,
               minWidth: 'max-content',
+              px: 1,
             }}
           >
-            {allLogos.map((review, index) => (
+            {allLogos.map((logo, index) => (
               <Box
-                key={`${review}-${index}`}
+                key={`${logo}-${index}`}
                 sx={{
                   display: 'inline-block',
                   flexShrink: 0,
@@ -355,9 +392,12 @@ export default function Testimonials() {
                   whiteSpace: 'normal',
                   verticalAlign: 'top',
                   width: logoWidth,
+                  height: 40,
+                  position: 'relative',
+                  // pointerEvents: 'none', // Prevent logo from interfering with drag
                 }}
               >
-                <TrustedLogo logo={review} logoWidth={logoWidth} />
+                <TrustedLogo logo={logo} logoWidth={logoWidth} />
               </Box>
             ))}
           </Box>

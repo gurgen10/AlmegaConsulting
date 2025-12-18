@@ -109,7 +109,7 @@ export default function Testimonials() {
     },
   ];
 
-  const allReviewers = [...reviewers, ...reviewers];
+  const allReviewers = reviewers.length > 2 ? [...reviewers, ...reviewers] : reviewers;
 
   useEffect(() => {
     const updateItemWidth = () => {
@@ -196,9 +196,7 @@ export default function Testimonials() {
       }
 
       if (isPaused) {
-        // Store current time to continue from same position when resumed
         const elapsed = timestamp - cycleStartTimeRef.current;
-        // Adjust cycle start time to maintain position
         cycleStartTimeRef.current = timestamp - (elapsed % totalCycleTime);
         return;
       }
