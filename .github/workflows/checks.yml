@@ -15,7 +15,7 @@ jobs:
       contents: read
       actions: read
       security-events: write
-    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-checks.yml@main
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/frontend-reusable-checks.yml@main
     with:
       main_branch: main
       node_version: 20
