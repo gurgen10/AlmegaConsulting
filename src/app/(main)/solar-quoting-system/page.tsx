@@ -5,6 +5,9 @@ import TryMeSection from '@/components/common/SolarQuotingSystem/TryMeSection';
 import Statistics from '@/components/common/Statistics';
 import WhyLeadCapture from '@/components/common/WhyLeadCapture';
 import Testimonials from '@/components/common/Testimonials';
+import LeadProductGuideSection from '@/components/common/LeadProductGuideSection';
+import LeadsFAQ from '@/components/common/LeadsFAQ';
+import LeadsCtaSection from '@/components/common/LeadsCtaSection';
 
 export const metadata: Metadata = {
   title: 'Leads | SolarGenix',
@@ -21,6 +24,9 @@ export default async function Leads() {
       <Statistics dividerColor="primary.200" color="primary.400" />
       <WhyLeadCapture />
       <Testimonials />
+      <LeadProductGuideSection />
+      <LeadsFAQ />
+      <LeadsCtaSection />
     </>
   );
 }
