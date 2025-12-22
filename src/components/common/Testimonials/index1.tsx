@@ -123,6 +123,8 @@ export default function Testimonials() {
           <Swiper
             slidesPerView={1}
             spaceBetween={8}
+            centeredSlides={true}
+            centeredSlidesBounds={true}
             freeMode={true}
             autoplay={{
               delay: 2000,
