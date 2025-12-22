@@ -24,7 +24,7 @@ export const SECTION_STYLES_Y = {
 };
 
 export const CONTAINER_STYLES = {
-  maxWidth: 1296,
+  maxWidth: { xs: 480, md: 1296 },
   width: '100%',
   mx: 'auto',
 };
