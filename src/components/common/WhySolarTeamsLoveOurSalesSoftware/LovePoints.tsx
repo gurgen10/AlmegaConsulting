@@ -44,7 +44,7 @@ const LovePoints = ({ title, text, image }: { title: string; text: string; image
               {title}
             </Typography>
           </Box>
-          <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.900', mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'primary.900', mb: 2 }}>
             {text}
           </Typography>
         </Box>

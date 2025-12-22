@@ -109,10 +109,11 @@ const Review = ({ name, position, review, image }: Review) => {
               textAlign="left"
               sx={{
                 textAlign: 'left',
-                whiteSpace: 'normal',
                 wordWrap: 'break-word',
-                overflow: 'visible',
-                textOverflow: 'clip',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                width: '220px',
+                display: 'block',
               }}
             >
               {name}
@@ -124,10 +125,12 @@ const Review = ({ name, position, review, image }: Review) => {
               textAlign="left"
               sx={{
                 textAlign: 'left',
-                whiteSpace: 'normal',
                 wordWrap: 'break-word',
-                overflow: 'visible',
-                textOverflow: 'clip',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                width: '90%',
+                display: 'block',
               }}
             >
               {position}

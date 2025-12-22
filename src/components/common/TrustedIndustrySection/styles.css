@@ -1,21 +1,22 @@
-.swiper {
+.swipe-trusted-industry.swiper {
   width: 100%;
   height: 100%;
 }
 
-.swiper-slide {
+.swipe-trusted-industry .swiper-slide {
   text-align: center;
   font-size: 18px;
 
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 176px;
 }
 
-.swiper-slide img {
+.swipe-trusted-industry .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  min-width: 176px;
 }

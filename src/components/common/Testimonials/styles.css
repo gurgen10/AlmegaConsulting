@@ -1,13 +1,18 @@
-.swiper {
+.swipe-testimonials.swiper {
   width: 100%;
   height: 100%;
+  /*transform: translateX(30%);*/
+  /*position: relative;*/
+  /*left: -30%;*/
+  overflow: hidden;
 }
 
-.swiper-slide {
+.swipe-testimonials .swiper-slide {
   text-align: center;
   font-size: 18px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }

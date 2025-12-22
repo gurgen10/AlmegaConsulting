@@ -33,8 +33,7 @@ export default function Testimonials() {
         backgroundColor: 'primary.800',
         pt: 0,
         pb: 0,
-        overflow: 'hidden',
-        userSelect: 'none',
+        boxShadow: '0 4px 21.3px 2px rgba(0, 43, 43, 0.30)',
       }}
     >
       <Box
@@ -60,8 +59,9 @@ export default function Testimonials() {
         </Typography>
         <Box>
           <Swiper
+            className="swipe-trusted-industry"
             slidesPerView={2}
-            spaceBetween={8}
+            spaceBetween={1}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
