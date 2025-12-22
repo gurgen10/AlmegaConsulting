@@ -208,6 +208,7 @@
     "quotePreview": {
       "title": "Ready to start?",
       "description": "Enter your details below and instantly receive an accurate solar quote for your home.",
+      "logoPlaceholder": "Your Logo Here",
       "fullName": "Full Name",
       "email": "Email",
       "address": "Address",

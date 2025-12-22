@@ -24,7 +24,7 @@ export default function Minimalistic(props: QuoteLayoutProps) {
           />
         ) : (
           <Typography fontSize="26px !important" fontWeight={500}>
-            Your Logo Here
+            {t('logoPlaceholder')}
           </Typography>
         )}
         <div>

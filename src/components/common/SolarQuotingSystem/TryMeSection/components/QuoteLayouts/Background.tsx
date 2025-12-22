@@ -25,7 +25,7 @@ export default function Background(props: QuoteLayoutProps) {
             />
           ) : (
             <Typography fontSize="26px !important" fontWeight={500}>
-              Your Logo Here
+              {t('logoPlaceholder')}
             </Typography>
           )}
           <Typography mt={4} mb={2} variant="h4" fontWeight={300} color={settings.titleColor}>

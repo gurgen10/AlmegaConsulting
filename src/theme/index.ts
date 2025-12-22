@@ -7,7 +7,6 @@ import { buildTypography } from '@/shared/utils/typography';
 import { TYPE_SCALE } from '@/shared/constants/typography';
 import { makePalette } from '@/shared/utils/colors';
 import { ThemeOptions } from '@mui/material';
-import ArrowDown from '@/components/ui/icons/ArrowDown';
 
 const commonConfigs: ThemeOptions = {
   breakpoints: {

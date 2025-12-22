@@ -32,7 +32,7 @@ export default function Elegant(props: QuoteLayoutProps) {
           />
         ) : (
           <Typography fontSize="26px !important" fontWeight={500}>
-            Your Logo Here
+            {t('logoPlaceholder')}
           </Typography>
         )}
         <Typography variant="body2" mb={3} fontWeight={300}>
