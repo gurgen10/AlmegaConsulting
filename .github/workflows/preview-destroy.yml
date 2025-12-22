@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   caller-preivew-destroy:
-    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/reusable-preview-destroy.yml@main
+    uses: EngineerincioOrg/Infra_CI_Templates/.github/workflows/frontend-reusable-preview-destroy.yml@main
     with:
       jira_task: ${{ inputs.jira_task }}
       git_sync: true
