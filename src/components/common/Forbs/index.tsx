@@ -122,6 +122,9 @@ export default function Forbs() {
                 [theme.breakpoints.down('sm')]: {
                   position: 'static',
                 },
+                '&:hover': {
+                  textDecoration: 'none',
+                },
               }}
             >
               {t('readFullArticle')}
