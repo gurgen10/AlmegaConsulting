@@ -14,7 +14,7 @@ export const makePalette = (key: ColorPaletteKey) => {
     ...scale,
     main: scale[mainColors[key] || 500],
     light: scale[400],
-    dark: scale[700],
+    dark: scale[600],
     contrastText: '#fff',
   };
 };

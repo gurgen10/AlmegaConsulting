@@ -66,7 +66,7 @@ export default function AIPoweredSolarSales() {
         ...SECTION_STYLES_Y,
         ...SECTION_STYLES_X,
         backgroundColor: 'grey.50',
-        boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
+        boxShadow: 'inset 0 0 38px 0 rgba(0, 0, 0, 0.25)',
       }}
     >
       <Box {...CONTAINER_STYLES}>
