@@ -1,9 +1,14 @@
 import { Box, Button, Typography } from '@mui/material';
-import { LeadInfoBlockProps } from '@/components/common/SolarQuotingSystem/LeadProductInfoSection/components/LeadInfoBlock/LeadInfoBlock.types';
+import { ProductInfoBlockProps } from '@/components/ui/ProductInfoSection/ProductInfoSection.types';
 
 const reverseStyles = { xs: 0, md: 1 };
 
-export default function LeadInfoBlock({ title, description, cta, reverse }: LeadInfoBlockProps) {
+export default function ProductInfoBlock({
+  title,
+  description,
+  cta,
+  reverse,
+}: ProductInfoBlockProps) {
   return (
     <Box display="grid" gridTemplateColumns={{ md: '1fr 1fr' }} columnGap={6} rowGap={3}>
       <Box order={reverse ? reverseStyles : {}}>

@@ -3,11 +3,11 @@ import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import LeadProductInfoSection from '@/components/common/SolarQuotingSystem/LeadProductInfoSection';
 import TryMeSection from '@/components/common/SolarQuotingSystem/TryMeSection';
 import Statistics from '@/components/common/Statistics';
-import WhyLeadCapture from '@/components/common/WhyLeadCapture';
 import Testimonials from '@/components/common/Testimonials';
-import LeadProductGuideSection from '@/components/common/LeadProductGuideSection';
-import LeadsFAQ from '@/components/common/LeadsFAQ';
-import LeadsCtaSection from '@/components/common/LeadsCtaSection';
+import WhyLeadCapture from '@/components/common/SolarQuotingSystem/WhyLeadCapture';
+import LeadProductGuideSection from '@/components/common/SolarQuotingSystem/LeadProductGuideSection';
+import LeadsFAQ from '@/components/common/SolarQuotingSystem/LeadsFAQ';
+import LeadsCtaSection from '@/components/common/SolarQuotingSystem/LeadsCtaSection';
 
 export const metadata: Metadata = {
   title: 'Leads | SolarGenix',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   keywords: [],
 };
 
-export default async function Leads() {
+export default async function SolarQuotingSystemPage() {
   return (
     <>
       <TryMeSection />

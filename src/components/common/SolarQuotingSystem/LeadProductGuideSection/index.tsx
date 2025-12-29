@@ -13,7 +13,7 @@ export default function LeadProductGuideSection() {
       title={t('title')}
       cta={{ children: t('cta'), component: Link, href: SALES_PROPOSAL_URL }}
       content={t('description')}
-      img={{ src: '/images/lead-product-guide/img.png', width: { md: 340, lg: 305, xl: 242 } }}
+      img={{ src: '/images/lead-product-guide/img.png' }}
     />
   );
 }
