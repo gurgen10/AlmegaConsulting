@@ -115,6 +115,61 @@
     "aregAghayantsDescription": "Founder and CEO of SolarGenix",
     "readFullArticle": "Read Full Article"
   },
+  "roofDetection": {
+    "heroTitle": "<sp>AI Roof Detection</sp> \n Accurate Layout and Solar Sales Proposal",
+    "heroDescription": "Upgrade your solar sales process with AI-powered roof detection that provides quick, accurate details about roof layout and obstacles. Generate professional, ready-to-sign solar proposals in just seconds.",
+    "signUp": "Sign Up",
+    "whyYouNeedAIPoweredRoofDetectionTitle": "Why You Need AI-Powered Roof Detection To Create Solar Sales Proposal",
+    "autoDetectRoofDimensionsTitle": "Auto-detect Roof Dimensions for Any Home",
+    "autoDetectRoofDimensionsDescription": "With our automated roof detection technology, you can quickly generate accurate roof layout in seconds. Our AI analyzes aerial imagery, calculates dimensions, and maps angles. This allows you to skip site visits, avoid waiting for engineering reviews, and move straight from lead to proposal without delays.",
+    "analyzePitchOrientationTitle": "Analyze Pitch and Orientation for Sun-Facing Accuracy",
+    "analyzePitchOrientationDescription": "Our pitch and orientation analysis automatically determines the precise sun exposure for each roof section. AI assesses angles, directions, and shade patterns to identify the optimal panel placement. You receive reliable energy forecasts and properly sized system recommendations in seconds, to make sure every quote is backed by data.",
+    "identifyObstaclesResidentialTitle": "Identify Obstacles on Any Residential Roof",
+    "identifyObstaclesResidentialDescription": "Our automatic obstacle detection considers every chimney, vent, and rooftop feature in proposals. AI quickly spots potential shading sources or installation challenges. So you can design around them from the start. This way, there are no surprises during installation, just precise layouts that work on the first try.",
+    "faq": "FAQ",
+    "faqDescription": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix",
+    "whyRoofDetectionTitle": "Why You need Automatic Roof Detection?",
+    "learnMore": "Learn More",
+    "whyRoofDetection": {
+      "point1": {
+        "title": "Create Accurate Sales Proposals in Seconds",
+        "description": "By automating roof detection, you can generate accurate solar proposals in seconds and reply to leads while they’re still hot. This shortens your sales cycle, keeps prospects engaged, and gives you more opportunities to win the deal first."
+      },
+      "point2": {
+        "title": "Accurate Roof Modeling to Improve System Design",
+        "description": "With Our AI-powered roof modeling you get detailed measurements of roof geometry, pitch, and orientation. This level of accuracy helps you design systems that maximize production while reducing errors and redesigns"
+      },
+      "point3": {
+        "title": "Boost Homeowner Confidence",
+        "description": "Accurate visual modeling gives homeowners a clear understanding of their future system. Detailed roof layouts, realistic module placement, and precise shading help reduce confusion and skepticism, resulting in a smoother approval process."
+      },
+      "point4": {
+        "title": "Reduces Labor Costs",
+        "description": "Reduce labor costs by cutting down the resources needed for every project. Our AI-powered roof detection handles the measurements and design groundwork. Now you spend less time on manual tasks, rely less on engineering support, and can take on more projects without increasing headcount."
+      }
+    },
+    "roofDetectionLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Beyond roof detection, our solar sales design software includes a full suite of tools to help you create sales-ready proposals with ease. Explore all the features below.",
+      "obstacleDetection": {
+        "title": "Obstacle Detection",
+        "description": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production."
+      },
+      "aIPoweredShadingAnalysis": {
+        "title": "AI-Powered Shading Analysis",
+        "description": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis."
+      },
+      "aIOptimizedPanelPlacement": {
+        "title": "AI-Optimized Panel Placement",
+        "description": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays."
+      },
+      "intelligentFinancialForecasting": {
+        "title": "Intelligent Financial Forecasting",
+        "description": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+      }
+    }
+  },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",
     "description": "SolarGenix.ai is a fully automated, AI-powered platform built to make solar sales faster, smarter, and more effective. It eliminates the slow, manual steps in proposal creation-helping teams move from lead to proposal in minutes, not hours."
@@ -182,5 +237,137 @@
     },
     "getStartedFree": "Get Started Free",
     "bookDemo": "Book a Demo"
+  },
+  "quotingSystemPage": {
+    "tryMeSection": {
+      "title": "Capture Leads and Send Instant Quotes with Our Solar <primary>Lead Capture</primary> Platform",
+      "description": "Boost your solar conversions by capturing qualified leads on your website and sending instant quotes at the perfect moment.",
+      "signUp": "Sign Up",
+      "bookDemo": "Book a Demo"
+    },
+    "quoteConfiguration": {
+      "layout": "Layout",
+      "pickLayout": "Pick a layout for your landing page.",
+      "brandingColors": "Branding Colors",
+      "companyLogo": "Company Logo",
+      "background": "Background",
+      "upload": "Upload",
+      "layoutOptions": {
+        "background": "Background",
+        "sideImage": "Side Image",
+        "minimalistic": "Minimalistic",
+        "elegant": "Elegant"
+      },
+      "colorsOptions": {
+        "buttonColor": "Button",
+        "buttonTextColor": "Button Text",
+        "titleColor": "Title"
+      }
+    },
+    "quotePreview": {
+      "title": "Ready to start?",
+      "description": "Enter your details below and instantly receive an accurate solar quote for your home.",
+      "logoPlaceholder": "Your Logo Here",
+      "fullName": "Full Name",
+      "email": "Email",
+      "address": "Address",
+      "consumption": "Last Month Consumption ($)",
+      "isOwner": "I Own My House",
+      "requestQuote": "Request a Quote",
+      "contactUs": "Contact Us:",
+      "termsOfUse": "By Requesting a quote you agree with our <link>Terms of Use</link> | <link>Privacy Policy</link>",
+      "poweredBy": "Powered by <primary>SolarGenix.ai</primary> © {year}, All rights reserved.",
+      "tryMe": "TRY ME!"
+    },
+    "leadProductInfo": {
+      "launchLandingPage": {
+        "title": "Launch Your Branded Solar Landing Page",
+        "description": "Create a custom landing page that matches your solar company’s branding and embed it directly on your website. It gives homeowners a simple way to submit their details when they’re ready to go solar.",
+        "cta": "Sign Up"
+      },
+      "captureVerifiedLeads": {
+        "title": "Capture Only Real, Verified Solar Leads",
+        "description": "Every lead is automatically qualified with built-in verification, including email confirmation. You get real homeowners, zero spam, and a cleaner, higher-quality lead pipeline.",
+        "cta": "Sign Up"
+      },
+      "sendQuotes": {
+        "title": "Send Instant Quotes and Convert Leads Faster",
+        "description": "Send instant, automated quotes the moment a homeowner submits the form. Responding at the perfect time keeps interest high and helps you convert more leads into paying solar customers.",
+        "cta": "Sign Up"
+      }
+    },
+    "summarySection": {
+      "title": "The Fastest-Growing Solar Design Software",
+      "proposalsGenerated": "Solar sales proposals generated",
+      "quotesSent": "Solar leads captured and instant quotes sent",
+      "increaseProductivity": "Increase in sales team productivity",
+      "ledToProposalConversion": "Faster lead-to-proposal conversion"
+    },
+    "whyLeadCapture": {
+      "title": "Why Solar Teams Love Our Lead Capture and Instant Quoting Software",
+      "conversionRate": {
+        "title": "Higher Lead Conversion Rates",
+        "description": "Because homeowners receive clear, personalised solar information instantly, they stay engaged and move forward faster. This reduces drop-off, boosts trust, and significantly increases the percentage of leads who book a consultation or site survey."
+      },
+      "shorterSalesCycle": {
+        "title": "A Shorter, Streamlined Solar Sales Cycle",
+        "description": "Automated instant quoting removes the days-long delays common in traditional solar sales. With faster responses and verified leads, you dramatically compress the time from initial interest to scheduled appointment, helping you close more installs each month."
+      },
+      "timeUse": {
+        "title": "More Efficient Use of Your Solar Sales Team’s Time",
+        "description": "With only real, verified leads entering the pipeline, your team no longer wastes hours contacting fake submissions, chasing invalid emails, or manually qualifying low-intent prospects. This increases productivity and lets reps focus on high-value conversations that close faster."
+      },
+      "cost": {
+        "title": "Lower Cost per Acquisition (CPA)",
+        "description": "By filtering out junk leads and converting more real homeowners from the same traffic, your marketing spend goes further. You get more paying customers per campaign, which drives down your cost per acquired solar customer."
+      }
+    },
+    "leadProductGuide": {
+      "title": "Turn Quotes Into Detailed Solar Sales Proposals Instantly",
+      "description": "Instant quotes spark interest, proposals close the deal. Discover how our Solar Sales Proposal tool helps you present accurate system options, financial breakdowns, and payback estimates in minutes.",
+      "cta": "Learn More"
+    },
+    "faqSection": {
+      "title": "FAQ",
+      "description": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
+      "faqs": {
+        "q_1": {
+          "question": "How does your Solar Lead Capture Tool help my sales team?",
+          "answer": "When a homeowner submits the form on your landing page, our system immediately verifies the lead to make sure it’s a real user, not spam or a bot. Once verified, the tool sends an instant solar quote to the homeowner. This means your sales team receives only real, high-intent leads who have already been quoted and are ready for follow-up, making their work faster, easier, and much more effective."
+        },
+        "q_2": {
+          "question": "How does the pricing for your Solar Lead Capture Tool work?",
+          "answer": "We offer simple, transparent pricing based on your usage and the number of leads captured and quoted. There are no hidden fees. You can scale your plan depending on your volume, making it cost-effective for both small installers and large solar teams."
+        },
+        "q_3": {
+          "question": "Can I customize the Solar Lead Capture Form to match my brand?",
+          "answer": "Yes. Your form and landing page can be fully customized with your logo, colors, messaging, and branding. This allows homeowners to feel like they’re interacting directly with your company, not a generic third-party tool."
+        },
+        "q_4": {
+          "question": "How fast does the solar instant quote get sent to the homeowner?",
+          "answer": "Instant quotes are delivered within seconds of form submission. This real-time response helps capture homeowner attention at the perfect moment before they leave your site or request quotes elsewhere."
+        },
+        "q_5": {
+          "question": "What does the solar instant quote include?",
+          "answer": "Each solar quote includes estimated system size, pricing, savings potential, and any other configuration details you choose to include. It gives homeowners enough clarity to move forward without overwhelming them with technical details."
+        },
+        "q_6": {
+          "question": "How do you verify leads to ensure they’re real?",
+          "answer": "Every solar lead receives an email verification link to confirm their identity and interest. This filters out fake submissions, bots, and low-intent visitors, so your team only receives genuine homeowners exploring solar options."
+        }
+      }
+    },
+    "ctaSection": {
+      "title": "Capture Solar Leads and Send Instant Quotes with SolarGenix",
+      "mainCta": "Get Started",
+      "cta": "Book a Demo"
+    }
+  },
+  "colorPicker": {
+    "red": "Red",
+    "green": "Green",
+    "blue": "Blue",
+    "hex": "Hex",
+    "title": "ColorPicker"
   }
 }

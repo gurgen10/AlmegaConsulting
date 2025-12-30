@@ -1,11 +1,12 @@
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
+import { QUOTING_SYSTEM_URL, SALES_PROPOSAL_URL } from '@/shared/constants/common';
 
 export const featureSubmenuItems: SubMenuItem[] = [
   {
     key: 'roofDetection',
     title: 'roofDetection',
     description: 'roofDetectionDescription',
-    url: '/#roofDetection',
+    url: '/roofDetection',
     icon: '/icons/header/roof-detection.svg',
   },
   {
@@ -50,14 +51,14 @@ export const productSubmenuItems: SubMenuItem[] = [
     key: 'solarProposal',
     title: 'solarProposal',
     description: 'solarProposalDescription',
-    url: '/#solarProposal',
+    url: SALES_PROPOSAL_URL,
     icon: '/icons/header/solar-proposal.svg',
   },
   {
     key: 'leadCapture',
     title: 'leadCapture',
     description: 'leadCaptureDescription',
-    url: '/#leadCapture',
+    url: QUOTING_SYSTEM_URL,
     icon: '/icons/header/lead-capture.svg',
   },
 ];

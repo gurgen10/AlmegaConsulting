@@ -9,8 +9,8 @@ import WhatMakesUsUnique from '@/components/common/WhatMakesUsUnique';
 import Statistics from '@/components/common/Statistics';
 import SeeWhatYourProposalWillLookLike from '@/components/common/SeeWhatYourProposalWillLookLike';
 import WhySolarTeamsLoveOurSalesSoftware from '@/components/common/WhySolarTeamsLoveOurSalesSoftware';
-import Faq from '@/components/common/Faq';
 import BottomCallToAction from '@/components/common/BottomCallToAction';
+import HomepageFaq from '@/components/common/HomepageFaq';
 import Forbs from '@/components/common/Forbs';
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ export default async function Home() {
       <Statistics />
       <SeeWhatYourProposalWillLookLike />
       <WhySolarTeamsLoveOurSalesSoftware />
-      <Faq />
+      <HomepageFaq />
       <BottomCallToAction />
     </>
   );

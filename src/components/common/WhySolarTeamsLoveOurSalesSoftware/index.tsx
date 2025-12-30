@@ -1,80 +1,46 @@
-'use client';
-
-import { Box, Typography } from '@mui/material';
-
-import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
-import LovePoints from '@/components/common/WhySolarTeamsLoveOurSalesSoftware/LovePoints';
+import InfoGrid from '@/components/ui/InfoGrid';
+import ClockFilled from '@/components/ui/icons/ClockFilled';
+import AimFilled from '@/components/ui/icons/AimFilled';
+import UsersFilled from '@/components/ui/icons/UsersFilled';
+import RocketFilled from '@/components/ui/icons/RocketFilled';
+import { Box } from '@mui/material';
 
 export default function WhySolarTeamsLoveOurSalesSoftware() {
   const t = useTranslations('homePage');
 
   const points = [
     {
-      title: 'whySolarTeamsLoveOurSalesSoftwareTitle1',
-      text: 'whySolarTeamsLoveOurSalesSoftwareDescription1',
-      image: '/images/why-solar-teams-love-our-sales-software/rocket.svg',
+      title: t('whySolarTeamsLoveOurSalesSoftwareTitle1'),
+      text: t('whySolarTeamsLoveOurSalesSoftwareDescription1'),
+      icon: <RocketFilled />,
     },
     {
-      title: 'whySolarTeamsLoveOurSalesSoftwareTitle2',
-      text: 'whySolarTeamsLoveOurSalesSoftwareDescription2',
-      image: '/images/why-solar-teams-love-our-sales-software/aim.svg',
+      title: t('whySolarTeamsLoveOurSalesSoftwareTitle2'),
+      text: t('whySolarTeamsLoveOurSalesSoftwareDescription2'),
+      icon: <AimFilled />,
     },
     {
-      title: 'whySolarTeamsLoveOurSalesSoftwareTitle3',
-      text: 'whySolarTeamsLoveOurSalesSoftwareDescription3',
-      image: '/images/why-solar-teams-love-our-sales-software/clock.svg',
+      title: t('whySolarTeamsLoveOurSalesSoftwareTitle3'),
+      text: t('whySolarTeamsLoveOurSalesSoftwareDescription3'),
+      icon: <ClockFilled />,
     },
     {
-      title: 'whySolarTeamsLoveOurSalesSoftwareTitle4',
-      text: 'whySolarTeamsLoveOurSalesSoftwareDescription4',
-      image: '/images/why-solar-teams-love-our-sales-software/users.svg',
+      title: t('whySolarTeamsLoveOurSalesSoftwareTitle4'),
+      text: t('whySolarTeamsLoveOurSalesSoftwareDescription4'),
+      icon: <UsersFilled />,
     },
   ];
 
   return (
     <Box
-      component="section"
       sx={{
-        ...SECTION_STYLES_Y,
-        ...SECTION_STYLES_X,
         backgroundColor: 'tertiary.100',
+        color: 'primary.900',
+        svg: { color: 'primary.main' },
       }}
     >
-      <Box {...CONTAINER_STYLES}>
-        <Typography
-          component="h2"
-          variant="h3"
-          sx={{
-            fontWeight: 500,
-            color: 'primary.900',
-            maxWidth: 800,
-            mb: 5,
-          }}
-        >
-          {t('whySolarTeamsLoveOurSalesSoftware')}
-        </Typography>
-        <Box
-          sx={theme => ({
-            display: 'grid',
-            gap: 5,
-            gridTemplateColumns: '1fr 1fr',
-            [theme.breakpoints.down('lg')]: {
-              gap: 3,
-            },
-            [theme.breakpoints.down('md')]: {
-              gridTemplateColumns: '1fr',
-              gap: 4,
-            },
-          })}
-        >
-          {points.map(point => (
-            <Box key={point.title}>
-              <LovePoints title={t(point.title)} text={t(point.text)} image={point.image} />
-            </Box>
-          ))}
-        </Box>
-      </Box>
+      <InfoGrid title={t('whySolarTeamsLoveOurSalesSoftware')} points={points} />
     </Box>
   );
 }

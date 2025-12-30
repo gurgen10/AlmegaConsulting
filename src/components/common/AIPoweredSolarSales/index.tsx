@@ -5,7 +5,7 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import DescriptionBlock from '@/components/common/AIPoweredSolarSales/DescriptionBlock';
+import DescriptionBlock from '@/components/ui/LearnMoreItem/DescriptionBlock';
 import VerticalGradient from '@/components/common/AIPoweredSolarSales/VerticalGradient';
 import HorizontalGradient from '@/components/common/AIPoweredSolarSales/HorizontalGradient';
 
