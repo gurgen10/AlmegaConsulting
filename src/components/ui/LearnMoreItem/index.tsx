@@ -7,8 +7,9 @@ import DescriptionBlock from './DescriptionBlock';
 interface LearnMoreItemProps {
   item: {
     title: string;
-    description: string;
-    url: string;
+    description?: string;
+    points?: string[];
+    url?: string;
     image: string;
     buttonText: string;
   };
@@ -133,9 +134,11 @@ export default function LearnMoreItem({
             }),
         }}
       >
+        {item.description}
         <DescriptionBlock
           title={translation(item.title)}
-          subtitle={translation(item.description)}
+          subtitle={item.description ? translation(item.description) : ''}
+          points={item.points}
           buttonText={translation(item.buttonText)}
           url={item.url}
         />

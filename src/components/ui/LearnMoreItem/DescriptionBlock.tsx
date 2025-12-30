@@ -6,7 +6,7 @@ interface DescriptionBlockProps {
   title: string;
   subtitle?: string;
   points?: string[];
-  url: string;
+  url?: string;
   buttonText: string;
 }
 export default function DescriptionBlock({
