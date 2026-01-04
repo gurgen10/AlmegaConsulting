@@ -134,7 +134,6 @@ export default function LearnMoreItem({
             }),
         }}
       >
-        {item.description}
         <DescriptionBlock
           title={translation(item.title)}
           subtitle={item.description ? translation(item.description) : ''}
@@ -156,6 +155,14 @@ export default function LearnMoreItem({
             }),
           overflow: 'hidden',
           position: 'relative',
+          textAlign: 'right',
+
+          [theme.breakpoints.down('md')]: {
+            textAlign: 'left',
+          },
+          [theme.breakpoints.down('sm')]: {
+            textAlign: 'center',
+          },
         }}
       >
         <Image
@@ -163,7 +170,7 @@ export default function LearnMoreItem({
           alt={translation(item.title)}
           width={386}
           height={342}
-          style={{ width: '100%', height: 'auto' }}
+          style={{ height: 'auto', maxWidth: '100%' }}
         />
       </Box>
     </Box>

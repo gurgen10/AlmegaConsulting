@@ -3,7 +3,6 @@ import HeroSection from '@/components/common/features/HeroSection';
 import WhyYouNeedAIPoweredRoofDetection from '@/components/common/features/WhyYouNeedAIPoweredRoofDetection';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 
-import AIPoweredSolarSales from '@/components/common/AIPoweredSolarSales';
 import Testimonials from '@/components/common/Testimonials';
 import Statistics from '@/components/common/Statistics';
 import FeaturesBottomCallToAction from '@/components/common/features/BottomCallToAction';
