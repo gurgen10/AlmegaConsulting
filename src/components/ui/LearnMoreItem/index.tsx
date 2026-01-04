@@ -29,8 +29,8 @@ export default function LearnMoreItem({
   const isEven = index % 2 === 0;
   const isFirst = index === 0;
   const isLast = index === totalItems - 1;
-  const isInFirstRow = index < 2; // First two items
-  const isInSecondRow = index >= 2; // Last two items
+  const isInFirstRow = index < 2;
+  const isInSecondRow = index >= 2;
 
   const showRightBorder = isEven && !isLast;
 
