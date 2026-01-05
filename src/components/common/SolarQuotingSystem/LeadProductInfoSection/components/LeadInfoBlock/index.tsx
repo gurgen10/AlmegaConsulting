@@ -13,7 +13,7 @@ export default function LeadInfoBlock({ title, description, cta, reverse }: Lead
         <Typography maxWidth={540} variant="h4" component="h3" fontWeight={500}>
           {title}
         </Typography>
-        <Typography variant="subtitle1" component="div" fontWeight={300} my={2}>
+        <Typography variant="subtitle1" component="p" fontWeight={300} my={2}>
           {description}
         </Typography>
         <Button variant="contained" color="secondary" size="medium" component="a" href={cta.href}>

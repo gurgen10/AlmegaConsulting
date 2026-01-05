@@ -113,7 +113,7 @@ export default function HeroSection() {
                 ),
               })}
             </Typography>
-            <Typography variant="subtitle2" fontWeight={300} marginBottom={3}>
+            <Typography component="p" variant="subtitle2" fontWeight={300} marginBottom={3}>
               {t.rich('heroDescription', {
                 bold: chunks => (
                   <Typography variant="inherit" component="strong" fontWeight={700}>
