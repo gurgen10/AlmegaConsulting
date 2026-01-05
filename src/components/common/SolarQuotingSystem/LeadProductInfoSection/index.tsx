@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import GradientDivider from '@/components/ui/GradientDivider';
 import { REGISTER_URL } from '@/shared/constants/common';
-import LeadInfoBlock from '@/components/common/SolarQuotingSystem/LeadProductInfoSection/components/LeadInfoBlock';
+import LeadInfoBlock from '@/components/ui/LeadInfoBlock';
 
 export default function LeadProductInfoSection() {
   const t = useTranslations('quotingSystemPage.leadProductInfo');

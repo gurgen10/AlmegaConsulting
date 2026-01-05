@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
-import { LeadInfoBlockProps } from '@/components/common/SolarQuotingSystem/LeadProductInfoSection/components/LeadInfoBlock/LeadInfoBlock.types';
+import { LeadInfoBlockProps } from '@/components/ui/LeadInfoBlock/LeadInfoBlock.types';
 
 const reverseStyles = { xs: 0, md: 1 };
 
