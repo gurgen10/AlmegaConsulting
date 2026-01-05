@@ -14,7 +14,7 @@ export default function AIPoweredSolarSales() {
   const theme = useTheme();
 
   const aIDrivenRoofDetection = {
-    title: 'aIDrivenRoofDetection',
+    title: t('aIDrivenRoofDetection'),
     points: [
       t('aIDrivenRoofDetectionDescription1'),
       t('aIDrivenRoofDetectionDescription2'),
