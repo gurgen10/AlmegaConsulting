@@ -79,7 +79,6 @@ export default function MenuDesktop({ headerWidth, headerRef }: MenuDesktopProps
         <Box
           sx={{
             width: '1px',
-            height: '38px',
             backgroundColor: 'opacityDark.12',
             transition: 'width 0.3s',
             mx: 2,

@@ -110,7 +110,10 @@ export default function LearnMoreFeatures() {
             maxWidth: 800,
             textAlign: 'center',
             color: 'grey.900',
-            mb: 5,
+            mb: '64px',
+            [theme.breakpoints.down('xl')]: {
+              mb: 5,
+            },
             [theme.breakpoints.down('md')]: {
               mb: 2,
             },

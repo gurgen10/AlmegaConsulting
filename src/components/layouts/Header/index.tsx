@@ -194,7 +194,7 @@ export default function Header() {
             },
 
             '&.drawer-open': {
-              borderBottom: `1px solid ${theme.palette.primary.main}`,
+              borderBottom: `2px solid ${theme.palette.primary.main}`,
               my: isMobile ? 0 : 1,
               py: 1.5,
               img: {
@@ -211,7 +211,7 @@ export default function Header() {
           <Box id="header-logo" component={Link} href="/" lineHeight={1}>
             <Image
               width={165}
-              height={34}
+              height={32}
               src="/icons/solar-genix-dark.svg"
               alt="SolarGenix Logo"
             />
@@ -227,6 +227,7 @@ export default function Header() {
             </Box>
             {isMobile ? (
               <Drawer
+                hideBackdrop
                 slotProps={{
                   paper: {
                     sx: {

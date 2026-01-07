@@ -55,10 +55,9 @@ export default function MenuMobile() {
           flex: 1,
           mt: '62px',
           height: '100vh',
-          position: 'static',
           backgroundColor: 'transparent',
-          backdropFilter: 'blur(10px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+          backdropFilter: 'blur(6px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(120%)',
           '& .MuiBox-root:last-child': {
             borderBottom: 'none',
           },
@@ -203,11 +202,10 @@ export default function MenuMobile() {
           sx={theme => ({
             left: 0,
             right: 0,
-            px: 2,
             backdropFilter: 'blur(10px) saturate(120%)',
             WebkitBackdropFilter: 'blur(10px) saturate(120%)',
             display: 'flex',
-            gap: 2,
+            gap: 1,
             justifyContent: 'center',
             position: 'sticky',
             bottom: theme.spacing(3),
@@ -244,7 +242,7 @@ export default function MenuMobile() {
               justifyContent: 'center',
               width: '100%',
               maxWidth: '173px',
-              minHeight: 48,
+              minHeight: 42,
               flex: 1,
             }}
           >
