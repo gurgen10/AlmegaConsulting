@@ -124,7 +124,7 @@ export default function MenuMobile() {
                   marginLeft: 0,
                   py: 2,
                   '& .MuiAccordionSummary-content': {
-                    margin: 0,
+                    margin: '0 !important',
                   },
                 }}
               >
