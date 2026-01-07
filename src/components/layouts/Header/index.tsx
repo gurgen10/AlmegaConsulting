@@ -227,6 +227,7 @@ export default function Header() {
             </Box>
             {isMobile ? (
               <Drawer
+                hideBackdrop
                 slotProps={{
                   paper: {
                     sx: {

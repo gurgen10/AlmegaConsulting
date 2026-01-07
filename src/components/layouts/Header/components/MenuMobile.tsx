@@ -56,8 +56,8 @@ export default function MenuMobile() {
           mt: '62px',
           height: '100vh',
           backgroundColor: 'transparent',
-          backdropFilter: 'blur(10px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+          backdropFilter: 'blur(6px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(120%)',
           '& .MuiBox-root:last-child': {
             borderBottom: 'none',
           },
@@ -243,7 +243,7 @@ export default function MenuMobile() {
               justifyContent: 'center',
               width: '100%',
               maxWidth: '173px',
-              minHeight: 48,
+              minHeight: 42,
               flex: 1,
             }}
           >
