@@ -40,7 +40,6 @@ export default function FeatureBlock({
 
   const isFirst = index === 0;
   const isLast = index === totalItems - 1;
-  const isEven = index % 2 === 0;
   const isMobile = theme.breakpoints.down('md');
 
   // Determine grid layout based on props

@@ -1,8 +1,7 @@
 'use client';
 
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
-import { useTranslations } from 'next-intl';
 import { ReactNode } from 'react';
 
 interface FeatureSectionProps {
@@ -20,8 +19,6 @@ export default function FeatureSection({
   containerStyles = {},
   titleStyles = {},
 }: FeatureSectionProps) {
-  const t = useTranslations();
-
   return (
     <Box
       component="section"

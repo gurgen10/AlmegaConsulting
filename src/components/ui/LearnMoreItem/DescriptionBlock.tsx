@@ -16,7 +16,6 @@ export default function DescriptionBlock({
   url,
   buttonText,
 }: DescriptionBlockProps) {
-  const t = useTranslations('homePage');
   return (
     <Box>
       <Typography
