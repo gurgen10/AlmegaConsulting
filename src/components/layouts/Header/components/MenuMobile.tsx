@@ -202,7 +202,6 @@ export default function MenuMobile() {
           sx={theme => ({
             left: 0,
             right: 0,
-            px: 2,
             backdropFilter: 'blur(10px) saturate(120%)',
             WebkitBackdropFilter: 'blur(10px) saturate(120%)',
             display: 'flex',
