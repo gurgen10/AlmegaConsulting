@@ -55,7 +55,6 @@ export default function MenuMobile() {
           flex: 1,
           mt: '62px',
           height: '100vh',
-          position: 'static',
           backgroundColor: 'transparent',
           backdropFilter: 'blur(10px) saturate(120%)',
           WebkitBackdropFilter: 'blur(10px) saturate(120%)',

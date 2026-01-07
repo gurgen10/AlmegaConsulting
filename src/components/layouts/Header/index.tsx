@@ -194,7 +194,7 @@ export default function Header() {
             },
 
             '&.drawer-open': {
-              borderBottom: `1px solid ${theme.palette.primary.main}`,
+              borderBottom: `2px solid ${theme.palette.primary.main}`,
               my: isMobile ? 0 : 1,
               py: 1.5,
               img: {
