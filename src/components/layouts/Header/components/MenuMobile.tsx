@@ -41,7 +41,7 @@ export default function MenuMobile() {
       component="nav"
       sx={{
         width: '100%',
-        height: 'calc(100vh - 68px)',
+        height: '100vh',
         position: 'relative',
         display: 'flex',
         backgroundColor: 'opacityLight.90',
@@ -50,14 +50,14 @@ export default function MenuMobile() {
       }}
     >
       <Stack
-        mb={3}
         sx={{
           overflowY: 'auto',
           flex: 1,
-          pb: '120px',
           mt: '62px',
-          backdropFilter: 'blur(10px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+          height: '100vh',
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(6px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(120%)',
           '& .MuiBox-root:last-child': {
             borderBottom: 'none',
           },
@@ -123,7 +123,7 @@ export default function MenuMobile() {
                   marginLeft: 0,
                   py: 2,
                   '& .MuiAccordionSummary-content': {
-                    margin: 0,
+                    margin: '0 !important',
                   },
                 }}
               >
@@ -198,61 +198,58 @@ export default function MenuMobile() {
             </Box>
           );
         })}
+        <Box
+          sx={theme => ({
+            left: 0,
+            right: 0,
+            backdropFilter: 'blur(10px) saturate(120%)',
+            WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+            display: 'flex',
+            gap: 1,
+            justifyContent: 'center',
+            position: 'sticky',
+            bottom: theme.spacing(3),
+            mt: 'auto',
+          })}
+        >
+          <Button
+            component={Link}
+            color="primary"
+            href="/book-a-demo"
+            size="medium"
+            sx={{
+              backgroundColor: 'secondary.main',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              maxWidth: '173px',
+              flex: 1,
+              color: 'grey.50',
+            }}
+          >
+            {t('bookDemo')}
+          </Button>
+          <Button
+            href={REGISTER_URL}
+            component={Link}
+            variant="contained"
+            size="medium"
+            color="primary"
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              maxWidth: '173px',
+              minHeight: 42,
+              flex: 1,
+            }}
+          >
+            {t('signUp')}
+          </Button>
+        </Box>
       </Stack>
-
-      <Box
-        sx={theme => ({
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          p: 2,
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(8px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(8px) saturate(120%)',
-          borderTop: `1px solid ${theme.palette.divider}`,
-          display: 'flex',
-          gap: 2,
-          justifyContent: 'center',
-        })}
-      >
-        <Button
-          component={Link}
-          color="primary"
-          href="/book-a-demo"
-          size="medium"
-          sx={{
-            backgroundColor: 'secondary.main',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            maxWidth: '173px',
-            flex: 1,
-            color: 'grey.50',
-          }}
-        >
-          {t('bookDemo')}
-        </Button>
-        <Button
-          href={REGISTER_URL}
-          component={Link}
-          variant="contained"
-          size="medium"
-          color="primary"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            maxWidth: '173px',
-            minHeight: 48,
-            flex: 1,
-          }}
-        >
-          {t('signUp')}
-        </Button>
-      </Box>
     </Box>
   );
 }

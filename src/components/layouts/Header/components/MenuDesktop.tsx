@@ -91,6 +91,9 @@ export default function MenuDesktop({ headerWidth, headerRef }: MenuDesktopProps
           variant="outlined"
           size="medium"
           color="primary"
+          sx={{
+            height: '38px',
+          }}
         >
           {t('signUp')}
         </Button>
