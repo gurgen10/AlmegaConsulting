@@ -211,7 +211,7 @@ export default function Header() {
           <Box id="header-logo" component={Link} href="/" lineHeight={1}>
             <Image
               width={165}
-              height={34}
+              height={32}
               src="/icons/solar-genix-dark.svg"
               alt="SolarGenix Logo"
             />
