@@ -206,7 +206,7 @@ export default function MenuMobile() {
             backdropFilter: 'blur(10px) saturate(120%)',
             WebkitBackdropFilter: 'blur(10px) saturate(120%)',
             display: 'flex',
-            gap: 2,
+            gap: 1,
             justifyContent: 'center',
             position: 'sticky',
             bottom: theme.spacing(3),
