@@ -6,7 +6,7 @@ import HeroSectionBlock from '@/components/ui/HeroSectionBlock';
 export default function HeroSection() {
   return (
     <HeroSectionBlock
-      translationNamespace="roofDetection"
+      translationNamespace="financialForecasting"
       heroImageUrl="/images/hero-section.png"
       heroButtonUrl={REGISTER_URL}
     />

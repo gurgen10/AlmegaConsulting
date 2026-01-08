@@ -113,6 +113,7 @@
   "roofDetection": {
     "heroTitle": "<sp>AI Roof Detection</sp> \n Accurate Layout and Solar Sales Proposal",
     "heroDescription": "Upgrade your solar sales process with AI-powered roof detection that provides quick, accurate details about roof layout and obstacles. Generate professional, ready-to-sign solar proposals in just seconds.",
+    "heroButtonLabel": "Sign Up",
     "signUp": "Sign Up",
     "whyYouNeedAIPoweredRoofDetectionTitle": "Why You Need AI-Powered Roof Detection To Create Solar Sales Proposal",
     "autoDetectRoofDimensionsTitle": "Auto-detect Roof Dimensions for Any Home",
@@ -164,6 +165,52 @@
         "description": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
       }
     }
+  },
+  "financialForecasting": {
+    "heroTitle": "<sp>Intelligent Financial Forecasting</sp> \n That Helps Homeowners \nSee Their Savings",
+    "heroDescription": "No spreadsheets, no guesswork. Our AI builds clear, compelling financial forecasts tailored to each home and utility rate. Provide homeowners with proposals that include a personalized savings story backed by real numbers.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesIntelligentFinancialForecastingTitle": "What Makes Intelligent Financial Forecasting Essential for Solar Sales Proposals",
+    "savingsEstimatesWithLocalEnergyRates": "Savings estimates with local energy rates",
+    "savingsEstimatesWithLocalEnergyRatesDescription": "Our AI-powered savings engine calculates precise cost savings by analyzing local utility rates and tariffs. It examines local energy prices and consumption patterns to deliver realistic, location-specific savings estimates in seconds.",
+    "rOIPaybackPeriod": "ROI and payback period based on homeowner usage",
+    "rOIPaybackPeriodDescription": "Our intelligent financial model assesses homeowner energy use to determine exact return on investment and payback timelines. It considers system size, usage patterns, and estimated production to provide clear financial results.",
+    "localIncentivesRebatesAppliedAutomatically": "Local incentives and rebates applied automatically",
+    "localIncentivesRebatesAppliedAutomaticallyDescription": "Our system automatically finds and applies eligible local incentives, rebates, and tax credits. It stays updated on regional programs to ensure each financial projection shows the maximum benefits available.",
+    "whyFinancialForecastingTitle": "Why You Need Intelligent Financial Forecasting",
+    "whyFinancialForecasting": {
+      "point1": {
+        "title": "Increase Proposal Accuracy",
+        "description": "Our AI-powered financial forecasting guarantees accurate savings, ROI, and payback estimates. Automated analysis minimizes guesswork and errors, helping you deliver dependable, data-driven proposals every time."
+      },
+      "point2": {
+        "title": "Close More Deals Faster",
+        "description": "Instant financial projections keep prospects engaged and confident. Clear savings estimates and ROI insights help homeowners make decisions quickly, shortening sales cycles and increasing conversion rates."
+      },
+      "point3": {
+        "title": "Reduce Manual Effort",
+        "description": "Our intelligent automation replaces spreadsheets and manual calculations. Local rates, incentives, and usage data are applied automatically, so you can focus on selling instead of crunching numbers."
+      },
+      "point4": {
+        "title": "Build Customer Trust",
+        "description": "Transparent, customized financial forecasts boost homeowners' confidence in their investments. Precise projections and well-defined incentives showcase professionalism and credibility in the proposal."
+      }
+    },
+    "learnMore": "Learn More",
+    "financialForecastingLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to streamline your process.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstacle insights in seconds with AI-powered roof detection.",
+      "obstacleDetectionTitle": "Obstacle Detection",
+      "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
+      "shadingAnalysisTitle": "Shading Analysis",
+      "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
+      "panelPlacementTitle": "Panel Placement",
+      "panelPlacementDescription": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays."
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
   },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",

@@ -35,7 +35,7 @@ export const featureSubmenuItems: SubMenuItem[] = [
     title: 'financialForecasting',
     description: 'financialForecastingDescription',
     icon: '/icons/header/financial-forecasting.svg',
-    url: '/#financialForecasting',
+    url: '/financialForecasting',
   },
   // {
   //   key: 'proposalGeneration',

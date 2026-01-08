@@ -6,33 +6,33 @@ import { useTranslations } from 'next-intl';
 import { LearnMoreGridRow } from '@/components/ui/LearnMoreItem/LearnMoreGridRow';
 
 export default function LearnMoreFeatures() {
-  const t = useTranslations('roofDetection');
+  const t = useTranslations('financialForecasting');
 
   const learnMoreFeatures = [
     {
-      title: 'roofDetectionLearnMore.obstacleDetection.title',
-      description: 'roofDetectionLearnMore.obstacleDetection.description',
+      title: 'financialForecastingLearnMore.roofDetectionTitle',
+      description: 'financialForecastingLearnMore.roofDetectionDescription',
       url: '',
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/obstacle.svg',
     },
     {
-      title: 'roofDetectionLearnMore.aIPoweredShadingAnalysis.title',
-      description: 'roofDetectionLearnMore.aIPoweredShadingAnalysis.description',
+      title: 'financialForecastingLearnMore.obstacleDetectionTitle',
+      description: 'financialForecastingLearnMore.obstacleDetectionDescription',
       url: '',
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/shading.svg',
     },
     {
-      title: 'roofDetectionLearnMore.intelligentFinancialForecasting.title',
-      description: 'roofDetectionLearnMore.intelligentFinancialForecasting.description',
+      title: 'financialForecastingLearnMore.shadingAnalysisTitle',
+      description: 'financialForecastingLearnMore.shadingAnalysisDescription',
       url: '',
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/inteligent.svg',
     },
     {
-      title: 'roofDetectionLearnMore.aIOptimizedPanelPlacement.title',
-      description: 'roofDetectionLearnMore.aIOptimizedPanelPlacement.description',
+      title: 'financialForecastingLearnMore.panelPlacementTitle',
+      description: 'financialForecastingLearnMore.panelPlacementDescription',
       url: '',
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/placement.svg',
@@ -62,7 +62,7 @@ export default function LearnMoreFeatures() {
             mb: 1,
           }}
         >
-          {t('roofDetectionLearnMore.title')}
+          {t('financialForecastingLearnMore.title')}
         </Typography>
         <Typography
           component="p"
@@ -83,7 +83,7 @@ export default function LearnMoreFeatures() {
             px: '18px',
           })}
         >
-          {t('roofDetectionLearnMore.subtitle')}
+          {t('financialForecastingLearnMore.subtitle')}
         </Typography>
 
         {/* First row */}
