@@ -3,12 +3,12 @@ import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
 import Statistics from '@/components/common/Statistics';
 
-import HeroSection from '@/components/common/financialForecasting/HeroSection';
-import WhatMakesIntelligentFinancialForecastingEssential from '@/components/common/financialForecasting/WhatMakesIntelligentFinancialForecastingEssential';
-import WhyFinancialForecasting from '@/components/common/financialForecasting/WhyFinancialForecasting';
-import LearnMoreFeatures from '@/components/common/financialForecasting/LearnMoreFeatures';
-import FinancialForeCastFaq from '@/components/common/financialForecasting/FinancialForeCastFaq';
-import BottomCallToAction from '@/components/common/financialForecasting/BottomCallToAction';
+import HeroSection from '@/components/common/obstructionDetection/HeroSection';
+import WhatMakesAIPoweredObstacleDetectionEssential from '@/components/common/obstructionDetection/WhatMakesAIPoweredObstacleDetectionEssential';
+import WhyFinancialForecasting from '@/components/common/obstructionDetection/WhyObstructionDetection';
+import LearnMoreFeatures from '@/components/common/obstructionDetection/LearnMoreFeatures';
+import ObstructionDetectionFaq from '@/components/common/obstructionDetection/ObstructionDetectionFaq';
+import BottomCallToAction from '@/components/common/obstructionDetection/BottomCallToAction';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -30,12 +30,12 @@ export default async function Home() {
     <>
       <HeroSection />
       <TrustedIndustrySection />
-      <WhatMakesIntelligentFinancialForecastingEssential />
+      <WhatMakesAIPoweredObstacleDetectionEssential />
       <Statistics />
       <WhyFinancialForecasting />
       <Testimonials />
       <LearnMoreFeatures />
-      <FinancialForeCastFaq />
+      <ObstructionDetectionFaq />
       <BottomCallToAction />
     </>
   );

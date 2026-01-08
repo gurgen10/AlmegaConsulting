@@ -116,6 +116,7 @@ export default function HeroSectionBlock({
                       borderRadius: '8px',
                       lineHeight: '44px',
                       padding: '0 12px',
+                      fontWeight: 300,
                       marginBottom: '4px',
                     }}
                   >

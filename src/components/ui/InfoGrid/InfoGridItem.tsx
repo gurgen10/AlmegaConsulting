@@ -22,7 +22,7 @@ export default function InfoGridItem({ title, text, icon }: InfoGridItemProps) {
         </Box>
 
         <Box>
-          <Typography component="h3" variant="h6" fontSize={700} mb={{ xs: 1, sm: 2, xl: 1 }}>
+          <Typography component="h3" variant="h6" fontWeight={700} mb={{ xs: 1, sm: 2, xl: 1 }}>
             {title}
           </Typography>
           <Typography component="div" variant="subtitle2" fontWeight={300}>

@@ -4,37 +4,37 @@ export default function AimArrow() {
       <path
         d="M22 24C22 24.5304 22.2107 25.0391 22.5858 25.4142C22.9609 25.7893 23.4696 26 24 26C24.5304 26 25.0391 25.7893 25.4142 25.4142C25.7893 25.0391 26 24.5304 26 24C26 23.4696 25.7893 22.9609 25.4142 22.5858C25.0391 22.2107 24.5304 22 24 22C23.4696 22 22.9609 22.2107 22.5858 22.5858C22.2107 22.9609 22 23.4696 22 24Z"
         stroke="#00808C"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M24 14C22.0222 14 20.0888 14.5865 18.4443 15.6853C16.7998 16.7841 15.5181 18.3459 14.7612 20.1732C14.0043 22.0004 13.8063 24.0111 14.1922 25.9509C14.578 27.8907 15.5304 29.6725 16.9289 31.0711C18.3275 32.4696 20.1093 33.422 22.0491 33.8079C23.9889 34.1937 25.9996 33.9957 27.8268 33.2388C29.6541 32.4819 31.2159 31.2002 32.3147 29.5557C33.4135 27.9112 34 25.9778 34 24"
         stroke="#00808C"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M26 6.11004C22.2921 5.69406 18.5466 6.4406 15.2816 8.24638C12.0165 10.0522 9.39335 12.8279 7.77485 16.1898C6.15636 19.5516 5.62256 23.3333 6.24729 27.0117C6.87203 30.6902 8.62441 34.0836 11.2621 36.7225C13.8997 39.3615 17.2922 41.1156 20.9704 41.7422C24.6485 42.3688 28.4304 41.8369 31.7931 40.2201C35.1557 38.6033 37.9328 35.9815 39.7402 32.7174C41.5477 29.4532 42.2961 25.7081 41.882 22"
         stroke="#00808C"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M30.2197 11.7803C30.079 11.921 30 12.1117 30 12.3107V17.25C30 17.6642 30.3358 18 30.75 18H35.6893C35.8883 18 36.079 17.921 36.2197 17.7803L40.7197 13.2803C41.1921 12.8079 40.8575 12 40.1893 12H36.75C36.3358 12 36 11.6642 36 11.25V7.81066C36 7.14248 35.1921 6.80786 34.7197 7.28033L30.2197 11.7803Z"
         stroke="#00808C"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M30 18L24 24"
         stroke="#00808C"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

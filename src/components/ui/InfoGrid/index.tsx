@@ -7,7 +7,7 @@ export default function InfoGrid({ titleMaxWidth = 800, title, points }: InfoGri
   return (
     <Box py={SPACING_DEFAULT_Y} px={SPACING_DEFAULT_X}>
       <Box {...CONTAINER_STYLES}>
-        <Typography component="h2" variant="h3" fontSize="500" maxWidth={titleMaxWidth} mb={5}>
+        <Typography component="h2" variant="h3" fontWeight="500" maxWidth={titleMaxWidth} mb={5}>
           {title}
         </Typography>
         <Box

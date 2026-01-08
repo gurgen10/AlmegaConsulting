@@ -14,7 +14,7 @@ export const featureSubmenuItems: SubMenuItem[] = [
     title: 'obstructionDetection',
     description: 'obstructionDetectionDescription',
     icon: '/icons/header/obstruction-detection.svg',
-    url: '/#obstructionDetection',
+    url: '/obstructionDetection',
   },
   {
     key: 'shadingAnalysis',
