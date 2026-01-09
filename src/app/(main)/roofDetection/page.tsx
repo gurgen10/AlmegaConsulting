@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import HeroSection from '@/components/common/features/HeroSection';
-import WhyYouNeedAIPoweredRoofDetection from '@/components/common/features/WhyYouNeedAIPoweredRoofDetection';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
-
 import Testimonials from '@/components/common/Testimonials';
 import Statistics from '@/components/common/Statistics';
-import FeaturesBottomCallToAction from '@/components/common/features/BottomCallToAction';
-import FeaturesFaq from '@/components/common/features/FeaturesFaq';
-import WhyAutomaticRoofDetection from '@/components/common/features/WhyAutomaticRoofDetection';
-import LearnMoreFeatures from '@/components/common/features/LearnMoreFeatures';
+
+import HeroSection from '@/components/common/roofDetection/HeroSection';
+import WhyYouNeedAIPoweredRoofDetection from '@/components/common/roofDetection/WhyYouNeedAIPoweredRoofDetection';
+import RoofDetectionBottomCallToAction from '@/components/common/roofDetection/BottomCallToAction';
+import RoofDetectionFaq from '@/components/common/roofDetection/RoofDetectionFaq';
+import WhyAutomaticRoofDetection from '@/components/common/roofDetection/WhyAutomaticRoofDetection';
+import LearnMoreFeatures from '@/components/common/roofDetection/LearnMoreFeatures';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -35,8 +35,8 @@ export default async function Home() {
       <WhyAutomaticRoofDetection />
       <Testimonials />
       <LearnMoreFeatures />
-      <FeaturesFaq />
-      <FeaturesBottomCallToAction />
+      <RoofDetectionFaq />
+      <RoofDetectionBottomCallToAction />
     </>
   );
 }
