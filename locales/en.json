@@ -20,7 +20,7 @@
     "solarProposal": "Solar Proposal",
     "leadCapture": "Lead Capture",
     "roofDetectionDescription": "Analyze aerial imagery and instantly model the roof’s shape and slope with AI-powered roof detection",
-    "obstructionDetectionDescription": "Fully automated obstacle and fire setback detection for safe, accurate panel placement",
+    "obstructionDetectionDescription": "Fully automated obstruction and fire setback detection for safe, accurate panel placement",
     "shadingAnalysisDescription": "Dynamic shading maps for panel zones, automatically generated from real-world sun movement",
     "panelPlacementDescription": "Get fully automated panel positioning with no manual input",
     "financialForecastingDescription": "Calculate ROI and payback period based on homeowner usage",
@@ -56,7 +56,7 @@
     "aIDrivenRoofDetection": "AI-Driven Roof Detection",
     "aIDrivenRoofDetectionDescription1": "Auto-detect roof dimensions for any home",
     "aIDrivenRoofDetectionDescription2": "Analyze pitch and orientation for sun-facing accuracy",
-    "aIDrivenRoofDetectionDescription3": "Identify obstacles like chimneys, pipes, etc.",
+    "aIDrivenRoofDetectionDescription3": "Identify obstructions like chimneys, pipes, etc.",
     "obstacleDetection": "Obstruction Detection",
     "obstacleDetectionDescription1": "Identifies roof obstructions such as vents, chimneys and fire setbacks",
     "obstacleDetectionDescription2": "Improves energy estimates",
@@ -112,7 +112,7 @@
   },
   "roofDetection": {
     "heroTitle": "<sp>AI Roof Detection</sp> \n Accurate Layout and Solar Sales Proposal",
-    "heroDescription": "Upgrade your solar sales process with AI-powered roof detection that provides quick, accurate details about roof layout and obstacles. Generate professional, ready-to-sign solar proposals in just seconds.",
+    "heroDescription": "Upgrade your solar sales process with AI-powered roof detection that provides quick, accurate details about roof layout and obstructions. Generate professional, ready-to-sign solar proposals in just seconds.",
     "heroButtonLabel": "Sign Up",
     "signUp": "Sign Up",
     "whyYouNeedAIPoweredRoofDetectionTitle": "Why You Need AI-Powered Roof Detection To Create Solar Sales Proposal",
@@ -202,7 +202,7 @@
       "title": "Learn More Features of Our Solar Sales Design Software",
       "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to streamline your process.",
       "roofDetectionTitle": "Roof Detection",
-      "roofDetectionDescription": "Get precise roof measurements and obstacle insights in seconds with AI-powered roof detection.",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
       "obstacleDetectionTitle": "Obstruction Detection",
       "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
       "shadingAnalysisTitle": "Shading Analysis",
@@ -221,19 +221,19 @@
     "detectFireSetbacks": "Detect fire setbacks with AI precision",
     "detectFireSetbacksDescription": "Our AI-powered obstruction detection identifies fire setbacks based on the roof’s layout, ensuring your proposal avoids placing panels in hazardous areas. This ensures fire safety compliance with local fire safety regulations and suggests efficient solar panel placement.",
     "smartDetectionChimneysVents": "Smart detection of chimneys and vents",
-    "smartDetectionChimneysVentsDescription": "Chimneys and roof vents can block sunlight or create inefficient angles. Our AI scans the roof to detect these obstacles, creating a precise map that avoids impacted areas, helping you design a more efficient and space-maximized solar system.",
+    "smartDetectionChimneysVentsDescription": "Chimneys and roof vents can block sunlight or create inefficient angles. Our AI scans the roof to detect these obstructions, creating a precise map that avoids impacted areas, helping you design a more efficient and space-maximized solar system.",
     "spotSkylightsAutomatically": "Spot skylights and other roof features automatically",
-    "spotSkylightsAutomaticallyDescription": "Skylights, air conditioning units, and other rooftop structures can prevent you from using valuable space for solar panels. Our system detects these obstacles and plans around them, ensuring your solar proposals are accurate and efficient.",
+    "spotSkylightsAutomaticallyDescription": "Skylights, air conditioning units, and other rooftop structures can prevent you from using valuable space for solar panels. Our system detects these obstructions and plans around them, ensuring your solar proposals are accurate and efficient.",
 
     "whyObstructionDetectionTitle": "Why You Need AI-Powered Obstruction Detection",
     "whyObstructionDetection": {
       "point1": {
         "title": "Increase Proposal Accuracy",
-        "description": "By scanning the roof's layout and automatically detecting obstacles like chimneys, vents, and skylights, the system ensures that no critical factors are overlooked. This helps you create a more reliable proposal, reduces errors, and improves the quality of your client presentations."
+        "description": "By scanning the roof's layout and automatically detecting obstructions like chimneys, vents, and skylights, the system ensures that no critical factors are overlooked. This helps you create a more reliable proposal, reduces errors, and improves the quality of your client presentations."
       },
       "point2": {
         "title": "Speed Up Your Proposal Process",
-        "description": "Instead of manually assessing each roof, the AI quickly identifies and maps out potential obstacles. This accelerates the proposal creation process and allows sales reps to handle more leads and focus on closing deals."
+        "description": "Instead of manually assessing each roof, the AI quickly identifies and maps out potential obstructions. This accelerates the proposal creation process and allows sales reps to handle more leads and focus on closing deals."
       },
       "point3": {
         "title": "Boost Your Team’s Efficiency",
@@ -241,7 +241,7 @@
       },
       "point4": {
         "title": "Improve System Efficiency",
-        "description": "The AI identifies areas with obstacles and calculates the best places to install solar panels. By ensuring panels are placed in optimal positions, sales reps can offer clients more energy-efficient systems and better returns on investment."
+        "description": "The AI identifies areas with obstructions and calculates the best places to install solar panels. By ensuring panels are placed in optimal positions, sales reps can offer clients more energy-efficient systems and better returns on investment."
       }
     },
     "learnMore": "Learn More",
@@ -249,7 +249,7 @@
       "title": "More Features of Our Solar Sales Design Software",
       "subtitle": "Our software offers more than just AI-powered obstruction detection. IIt also includes features like precise panel placement, shading analysis, and roof detection, allowing you to generate accurate proposals in seconds.",
       "roofDetectionTitle": "Roof Detection",
-      "roofDetectionDescription": "Get precise roof measurements and obstacle insights in seconds with AI-powered roof detection.",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
       "shadingAnalysisTitle": "Shading Analysis",
       "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
       "panelPlacementTitle": "Panel Placement",
@@ -271,7 +271,7 @@
       "list": {
         "option_1": "Auto-detect roof dimensions for any home",
         "option_2": "Analyze pitch and orientation for sun-facing accuracy",
-        "option_3": "Identify obstacles like chimneys, pipes, etc."
+        "option_3": "Identify obstructions like chimneys, pipes, etc."
       },
       "imgText": "With precise rooftop modeling handled by AI, your proposal starts with a foundation of speed, accuracy, and zero manual effort."
     },

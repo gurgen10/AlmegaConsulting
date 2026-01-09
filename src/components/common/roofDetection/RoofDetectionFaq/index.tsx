@@ -5,7 +5,7 @@ const faqs = [
   {
     question: 'How does AI roof detection work?',
     answer:
-      'Our AI roof detection uses satellite images to automatically identify roof shapes, dimensions, pitch, orientation, and obstacles. It generates precise roof models instantly, removing the need for manual measurements.',
+      'Our AI roof detection uses satellite images to automatically identify roof shapes, dimensions, pitch, orientation, and obstructions. It generates precise roof models instantly, removing the need for manual measurements.',
   },
   {
     question: 'Do I need to visit the home for measurements?',
@@ -29,7 +29,7 @@ const faqs = [
   },
 ];
 
-export default function FeaturesFaq() {
+export default function RoofDetectionFaq() {
   const t = useTranslations('homePage');
 
   return <Faq title={t('faq')} description={t('faqSubtitle')} faqs={faqs} />;
