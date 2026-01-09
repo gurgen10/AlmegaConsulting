@@ -72,7 +72,7 @@ export default function HeroSectionBlock({
         ></Box>
         <Stack
           sx={theme => ({
-            maxWidth: 600,
+            maxWidth: 650,
             justifyContent: 'center',
             py: 12,
 
@@ -125,7 +125,13 @@ export default function HeroSectionBlock({
                 ),
               })}
             </Typography>
-            <Typography component="p" variant="subtitle2" fontWeight={300} marginBottom={3}>
+            <Typography
+              component="p"
+              variant="subtitle2"
+              fontWeight={300}
+              marginBottom={3}
+              maxWidth={580}
+            >
               {t.rich('heroDescription', {
                 bold: chunks => (
                   <Typography variant="inherit" component="strong" fontWeight={700}>

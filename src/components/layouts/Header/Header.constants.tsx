@@ -21,7 +21,7 @@ export const featureSubmenuItems: SubMenuItem[] = [
     title: 'shadingAnalysis',
     description: 'shadingAnalysisDescription',
     icon: '/icons/header/shading-analysis.svg',
-    url: '/#shadingAnalysis',
+    url: '/shadingAnalysis',
   },
   {
     key: 'panelPlacement',

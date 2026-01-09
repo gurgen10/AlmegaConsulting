@@ -73,7 +73,7 @@
     "aIOptimizedPanelPlacementDescription1": "Fully automated panel positioning with no manual input",
     "aIOptimizedPanelPlacementDescription2": "Avoids shaded or inefficient areas with data-backed logic",
     "aIOptimizedPanelPlacementDescription3": "Maximizes production per roof with precision spacing",
-    "whatOurCustomerAreSayingAboutOurSolarSalesSoftware": "What Our Customer Are Saying About Our Solar Sales Software",
+    "whatOurCustomerAreSayingAboutOurSolarSalesSoftware": "<sp>What Our Customer Are Saying</sp> About Our Solar Sales Software",
     "whatMakesUsUnique": "What Makes Us Unique",
     "startNow": "Start Now",
     "whatMakesUsUniqueDescription": "We combine deep industry knowledge with cutting-edge AI to deliver a tool that truly understands and solves real solar sales challenges. Here's what sets us apart from the rest:",
@@ -253,6 +253,52 @@
       "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
       "shadingAnalysisTitle": "Shading Analysis",
       "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
+      "financialForecastingTitle": "Financial Forecasting",
+      "financialForecastingDescription": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
+  },
+  "shadingAnalysis": {
+    "heroTitle": "<sp>AI-Powered Shading</sp> Analysis Based on Real Sun Movement for Accurate Sales Proposals",
+    "heroDescription": "Boost your workflow with AI shading analysis that instantly reveals sun exposure and shading risks. Create professional, data-driven sales proposals in seconds.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesShadingAnalysisEssentialTitle": "<sp>Why Advanced Shading Analysis Is</sp> Essential for Solar Sales Proposals",
+    "dynamicShadingMaps": "Dynamic Shading Maps Based on Sun Movement",
+    "dynamicShadingMapsDescription": "Our dynamic shading map technology lets you see how sun interacts with a property throughout the day and across seasons. AI tracks sun movement and produces accurate shadow projections in seconds.",
+    "shadingAnalysisTrees": "Shading Analysis from Trees, Neighboring Homes, and Roof Features",
+    "shadingAnalysisTreesDescription": "Our advanced shading analysis helps identify trees, neighboring homes, and roof features that may impact system performance. Using AI-powered aerial imagery analysis, we detect shading obstructions and accurately measure their height and proximity within seconds.",
+    "exposureScoringFind": "Exposure Scoring to Find High-Performance Panel Zones",
+    "exposureScoringFindDescription": "Our exposure scoring technology identifies the best zones for panel placement. AI analyzes sunlight duration, shading patterns, and roof shape to deliver precise performance scores in seconds. This optimizes system efficiency and designs layouts that maximize energy output.",
+    "whyShadingAnalysisTitle": "Why You Need AI-Powered Shading Analysis",
+    "whyShadingAnalysis": {
+      "point1": {
+        "title": "Maximize Energy Output",
+        "description": "Use accurate sun-path modeling to position panels to maximize energy generation. By identifying high-performing zones and minimizing shadow losses, the solar system is optimized for maximum energy production year-round."
+      },
+      "point2": {
+        "title": "Close More Deals With Data-Driven Shading Analysis",
+        "description": "When you present a solar sales proposal supported by accurate shading analysis, homeowners see that your design is optimized and reliable. This strengthens credibility, reduces objections, and increases your close rate."
+      },
+      "point3": {
+        "title": "Create Accurate Shading Analysis in Seconds",
+        "description": "Skip manual measurements and site visits. AI instantly simulates sun movement, evaluates obstructions, and creates detailed shading maps in just seconds. It gives you reliable shading analyses for every residential roof."
+      },
+      "point4": {
+        "title": "Scale Your Operations Without Adding Staff",
+        "description": "By automating complex shading assessments, you can handle more projects with the same workforce. Reduce dependency on engineering resources, speed up proposal creation, and grow your business efficiently."
+      }
+    },
+    "learnMore": "Learn More",
+    "shadingAnalysisLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to \nstreamline your process.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
+      "obstacleDetectionTitle": "Obstruction Detection",
+      "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
+      "panelPlacementTitle": "Panel Placement",
+      "panelPlacementDescription": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays.",
       "financialForecastingTitle": "Financial Forecasting",
       "financialForecastingDescription": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
     },
