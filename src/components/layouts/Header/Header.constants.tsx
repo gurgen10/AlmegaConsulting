@@ -28,7 +28,7 @@ export const featureSubmenuItems: SubMenuItem[] = [
     title: 'panelPlacement',
     description: 'panelPlacementDescription',
     icon: '/icons/header/panel-placement.svg',
-    url: '/#panelPlacement',
+    url: '/panelPlacement',
   },
   {
     key: 'financialForecasting',

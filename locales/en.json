@@ -212,6 +212,52 @@
     },
     "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
   },
+  "panelPlacement": {
+    "heroTitle": "<sp>AI-Driven Panel Placement</sp> to Maximize Solar Layout Efficiency ",
+    "heroDescription": "Optimize system performance with AI-powered panel placement. Our technology creates solar panel layouts that maximize energy output and provide sales-ready proposals in a few seconds.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesPanelPlacementEssentialTitle": "What Makes AI-Optimized Panel Placement Essential for Solar Sales Proposals",
+    "automatedPanelPositioning": "Automated Panel Positioning",
+    "automatedPanelPositioningDescription": "Our AI-optimized panel placement automatically finds the best spots for solar panels on any roof. It analyzes roof shape, sunlight exposure, and obstructions to create optimized layouts in seconds.",
+    "avoidsShadedInefficientAreas": "Avoids Shaded and Inefficient Areas With Data-Backed Logic",
+    "avoidsShadedInefficientAreasDescription": "The system detects shaded or low-performing areas and skips them when positioning panels. Using advanced algorithms and solar performance data, it guarantees that each panel operates at its maximum energy output.",
+    "maximizesEnergyProduction": "Maximizes Energy Production per Roof with Precision Spacing",
+    "maximizesEnergyProductionDescription": "Our AI technology calculates the best panel spacing to maximize sunlight capture while maintaining efficiency. AI instantly produces energy-maximizing layouts across the entire roof.",
+    "whyPanelPlacementTitle": "Why You Need AI-Optimized Panel Placement",
+    "whyPanelPlacement": {
+      "point1": {
+        "title": "Speed Up Your Workflow",
+        "description": "Our AI technology analyzes the roof and automatically generates accurate roof layouts. It eliminates manual work, lets you create an efficient panel placement layout in seconds, and keeps proposals moving without delays."
+      },
+      "point2": {
+        "title": "Maximize System Performance",
+        "description": "AI analyzes roof azimuth and places panels on the most sun-exposed roof facets. Combined with proper panel spacing, it maximizes energy production and efficient system performance."
+      },
+      "point3": {
+        "title": "Boost Productivity",
+        "description": "Our AI automatically detects roof tilt (slope). No more manual measurements or site visits. You get precise calculations for each prospect in seconds, which allows you to have optimal panel placement with greater confidence."
+      },
+      "point4": {
+        "title": "Close More Deals",
+        "description": "Our panel placement applies state-specific fire setback rules, providing you with a clear and well-structured layout. It instills confidence in homeowners about your designs. Data-driven proposals facilitate quicker client approvals, speeding up your sales process."
+      }
+    },
+    "learnMore": "Learn More",
+    "panelPlacementLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to \nstreamline your process.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
+      "obstacleDetectionTitle": "Obstruction Detection",
+      "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
+      "shadingAnalysisTitle": "Shading Analysis",
+      "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
+      "financialForecastingTitle": "Financial Forecasting",
+      "financialForecastingDescription": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
+  },
   "obstructionDetection": {
     "heroTitle": "<sp>AI-Powered Obstruction Detection</sp> for Perfect Panel Placement",
     "heroDescription": "Our AI-powered obstruction detection identifies roof challenges such as vents, chimneys, or fire setbacks, and helps you plan the perfect placement for solar panels. By automating this process, you can offer super-accurate proposals to homeowners, save time, and increase your closing rate.",
@@ -224,7 +270,6 @@
     "smartDetectionChimneysVentsDescription": "Chimneys and roof vents can block sunlight or create inefficient angles. Our AI scans the roof to detect these obstructions, creating a precise map that avoids impacted areas, helping you design a more efficient and space-maximized solar system.",
     "spotSkylightsAutomatically": "Spot skylights and other roof features automatically",
     "spotSkylightsAutomaticallyDescription": "Skylights, air conditioning units, and other rooftop structures can prevent you from using valuable space for solar panels. Our system detects these obstructions and plans around them, ensuring your solar proposals are accurate and efficient.",
-
     "whyObstructionDetectionTitle": "Why You Need AI-Powered Obstruction Detection",
     "whyObstructionDetection": {
       "point1": {
