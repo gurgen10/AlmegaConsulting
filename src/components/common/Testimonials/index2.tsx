@@ -336,7 +336,7 @@ export default function Testimonials() {
               px: 3,
             }}
           >
-            {t('whatOurCustomerAreSayingAboutOurSolarSalesSoftware')}
+            {t('whatOurCustomersAreSayingAboutOurSolarSalesSoftware')}
           </Typography>
         </Box>
       </Box>
