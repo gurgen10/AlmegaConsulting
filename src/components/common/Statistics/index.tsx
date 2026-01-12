@@ -35,24 +35,32 @@ export default function Statistics(props: StatisticsProps) {
         <Box display="grid" gridTemplateColumns="repeat(2, auto)" gap={4}>
           <StatisticsBlock
             {...props}
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('proposalsGenerated')}
             num={42000}
             formattingFn={formatNumber}
           />
           <StatisticsBlock
             {...props}
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('quotesSent')}
             num={10000}
             formattingFn={formatNumber}
           />
           <StatisticsBlock
             {...props}
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('increaseProductivity')}
             num={25}
             formattingFn={formatPercentage}
           />
           <StatisticsBlock
             {...props}
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('ledToProposalConversion')}
             num={3}
             formattingFn={formatX}

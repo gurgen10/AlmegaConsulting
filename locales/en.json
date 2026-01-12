@@ -20,7 +20,7 @@
     "solarProposal": "Solar Proposal",
     "leadCapture": "Lead Capture",
     "roofDetectionDescription": "Analyze aerial imagery and instantly model the roof’s shape and slope with AI-powered roof detection",
-    "obstructionDetectionDescription": "Fully automated obstacle and fire setback detection for safe, accurate panel placement",
+    "obstructionDetectionDescription": "Fully automated obstruction and fire setback detection for safe, accurate panel placement",
     "shadingAnalysisDescription": "Dynamic shading maps for panel zones, automatically generated from real-world sun movement",
     "panelPlacementDescription": "Get fully automated panel positioning with no manual input",
     "financialForecastingDescription": "Calculate ROI and payback period based on homeowner usage",
@@ -56,14 +56,14 @@
     "aIDrivenRoofDetection": "AI-Driven Roof Detection",
     "aIDrivenRoofDetectionDescription1": "Auto-detect roof dimensions for any home",
     "aIDrivenRoofDetectionDescription2": "Analyze pitch and orientation for sun-facing accuracy",
-    "aIDrivenRoofDetectionDescription3": "Identify obstacles like chimneys, pipes, etc.",
-    "obstacleDetection": "Obstacle Detection",
+    "aIDrivenRoofDetectionDescription3": "Identify obstructions like chimneys, pipes, etc.",
+    "obstacleDetection": "Obstruction Detection",
     "obstacleDetectionDescription1": "Identifies roof obstructions such as vents, chimneys and fire setbacks",
     "obstacleDetectionDescription2": "Improves energy estimates",
     "obstacleDetectionDescription3": "Boosts proposal clarity & ROI",
     "aIPoweredShadingAnalysis": "AI-Powered Shading Analysis",
     "aIPoweredShadingAnalysisDescription1": "Dynamic shading maps based on real-world sun movement",
-    "aIPoweredShadingAnalysisDescription2": "Obstacle detection from trees, neighboring homes and roof features",
+    "aIPoweredShadingAnalysisDescription2": "Obstruction detection from trees, neighboring homes and roof features",
     "aIPoweredShadingAnalysisDescription3": "Exposure scoring to find high-performance panel zones",
     "intelligentFinancialForecasting": "Intelligent Financial Forecasting",
     "intelligentFinancialForecastingDescription1": "Customized savings estimates using local energy rates",
@@ -73,7 +73,7 @@
     "aIOptimizedPanelPlacementDescription1": "Fully automated panel positioning with no manual input",
     "aIOptimizedPanelPlacementDescription2": "Avoids shaded or inefficient areas with data-backed logic",
     "aIOptimizedPanelPlacementDescription3": "Maximizes production per roof with precision spacing",
-    "whatOurCustomerAreSayingAboutOurSolarSalesSoftware": "What Our Customer Are Saying About Our Solar Sales Software",
+    "whatOurCustomerAreSayingAboutOurSolarSalesSoftware": "<sp>What Our Customer Are Saying</sp> About Our Solar Sales Software",
     "whatMakesUsUnique": "What Makes Us Unique",
     "startNow": "Start Now",
     "whatMakesUsUniqueDescription": "We combine deep industry knowledge with cutting-edge AI to deliver a tool that truly understands and solves real solar sales challenges. Here's what sets us apart from the rest:",
@@ -86,11 +86,6 @@
     "unique4Title": "Smarter AI Trained on Real AutoCAD Blueprints",
     "unique4Text": "Our AI is trained on tens of thousands of real CAD project files, giving it engineer-level insight into roof layouts, shading, and solar constraints - mirroring the vision of a real solar engineer.",
     "unique4AiText": "Powered by our <bold>Patent-Pending</bold>, in-house AI engine. SolarGenix sets a new industry standard for smarter, faster, precise and more reliable solar solutions.",
-    "statisticsTitle": "The Fastest-Growing Solar Design Software",
-    "statisyicLabel1": "Solar sales proposals generated",
-    "statisyicLabel2": "Solar leads captured and instant quotes sent",
-    "statisyicLabel3": "Increase in sales team productivity",
-    "statisyicLabel4": "Faster lead-to-proposal conversion",
     "seeWhatYourProposalWillLookLike": "See What Your Proposal Will Look Like",
     "seeWhatYourProposalWillLookLikeDescription": "All the insights, calculations and design decisions come together in a clean, modern proposal that’s built to win trust. Designed for clarity and visual appeal, each solar sales proposal makes it easy for homeowners to understand their system, savings and investment.",
     "seeWhatYourProposalWillLookLikePoint1": "Professional layout",
@@ -115,6 +110,246 @@
     "aregAghayantsDescription": "Founder and CEO of SolarGenix",
     "readFullArticle": "Read Full Article"
   },
+  "roofDetection": {
+    "heroTitle": "<sp>AI Roof Detection</sp> \n Accurate Layout and Solar Sales Proposal",
+    "heroDescription": "Upgrade your solar sales process with AI-powered roof detection that provides quick, accurate details about roof layout and obstructions. Generate professional, ready-to-sign solar proposals in just seconds.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whyYouNeedAIPoweredRoofDetectionTitle": "Why You Need AI-Powered Roof Detection To Create Solar Sales Proposal",
+    "autoDetectRoofDimensionsTitle": "Auto-detect Roof Dimensions for Any Home",
+    "autoDetectRoofDimensionsDescription": "With our automated roof detection technology, you can quickly generate accurate roof layout in seconds. Our AI analyzes aerial imagery, calculates dimensions, and maps angles. This allows you to skip site visits, avoid waiting for engineering reviews, and move straight from lead to proposal without delays.",
+    "analyzePitchOrientationTitle": "Analyze Pitch and Orientation for Sun-Facing Accuracy",
+    "analyzePitchOrientationDescription": "Our pitch and orientation analysis automatically determines the precise sun exposure for each roof section. AI assesses angles, directions, and shade patterns to identify the optimal panel placement. You receive reliable energy forecasts and properly sized system recommendations in seconds, to make sure every quote is backed by data.",
+    "identifyObstaclesResidentialTitle": "Identify Obstructions on Any Residential Roof",
+    "identifyObstaclesResidentialDescription": "Our automatic obstruction detection considers every chimney, vent, and rooftop feature in proposals. AI quickly spots potential shading sources or installation challenges. So you can design around them from the start. This way, there are no surprises during installation, just precise layouts that work on the first try.",
+    "faq": "FAQ",
+    "faqDescription": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix",
+    "whyRoofDetectionTitle": "Why You need Automatic Roof Detection?",
+    "learnMore": "Learn More",
+    "whyRoofDetection": {
+      "point1": {
+        "title": "Create Accurate Sales Proposals in Seconds",
+        "description": "By automating roof detection, you can generate accurate solar proposals in seconds and reply to leads while they’re still hot. This shortens your sales cycle, keeps prospects engaged, and gives you more opportunities to win the deal first."
+      },
+      "point2": {
+        "title": "Accurate Roof Modeling to Improve System Design",
+        "description": "With Our AI-powered roof modeling you get detailed measurements of roof geometry, pitch, and orientation. This level of accuracy helps you design systems that maximize production while reducing errors and redesigns"
+      },
+      "point3": {
+        "title": "Boost Homeowner Confidence",
+        "description": "Accurate visual modeling gives homeowners a clear understanding of their future system. Detailed roof layouts, realistic module placement, and precise shading help reduce confusion and skepticism, resulting in a smoother approval process."
+      },
+      "point4": {
+        "title": "Reduces Labor Costs",
+        "description": "Reduce labor costs by cutting down the resources needed for every project. Our AI-powered roof detection handles the measurements and design groundwork. Now you spend less time on manual tasks, rely less on engineering support, and can take on more projects without increasing headcount."
+      }
+    },
+    "roofDetectionLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Beyond roof detection, our solar sales design software includes a full suite of tools to help you create sales-ready proposals with ease. Explore all the features below.",
+      "obstacleDetection": {
+        "title": "Obstruction Detection",
+        "description": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production."
+      },
+      "aIPoweredShadingAnalysis": {
+        "title": "AI-Powered Shading Analysis",
+        "description": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis."
+      },
+      "aIOptimizedPanelPlacement": {
+        "title": "AI-Optimized Panel Placement",
+        "description": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays."
+      },
+      "intelligentFinancialForecasting": {
+        "title": "Intelligent Financial Forecasting",
+        "description": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+      }
+    }
+  },
+  "financialForecasting": {
+    "heroTitle": "<sp>Intelligent Financial Forecasting</sp> That Helps Homeowners See Their Savings",
+    "heroDescription": "No spreadsheets, no guesswork. Our AI builds clear, compelling financial forecasts tailored to each home and utility rate. Provide homeowners with proposals that include a personalized savings story backed by real numbers.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesIntelligentFinancialForecastingTitle": "What Makes Intelligent Financial Forecasting Essential for Solar Sales Proposals",
+    "savingsEstimatesWithLocalEnergyRates": "Savings estimates with local energy rates",
+    "savingsEstimatesWithLocalEnergyRatesDescription": "Our AI-powered savings engine calculates precise cost savings by analyzing local utility rates and tariffs. It examines local energy prices and consumption patterns to deliver realistic, location-specific savings estimates in seconds.",
+    "rOIPaybackPeriod": "ROI and payback period based on homeowner usage",
+    "rOIPaybackPeriodDescription": "Our intelligent financial model assesses homeowner energy use to determine exact return on investment and payback timelines. It considers system size, usage patterns, and estimated production to provide clear financial results.",
+    "localIncentivesRebatesAppliedAutomatically": "Local incentives and rebates applied automatically",
+    "localIncentivesRebatesAppliedAutomaticallyDescription": "Our system automatically finds and applies eligible local incentives, rebates, and tax credits. It stays updated on regional programs to ensure each financial projection shows the maximum benefits available.",
+    "whyFinancialForecastingTitle": "Why You Need Intelligent Financial Forecasting",
+    "whyFinancialForecasting": {
+      "point1": {
+        "title": "Increase Proposal Accuracy",
+        "description": "Our AI-powered financial forecasting guarantees accurate savings, ROI, and payback estimates. Automated analysis minimizes guesswork and errors, helping you deliver dependable, data-driven proposals every time."
+      },
+      "point2": {
+        "title": "Close More Deals Faster",
+        "description": "Instant financial projections keep prospects engaged and confident. Clear savings estimates and ROI insights help homeowners make decisions quickly, shortening sales cycles and increasing conversion rates."
+      },
+      "point3": {
+        "title": "Reduce Manual Effort",
+        "description": "Our intelligent automation replaces spreadsheets and manual calculations. Local rates, incentives, and usage data are applied automatically, so you can focus on selling instead of crunching numbers."
+      },
+      "point4": {
+        "title": "Build Customer Trust",
+        "description": "Transparent, customized financial forecasts boost homeowners' confidence in their investments. Precise projections and well-defined incentives showcase professionalism and credibility in the proposal."
+      }
+    },
+    "learnMore": "Learn More",
+    "financialForecastingLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to streamline your process.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
+      "obstacleDetectionTitle": "Obstruction Detection",
+      "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
+      "shadingAnalysisTitle": "Shading Analysis",
+      "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
+      "panelPlacementTitle": "Panel Placement",
+      "panelPlacementDescription": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays."
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
+  },
+  "panelPlacement": {
+    "heroTitle": "<sp>AI-Driven Panel Placement</sp> to Maximize Solar Layout Efficiency ",
+    "heroDescription": "Optimize system performance with AI-powered panel placement. Our technology creates solar panel layouts that maximize energy output and provide sales-ready proposals in a few seconds.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesPanelPlacementEssentialTitle": "What Makes AI-Optimized Panel Placement Essential for Solar Sales Proposals",
+    "automatedPanelPositioning": "Automated Panel Positioning",
+    "automatedPanelPositioningDescription": "Our AI-optimized panel placement automatically finds the best spots for solar panels on any roof. It analyzes roof shape, sunlight exposure, and obstructions to create optimized layouts in seconds.",
+    "avoidsShadedInefficientAreas": "Avoids Shaded and Inefficient Areas With Data-Backed Logic",
+    "avoidsShadedInefficientAreasDescription": "The system detects shaded or low-performing areas and skips them when positioning panels. Using advanced algorithms and solar performance data, it guarantees that each panel operates at its maximum energy output.",
+    "maximizesEnergyProduction": "Maximizes Energy Production per Roof with Precision Spacing",
+    "maximizesEnergyProductionDescription": "Our AI technology calculates the best panel spacing to maximize sunlight capture while maintaining efficiency. AI instantly produces energy-maximizing layouts across the entire roof.",
+    "whyPanelPlacementTitle": "Why You Need AI-Optimized Panel Placement",
+    "whyPanelPlacement": {
+      "point1": {
+        "title": "Speed Up Your Workflow",
+        "description": "Our AI technology analyzes the roof and automatically generates accurate roof layouts. It eliminates manual work, lets you create an efficient panel placement layout in seconds, and keeps proposals moving without delays."
+      },
+      "point2": {
+        "title": "Maximize System Performance",
+        "description": "AI analyzes roof azimuth and places panels on the most sun-exposed roof facets. Combined with proper panel spacing, it maximizes energy production and efficient system performance."
+      },
+      "point3": {
+        "title": "Boost Productivity",
+        "description": "Our AI automatically detects roof tilt (slope). No more manual measurements or site visits. You get precise calculations for each prospect in seconds, which allows you to have optimal panel placement with greater confidence."
+      },
+      "point4": {
+        "title": "Close More Deals",
+        "description": "Our panel placement applies state-specific fire setback rules, providing you with a clear and well-structured layout. It instills confidence in homeowners about your designs. Data-driven proposals facilitate quicker client approvals, speeding up your sales process."
+      }
+    },
+    "learnMore": "Learn More",
+    "panelPlacementLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to \nstreamline your process.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
+      "obstacleDetectionTitle": "Obstruction Detection",
+      "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
+      "shadingAnalysisTitle": "Shading Analysis",
+      "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
+      "financialForecastingTitle": "Financial Forecasting",
+      "financialForecastingDescription": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
+  },
+  "shadingAnalysis": {
+    "heroTitle": "<sp>AI-Powered Shading</sp> Analysis Based on Real Sun Movement for Accurate Sales Proposals",
+    "heroDescription": "Boost your workflow with AI shading analysis that instantly reveals sun exposure and shading risks. Create professional, data-driven sales proposals in seconds.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesShadingAnalysisEssentialTitle": "<sp>Why Advanced Shading Analysis Is</sp> Essential for Solar Sales Proposals",
+    "dynamicShadingMaps": "Dynamic Shading Maps Based on Sun Movement",
+    "dynamicShadingMapsDescription": "Our dynamic shading map technology lets you see how sun interacts with a property throughout the day and across seasons. AI tracks sun movement and produces accurate shadow projections in seconds.",
+    "shadingAnalysisTrees": "Shading Analysis from Trees, Neighboring Homes, and Roof Features",
+    "shadingAnalysisTreesDescription": "Our advanced shading analysis helps identify trees, neighboring homes, and roof features that may impact system performance. Using AI-powered aerial imagery analysis, we detect shading obstructions and accurately measure their height and proximity within seconds.",
+    "exposureScoringFind": "Exposure Scoring to Find High-Performance Panel Zones",
+    "exposureScoringFindDescription": "Our exposure scoring technology identifies the best zones for panel placement. AI analyzes sunlight duration, shading patterns, and roof shape to deliver precise performance scores in seconds. This optimizes system efficiency and designs layouts that maximize energy output.",
+    "whyShadingAnalysisTitle": "Why You Need AI-Powered Shading Analysis",
+    "whyShadingAnalysis": {
+      "point1": {
+        "title": "Maximize Energy Output",
+        "description": "Use accurate sun-path modeling to position panels to maximize energy generation. By identifying high-performing zones and minimizing shadow losses, the solar system is optimized for maximum energy production year-round."
+      },
+      "point2": {
+        "title": "Close More Deals With Data-Driven Shading Analysis",
+        "description": "When you present a solar sales proposal supported by accurate shading analysis, homeowners see that your design is optimized and reliable. This strengthens credibility, reduces objections, and increases your close rate."
+      },
+      "point3": {
+        "title": "Create Accurate Shading Analysis in Seconds",
+        "description": "Skip manual measurements and site visits. AI instantly simulates sun movement, evaluates obstructions, and creates detailed shading maps in just seconds. It gives you reliable shading analyses for every residential roof."
+      },
+      "point4": {
+        "title": "Scale Your Operations Without Adding Staff",
+        "description": "By automating complex shading assessments, you can handle more projects with the same workforce. Reduce dependency on engineering resources, speed up proposal creation, and grow your business efficiently."
+      }
+    },
+    "learnMore": "Learn More",
+    "shadingAnalysisLearnMore": {
+      "title": "Learn More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software combines panel placement, shading insights, and roof modeling to help you generate precise, proposal-ready designs faster. Explore all features below to \nstreamline your process.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
+      "obstacleDetectionTitle": "Obstruction Detection",
+      "obstacleDetectionDescription": "Learn how to create accurate obstruction detection reports in seconds to optimize solar system design and maximize energy production.",
+      "panelPlacementTitle": "Panel Placement",
+      "panelPlacementDescription": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays.",
+      "financialForecastingTitle": "Financial Forecasting",
+      "financialForecastingDescription": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
+  },
+  "obstructionDetection": {
+    "heroTitle": "<sp>AI-Powered Obstruction Detection</sp> for Perfect Panel Placement",
+    "heroDescription": "Our AI-powered obstruction detection identifies roof challenges such as vents, chimneys, or fire setbacks, and helps you plan the perfect placement for solar panels. By automating this process, you can offer super-accurate proposals to homeowners, save time, and increase your closing rate.",
+    "heroButtonLabel": "Sign Up",
+    "signUp": "Sign Up",
+    "whatMakesAIPoweredObstacleDetectionEssentialTitle": "What Makes AI-Powered Obstruction Detection Essential for Solar Sales Proposals",
+    "detectFireSetbacks": "Detect fire setbacks with AI precision",
+    "detectFireSetbacksDescription": "Our AI-powered obstruction detection identifies fire setbacks based on the roof’s layout, ensuring your proposal avoids placing panels in hazardous areas. This ensures fire safety compliance with local fire safety regulations and suggests efficient solar panel placement.",
+    "smartDetectionChimneysVents": "Smart detection of chimneys and vents",
+    "smartDetectionChimneysVentsDescription": "Chimneys and roof vents can block sunlight or create inefficient angles. Our AI scans the roof to detect these obstructions, creating a precise map that avoids impacted areas, helping you design a more efficient and space-maximized solar system.",
+    "spotSkylightsAutomatically": "Spot skylights and other roof features automatically",
+    "spotSkylightsAutomaticallyDescription": "Skylights, air conditioning units, and other rooftop structures can prevent you from using valuable space for solar panels. Our system detects these obstructions and plans around them, ensuring your solar proposals are accurate and efficient.",
+    "whyObstructionDetectionTitle": "Why You Need AI-Powered Obstruction Detection",
+    "whyObstructionDetection": {
+      "point1": {
+        "title": "Increase Proposal Accuracy",
+        "description": "By scanning the roof's layout and automatically detecting obstructions like chimneys, vents, and skylights, the system ensures that no critical factors are overlooked. This helps you create a more reliable proposal, reduces errors, and improves the quality of your client presentations."
+      },
+      "point2": {
+        "title": "Speed Up Your Proposal Process",
+        "description": "Instead of manually assessing each roof, the AI quickly identifies and maps out potential obstructions. This accelerates the proposal creation process and allows sales reps to handle more leads and focus on closing deals."
+      },
+      "point3": {
+        "title": "Boost Your Team’s Efficiency",
+        "description": "AI handles the technical analysis of the roof, allowing sales reps to build proposals in seconds and discuss options with clients. This reduces the back-and-forth between team members and allows the team operate more efficiently and deliver proposals in less time."
+      },
+      "point4": {
+        "title": "Improve System Efficiency",
+        "description": "The AI identifies areas with obstructions and calculates the best places to install solar panels. By ensuring panels are placed in optimal positions, sales reps can offer clients more energy-efficient systems and better returns on investment."
+      }
+    },
+    "learnMore": "Learn More",
+    "obstructionDetectionMore": {
+      "title": "More Features of Our Solar Sales Design Software",
+      "subtitle": "Our software offers more than just AI-powered obstruction detection. IIt also includes features like precise panel placement, shading analysis, and roof detection, allowing you to generate accurate proposals in seconds.",
+      "roofDetectionTitle": "Roof Detection",
+      "roofDetectionDescription": "Get precise roof measurements and obstruction insights in seconds with AI-powered roof detection.",
+      "shadingAnalysisTitle": "Shading Analysis",
+      "shadingAnalysisDescription": "Show homeowners exactly where their system will perform best with clear, trustworthy shade analysis.",
+      "panelPlacementTitle": "Panel Placement",
+      "panelPlacementDescription": "Learn how to automatically generate high-efficiency panel layouts, avoiding manual design work or engineering delays.",
+      "financialForecastingTitle": "Financial Forecasting",
+      "financialForecastingDescription": "Present compelling savings and ROI numbers that make it easy for homeowners to say “yes.”"
+    },
+    "bottomCtaTitle": "Create Professional Solar Sales Proposal with SolarGenix"
+  },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",
     "description": "SolarGenix.ai is a fully automated, AI-powered platform built to make solar sales faster, smarter, and more effective. It eliminates the slow, manual steps in proposal creation-helping teams move from lead to proposal in minutes, not hours."
@@ -127,7 +362,7 @@
       "list": {
         "option_1": "Auto-detect roof dimensions for any home",
         "option_2": "Analyze pitch and orientation for sun-facing accuracy",
-        "option_3": "Identify obstacles like chimneys, pipes, etc."
+        "option_3": "Identify obstructions like chimneys, pipes, etc."
       },
       "imgText": "With precise rooftop modeling handled by AI, your proposal starts with a foundation of speed, accuracy, and zero manual effort."
     },
@@ -137,7 +372,7 @@
       "description": "Shade matters - and our AI makes sure it doesn’t cost your customers energy. Using sun-path modeling and visual data, the system simulates how shadows affect a roof throughout the day and across seasons.",
       "list": {
         "option_1": "Dynamic shading maps based on real-world sun movement",
-        "option_2": "Obstacle detection from trees, neighboring homes, and roof features",
+        "option_2": "Obstruction detection from trees, neighboring homes, and roof features",
         "option_3": "Exposure scoring to find high-performance panel zones"
       },
       "imgText": "This shading intelligence ensures panels are placed where they’ll perform best, maximizing output and customer satisfaction."

@@ -6,7 +6,7 @@ import AutomatedCycleOutlined from '@/components/ui/icons/AutomatedCycleOutlined
 import TimeOutlined from '@/components/ui/icons/TimeOutlined';
 import BankNoteHandOutlined from '@/components/ui/icons/BankNoteHandOutlined';
 
-export default function WhyLeadCapture() {
+export default function Wh() {
   const t = useTranslations('quotingSystemPage.whyLeadCapture');
 
   const points = [

@@ -15,10 +15,10 @@ export default function ProductInfoBlock({
         <Box sx={{ aspectRatio: '78/55', background: '#D9D9D9' }} />
       </Box>
       <Box>
-        <Typography maxWidth={540} variant="h4" component="h2" fontWeight={500}>
+        <Typography maxWidth={540} variant="h4" component="h3" fontWeight={500}>
           {title}
         </Typography>
-        <Typography variant="subtitle1" component="div" fontWeight={300} my={2}>
+        <Typography variant="subtitle1" component="p" fontWeight={300} my={2}>
           {description}
         </Typography>
         <Button variant="contained" color="secondary" size="medium" component="a" href={cta.href}>

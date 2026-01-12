@@ -27,7 +27,7 @@ export default function CtaSection({ title, cta, mainCta }: CtaSectionProps) {
             component={Link}
             {...mainCta}
           />
-          <Button size="large" variant="outlined" component={Link} {...cta} />
+          {cta && <Button size="large" variant="outlined" component={Link} {...cta} />}
         </Stack>
       </Box>
     </Box>

@@ -2,6 +2,6 @@ import { ButtonProps } from '@mui/material';
 
 export interface CtaSectionProps {
   title: string;
-  cta: ButtonProps;
+  cta?: ButtonProps;
   mainCta: ButtonProps;
 }

@@ -1,5 +1,5 @@
 export interface ProductInfoBlockProps {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   cta: {
