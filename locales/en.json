@@ -57,10 +57,10 @@
     "aIDrivenRoofDetectionDescription1": "Auto-detect roof dimensions for any home",
     "aIDrivenRoofDetectionDescription2": "Analyze pitch and orientation for sun-facing accuracy",
     "aIDrivenRoofDetectionDescription3": "Identify obstacles like chimneys, pipes, etc.",
-    "obstacleDetection": "Obstacle Detection ",
-    "obstacleDetectionDescription1": "Professional, stylish , clean layout",
-    "obstacleDetectionDescription2": "Simple, readable structure for homeowners",
-    "obstacleDetectionDescription3": "Clear breakdown of savings, system details & ROI",
+    "obstacleDetection": "Obstacle Detection",
+    "obstacleDetectionDescription1": "Identifies roof obstructions such as vents, chimneys and fire setbacks",
+    "obstacleDetectionDescription2": "Improves energy estimates",
+    "obstacleDetectionDescription3": "Boosts proposal clarity & ROI",
     "aIPoweredShadingAnalysis": "AI-Powered Shading Analysis",
     "aIPoweredShadingAnalysisDescription1": "Dynamic shading maps based on real-world sun movement",
     "aIPoweredShadingAnalysisDescription2": "Obstacle detection from trees, neighboring homes and roof features",
@@ -109,7 +109,11 @@
     "whySolarTeamsLoveOurSalesSoftwareDescription4": "New team members can pick it up quickly, and experienced reps get the depth they need. Everyone follows the same process, uses the same proposal format, and sees the same data, which keeps your sales and ops teams on the same page.",
     "faq": "FAQ",
     "faqSubtitle": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
-    "bottomCallToActionTitle": "Sell Solar Faster, Smarter, Better with SolarGenix"
+    "bottomCallToActionTitle": "Sell Solar Faster, Smarter, Better with SolarGenix",
+    "forbsTitle": "Software is now central to solar success adapt or be left behind.",
+    "aregAghayants": "Areg Aghayants",
+    "aregAghayantsDescription": "Founder and CEO of SolarGenix",
+    "readFullArticle": "Read Full Article"
   },
   "productDescription": {
     "title": "Our Product: AI That Sells Solar - Faster, Smarter, Better",

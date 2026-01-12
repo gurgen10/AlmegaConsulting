@@ -9,6 +9,7 @@ import {
   Link as MuiLink,
   Stack,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
@@ -25,6 +26,7 @@ export default function MenuMobile() {
   const t = useTranslations('header');
   const [expandedKey, setExpandedKey] = useState<string | false>(false);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const activeItem = useMemo(() => {
     const activeMenuItem = menuItems.find(
@@ -39,7 +41,7 @@ export default function MenuMobile() {
       component="nav"
       sx={{
         width: '100%',
-        height: 'calc(100vh - 68px)',
+        height: '100vh',
         position: 'relative',
         display: 'flex',
         backgroundColor: 'opacityLight.90',
@@ -48,14 +50,17 @@ export default function MenuMobile() {
       }}
     >
       <Stack
-        mb={3}
         sx={{
           overflowY: 'auto',
           flex: 1,
-          pb: '120px',
           mt: '62px',
-          backdropFilter: 'blur(10px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+          height: '100vh',
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(6px) saturate(120%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(120%)',
+          '& .MuiBox-root:last-child': {
+            borderBottom: 'none',
+          },
         }}
       >
         {menuItems.map(item => {
@@ -72,7 +77,7 @@ export default function MenuMobile() {
               }}
               underline="none"
               variant="button"
-              component={item.submenuItems?.length ? 'button' : 'a'}
+              component={item.submenuItems?.length ? 'span' : 'a'}
               href={item.url}
               className={isActive ? 'active' : ''}
             >
@@ -94,6 +99,9 @@ export default function MenuMobile() {
                 '&.MuiAccordion-root.Mui-expanded': {
                   margin: 0,
                 },
+                '& .MuiAccordionSummary-expandIconWrapper': {
+                  transform: 'rotate(90deg)',
+                },
                 '&.Mui-expanded .MuiAccordionSummary-expandIconWrapper': {
                   transform: 'rotate(-90deg)',
                 },
@@ -102,7 +110,7 @@ export default function MenuMobile() {
                   height: 0,
                 },
                 '& .MuiButtonBase-root': {
-                  py: 2,
+                  pt: 2,
                   px: 0,
                 },
               }}
@@ -115,19 +123,16 @@ export default function MenuMobile() {
                   marginLeft: 0,
                   py: 2,
                   '& .MuiAccordionSummary-content': {
-                    margin: 0,
+                    margin: '0 !important',
                   },
                 }}
               >
-                <Typography variant="button">{link}</Typography>
+                <Typography component="span" variant="button">
+                  {link}
+                </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ p: 0 }}>
-                <Box
-                  sx={{
-                    p: 2,
-                    textAlign: 'left',
-                  }}
-                >
+                <Box sx={{ px: isMobile ? 1 : 2, textAlign: 'left' }}>
                   {item.submenuItems?.map(subItem => (
                     <Box
                       key={subItem.key}
@@ -142,7 +147,8 @@ export default function MenuMobile() {
                         sx={{
                           display: 'flex',
                           alignItems: 'flex-start',
-                          p: 2,
+                          pt: 2,
+                          pb: '26px',
                           textDecoration: 'none',
                           color: 'grey.900',
                           '&:hover': {
@@ -164,11 +170,11 @@ export default function MenuMobile() {
                           </Box>
                         )}
                         <Box>
-                          <Typography variant="h6" gutterBottom>
+                          <Typography variant="h6" fontWeight={300} gutterBottom>
                             {t(subItem.title)}
                           </Typography>
                           {subItem.description && (
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" fontWeight={300} color="text.secondary">
                               {t(subItem.description)}
                             </Typography>
                           )}
@@ -192,61 +198,58 @@ export default function MenuMobile() {
             </Box>
           );
         })}
+        <Box
+          sx={theme => ({
+            left: 0,
+            right: 0,
+            backdropFilter: 'blur(10px) saturate(120%)',
+            WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+            display: 'flex',
+            gap: 1,
+            justifyContent: 'center',
+            position: 'sticky',
+            bottom: theme.spacing(3),
+            mt: 'auto',
+          })}
+        >
+          <Button
+            component={Link}
+            color="primary"
+            href="/book-a-demo"
+            size="medium"
+            sx={{
+              backgroundColor: 'secondary.main',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              maxWidth: '173px',
+              flex: 1,
+              color: 'grey.50',
+            }}
+          >
+            {t('bookDemo')}
+          </Button>
+          <Button
+            href={REGISTER_URL}
+            component={Link}
+            variant="contained"
+            size="medium"
+            color="primary"
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              maxWidth: '173px',
+              minHeight: 42,
+              flex: 1,
+            }}
+          >
+            {t('signUp')}
+          </Button>
+        </Box>
       </Stack>
-
-      <Box
-        sx={theme => ({
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          p: 2,
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(8px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(8px) saturate(120%)',
-          borderTop: `1px solid ${theme.palette.divider}`,
-          display: 'flex',
-          gap: 2,
-          justifyContent: 'center',
-        })}
-      >
-        <Button
-          component={Link}
-          color="primary"
-          href="/book-a-demo"
-          size="medium"
-          sx={{
-            backgroundColor: 'secondary.500',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            maxWidth: '173px',
-            flex: 1,
-            color: 'grey.50',
-          }}
-        >
-          {t('bookDemo')}
-        </Button>
-        <Button
-          href={REGISTER_URL}
-          component={Link}
-          variant="contained"
-          size="medium"
-          color="primary"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            maxWidth: '173px',
-            minHeight: 48,
-            flex: 1,
-          }}
-        >
-          {t('signUp')}
-        </Button>
-      </Box>
     </Box>
   );
 }

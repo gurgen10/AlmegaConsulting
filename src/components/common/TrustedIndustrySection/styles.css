@@ -1,0 +1,21 @@
+.swipe-trusted-industry.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swipe-trusted-industry .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 176px;
+}
+
+.swipe-trusted-industry .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-width: 176px;
+}

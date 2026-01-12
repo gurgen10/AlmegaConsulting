@@ -81,17 +81,26 @@ const commonConfigs: ThemeOptions = {
           '&.MuiButton-text': {
             padding: '8px 11px',
           },
+          '&.MuiButton-outlined': {
+            padding: '7px 22px',
+          },
         },
         sizeMedium: {
           padding: '6px 16px',
           '&.MuiButton-text': {
             padding: '6px 8px',
           },
+          '&.MuiButton-outlined': {
+            padding: '5px 16px',
+          },
         },
         sizeSmall: {
           padding: '4px 10px',
           '&.MuiButton-text': {
             padding: '4px 5px',
+          },
+          '&.MuiButton-outlined': {
+            padding: '3px 10px',
           },
         },
       },
