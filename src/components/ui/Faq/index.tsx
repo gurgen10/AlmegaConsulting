@@ -36,7 +36,7 @@ export default function Faq({ title, description, faqs }: FaqProps) {
           <Typography component="h2" variant="h3" color="primary.main" fontWeight={500} mb={2}>
             {title}
           </Typography>
-          <Typography variant="subtitle2" fontWeight={300}>
+          <Typography variant="subtitle2" component="div" fontWeight={300}>
             {description}
           </Typography>
         </Box>

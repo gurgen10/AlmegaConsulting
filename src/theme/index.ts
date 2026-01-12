@@ -66,6 +66,7 @@ const commonConfigs: ThemeOptions = {
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
           textTransform: 'none',
+          boxShadow: 'none',
           borderRadius: 4,
           ...(ownerState.variant === 'contained' && {
             '&:hover': {

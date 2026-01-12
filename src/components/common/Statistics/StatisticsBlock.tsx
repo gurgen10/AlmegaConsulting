@@ -15,7 +15,7 @@ export default function StatisticsBlock({
     <Box>
       <Box sx={{ height: '1px', width: '32px', backgroundColor: dividerColor }} />
       <Typography lineHeight="58px" variant="h4" fontWeight={700} component="div" color={color}>
-        <CountUp end={num} enableScrollSpy formattingFn={formattingFn} />
+        <CountUp end={num} scrollSpyOnce formattingFn={formattingFn} />
       </Typography>
       <Typography variant="subtitle2" component="div" fontWeight={300}>
         {text}

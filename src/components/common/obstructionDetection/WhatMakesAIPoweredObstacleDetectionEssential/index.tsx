@@ -8,7 +8,7 @@ import { Box, Typography } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import GradientDivider from '@/components/ui/GradientDivider';
 import { REGISTER_URL } from '@/shared/constants/common';
-import LeadInfoBlock from '@/components/ui/LeadInfoBlock';
+import LeadInfoBlock from '@/components/ui/ProductInfoSection/components/ProductInfoBlock';
 
 export default function WhatMakesAIPoweredObstacleDetectionEssential() {
   const t = useTranslations('obstructionDetection');

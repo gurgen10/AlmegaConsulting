@@ -543,6 +543,109 @@
       "cta": "Book a Demo"
     }
   },
+  "salesProposalsPage": {
+    "heroSection": {
+      "title": "Generate Winning Solar Sales Proposals to <primary>Close More Deals</primary> Faster",
+      "description": "Boost your solar conversions by capturing qualified leads on your website and sending instant quotes at the perfect moment.",
+      "getStarted": "Get Started Now",
+      "bookDemo": "Book a Demo"
+    },
+    "proposalsProductInfo": {
+      "roofDetection": {
+        "title": "AI-Driven Roof Detection for Residential Solar",
+        "description": "Forget about site visits and manual sketching. Our solar proposal software includes an automatic roof detection tool to build a strong foundation for your proposal. It instantly models the roof’s shape, slope, and structure. Additionally, our roof detection identifies obstacles like chimneys and pipes."
+      },
+      "shadingAnalysis": {
+        "title": "AI-Powered Shading Analysis",
+        "description": "No more guesswork around shading. Our software uses advanced AI to analyze sun movement and show exactly how shade impacts the performance. It provides accurate production estimates without manual calculations and detects nearby obstructions to highlight the best zones for panel placement."
+      },
+      "financialForecasting": {
+        "title": "Intelligent Financial Forecasting",
+        "description": "Our software automatically generates accurate, customized financial forecasts for each property, utility rates, and energy consumption. It provides a personalized savings narrative supported by real data, including savings estimates, ROI, and payback periods based on the homeowner’s actual usage."
+      },
+      "panelPlacement": {
+        "title": "AI-Optimized Panel Placement",
+        "description": "Our software automatically places panels on each roof in the most effective pattern for sunlight, spacing, and aesthetic fit. It uses advanced AI to avoid shaded or inefficient areas and maximize production per roof."
+      },
+      "salesReadyProposal": {
+        "title": "Professional Sales-Ready Proposal",
+        "description": "All insights, calculations, and design decisions come together in a modern proposal that builds trust. Designed for clarity and visual attractiveness, each proposal aims to help homeowners quickly understand potential savings and overall investment, delivered in a professional, straightforward, and visually polished format."
+      },
+      "cta": "Sign Up"
+    },
+    "whyProposalSoftware": {
+      "title": "Why Solar Teams Love Our Solar Sales Proposal Software",
+      "rates": {
+        "title": "Higher Lead Conversion Rates",
+        "description": "Because homeowners receive clear, personalised solar information instantly, they stay engaged and move forward faster. This reduces drop-off, boosts trust, and significantly increases the percentage of leads who book a consultation."
+      },
+      "accurateProposals": {
+        "title": "Accurate Proposals",
+        "description": "Automated system sizing, pricing, and production estimates remove manual work and human error. This allows your team to generate polished solar sales proposals in seconds instead of hours and help you respond to leads faster than competitors."
+      },
+      "trust": {
+        "title": "Improve Customer Trust",
+        "description": "A visually appealing, data-supported proposal makes your offering easy to understand. When customers see accurate savings estimates, top-notch designs, and transparent pricing, they feel more confident in choosing your company."
+      },
+      "productivity": {
+        "title": "Higher Productivity",
+        "description": "Your sales reps can handle quotes, financing options, and digital signatures all in one place. This reduces administrative work, accelerates approval processes, and allows your team focus on what matters most: closing more deals."
+      }
+    },
+    "whyChooseProposalsSoftware": {
+      "title": "Why Choose Our Solar Proposal Software",
+      "proposalsInSeconds": "Proposals in Seconds",
+      "perProposalPricing": "Per-Proposal Pricing",
+      "instantAccess": "Instant Access - <bold>No Demo Required</bold>",
+      "salesOptimizedInterface": "Sales-Optimized Interface",
+      "zeroLearningCurve": "Zero Learning Curve",
+      "unlimitedUsers": "Unlimited Users",
+      "unlimitedRevisions": "Unlimited Revisions",
+      "fullyAutomatedFlow": "Fully Automated Flow",
+      "utilityAutomation": "Utility Automation",
+      "manualDesignEditing": "Manual Design Editing",
+      "superiorSupport": "Superior Support",
+      "partial": "partial",
+      "planSpecific": "plan-specific",
+      "startNow": "Start Now"
+    },
+    "qualifyLeadsBeforeSendingFirstProposal": {
+      "title": "Qualify Leads Before Sending the First Proposal",
+      "description": "Before submitting the proposal, it's important to spark interest. Discover strategies to attract qualified sales leads using our solar lead capture platform.",
+      "cta": "Learn More"
+    },
+    "faqSection": {
+      "title": "FAQ",
+      "description": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
+      "faqs": {
+        "q_1": {
+          "question": "Can I customize proposals with my company branding?",
+          "answer": "Yes. SolarGenix generates professional, sales‑ready proposals with a clean layout that you can easily customize."
+        },
+        "q_2": {
+          "question": "Does your solar sales proposal software calculate energy savings automatically?",
+          "answer": "Yes. SolarGenix uses AI engine to perform shading analysis, sun‑path modeling, and roof detection analysis. Then it calculates expected solar production and savings. The platform automatically generates financial forecasts tailored to each home’s location, usage pattern, and local utility rates."
+        },
+        "q_3": {
+          "question": "Does SolarGenix.ai support different financing options?",
+          "answer": "Yes. The software’s “Intelligent Financial Forecasting” feature automatically builds financial projections, taking into account local rates, homeowner usage. It  supports a variety of financing scenarios when presenting proposals."
+        },
+        "q_4": {
+          "question": "How quickly can I generate a proposal with SolarGenix.ai?",
+          "answer": "Very quickly, in just few seconds. SolarGenix’s solar sales software eliminating many of the manual steps that traditionally took hours."
+        },
+        "q_5": {
+          "question": "How easy is it for sales reps to use and design proposals with SolarGenix.ai?",
+          "answer": "Very easy. The platform is built to automate the heavy technical work, so salesperson dose not need engineering or programming skills. They can generate complete, sales‑ready proposals with no training and no manual layout work."
+        }
+      }
+    },
+    "ctaSection": {
+      "title": "Create Professional Solar Sales Proposal with SolarGenix",
+      "cta": "Book a Demo",
+      "mainCta": "Start Now"
+    }
+  },
   "colorPicker": {
     "red": "Red",
     "green": "Green",

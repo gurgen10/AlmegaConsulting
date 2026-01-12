@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { BoxProps } from '@mui/system';
 import { ButtonProps } from '@mui/material';
 
 export interface GuideBlockProps {
@@ -7,8 +6,10 @@ export interface GuideBlockProps {
   children?: ReactNode;
   content?: string;
   cta: ButtonProps;
+  backgroundColor?: string;
+  color?: string;
+  boxShadow?: string;
   img: {
     src: string;
-    width?: BoxProps['width'];
   };
 }
