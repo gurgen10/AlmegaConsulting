@@ -85,7 +85,7 @@ export default function Testimonials() {
               px: 3,
             }}
           >
-            {t.rich('whatOurCustomerAreSayingAboutOurSolarSalesSoftware', {
+            {t.rich('whatOurCustomersAreSayingAboutOurSolarSalesSoftware', {
               sp: chunks => (
                 <Typography variant="h3" component="div">
                   {chunks}
