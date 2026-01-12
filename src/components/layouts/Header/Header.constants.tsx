@@ -1,11 +1,12 @@
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
+import { QUOTING_SYSTEM_URL, SALES_PROPOSAL_URL } from '@/shared/constants/common';
 
 export const featureSubmenuItems: SubMenuItem[] = [
   {
     key: 'roofDetection',
     title: 'roofDetection',
     description: 'roofDetectionDescription',
-    url: '/#roofDetection',
+    url: '/roofDetection',
     icon: '/icons/header/roof-detection.svg',
   },
   {
@@ -13,28 +14,28 @@ export const featureSubmenuItems: SubMenuItem[] = [
     title: 'obstructionDetection',
     description: 'obstructionDetectionDescription',
     icon: '/icons/header/obstruction-detection.svg',
-    url: '/#obstructionDetection',
+    url: '/obstructionDetection',
   },
   {
     key: 'shadingAnalysis',
     title: 'shadingAnalysis',
     description: 'shadingAnalysisDescription',
     icon: '/icons/header/shading-analysis.svg',
-    url: '/#shadingAnalysis',
+    url: '/shadingAnalysis',
   },
   {
     key: 'panelPlacement',
     title: 'panelPlacement',
     description: 'panelPlacementDescription',
     icon: '/icons/header/panel-placement.svg',
-    url: '/#panelPlacement',
+    url: '/panelPlacement',
   },
   {
     key: 'financialForecasting',
     title: 'financialForecasting',
     description: 'financialForecastingDescription',
     icon: '/icons/header/financial-forecasting.svg',
-    url: '/#financialForecasting',
+    url: '/financialForecasting',
   },
   // {
   //   key: 'proposalGeneration',
@@ -50,14 +51,14 @@ export const productSubmenuItems: SubMenuItem[] = [
     key: 'solarProposal',
     title: 'solarProposal',
     description: 'solarProposalDescription',
-    url: '/#solarProposal',
+    url: SALES_PROPOSAL_URL,
     icon: '/icons/header/solar-proposal.svg',
   },
   {
     key: 'leadCapture',
     title: 'leadCapture',
     description: 'leadCaptureDescription',
-    url: '/#leadCapture',
+    url: QUOTING_SYSTEM_URL,
     icon: '/icons/header/lead-capture.svg',
   },
 ];

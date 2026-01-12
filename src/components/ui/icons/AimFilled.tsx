@@ -1,0 +1,114 @@
+export default function AimFilled() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0.32" y="0.32" width="31.36" height="31.36" rx="3.68" fill="currentColor" />
+      <rect
+        x="0.32"
+        y="0.32"
+        width="31.36"
+        height="31.36"
+        rx="3.68"
+        stroke="currentColor"
+        strokeWidth="0.64"
+      />
+      <g clipPath="url(#clip0_4480_13582)">
+        <path
+          d="M16.126 14.7568C16.7562 14.8209 17.248 15.3528 17.248 16C17.248 16.6904 16.6884 17.25 15.998 17.25C15.3509 17.25 14.819 16.7582 14.7549 16.1279L14.748 16L14.7549 15.8721C14.819 15.2418 15.3509 14.75 15.998 14.75L16.126 14.7568Z"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16 6.00195L16 12.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M6.00195 16.002L12.002 16.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 14.002L12 16.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10 18.002L12 16.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M22 14.002L20 16.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M22 18.002L20 16.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M14 22.002L16 20.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M18 22.002L16 20.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M14 10.002L16 12.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M18 10.002L16 12.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16 20.002L16 26.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M20 16.002L26 16.002"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_4480_13582">
+          <rect width="24" height="24" fill="white" transform="translate(4 4)" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}

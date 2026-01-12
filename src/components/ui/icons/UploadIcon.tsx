@@ -1,0 +1,26 @@
+export default function UploadIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <g clipPath="url(#clip0_100_10521)">
+        <path
+          d="M8.56681 4.16211C9.57253 4.16771 10.1172 4.21231 10.4725 4.5676C10.8788 4.9739 10.8788 5.62783 10.8788 6.93568V7.39808C10.8788 8.70594 10.8788 9.35986 10.4725 9.76616C10.0662 10.1725 9.41227 10.1725 8.10441 10.1725H4.40524C3.09738 10.1725 2.44346 10.1725 2.03716 9.76616C1.63086 9.35986 1.63086 8.70594 1.63086 7.39808L1.63086 6.93568C1.63086 5.62783 1.63086 4.9739 2.03716 4.5676C2.39246 4.21231 2.93712 4.16771 3.94284 4.16211"
+          stroke="currentColor"
+          strokeWidth="0.693595"
+          strokeLinecap="round"
+        />
+        <path
+          d="M6.25633 6.93555L6.25633 0.924392M6.25633 0.924392L7.64352 2.54278M6.25633 0.924392L4.86914 2.54278"
+          stroke="currentColor"
+          strokeWidth="0.693595"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_100_10521">
+          <rect x="0.707031" width="11.0975" height="11.0975" rx="2.31198" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
