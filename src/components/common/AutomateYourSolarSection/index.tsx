@@ -71,7 +71,6 @@ export default function AutomateYourSolarSection() {
 
   const imageWrapperStyles = {
     width: '100%',
-    height: '100%',
     position: 'relative',
     aspectRatio: '1 / 1',
   };
