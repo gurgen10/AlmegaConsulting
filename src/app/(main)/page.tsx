@@ -12,6 +12,7 @@ import WhySolarTeamsLoveOurSalesSoftware from '@/components/common/WhySolarTeams
 import BottomCallToAction from '@/components/common/BottomCallToAction';
 import HomepageFaq from '@/components/common/HomepageFaq';
 import Forbs from '@/components/common/Forbs';
+import PageIsLoading from '@/components/common/PageIsLoading/indexx';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -28,9 +29,10 @@ export const metadata: Metadata = {
     'solar quoting tool',
   ],
 };
-export default async function Home() {
+export default function Home() {
   return (
     <>
+      <PageIsLoading />
       <HeroSection />
       <TrustedIndustrySection />
       <VideoBlockSection />
