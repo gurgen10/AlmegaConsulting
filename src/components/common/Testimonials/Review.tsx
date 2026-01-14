@@ -129,7 +129,7 @@ const Review = ({ name, position, review, image }: Review) => {
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
                 whiteSpace: 'nowrap',
-                width: '80%',
+                width: '90%',
                 display: 'block',
                 [theme.breakpoints.down('md')]: {
                   width: '135px',
