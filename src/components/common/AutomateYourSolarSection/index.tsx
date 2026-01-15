@@ -127,6 +127,29 @@ export default function AutomateYourSolarSection() {
                 >
                   {t('makeStunningSolarProposals')}
                 </Typography>
+              </Box>
+              <Box
+                sx={theme => ({
+                  ...imageContainerStyles,
+                  display: 'none',
+                  my: 2,
+                  [theme.breakpoints.down('sm')]: {
+                    display: 'block',
+                  },
+                })}
+              >
+                <Box sx={imageWrapperStyles}>
+                  <Image
+                    src="/images/automate-solar/makeStunning.png"
+                    alt="makeStunning"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 600px"
+                  />
+                </Box>
+              </Box>
+              <Box>
                 <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
                   {t('makeStunningSolarProposalsDescription1')}
                 </Typography>
@@ -183,7 +206,14 @@ export default function AutomateYourSolarSection() {
             </Box>
 
             {/* Image Side - Aligned to right */}
-            <Box sx={imageContainerStyles}>
+            <Box
+              sx={theme => ({
+                ...imageContainerStyles,
+                [theme.breakpoints.down('sm')]: {
+                  display: 'none',
+                },
+              })}
+            >
               <Box sx={imageWrapperStyles}>
                 <Image
                   src="/images/automate-solar/makeStunning.png"
@@ -207,6 +237,9 @@ export default function AutomateYourSolarSection() {
                   justifySelf: 'box-start',
                   [theme.breakpoints.up('md')]: {
                     order: 0,
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    display: 'none',
                   },
                 })}
               >
@@ -251,6 +284,30 @@ export default function AutomateYourSolarSection() {
                   >
                     {t('boostConversionsWithInstantQuotes')}
                   </Typography>
+                </Box>
+                <Box
+                  sx={theme => ({
+                    ...imageContainerStyles,
+                    display: 'none',
+                    my: 2,
+                    [theme.breakpoints.down('sm')]: {
+                      display: 'block',
+                    },
+                  })}
+                >
+                  <Box sx={imageWrapperStyles}>
+                    <Image
+                      src="/images/automate-solar/makeStunning.png"
+                      alt="makeStunning"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      priority
+                      sizes="(max-width: 768px) 100vw, 600px"
+                    />
+                  </Box>
+                </Box>
+
+                <Box>
                   <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
                     {t('boostConversionsWithInstantQuotesDescription')}
                   </Typography>

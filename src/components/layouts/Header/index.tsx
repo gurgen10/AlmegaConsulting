@@ -145,7 +145,7 @@ export default function Header() {
           backgroundColor: 'transparent',
           zIndex: 1201,
           boxShadow: 'none',
-          px: '80px',
+          px: 2,
           [theme.breakpoints.down('lg')]: {
             px: '0',
           },
@@ -162,7 +162,7 @@ export default function Header() {
             position: 'relative',
             overflow: 'hidden',
             lineHeight: '26px',
-            backgroundColor: 'opacityLight.60',
+            backgroundColor: isMobile ? 'grey.25' : 'opacityLight.60',
             backdropFilter: 'blur(5px)',
             boxShadow: '0 4px 8.3px -1px rgba(0, 43, 43, 0.20)',
 
