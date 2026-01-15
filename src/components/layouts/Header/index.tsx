@@ -145,7 +145,7 @@ export default function Header() {
           backgroundColor: 'transparent',
           zIndex: 1201,
           boxShadow: 'none',
-          px: 2,
+          px: '80px',
           [theme.breakpoints.down('lg')]: {
             px: '0',
           },
