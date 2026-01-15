@@ -35,7 +35,7 @@ export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] 
   useEffect(() => {
     if (loadingTexts) {
       const stepsCount = loadingTexts.length;
-      const avgInterval = 12000 / stepsCount;
+      const avgInterval = 30000 / stepsCount;
       const interval =
         Math.ceil(Math.random() * avgInterval) + (avgInterval * step - stepRef.current);
 
@@ -58,7 +58,7 @@ export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] 
       display="flex"
       alignItems="center"
       justifyContent="center"
-      sx={{ background: '#fcfcfc', zIndex: 1801, px: '53px' }}
+      sx={{ backgroundColor: 'grey.50', zIndex: 1801, px: '53px' }}
     >
       <Box display="flex" alignItems="center">
         <Box width={logoWidth}>

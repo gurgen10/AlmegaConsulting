@@ -44,24 +44,17 @@ export default function PageIsLoading() {
 
     document.body.style.overflow = 'hidden';
 
-    const timers: NodeJS.Timeout[] = [];
     setIsLoading(true);
 
     const timer1 = setTimeout(() => {
-      const timer2 = setTimeout(() => {
-        sessionStorage.setItem('status', 'ready');
-        setIsLoading(false);
+      sessionStorage.setItem('status', 'ready');
+      setIsLoading(false);
 
-        document.body.style.overflow = 'auto';
-      }, 500);
-
-      timers.push(timer2);
+      document.body.style.overflow = 'auto';
     }, 4000);
 
-    timers.push(timer1);
-
     return () => {
-      timers.forEach(timer => clearTimeout(timer));
+      clearTimeout(timer1);
       document.body.style.overflow = 'auto';
     };
   }, []);
@@ -70,9 +63,5 @@ export default function PageIsLoading() {
     return null;
   }
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
-      <Loading loadingTexts={loadingTexts} />
-    </div>
-  );
+  return <Loading loadingTexts={loadingTexts} />;
 }
