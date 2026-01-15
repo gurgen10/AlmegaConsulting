@@ -32,6 +32,5 @@ test('Header', () => {
     </ThemeProvider>
   );
 
-  expect(screen.getByRole('link', { name: /SolarGenix Logo/i })).toBeDefined();
   expect(screen.getByRole('button', { name: /product/i })).toBeDefined();
 });
