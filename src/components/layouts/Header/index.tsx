@@ -143,7 +143,8 @@ export default function Header() {
       <AppBar
         sx={{
           position: 'sticky',
-          backgroundColor: 'transparent',
+          backgroundColor: isMobile ? 'grey.25' : 'transparent',
+          paddingTop: 'env(safe-area-inset-top)',
           zIndex: 1201,
           boxShadow: 'none',
           px: 2,
