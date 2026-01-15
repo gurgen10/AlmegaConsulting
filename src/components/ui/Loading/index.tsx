@@ -9,6 +9,8 @@ import LoadingIcon from './LoadingIcon';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 
+const TIME_DURATION = 30000;
+
 export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] }) {
   const [step, setStep] = useState(0);
   const stepRef = useRef(0);
@@ -35,7 +37,7 @@ export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] 
   useEffect(() => {
     if (loadingTexts) {
       const stepsCount = loadingTexts.length;
-      const avgInterval = 30000 / stepsCount;
+      const avgInterval = TIME_DURATION / stepsCount;
       const interval =
         Math.ceil(Math.random() * avgInterval) + (avgInterval * step - stepRef.current);
 
