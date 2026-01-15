@@ -41,7 +41,12 @@ export default function LandingFooter() {
           <FooterContainer>
             <FooterLogoContainer>
               <Link href="/">
-                <Image width={165} height={34} src="/icons/solar-genix.svg" alt="SolarGenix Logo" />
+                <Image
+                  width={165}
+                  height={34}
+                  src="/icons/solar-genix-white.svg"
+                  alt="SolarGenix Logo"
+                />
               </Link>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <FollowUs />

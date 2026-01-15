@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/roofDetection/Statistics';
 
 import HeroSection from '@/components/common/roofDetection/HeroSection';
 import WhyYouNeedAIPoweredRoofDetection from '@/components/common/roofDetection/WhyYouNeedAIPoweredRoofDetection';

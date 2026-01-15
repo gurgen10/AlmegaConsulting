@@ -30,16 +30,16 @@ export default function AutomateYourSolarSection() {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gap: 4,
+    p: 0.5,
+    borderRadius: '16px',
+    backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
+    boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
     [theme.breakpoints.down('lg')]: {
       gap: 2,
     },
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: '1fr',
     },
-    p: 0.5,
-    borderRadius: '16px',
-    backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
-    boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
   });
 
   const contentBoxStyles = {

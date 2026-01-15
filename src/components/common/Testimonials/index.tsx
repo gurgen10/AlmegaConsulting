@@ -25,7 +25,7 @@ export default function Testimonials() {
       position: 'CEO, SolarGenix',
       review:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus vel ante bibendum facilisis. Nullam nec metus vel ante bibendum facilisis.',
-      image: '/images/Testimonials/reviewer.svg',
+      image: '/images/Testimonials/avatar.jpeg',
     },
     {
       name: 'John Smith',
@@ -64,7 +64,13 @@ export default function Testimonials() {
   ];
 
   return (
-    <Box sx={{ backgroundColor: 'primary.800', boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)' }}>
+    <Box
+      sx={{
+        backgroundColor: 'primary.800',
+        boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
+        position: 'relative',
+      }}
+    >
       <Box
         component="section"
         sx={{

@@ -87,3 +87,22 @@ export const menuItems = [
     url: '/#about-us',
   },
 ];
+
+export const companyFooterItems = [
+  {
+    key: 'aboutUs',
+    url: '/#about-us',
+  },
+  {
+    key: 'blog',
+    url: '/blog',
+  },
+  {
+    key: 'pricing',
+    url: '/pricing',
+  },
+  {
+    key: 'contactUs',
+    url: '/#contact-us',
+  },
+];

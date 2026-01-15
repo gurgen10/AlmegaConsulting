@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/panelPlacement/Statistics';
 
 import HeroSection from '@/components/common/panelPlacement/HeroSection';
 import WhatMakesPanelPlacementEssential from '@/components/common/panelPlacement/WhatMakesPanelPlacementEssential';
