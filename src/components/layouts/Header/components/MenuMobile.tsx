@@ -44,7 +44,7 @@ export default function MenuMobile() {
         height: '100vh',
         position: 'relative',
         display: 'flex',
-        backgroundColor: 'opacityLight.90',
+        backgroundColor: 'grey.25',
         padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
         flexDirection: 'column',
       }}
@@ -55,9 +55,7 @@ export default function MenuMobile() {
           flex: 1,
           mt: '62px',
           height: '100vh',
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(6px) saturate(120%)',
-          WebkitBackdropFilter: 'blur(6px) saturate(120%)',
+          backgroundColor: 'grey.25',
           '& .MuiBox-root:last-child': {
             borderBottom: 'none',
           },

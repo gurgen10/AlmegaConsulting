@@ -6,7 +6,6 @@ import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/c
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import DescriptionBlock from '@/components/ui/LearnMoreItem/DescriptionBlock';
-import VerticalGradient from '@/components/common/AIPoweredSolarSales/VerticalGradient';
 import LearnMoreItem from '@/components/ui/LearnMoreItem';
 
 export default function AIPoweredSolarSales() {
@@ -147,7 +146,6 @@ export default function AIPoweredSolarSales() {
             marginBottom: '1px',
           }}
         >
-          <VerticalGradient />
           <Box
             sx={{
               mt: 0,

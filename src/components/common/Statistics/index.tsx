@@ -22,6 +22,7 @@ export default function Statistics(props: StatisticsProps) {
       sx={{
         backgroundColor: 'tertiary.800',
         position: 'relative',
+        zIndex: 1,
         boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
       }}
     >
