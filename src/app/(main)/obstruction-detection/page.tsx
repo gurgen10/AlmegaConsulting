@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/obstructionDetection/Statistics';
 
 import HeroSection from '@/components/common/obstructionDetection/HeroSection';
 import WhatMakesAIPoweredObstacleDetectionEssential from '@/components/common/obstructionDetection/WhatMakesAIPoweredObstacleDetectionEssential';

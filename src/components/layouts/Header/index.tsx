@@ -164,6 +164,7 @@ export default function Header() {
             lineHeight: '26px',
             backgroundColor: 'opacityLight.60',
             backdropFilter: 'blur(5px)',
+            boxShadow: '0 4px 8.3px -1px rgba(0, 43, 43, 0.20)',
 
             img: {
               transition: '0.2s linear',

@@ -24,7 +24,7 @@ const Unique = ({
         position: 'relative',
         backgroundColor: 'primary.700',
         height: '100%',
-        boxShadow: '0 0 8px 0 rgba(0, 0, 0, 0.32)',
+        boxShadow: 'none',
       })}
     >
       <Box
@@ -58,8 +58,8 @@ const Unique = ({
         <Box>
           <Box sx={{ display: 'flex', gap: 2 }}>
             {textAi && (
-              <Box sx={{ width: { xl: 48, xs: 'auto' } }}>
-                <Image src={image} alt="image" width={48} height={48} />
+              <Box sx={{ width: { xl: 60, xs: 'auto' } }}>
+                <Image src={image} alt="image" width={60} height={60} />
               </Box>
             )}
             <Typography
@@ -98,7 +98,7 @@ const Unique = ({
         </Box>
       </Box>
       {textAi && (
-        <Box sx={{ position: 'absolute', bottom: 0, right: 0 }}>
+        <Box sx={{ position: 'absolute', bottom: 0, right: 0, display: 'flex' }}>
           <Image
             src="/images/what-makes-us-unique/patent-pending.svg"
             alt="image"

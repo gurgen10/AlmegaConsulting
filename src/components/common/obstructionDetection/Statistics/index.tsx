@@ -15,16 +15,7 @@ export default function Statistics(props: StatisticsProps) {
   const t = useTranslations('quotingSystemPage.summarySection');
 
   return (
-    <Box
-      component="section"
-      py={6}
-      px={SPACING_DEFAULT_X}
-      sx={{
-        backgroundColor: 'tertiary.800',
-        position: 'relative',
-        boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
-      }}
-    >
+    <Box component="section" py={6} px={SPACING_DEFAULT_X} sx={{ backgroundColor: 'tertiary.800' }}>
       <Box
         sx={CONTAINER_STYLES}
         color={INVERT_TEXT_COLOR}
@@ -44,32 +35,32 @@ export default function Statistics(props: StatisticsProps) {
         <Box display="grid" gridTemplateColumns="repeat(2, auto)" gap={4}>
           <StatisticsBlock
             {...props}
-            color="secondary.400"
-            dividerColor="secondary.300"
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('proposalsGenerated')}
             num={42000}
             formattingFn={formatNumber}
           />
           <StatisticsBlock
             {...props}
-            color="secondary.400"
-            dividerColor="secondary.300"
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('quotesSent')}
             num={10000}
             formattingFn={formatNumber}
           />
           <StatisticsBlock
             {...props}
-            color="secondary.400"
-            dividerColor="secondary.300"
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('increaseProductivity')}
             num={25}
             formattingFn={formatPercentage}
           />
           <StatisticsBlock
             {...props}
-            color="secondary.400"
-            dividerColor="secondary.300"
+            color="primary.400"
+            dividerColor="primary.200"
             text={t('ledToProposalConversion')}
             num={3}
             formattingFn={formatX}

@@ -68,9 +68,9 @@ export const FooterLinkBlock = styled(Box)(({ theme }) => ({
   textAlign: 'left',
   minWidth: 0,
   maxWidth: '120%',
+  width: '120%',
   margin: '0',
   position: 'relative',
-  width: '120%',
 
   [theme.breakpoints.down('sm')]: {
     textAlign: 'center',

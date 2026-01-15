@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/financialForecasting/Statistics';
 
 import HeroSection from '@/components/common/financialForecasting/HeroSection';
 import WhatMakesIntelligentFinancialForecastingEssential from '@/components/common/financialForecasting/WhatMakesIntelligentFinancialForecastingEssential';

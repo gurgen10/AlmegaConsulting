@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/shadingAnalysis/Statistics';
 
 import HeroSection from '@/components/common/shadingAnalysis/HeroSection';
 import WhatMakesShadingAnalysisEssential from '@/components/common/shadingAnalysis/WhatMakesShadingAnalysisEssential';

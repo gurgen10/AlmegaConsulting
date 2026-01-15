@@ -34,7 +34,14 @@ export default function DescriptionBlock({
         </Typography>
       )}
       {points && (
-        <Box component="ul">
+        <Box
+          component="ul"
+          sx={{
+            '& li::marker': {
+              fontSize: 10,
+            },
+          }}
+        >
           {points.map((point, index) => (
             <Typography variant="subtitle1" fontWeight={300} component="li" key={index}>
               {point}
