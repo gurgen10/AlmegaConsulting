@@ -144,6 +144,7 @@ export default function Header() {
         sx={{
           position: 'sticky',
           backgroundColor: isMobile ? 'grey.25' : 'transparent',
+          // For iOS safe area
           paddingTop: 'env(safe-area-inset-top)',
           zIndex: 1201,
           boxShadow: 'none',
