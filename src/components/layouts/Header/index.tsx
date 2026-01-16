@@ -141,7 +141,7 @@ export default function Header() {
     <>
       <Box
         sx={{
-          display: { xs: 'block', lg: 'none' },
+          display: isMobile ? 'block' : 'none',
           position: 'fixed',
           top: 0,
           left: 0,
