@@ -137,15 +137,23 @@ export default function Header() {
     document.body.style.overflow = drawerOpen ? 'hidden' : 'auto';
   }, [drawerOpen]);
 
+  const toolbarBg = isMobile ? 'grey.25' : 'opacityLight.60';
+  const appBarBg = isMobile ? toolbarBg : 'transparent';
+
   return (
     <>
-      <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
+      <div
+        id="header-observer"
+        style={{
+          top: 0,
+          position: 'absolute',
+        }}
+      ></div>
       <AppBar
         sx={{
           position: 'sticky',
-          backgroundColor: isMobile ? 'grey.25' : 'transparent',
-          // For iOS safe area
-          paddingTop: 'env(safe-area-inset-top)',
+          backgroundColor: appBarBg,
+          paddingTop: isMobile ? 'env(safe-area-inset-top)' : 0,
           zIndex: 1201,
           boxShadow: 'none',
           px: 2,
@@ -165,7 +173,7 @@ export default function Header() {
             position: 'relative',
             overflow: 'hidden',
             lineHeight: '26px',
-            backgroundColor: isMobile ? 'grey.25' : 'opacityLight.60',
+            backgroundColor: toolbarBg,
             backdropFilter: 'blur(5px)',
             boxShadow: '0 4px 8.3px -1px rgba(0, 43, 43, 0.20)',
 
