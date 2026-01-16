@@ -174,7 +174,7 @@ export default function Header() {
             overflow: 'hidden',
             lineHeight: '26px',
             backgroundColor: toolbarBg,
-            backdropFilter: 'blur(5px)',
+            backdropFilter: isMobile ? 'blur(5px)' : 'none',
             boxShadow: '0 4px 8.3px -1px rgba(0, 43, 43, 0.20)',
 
             img: {
