@@ -10,8 +10,9 @@ import LeadsFAQ from '@/components/common/SolarQuotingSystem/LeadsFAQ';
 import LeadsCtaSection from '@/components/common/SolarQuotingSystem/LeadsCtaSection';
 
 export const metadata: Metadata = {
-  title: 'Leads | SolarGenix',
-  description: '',
+  title: 'Convert More Leads with Our Instant Quoting System | SolarGenix',
+  description:
+    'Capture high-intent solar leads and send accurate quotes with our instant quoting and lead capture platform built for automating solar sales.',
   keywords: [],
 };
 

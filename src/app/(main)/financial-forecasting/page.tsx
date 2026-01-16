@@ -11,19 +11,10 @@ import FinancialForeCastFaq from '@/components/common/financialForecasting/Finan
 import BottomCallToAction from '@/components/common/financialForecasting/BottomCallToAction';
 
 export const metadata: Metadata = {
-  title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
+  title: 'Solar Financial Forecasting for Smarter Savings | SolarGenix',
   description:
-    'Boost your solar sales with Solargenix.ai – the fastest and easiest AI-powered solar proposal creation tool. Automate and simplify your solar business with precision and speed.',
-  keywords: [
-    'solar sales proposal',
-    'AI solar proposal',
-    'fastest solar proposal tool',
-    'easy solar sales',
-    'Solargenix.ai',
-    'solar business automation',
-    'solar software',
-    'solar quoting tool',
-  ],
+    'Show homeowners clear, data-backed savings with intelligent solar forecasting that delivers accurate energy production and financial estimates.',
+  keywords: [],
 };
 export default async function Home() {
   return (

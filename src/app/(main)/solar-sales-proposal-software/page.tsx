@@ -11,8 +11,9 @@ import ProposalsFAQ from '@/components/common/SolarQuotingSystem/LeadsFAQ';
 import LeadsCtaSection from '@/components/common/SolarQuotingSystem/LeadsCtaSection';
 
 export const metadata: Metadata = {
-  title: 'Proposals | SolarGenix',
-  description: '',
+  title: 'AI Solar Proposal Software to Boost Your Sales | SolarGenix',
+  description:
+    'Turn leads into customers with solar sales proposal software to create data-backed, sales-ready proposals designed to build trust and boost conversions',
   keywords: [],
 };
 

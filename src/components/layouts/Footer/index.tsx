@@ -1,5 +1,6 @@
 'use client';
 
+import { Theme } from '@mui/material/styles';
 import { Box, Link as MuiLink, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,7 +24,6 @@ import {
   productSubmenuItems,
 } from '@/components/layouts/Header/Header.constants';
 import { FOOTER_STYLES } from '@/shared/constants/spacing';
-import { maxWidth } from '@mui/system';
 
 export default function Footer() {
   const t = useTranslations();
@@ -86,7 +86,14 @@ export default function Footer() {
                   ))}
                 </FooterLinkItems>
               </FooterLinkBlock>
-              <FooterLinkBlock sx={{ maxWidth: '100%' }}>
+              <FooterLinkBlock
+                sx={(theme: Theme) => ({
+                  maxWidth: '100%',
+                  [theme.breakpoints.down('sm')]: {
+                    maxWidth: '120%',
+                  },
+                })}
+              >
                 <FooterMenuWrapper>{t('header.company')}</FooterMenuWrapper>
                 <FooterLinkItems>
                   {companyFooterItems.map(item => (

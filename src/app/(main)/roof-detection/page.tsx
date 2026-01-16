@@ -11,19 +11,10 @@ import WhyAutomaticRoofDetection from '@/components/common/roofDetection/WhyAuto
 import LearnMoreFeatures from '@/components/common/roofDetection/LearnMoreFeatures';
 
 export const metadata: Metadata = {
-  title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
+  title: 'Solar Roof Detection for Accurate System Design | SolarGenix',
   description:
-    'Boost your solar sales with Solargenix.ai – the fastest and easiest AI-powered solar proposal creation tool. Automate and simplify your solar business with precision and speed.',
-  keywords: [
-    'solar sales proposal',
-    'AI solar proposal',
-    'fastest solar proposal tool',
-    'easy solar sales',
-    'Solargenix.ai',
-    'solar business automation',
-    'solar software',
-    'solar quoting tool',
-  ],
+    'Send proposals faster with our AI roof detection that identifies usable roof areas, angles, and dimensions in seconds. No manual measurements required.',
+  keywords: [],
 };
 export default async function Home() {
   return (
