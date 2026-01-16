@@ -137,15 +137,20 @@ export default function Header() {
     document.body.style.overflow = drawerOpen ? 'hidden' : 'auto';
   }, [drawerOpen]);
 
-  useEffect(() => {
-    // Set body background for mobile / revert for desktop
-    document.body.style.backgroundColor = isMobile
-      ? theme.palette.grey[25]
-      : theme.palette.grey[200];
-  }, [isMobile, theme]);
-
   return (
     <>
+      <Box
+        sx={{
+          display: { xs: 'block', lg: 'none' },
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 'env(safe-area-inset-top)',
+          backgroundColor: 'grey.25',
+          zIndex: 1200,
+        }}
+      />
       <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
       <AppBar
         sx={{
