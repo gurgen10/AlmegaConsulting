@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/ProposalsSalesSection/Statistics';
 import Testimonials from '@/components/common/Testimonials';
 import ProposalsHeroSection from '@/components/common/ProposalsSalesSection/ProposalsHeroSection';
 import ProposalsProductInfoSection from '@/components/common/ProposalsSalesSection/ProposalsProductInfoSection';

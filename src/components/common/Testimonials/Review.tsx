@@ -85,6 +85,9 @@ const Review = ({ name, position, review, image }: Review) => {
               width: '48px',
               height: '48px',
               borderRadius: '50%',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: 'grey.900',
               overflow: 'hidden',
               flexShrink: 0,
               position: 'relative',
@@ -123,7 +126,7 @@ const Review = ({ name, position, review, image }: Review) => {
               color="grey.600"
               fontWeight={300}
               textAlign="left"
-              sx={{
+              sx={theme => ({
                 textAlign: 'left',
                 wordWrap: 'break-word',
                 textOverflow: 'ellipsis',
@@ -131,7 +134,10 @@ const Review = ({ name, position, review, image }: Review) => {
                 whiteSpace: 'nowrap',
                 width: '90%',
                 display: 'block',
-              }}
+                [theme.breakpoints.down('md')]: {
+                  width: '135px',
+                },
+              })}
             >
               {position}
             </Typography>

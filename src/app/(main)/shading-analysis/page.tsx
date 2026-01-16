@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/shadingAnalysis/Statistics';
 
-import HeroSection from '@/components/common/roofDetection/HeroSection';
-import WhyYouNeedAIPoweredRoofDetection from '@/components/common/roofDetection/WhyYouNeedAIPoweredRoofDetection';
-import RoofDetectionBottomCallToAction from '@/components/common/roofDetection/BottomCallToAction';
-import RoofDetectionFaq from '@/components/common/roofDetection/RoofDetectionFaq';
-import WhyAutomaticRoofDetection from '@/components/common/roofDetection/WhyAutomaticRoofDetection';
-import LearnMoreFeatures from '@/components/common/roofDetection/LearnMoreFeatures';
+import HeroSection from '@/components/common/shadingAnalysis/HeroSection';
+import WhatMakesShadingAnalysisEssential from '@/components/common/shadingAnalysis/WhatMakesShadingAnalysisEssential';
+import WhyPanelPlacement from '@/components/common/shadingAnalysis/WhyPanelPlacement';
+import LearnMoreFeatures from '@/components/common/shadingAnalysis/LearnMoreFeatures';
+import ShadingAnalysisFaq from '@/components/common/shadingAnalysis/ShadingAnalysisFaq';
+import BottomCallToAction from '@/components/common/shadingAnalysis/BottomCallToAction';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -30,13 +30,13 @@ export default async function Home() {
     <>
       <HeroSection />
       <TrustedIndustrySection />
-      <WhyYouNeedAIPoweredRoofDetection />
+      <WhatMakesShadingAnalysisEssential />
       <Statistics />
-      <WhyAutomaticRoofDetection />
+      <WhyPanelPlacement />
       <Testimonials />
       <LearnMoreFeatures />
-      <RoofDetectionFaq />
-      <RoofDetectionBottomCallToAction />
+      <ShadingAnalysisFaq />
+      <BottomCallToAction />
     </>
   );
 }

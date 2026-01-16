@@ -19,12 +19,11 @@ import {
 } from '@/components/layouts/Footer/components/Footer.style';
 import {
   featureSubmenuItems,
-  menuItems,
+  companyFooterItems,
   productSubmenuItems,
 } from '@/components/layouts/Header/Header.constants';
 import { FOOTER_STYLES } from '@/shared/constants/spacing';
-
-const filteredMenuItems = menuItems.filter(item => !item.submenuItems);
+import { maxWidth } from '@mui/system';
 
 export default function Footer() {
   const t = useTranslations();
@@ -33,6 +32,7 @@ export default function Footer() {
     <Box
       sx={{
         backgroundColor: 'tertiary.700',
+        boxShadow: '0 0 38px 0 rgba(0, 0, 0, 0.25)',
         px: { xs: 2, sm: 7.5, lg: 15 },
         pt: { xs: 5, sm: 6, lg: 6 },
         pb: { xs: 2, sm: 3, lg: 3 },
@@ -50,7 +50,12 @@ export default function Footer() {
           <FooterContainer>
             <FooterLogoContainer>
               <Link href="/">
-                <Image width={165} height={32} src="/icons/solar-genix.svg" alt="SolarGenix Logo" />
+                <Image
+                  width={165}
+                  height={32}
+                  src="/icons/solar-genix-white.svg"
+                  alt="SolarGenix Logo"
+                />
               </Link>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <FollowUs />
@@ -81,10 +86,10 @@ export default function Footer() {
                   ))}
                 </FooterLinkItems>
               </FooterLinkBlock>
-              <FooterLinkBlock>
+              <FooterLinkBlock sx={{ maxWidth: '100%' }}>
                 <FooterMenuWrapper>{t('header.company')}</FooterMenuWrapper>
                 <FooterLinkItems>
-                  {filteredMenuItems.map(item => (
+                  {companyFooterItems.map(item => (
                     <Box key={item.key}>
                       <FooterLink variant="body2" href={item.url}>
                         {t(`header.${item.key}`)}

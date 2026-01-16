@@ -33,6 +33,7 @@ export default function Testimonials() {
         backgroundColor: 'primary.800',
         pt: 0,
         pb: 0,
+        position: 'relative',
         boxShadow: '0 4px 21.3px 2px rgba(0, 43, 43, 0.30)',
       }}
     >
@@ -70,21 +71,21 @@ export default function Testimonials() {
             loop={true}
             breakpoints={{
               425: {
-                slidesPerView: 3,
-                spaceBetween: 16,
-              },
-              640: {
-                slidesPerView: 3,
-                spaceBetween: 16,
+                slidesPerView: 2,
+                spaceBetween: 8,
               },
 
               900: {
-                slidesPerView: 5,
-                spaceBetween: 24,
+                slidesPerView: 3,
+                spaceBetween: 8,
               },
               1200: {
+                slidesPerView: 5,
+                spaceBetween: 8,
+              },
+              1400: {
                 slidesPerView: 6,
-                spaceBetween: 24,
+                spaceBetween: 8,
               },
             }}
             mousewheel={true}

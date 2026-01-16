@@ -2,13 +2,13 @@
 
 import { AppBar, Box, Drawer, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import MenuDesktop from '@/components/layouts/Header/components/MenuDesktop';
 import MenuMobile from '@/components/layouts/Header/components/MenuMobile';
 import Burger from '@/components/ui/Burger';
 import { HEADER_STYLES } from '@/shared/constants/spacing';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -16,6 +16,7 @@ export default function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerWidth, setHeaderWidth] = useState<number>(0);
+  const router = useRouter();
 
   const toggleDrawer = () => {
     setDrawerOpen(open => {
@@ -142,10 +143,10 @@ export default function Header() {
       <AppBar
         sx={{
           position: 'sticky',
-          backgroundColor: 'transparent',
+          backgroundColor: isMobile ? 'grey.25' : 'transparent',
           zIndex: 1201,
           boxShadow: 'none',
-          px: '80px',
+          px: 2,
           [theme.breakpoints.down('lg')]: {
             px: '0',
           },
@@ -162,8 +163,9 @@ export default function Header() {
             position: 'relative',
             overflow: 'hidden',
             lineHeight: '26px',
-            backgroundColor: 'opacityLight.60',
+            backgroundColor: isMobile ? 'grey.25' : 'opacityLight.60',
             backdropFilter: 'blur(5px)',
+            boxShadow: '0 4px 8.3px -1px rgba(0, 43, 43, 0.20)',
 
             img: {
               transition: '0.2s linear',
@@ -208,7 +210,15 @@ export default function Header() {
             },
           }}
         >
-          <Box id="header-logo" component={Link} href="/" lineHeight={1}>
+          <Box
+            id="header-logo"
+            lineHeight={1}
+            onClick={() => {
+              setDrawerOpen(false);
+              headerRef.current?.classList?.remove('drawer-open');
+              router.push('/');
+            }}
+          >
             <Image
               width={165}
               height={32}

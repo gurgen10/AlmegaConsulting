@@ -162,6 +162,7 @@ export default function LearnMoreItem({
           },
           [theme.breakpoints.down('sm')]: {
             textAlign: 'center',
+            marginTop: 3,
           },
         }}
       >

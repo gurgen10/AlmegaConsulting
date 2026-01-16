@@ -50,22 +50,29 @@ export default function WhatMakesUsUnique() {
         <Typography
           component="h2"
           variant="h3"
-          sx={{
+          sx={theme => ({
             fontWeight: 500,
             color: 'primary.main',
             mb: 2,
-          }}
+            [theme.breakpoints.down('md')]: {
+              textAlign: 'center',
+            },
+          })}
         >
           {t('whatMakesUsUnique')}
         </Typography>
         <Typography
           component="p"
           variant="subtitle2"
-          sx={{
+          sx={theme => ({
             fontWeight: 300,
             color: 'grey.900',
             mb: 5,
-          }}
+            maxWidth: 800,
+            [theme.breakpoints.down('md')]: {
+              textAlign: 'center',
+            },
+          })}
         >
           {t('whatMakesUsUniqueDescription')}
         </Typography>
@@ -87,12 +94,19 @@ export default function WhatMakesUsUnique() {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              overflow: 'hidden',
               gap: 1,
+              pl: 2,
+              ml: -2,
             }}
           >
             {uniques.map(unique => (
-              <Box key={unique.title}>
+              <Box
+                key={unique.title}
+                sx={{
+                  borderRadius: '16px',
+                  boxShadow: '0 0 8px 0 rgba(0, 0, 0, 0.32)',
+                }}
+              >
                 <Unique title={t(unique.title)} text={t(unique.text)} image={unique.image} />
               </Box>
             ))}
@@ -103,6 +117,8 @@ export default function WhatMakesUsUnique() {
               maxWidth: { xs: '100%', md: 370 },
               display: 'flex',
               flexDirection: 'column',
+              borderRadius: '16px',
+              boxShadow: '0 0 8px 0 rgba(0, 0, 0, 0.32)',
             }}
           >
             <Unique

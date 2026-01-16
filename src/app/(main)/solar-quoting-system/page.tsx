@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import LeadProductInfoSection from '@/components/common/SolarQuotingSystem/LeadProductInfoSection';
 import TryMeSection from '@/components/common/SolarQuotingSystem/TryMeSection';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/SolarQuotingSystem/Statistics';
 import Testimonials from '@/components/common/Testimonials';
 import WhyLeadCapture from '@/components/common/SolarQuotingSystem/WhyLeadCapture';
 import LeadProductGuideSection from '@/components/common/SolarQuotingSystem/LeadProductGuideSection';

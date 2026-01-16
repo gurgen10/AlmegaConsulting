@@ -39,6 +39,9 @@ const commonConfigs: ThemeOptions = {
       styleOverrides: {
         body: {
           backgroundColor: 'var(--mui-palette-grey-200)',
+          [`@media (max-width:${BREAKPOINTS.mid}px)`]: {
+            backgroundColor: 'var(--mui-palette-grey-25)',
+          },
         },
       },
     },

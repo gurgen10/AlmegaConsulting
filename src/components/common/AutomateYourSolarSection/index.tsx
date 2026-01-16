@@ -30,16 +30,16 @@ export default function AutomateYourSolarSection() {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gap: 4,
+    p: 0.5,
+    borderRadius: '16px',
+    backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
+    boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
     [theme.breakpoints.down('lg')]: {
       gap: 2,
     },
     [theme.breakpoints.down('md')]: {
       gridTemplateColumns: '1fr',
     },
-    p: 0.5,
-    borderRadius: '16px',
-    backgroundImage: 'linear-gradient(243deg, #469F9F 32.53%, #215F5F 98.97%)',
-    boxShadow: '0 0 41px 0 rgba(0, 0, 0, 0.19)',
   });
 
   const contentBoxStyles = {
@@ -71,7 +71,6 @@ export default function AutomateYourSolarSection() {
 
   const imageWrapperStyles = {
     width: '100%',
-    height: '100%',
     position: 'relative',
     aspectRatio: '1 / 1',
   };
@@ -128,6 +127,29 @@ export default function AutomateYourSolarSection() {
                 >
                   {t('makeStunningSolarProposals')}
                 </Typography>
+              </Box>
+              <Box
+                sx={theme => ({
+                  ...imageContainerStyles,
+                  display: 'none',
+                  my: 2,
+                  [theme.breakpoints.down('sm')]: {
+                    display: 'block',
+                  },
+                })}
+              >
+                <Box sx={imageWrapperStyles}>
+                  <Image
+                    src="/images/automate-solar/makeStunning.png"
+                    alt="makeStunning"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 600px"
+                  />
+                </Box>
+              </Box>
+              <Box>
                 <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
                   {t('makeStunningSolarProposalsDescription1')}
                 </Typography>
@@ -184,7 +206,14 @@ export default function AutomateYourSolarSection() {
             </Box>
 
             {/* Image Side - Aligned to right */}
-            <Box sx={imageContainerStyles}>
+            <Box
+              sx={theme => ({
+                ...imageContainerStyles,
+                [theme.breakpoints.down('sm')]: {
+                  display: 'none',
+                },
+              })}
+            >
               <Box sx={imageWrapperStyles}>
                 <Image
                   src="/images/automate-solar/makeStunning.png"
@@ -208,6 +237,9 @@ export default function AutomateYourSolarSection() {
                   justifySelf: 'box-start',
                   [theme.breakpoints.up('md')]: {
                     order: 0,
+                  },
+                  [theme.breakpoints.down('sm')]: {
+                    display: 'none',
                   },
                 })}
               >
@@ -252,6 +284,30 @@ export default function AutomateYourSolarSection() {
                   >
                     {t('boostConversionsWithInstantQuotes')}
                   </Typography>
+                </Box>
+                <Box
+                  sx={theme => ({
+                    ...imageContainerStyles,
+                    display: 'none',
+                    my: 2,
+                    [theme.breakpoints.down('sm')]: {
+                      display: 'block',
+                    },
+                  })}
+                >
+                  <Box sx={imageWrapperStyles}>
+                    <Image
+                      src="/images/automate-solar/makeStunning.png"
+                      alt="makeStunning"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      priority
+                      sizes="(max-width: 768px) 100vw, 600px"
+                    />
+                  </Box>
+                </Box>
+
+                <Box>
                   <Typography variant="subtitle2" sx={{ fontWeight: 300, color: 'grey.25', mb: 2 }}>
                     {t('boostConversionsWithInstantQuotesDescription')}
                   </Typography>

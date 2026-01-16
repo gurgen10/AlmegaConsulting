@@ -6,7 +6,7 @@ export const featureSubmenuItems: SubMenuItem[] = [
     key: 'roofDetection',
     title: 'roofDetection',
     description: 'roofDetectionDescription',
-    url: '/roofDetection',
+    url: '/roof-detection',
     icon: '/icons/header/roof-detection.svg',
   },
   {
@@ -14,35 +14,35 @@ export const featureSubmenuItems: SubMenuItem[] = [
     title: 'obstructionDetection',
     description: 'obstructionDetectionDescription',
     icon: '/icons/header/obstruction-detection.svg',
-    url: '/obstructionDetection',
+    url: '/obstruction-detection',
   },
   {
     key: 'shadingAnalysis',
     title: 'shadingAnalysis',
     description: 'shadingAnalysisDescription',
     icon: '/icons/header/shading-analysis.svg',
-    url: '/shadingAnalysis',
+    url: '/shading-analysis',
   },
   {
     key: 'panelPlacement',
     title: 'panelPlacement',
     description: 'panelPlacementDescription',
     icon: '/icons/header/panel-placement.svg',
-    url: '/panelPlacement',
+    url: '/panel-placement',
   },
   {
     key: 'financialForecasting',
     title: 'financialForecasting',
     description: 'financialForecastingDescription',
     icon: '/icons/header/financial-forecasting.svg',
-    url: '/financialForecasting',
+    url: '/financial-forecasting',
   },
   // {
   //   key: 'proposalGeneration',
   //   title: 'proposalGeneration',
   //   description: 'proposalGenerationDescription',
   //   icon: '/icons/header/proposal-generation.svg',
-  //   url: '/#proposalGeneration',
+  //   url: '/#proposal-generation',
   // },
 ];
 
@@ -85,5 +85,24 @@ export const menuItems = [
   {
     key: 'aboutUs',
     url: '/#about-us',
+  },
+];
+
+export const companyFooterItems = [
+  {
+    key: 'aboutUs',
+    url: '/#about-us',
+  },
+  {
+    key: 'blog',
+    url: '/blog',
+  },
+  {
+    key: 'pricing',
+    url: '/pricing',
+  },
+  {
+    key: 'contactUs',
+    url: '/#contact-us',
   },
 ];

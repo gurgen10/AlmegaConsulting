@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
 import Testimonials from '@/components/common/Testimonials';
-import Statistics from '@/components/common/Statistics';
+import Statistics from '@/components/common/financialForecasting/Statistics';
 
-import HeroSection from '@/components/common/panelPlacement/HeroSection';
-import WhatMakesPanelPlacementEssential from '@/components/common/panelPlacement/WhatMakesPanelPlacementEssential';
-import WhyPanelPlacement from '@/components/common/panelPlacement/WhyPanelPlacement';
-import LearnMoreFeatures from '@/components/common/panelPlacement/LearnMoreFeatures';
-import PanelPlacementFaq from '@/components/common/panelPlacement/PanelPlacementFaq';
-import BottomCallToAction from '@/components/common/panelPlacement/BottomCallToAction';
+import HeroSection from '@/components/common/financialForecasting/HeroSection';
+import WhatMakesIntelligentFinancialForecastingEssential from '@/components/common/financialForecasting/WhatMakesIntelligentFinancialForecastingEssential';
+import WhyFinancialForecasting from '@/components/common/financialForecasting/WhyFinancialForecasting';
+import LearnMoreFeatures from '@/components/common/financialForecasting/LearnMoreFeatures';
+import FinancialForeCastFaq from '@/components/common/financialForecasting/FinancialForeCastFaq';
+import BottomCallToAction from '@/components/common/financialForecasting/BottomCallToAction';
 
 export const metadata: Metadata = {
   title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
@@ -30,12 +30,12 @@ export default async function Home() {
     <>
       <HeroSection />
       <TrustedIndustrySection />
-      <WhatMakesPanelPlacementEssential />
+      <WhatMakesIntelligentFinancialForecastingEssential />
       <Statistics />
-      <WhyPanelPlacement />
+      <WhyFinancialForecasting />
       <Testimonials />
       <LearnMoreFeatures />
-      <PanelPlacementFaq />
+      <FinancialForeCastFaq />
       <BottomCallToAction />
     </>
   );

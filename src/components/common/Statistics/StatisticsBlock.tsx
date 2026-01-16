@@ -17,7 +17,7 @@ export default function StatisticsBlock({
       <Typography lineHeight="58px" variant="h4" fontWeight={700} component="div" color={color}>
         <CountUp end={num} scrollSpyOnce formattingFn={formattingFn} />
       </Typography>
-      <Typography variant="subtitle2" component="div" fontWeight={300}>
+      <Typography variant="subtitle2" component="div" fontWeight={300} maxWidth={239}>
         {text}
       </Typography>
     </Box>
