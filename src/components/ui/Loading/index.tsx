@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import LoadingIcon from './LoadingIcon';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
+import { useTranslations } from 'next-intl';
 
 const TIME_DURATION = 30000;
 
@@ -17,6 +18,7 @@ export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] 
   const theme = useTheme();
   const isMedium = useMediaQuery(theme.breakpoints.down('md'));
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const t = useTranslations('loadingTexts');
 
   const verticalLineHeight = useMemo(() => {
     if (isSmall) return 48;
@@ -88,7 +90,7 @@ export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] 
         >
           <Fade timeout={500} key={loadingTexts[step]} in>
             <Typography variant="h5" color="grey.800" fontWeight={300}>
-              {loadingTexts[step] ? `${loadingTexts[step]}...` : ''}
+              {loadingTexts[step] ? `${t(loadingTexts[step])}...` : ''}
             </Typography>
           </Fade>
         </Box>
@@ -96,101 +98,3 @@ export default function Loading({ loadingTexts = [] }: { loadingTexts: string[] 
     </Box>
   );
 }
-
-// import './loading.css';
-// import Image from 'next/image';
-// import { useRef } from 'react';
-//
-// const texts = [
-//   'Powering Tomorrow',
-//   'Charging the Future',
-//   'Go Solar Now',
-//   'Brighten Your World',
-//   'Shine Smarter',
-//   'Live Sun-Driven',
-//   'Switch to Clean',
-//   'Unleash Clean Energy',
-//   'Energize Green',
-//   'Save More with the Sun',
-//   'Solar That Pays You Back',
-//   'The Smartest Energy Choice',
-//   'The Future of Energy',
-//   'Invest in the Sun',
-//   'Skyrocket Your Solar Sales',
-//   'Unlock Solar Sales Success',
-//   'Turn Leads Into Solar Deals',
-//   'Sun-Powered, Future-Ready',
-//   'Smarter Homes Run on Solar',
-//   'Start Saving from Day One',
-//   'Stop Renting Power. Own It.',
-// ];
-//
-// const Loading = () => {
-//   const textContainer = document.getElementById('text-container');
-//
-//   const isReady = sessionStorage.getItem('status') === 'ready';
-//
-//   function animateText() {
-//     textContainer.style.animation = 'fadeOut 1s forwards';
-//     setTimeout(() => {
-//       textContainer.textContent = texts[Math.floor(Math.random() * texts.length)];
-//       textContainer.style.animation = 'fadeIn 1s forwards';
-//     }, 500);
-//   }
-//
-//   if (textContainer && !isReady) {
-//     textContainer.textContent = texts[Math.floor(Math.random() * texts.length)];
-//     textContainer.style.animation = 'fadeIn 1s forwards';
-//     setInterval(animateText, 1500);
-//   }
-//   const loaderRef = useRef<HTMLDivElement>(null);
-//   const content = document.getElementById('content');
-//   const path = window.location.pathname;
-//
-//   if (path.endsWith('/')) {
-//     if (isReady) {
-//       loader.style.opacity = '0';
-//       loader.style.display = 'none';
-//       content.style.opacity = '1';
-//     } else {
-//       loader.style.zIndex = '2000000001';
-//     }
-//   }
-//
-//   window.addEventListener('load', () => {
-//     if (path.endsWith('/')) {
-//       if (!isReady) {
-//         // Disable scrolling when the loader is visible.
-//         document.body.style.overflow = 'hidden';
-//
-//         loader.style.transition = 'opacity 500ms ease-in-out';
-//
-//         setTimeout(() => {
-//           loader.style.opacity = '0';
-//           setTimeout(() => {
-//             loader.style.display = 'none';
-//             content.style.opacity = '1';
-//             sessionStorage.setItem('status', 'ready');
-//
-//             // Re-enable scrolling after the loader is hidden.
-//             document.body.style.overflow = 'auto';
-//           }, 500);
-//         }, 4000);
-//       }
-//     } else {
-//       sessionStorage.setItem('status', 'ready');
-//     }
-//   });
-//
-//   return (
-//     <div id="loading-container" ref={loaderRef} aria-hidden="true">
-//       <div id="loading-images">
-//         <Image src="/images/loading/image1.svg" alt="Static" className="static-img" />
-//         <Image src="/images/loading/image2.svg" alt="Cycling" className="cycling-img" />
-//       </div>
-//       <div id="text-container"></div>
-//     </div>
-//   );
-// };
-//
-// export default Loading;
