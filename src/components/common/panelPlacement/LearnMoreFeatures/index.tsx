@@ -4,6 +4,12 @@ import { Box, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import { LearnMoreGridRow } from '@/components/ui/LearnMoreItem/LearnMoreGridRow';
+import {
+  FINANCIAL_FORECASTING_URL,
+  OBSTRUCTION_DETECTION_URL,
+  ROOF_DETECTION,
+  SHADING_ANALYSIS_URL,
+} from '@/shared/constants/common';
 
 export default function LearnMoreFeatures() {
   const t = useTranslations('panelPlacement');
@@ -12,28 +18,28 @@ export default function LearnMoreFeatures() {
     {
       title: 'panelPlacementLearnMore.roofDetectionTitle',
       description: 'panelPlacementLearnMore.roofDetectionDescription',
-      url: '',
+      url: ROOF_DETECTION,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/obstacle.svg',
     },
     {
       title: 'panelPlacementLearnMore.obstacleDetectionTitle',
       description: 'panelPlacementLearnMore.obstacleDetectionDescription',
-      url: '',
+      url: OBSTRUCTION_DETECTION_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/shading.svg',
     },
     {
       title: 'panelPlacementLearnMore.shadingAnalysisTitle',
       description: 'panelPlacementLearnMore.shadingAnalysisDescription',
-      url: '',
+      url: SHADING_ANALYSIS_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/inteligent.svg',
     },
     {
       title: 'panelPlacementLearnMore.financialForecastingTitle',
       description: 'panelPlacementLearnMore.financialForecastingDescription',
-      url: '',
+      url: FINANCIAL_FORECASTING_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/placement.svg',
     },

@@ -4,6 +4,12 @@ import { Box, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import { LearnMoreGridRow } from '@/components/ui/LearnMoreItem/LearnMoreGridRow';
+import {
+  FINANCIAL_FORECASTING_URL,
+  PANEL_PLACEMENT_URL,
+  ROOF_DETECTION,
+  SHADING_ANALYSIS_URL,
+} from '@/shared/constants/common';
 
 export default function LearnMoreFeatures() {
   const t = useTranslations('obstructionDetection');
@@ -12,28 +18,28 @@ export default function LearnMoreFeatures() {
     {
       title: 'obstructionDetectionMore.roofDetectionTitle',
       description: 'obstructionDetectionMore.roofDetectionDescription',
-      url: '',
+      url: ROOF_DETECTION,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/obstacle.svg',
     },
     {
       title: 'obstructionDetectionMore.shadingAnalysisTitle',
       description: 'obstructionDetectionMore.shadingAnalysisDescription',
-      url: '',
+      url: SHADING_ANALYSIS_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/shading.svg',
     },
     {
       title: 'obstructionDetectionMore.panelPlacementTitle',
       description: 'obstructionDetectionMore.panelPlacementDescription',
-      url: '',
+      url: PANEL_PLACEMENT_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/placement.svg',
     },
     {
       title: 'obstructionDetectionMore.financialForecastingTitle',
       description: 'obstructionDetectionMore.financialForecastingDescription',
-      url: '',
+      url: FINANCIAL_FORECASTING_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/inteligent.svg',
     },

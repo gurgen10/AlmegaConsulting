@@ -4,6 +4,12 @@ import { Box, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import { LearnMoreGridRow } from '@/components/ui/LearnMoreItem/LearnMoreGridRow';
+import {
+  OBSTRUCTION_DETECTION_URL,
+  PANEL_PLACEMENT_URL,
+  ROOF_DETECTION,
+  SHADING_ANALYSIS_URL,
+} from '@/shared/constants/common';
 
 export default function LearnMoreFeatures() {
   const t = useTranslations('financialForecasting');
@@ -12,28 +18,28 @@ export default function LearnMoreFeatures() {
     {
       title: 'financialForecastingLearnMore.roofDetectionTitle',
       description: 'financialForecastingLearnMore.roofDetectionDescription',
-      url: '',
+      url: ROOF_DETECTION,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/obstacle.svg',
     },
     {
       title: 'financialForecastingLearnMore.obstacleDetectionTitle',
       description: 'financialForecastingLearnMore.obstacleDetectionDescription',
-      url: '',
+      url: OBSTRUCTION_DETECTION_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/shading.svg',
     },
     {
       title: 'financialForecastingLearnMore.shadingAnalysisTitle',
       description: 'financialForecastingLearnMore.shadingAnalysisDescription',
-      url: '',
+      url: SHADING_ANALYSIS_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/inteligent.svg',
     },
     {
       title: 'financialForecastingLearnMore.panelPlacementTitle',
       description: 'financialForecastingLearnMore.panelPlacementDescription',
-      url: '',
+      url: PANEL_PLACEMENT_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/placement.svg',
     },

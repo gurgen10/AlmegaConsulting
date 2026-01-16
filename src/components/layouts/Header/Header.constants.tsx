@@ -1,41 +1,49 @@
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
-import { QUOTING_SYSTEM_URL, SALES_PROPOSAL_URL } from '@/shared/constants/common';
+import {
+  FINANCIAL_FORECASTING_URL,
+  OBSTRUCTION_DETECTION_URL,
+  PANEL_PLACEMENT_URL,
+  QUOTING_SYSTEM_URL,
+  ROOF_DETECTION,
+  SALES_PROPOSAL_URL,
+  SHADING_ANALYSIS_URL,
+} from '@/shared/constants/common';
 
 export const featureSubmenuItems: SubMenuItem[] = [
   {
     key: 'roofDetection',
     title: 'roofDetection',
     description: 'roofDetectionDescription',
-    url: '/roof-detection',
     icon: '/icons/header/roof-detection.svg',
+    url: ROOF_DETECTION,
   },
   {
     key: 'obstructionDetection',
     title: 'obstructionDetection',
     description: 'obstructionDetectionDescription',
     icon: '/icons/header/obstruction-detection.svg',
-    url: '/obstruction-detection',
+    url: OBSTRUCTION_DETECTION_URL,
   },
   {
     key: 'shadingAnalysis',
     title: 'shadingAnalysis',
     description: 'shadingAnalysisDescription',
     icon: '/icons/header/shading-analysis.svg',
-    url: '/shading-analysis',
+    url: SHADING_ANALYSIS_URL,
   },
   {
     key: 'panelPlacement',
     title: 'panelPlacement',
     description: 'panelPlacementDescription',
     icon: '/icons/header/panel-placement.svg',
-    url: '/panel-placement',
+    url: PANEL_PLACEMENT_URL,
   },
   {
     key: 'financialForecasting',
     title: 'financialForecasting',
     description: 'financialForecastingDescription',
     icon: '/icons/header/financial-forecasting.svg',
-    url: '/financial-forecasting',
+    url: FINANCIAL_FORECASTING_URL,
   },
   // {
   //   key: 'proposalGeneration',

@@ -13,7 +13,7 @@ const FollowUs = () => {
   const theme = useTheme();
   const followUsLinks = [
     {
-      href: 'https://www.youtube.com/@SolarGenixai',
+      href: 'https://www.youtube.com/@solargenixapp',
       icon: <YouTube />,
     },
     {
@@ -21,11 +21,11 @@ const FollowUs = () => {
       icon: <TikTok />,
     },
     {
-      href: 'https://www.instagram.com/solargenix.ai',
+      href: 'https://www.instagram.com/solargenixai',
       icon: <Instagram />,
     },
     {
-      href: 'https://www.facebook.com/solargenixai',
+      href: 'https://www.facebook.com/solargenixapp',
       icon: <Facebook />,
     },
     {

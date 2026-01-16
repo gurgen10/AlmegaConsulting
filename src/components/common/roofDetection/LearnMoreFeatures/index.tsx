@@ -4,6 +4,12 @@ import { Box, Typography } from '@mui/material';
 import { CONTAINER_STYLES, SECTION_STYLES_X, SECTION_STYLES_Y } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
 import { LearnMoreGridRow } from '@/components/ui/LearnMoreItem/LearnMoreGridRow';
+import {
+  FINANCIAL_FORECASTING_URL,
+  OBSTRUCTION_DETECTION_URL,
+  PANEL_PLACEMENT_URL,
+  SHADING_ANALYSIS_URL,
+} from '@/shared/constants/common';
 
 export default function LearnMoreFeatures() {
   const t = useTranslations('roofDetection');
@@ -12,28 +18,28 @@ export default function LearnMoreFeatures() {
     {
       title: 'roofDetectionLearnMore.obstacleDetection.title',
       description: 'roofDetectionLearnMore.obstacleDetection.description',
-      url: '',
+      url: OBSTRUCTION_DETECTION_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/obstacle.svg',
     },
     {
       title: 'roofDetectionLearnMore.aIPoweredShadingAnalysis.title',
       description: 'roofDetectionLearnMore.aIPoweredShadingAnalysis.description',
-      url: '',
+      url: SHADING_ANALYSIS_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/shading.svg',
     },
     {
       title: 'roofDetectionLearnMore.intelligentFinancialForecasting.title',
       description: 'roofDetectionLearnMore.intelligentFinancialForecasting.description',
-      url: '',
+      url: FINANCIAL_FORECASTING_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/inteligent.svg',
     },
     {
       title: 'roofDetectionLearnMore.aIOptimizedPanelPlacement.title',
       description: 'roofDetectionLearnMore.aIOptimizedPanelPlacement.description',
-      url: '',
+      url: PANEL_PLACEMENT_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/placement.svg',
     },
