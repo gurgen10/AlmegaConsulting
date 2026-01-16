@@ -2,6 +2,7 @@
 
 import Loading from '@/components/ui/Loading';
 import { useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 
 const loadingTexts = [
   'poweringTomorrow',
@@ -28,7 +29,7 @@ const loadingTexts = [
 ];
 
 export default function PageIsLoading() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
   useEffect(() => {
     const isBrowser = typeof window !== 'undefined';
@@ -58,6 +59,22 @@ export default function PageIsLoading() {
       document.body.style.overflow = 'auto';
     };
   }, []);
+
+  if (isLoading === null) {
+    return (
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: 'grey.25',
+          zIndex: 999999,
+        }}
+      ></Box>
+    );
+  }
 
   if (!isLoading) {
     return null;
