@@ -139,18 +139,6 @@ export default function Header() {
 
   return (
     <>
-      <Box
-        sx={{
-          display: isMobile ? 'block' : 'none',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 'env(safe-area-inset-top)',
-          backgroundColor: 'grey.25',
-          zIndex: 1200,
-        }}
-      />
       <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
       <AppBar
         sx={{
