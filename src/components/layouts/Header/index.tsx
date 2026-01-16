@@ -137,23 +137,20 @@ export default function Header() {
     document.body.style.overflow = drawerOpen ? 'hidden' : 'auto';
   }, [drawerOpen]);
 
-  const toolbarBg = isMobile ? 'grey.25' : 'opacityLight.60';
-  const appBarBg = isMobile ? toolbarBg : 'transparent';
+  useEffect(() => {
+    // Set body background for mobile / revert for desktop
+    document.body.style.backgroundColor = isMobile
+      ? theme.palette.grey[25]
+      : theme.palette.grey[200];
+  }, [isMobile, theme]);
 
   return (
     <>
-      <div
-        id="header-observer"
-        style={{
-          top: 0,
-          position: 'absolute',
-        }}
-      ></div>
+      <div id="header-observer" style={{ top: 0, position: 'absolute' }}></div>
       <AppBar
         sx={{
           position: 'sticky',
-          backgroundColor: appBarBg,
-          paddingTop: isMobile ? 'env(safe-area-inset-top)' : 0,
+          backgroundColor: isMobile ? 'grey.25' : 'transparent',
           zIndex: 1201,
           boxShadow: 'none',
           px: 2,
@@ -173,8 +170,8 @@ export default function Header() {
             position: 'relative',
             overflow: 'hidden',
             lineHeight: '26px',
-            backgroundColor: toolbarBg,
-            backdropFilter: isMobile ? 'blur(5px)' : 'none',
+            backgroundColor: isMobile ? 'grey.25' : 'opacityLight.60',
+            backdropFilter: 'blur(5px)',
             boxShadow: '0 4px 8.3px -1px rgba(0, 43, 43, 0.20)',
 
             img: {
