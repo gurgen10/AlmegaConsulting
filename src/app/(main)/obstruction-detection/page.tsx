@@ -11,9 +11,9 @@ import ObstructionDetectionFaq from '@/components/common/obstructionDetection/Ob
 import BottomCallToAction from '@/components/common/obstructionDetection/BottomCallToAction';
 
 export const metadata: Metadata = {
-  title: 'AI Obstacle Detection for Solar Panel Placement | SolarGenix',
+  title: 'AI Obstruction Detection for Solar Panel Placement | SolarGenix',
   description:
-    'Identify vents, chimneys, and roof obstructions automatically using AI-powered obstacle detection for accurate panel layouts.',
+    'Identify vents, chimneys, and roof obstructions automatically using AI-powered obstruction detection for accurate panel layouts.',
   keywords: [],
 };
 export default async function Home() {
