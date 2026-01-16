@@ -7,6 +7,13 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import DescriptionBlock from '@/components/ui/LearnMoreItem/DescriptionBlock';
 import LearnMoreItem from '@/components/ui/LearnMoreItem';
+import {
+  FINANCIAL_FORECASTING_URL,
+  OBSTRUCTION_DETECTION_URL,
+  PANEL_PLACEMENT_URL,
+  ROOF_DETECTION,
+  SHADING_ANALYSIS_URL,
+} from '@/shared/constants/common';
 
 export default function AIPoweredSolarSales() {
   const t = useTranslations('homePage');
@@ -30,7 +37,7 @@ export default function AIPoweredSolarSales() {
         t('obstacleDetectionDescription2'),
         t('obstacleDetectionDescription3'),
       ],
-      url: '#',
+      url: OBSTRUCTION_DETECTION_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/obstacle.svg',
     },
@@ -41,6 +48,7 @@ export default function AIPoweredSolarSales() {
         t('aIPoweredShadingAnalysisDescription2'),
         t('aIPoweredShadingAnalysisDescription3'),
       ],
+      url: SHADING_ANALYSIS_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/shading.svg',
     },
@@ -51,7 +59,7 @@ export default function AIPoweredSolarSales() {
         t('intelligentFinancialForecastingDescription2'),
         t('intelligentFinancialForecastingDescription3'),
       ],
-      url: '#',
+      url: FINANCIAL_FORECASTING_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/inteligent.svg',
     },
@@ -62,7 +70,7 @@ export default function AIPoweredSolarSales() {
         t('aIOptimizedPanelPlacementDescription2'),
         t('aIOptimizedPanelPlacementDescription3'),
       ],
-      url: '#',
+      url: PANEL_PLACEMENT_URL,
       buttonText: 'learnMore',
       image: '/images/aI-powered-solar-sales/placement.svg',
     },
@@ -159,7 +167,7 @@ export default function AIPoweredSolarSales() {
             <DescriptionBlock
               title={aIDrivenRoofDetection.title}
               points={aIDrivenRoofDetection.points}
-              url=""
+              url={ROOF_DETECTION}
               buttonText={t('learnMore')}
             />
           </Box>
