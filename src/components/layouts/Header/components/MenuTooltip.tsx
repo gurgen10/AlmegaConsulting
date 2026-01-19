@@ -30,7 +30,7 @@ const HtmlTooltip = styled(
           sx: theme => ({
             borderTop: `2px solid ${theme.palette.primary.main}  !important`,
             boxShadow: '0 8px 20px rgba(2,6,23,0.25) !important',
-            marginTop: isHeaderShrunk ? '8px !important' : '11px !important',
+            marginTop: isHeaderShrunk ? '9px !important' : '12px !important',
             borderRadius: '0 0 8px 8px',
             backgroundColor: 'opacityLight.60',
             backdropFilter: 'blur(5px)',
