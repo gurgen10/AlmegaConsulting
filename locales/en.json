@@ -509,33 +509,7 @@
     },
     "faqSection": {
       "title": "FAQ",
-      "description": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
-      "faqs": {
-        "q_1": {
-          "question": "How does your Solar Lead Capture Tool help my sales team?",
-          "answer": "When a homeowner submits the form on your landing page, our system immediately verifies the lead to make sure it’s a real user, not spam or a bot. Once verified, the tool sends an instant solar quote to the homeowner. This means your sales team receives only real, high-intent leads who have already been quoted and are ready for follow-up, making their work faster, easier, and much more effective."
-        },
-        "q_2": {
-          "question": "How does the pricing for your Solar Lead Capture Tool work?",
-          "answer": "We offer simple, transparent pricing based on your usage and the number of leads captured and quoted. There are no hidden fees. You can scale your plan depending on your volume, making it cost-effective for both small installers and large solar teams."
-        },
-        "q_3": {
-          "question": "Can I customize the Solar Lead Capture Form to match my brand?",
-          "answer": "Yes. Your form and landing page can be fully customized with your logo, colors, messaging, and branding. This allows homeowners to feel like they’re interacting directly with your company, not a generic third-party tool."
-        },
-        "q_4": {
-          "question": "How fast does the solar instant quote get sent to the homeowner?",
-          "answer": "Instant quotes are delivered within seconds of form submission. This real-time response helps capture homeowner attention at the perfect moment before they leave your site or request quotes elsewhere."
-        },
-        "q_5": {
-          "question": "What does the solar instant quote include?",
-          "answer": "Each solar quote includes estimated system size, pricing, savings potential, and any other configuration details you choose to include. It gives homeowners enough clarity to move forward without overwhelming them with technical details."
-        },
-        "q_6": {
-          "question": "How do you verify leads to ensure they’re real?",
-          "answer": "Every solar lead receives an email verification link to confirm their identity and interest. This filters out fake submissions, bots, and low-intent visitors, so your team only receives genuine homeowners exploring solar options."
-        }
-      }
+      "description": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency."
     },
     "ctaSection": {
       "title": "Capture Solar Leads and Send Instant Quotes with SolarGenix",
@@ -616,29 +590,7 @@
     },
     "faqSection": {
       "title": "FAQ",
-      "description": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency.",
-      "faqs": {
-        "q_1": {
-          "question": "Can I customize proposals with my company branding?",
-          "answer": "Yes. SolarGenix generates professional, sales‑ready proposals with a clean layout that you can easily customize."
-        },
-        "q_2": {
-          "question": "Does your solar sales proposal software calculate energy savings automatically?",
-          "answer": "Yes. SolarGenix uses AI engine to perform shading analysis, sun‑path modeling, and roof detection analysis. Then it calculates expected solar production and savings. The platform automatically generates financial forecasts tailored to each home’s location, usage pattern, and local utility rates."
-        },
-        "q_3": {
-          "question": "Does SolarGenix.ai support different financing options?",
-          "answer": "Yes. The software’s “Intelligent Financial Forecasting” feature automatically builds financial projections, taking into account local rates, homeowner usage. It  supports a variety of financing scenarios when presenting proposals."
-        },
-        "q_4": {
-          "question": "How quickly can I generate a proposal with SolarGenix.ai?",
-          "answer": "Very quickly, in just few seconds. SolarGenix’s solar sales software eliminating many of the manual steps that traditionally took hours."
-        },
-        "q_5": {
-          "question": "How easy is it for sales reps to use and design proposals with SolarGenix.ai?",
-          "answer": "Very easy. The platform is built to automate the heavy technical work, so salesperson dose not need engineering or programming skills. They can generate complete, sales‑ready proposals with no training and no manual layout work."
-        }
-      }
+      "description": "Optimize your solar design workflow with our AI-powered tools. Create accurate quotes and proposals in seconds, save time, and improve efficiency."
     },
     "ctaSection": {
       "title": "Create Professional Solar Sales Proposal with SolarGenix",

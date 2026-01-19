@@ -4,7 +4,8 @@ import { Box, Link as MuiLink, styled, Typography } from '@mui/material';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
+import { MouseEvent as ReactMouseEvent } from 'react';
 
 import { SubMenuItem } from '@/components/layouts/Header/header.types';
 
@@ -33,6 +34,7 @@ const HtmlTooltip = styled(
             borderRadius: '0 0 8px 8px',
             backgroundColor: 'opacityLight.60',
             backdropFilter: 'blur(5px)',
+            pointerEvents: 'auto', // Allow mouse events on tooltip
             '& .MuiTooltip-arrow': {
               color: theme.palette.background.paper,
               display: 'inline-block',
@@ -119,21 +121,30 @@ const useDynamicOffset = () => {
   return { offset, updateOffset };
 };
 
-const MenuTooltip = ({
-  children,
-  subMenuItems,
-  headerWidth,
-  headerRef,
-}: {
-  children: ReactElement;
+interface MenuTooltipProps {
+  children?: ReactElement;
   subMenuItems: SubMenuItem[];
   headerWidth: number;
   headerRef: HTMLDivElement | null;
-}) => {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  anchorElement: ReactElement;
+}
+
+const MenuTooltip = ({
+  subMenuItems,
+  headerWidth,
+  headerRef,
+  isOpen,
+  onOpen,
+  onClose,
+  anchorElement,
+}: MenuTooltipProps) => {
   const t = useTranslations('header');
   const { offset, updateOffset } = useDynamicOffset();
   const anchorRef = useRef<HTMLElement>(null);
-  const [open, setOpen] = useState(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   const isHeaderShrunk = useCallback(() => {
     if (headerRef) {
@@ -142,119 +153,182 @@ const MenuTooltip = ({
     return false;
   }, [headerRef]);
 
+  // Close tooltip on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (open) {
-        setOpen(false);
+      if (isOpen) {
+        onClose();
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+      capture: true, // Use capture phase for better performance
+    });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll, { capture: true });
     };
-  }, [open]);
+  }, [isOpen, onClose]);
+
+  // Handle click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event: ReactMouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (
+        isOpen &&
+        tooltipRef.current &&
+        !tooltipRef.current.contains(target) &&
+        anchorRef.current &&
+        !anchorRef.current.contains(target)
+      ) {
+        onClose();
+      }
+    };
+
+    // Add event listener
+    document.addEventListener('mousedown', handleClickOutside as unknown as EventListener);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside as unknown as EventListener);
+    };
+  }, [isOpen, onClose]);
+
+  // Handle hover out of tooltip with delay
+  const handleTooltipMouseLeave = (e: MouseEvent) => {
+    const relatedTarget = e.relatedTarget as HTMLElement;
+
+    // Check if mouse is moving to anchor element
+    const isMovingToAnchor = anchorRef.current?.contains(relatedTarget);
+
+    if (!isMovingToAnchor) {
+      // Add a small delay before closing to allow moving to tooltip
+      onClose();
+    }
+  };
+
+  // Handle anchor mouse enter
+  const handleAnchorMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+    updateOffset(e.currentTarget);
+    onOpen();
+  };
+
+  // Handle anchor mouse leave
+  const handleAnchorMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    const relatedTarget = e.relatedTarget as HTMLElement;
+    const isMovingToTooltip = relatedTarget?.closest('.MuiTooltip-popper');
+
+    if (!isMovingToTooltip) {
+      onClose();
+    }
+  };
 
   return (
-    <HtmlTooltip
-      open={open}
-      onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
-      offset={offset}
-      isHeaderShrunk={isHeaderShrunk() ?? false}
-      title={
-        <Box
-          sx={theme => {
-            const itemW = 379;
-            const gapPx = Number(theme.spacing(4).replace('px', '')) || 32;
-            const items = subMenuItems.length;
-            const compactWidth = items * itemW + Math.max(0, items - 1) * gapPx;
-            const maxAllowed = Math.max(0, headerWidth - 32);
-            // For 3 or more items, let the tooltip span the available header width.
-            return {
-              width: items >= 3 ? maxAllowed : compactWidth,
-            };
-          }}
-        >
+    <Box>
+      <HtmlTooltip
+        open={isOpen}
+        onMouseLeave={handleTooltipMouseLeave}
+        offset={offset}
+        isHeaderShrunk={isHeaderShrunk() ?? false}
+        title={
           <Box
-            sx={{
-              width: 'auto',
-              background: 'transparent',
-              pt: theme => theme.spacing(4),
-              pb: theme => theme.spacing(4),
-              pl: theme => theme.spacing(2),
-              pr: theme => theme.spacing(2),
-              display: 'grid',
-              gap: 2,
-              gridTemplateColumns:
-                subMenuItems.length < 3 ? `repeat(${subMenuItems.length}, 1fr)` : 'repeat(3, 1fr)',
+            ref={tooltipRef}
+            sx={theme => {
+              const itemW = 379;
+              const gapPx = Number(theme.spacing(4).replace('px', '')) || 32;
+              const items = subMenuItems.length;
+              const compactWidth = items * itemW + Math.max(0, items - 1) * gapPx;
+              const maxAllowed = Math.max(0, headerWidth - 32);
+              return {
+                width: items >= 3 ? maxAllowed : compactWidth,
+              };
             }}
+            onMouseLeave={handleTooltipMouseLeave}
           >
-            {subMenuItems.map((item, idx) => {
-              const columns = subMenuItems.length < 3 ? subMenuItems.length : 3;
-              const isRowEnd = (idx + 1) % columns === 0 || idx === subMenuItems.length - 1;
-              return (
-                <MenuItemCard
-                  className="tooltip-item"
-                  key={item.key}
-                  href={item.url}
-                  sx={{
-                    position: 'relative',
-                    pr: 4,
-                    '&::after': isRowEnd ? { display: 'none' } : undefined,
-                  }}
-                >
-                  <Box sx={{ mr: 1.5, mt: 0.5 }}>
-                    <Image src={item.icon} alt={item.title} width={32} height={32} />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="h6"
-                      gutterBottom
-                      color="grey.900"
-                      fontWeight={300}
-                      sx={{ marginBottom: 0.5 }}
-                    >
-                      {t(item.title)}
-                    </Typography>
-                    <Typography variant="body2" color="grey.900" fontWeight={300}>
-                      {t(item.description)}
-                    </Typography>
-                  </Box>
-                </MenuItemCard>
-              );
-            })}
+            <Box
+              sx={{
+                width: 'auto',
+                background: 'transparent',
+                pt: theme => theme.spacing(4),
+                pb: theme => theme.spacing(4),
+                pl: theme => theme.spacing(2),
+                pr: theme => theme.spacing(2),
+                display: 'grid',
+                gap: 2,
+                gridTemplateColumns:
+                  subMenuItems.length < 3
+                    ? `repeat(${subMenuItems.length}, 1fr)`
+                    : 'repeat(3, 1fr)',
+              }}
+            >
+              {subMenuItems.map((item, idx) => {
+                const columns = subMenuItems.length < 3 ? subMenuItems.length : 3;
+                const isRowEnd = (idx + 1) % columns === 0 || idx === subMenuItems.length - 1;
+                return (
+                  <MenuItemCard
+                    className="tooltip-item"
+                    key={item.key}
+                    href={item.url}
+                    sx={{
+                      position: 'relative',
+                      pr: 4,
+                      '&::after': isRowEnd ? { display: 'none' } : undefined,
+                    }}
+                  >
+                    <Box sx={{ mr: 1.5, mt: 0.5 }}>
+                      <Image src={item.icon} alt={item.title} width={32} height={32} />
+                    </Box>
+                    <Box>
+                      <Typography
+                        variant="h6"
+                        gutterBottom
+                        color="grey.900"
+                        fontWeight={300}
+                        sx={{ marginBottom: 0.5 }}
+                      >
+                        {t(item.title)}
+                      </Typography>
+                      <Typography variant="body2" color="grey.900" fontWeight={300}>
+                        {t(item.description)}
+                      </Typography>
+                    </Box>
+                  </MenuItemCard>
+                );
+              })}
+            </Box>
           </Box>
-        </Box>
-      }
-      slotProps={{
-        tooltip: {
-          sx: {
-            '& .MuiTooltip-arrow': {
-              color: 'background.paper',
-              '&::before': {
-                border: '1px solid',
-                borderColor: 'divider',
+        }
+        slotProps={{
+          tooltip: {
+            sx: {
+              '& .MuiTooltip-arrow': {
+                color: 'background.paper',
+                '&::before': {
+                  border: '1px solid',
+                  borderColor: 'divider',
+                },
               },
             },
           },
-        },
-      }}
-    >
-      <Box
-        ref={anchorRef}
-        onMouseEnter={e => {
-          updateOffset(e.currentTarget);
-          setOpen(true);
-        }}
-        onClick={e => {
-          e.stopPropagation();
-          setOpen(prev => !prev);
         }}
       >
-        {children}
-      </Box>
-    </HtmlTooltip>
+        <Box
+          ref={anchorRef}
+          onMouseEnter={handleAnchorMouseEnter}
+          onMouseLeave={handleAnchorMouseLeave}
+          onClick={e => {
+            e.stopPropagation();
+            if (isOpen) {
+              onClose();
+            } else {
+              onOpen();
+            }
+          }}
+        >
+          {anchorElement}
+        </Box>
+      </HtmlTooltip>
+    </Box>
   );
 };
 
