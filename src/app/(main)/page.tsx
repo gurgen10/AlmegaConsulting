@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     'easy solar sales',
     'Solargenix.ai',
     'solar business automation',
-    'solar software',
     'solar quoting tool',
+    'solar software',
   ],
 };
 export default function Home() {
