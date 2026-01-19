@@ -212,6 +212,9 @@ export default function Header() {
         >
           <Box
             id="header-logo"
+            sx={{
+              cursor: 'pointer',
+            }}
             lineHeight={1}
             onClick={() => {
               setDrawerOpen(false);
