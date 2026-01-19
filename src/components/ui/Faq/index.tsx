@@ -7,9 +7,12 @@ import { SyntheticEvent, useState } from 'react';
 import { FaqAccordion } from '@/components/ui/Faq/Faq.styles';
 import { FaqProps } from '@/components/ui/Faq/Faq.types';
 import ArrowOutlined from '@/components/ui/icons/ArrowOutlined';
+import { FaqKey, faqs } from '@/shared/constants/faq';
 
-export default function Faq({ title, description, faqs }: FaqProps) {
+export default function Faq({ title, description, faqPage }: FaqProps) {
   const [expanded, setExpanded] = useState<string | false>('q-1');
+
+  const faq = faqs[faqPage as FaqKey];
 
   const handleChange = (panel: string) => (event: SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
@@ -41,7 +44,7 @@ export default function Faq({ title, description, faqs }: FaqProps) {
           </Typography>
         </Box>
         <Stack rowGap={1}>
-          {faqs.map((faq, index) => (
+          {faq.map((faq, index) => (
             <FaqAccordion
               expanded={expanded === `q-${index + 1}`}
               onChange={handleChange(`q-${index + 1}`)}
