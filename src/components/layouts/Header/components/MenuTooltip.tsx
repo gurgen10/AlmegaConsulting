@@ -34,7 +34,7 @@ const HtmlTooltip = styled(
             borderRadius: '0 0 8px 8px',
             backgroundColor: 'opacityLight.60',
             backdropFilter: 'blur(5px)',
-            pointerEvents: 'auto', // Allow mouse events on tooltip
+            pointerEvents: 'auto',
             '& .MuiTooltip-arrow': {
               color: theme.palette.background.paper,
               display: 'inline-block',
