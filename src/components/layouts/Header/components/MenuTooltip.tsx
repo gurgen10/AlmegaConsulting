@@ -54,11 +54,23 @@ const HtmlTooltip = styled(
           }),
         },
         popper: {
+          sx: {
+            zIndex: 9999,
+            position: 'relative',
+            // Try adding these to force positioning
+            top: '-1px !important', // Or adjust this value
+          },
           modifiers: [
             {
               name: 'offset',
               options: {
                 offset: offset,
+              },
+            },
+            {
+              name: 'preventOverflow',
+              options: {
+                padding: 0,
               },
             },
           ],
