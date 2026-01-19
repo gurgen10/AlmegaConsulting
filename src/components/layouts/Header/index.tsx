@@ -212,6 +212,9 @@ export default function Header() {
         >
           <Box
             id="header-logo"
+            sx={{
+              cursor: 'pointer',
+            }}
             lineHeight={1}
             onClick={() => {
               setDrawerOpen(false);
@@ -253,16 +256,7 @@ export default function Header() {
                 <MenuMobile />
               </Drawer>
             ) : (
-              <Box
-                component="nav"
-                display={{ xs: 'none', lg: 'flex' }}
-                alignItems="center"
-                gap={2}
-                mr="auto"
-                width="100%"
-              >
-                <MenuDesktop headerWidth={headerWidth} headerRef={headerRef.current} />
-              </Box>
+              <MenuDesktop headerWidth={headerWidth} headerRef={headerRef.current} />
             )}
           </Box>
         </Toolbar>

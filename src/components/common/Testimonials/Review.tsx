@@ -54,6 +54,7 @@ const Review = ({ name, position, review, image }: Review) => {
           <Box>
             <Typography
               variant="subtitle2"
+              component="p"
               sx={{
                 py: 2,
                 color: 'grey.800',

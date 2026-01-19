@@ -7,8 +7,8 @@ import ProposalsProductInfoSection from '@/components/common/ProposalsSalesSecti
 import WhyProposalSoftware from '@/components/common/ProposalsSalesSection/WhyProposalSoftware';
 import WhyChooseProposalsSoftware from '@/components/common/ProposalsSalesSection/WhyChooseProposalsSoftware';
 import QualifyLeadsBeforeSendingProposal from '@/components/common/ProposalsSalesSection/QualifyLeadsBeforeSendingProposal';
-import ProposalsFAQ from '@/components/common/SolarQuotingSystem/LeadsFAQ';
-import LeadsCtaSection from '@/components/common/SolarQuotingSystem/LeadsCtaSection';
+import ProposalsFAQ from '@/components/common/ProposalsSalesSection/ProposalsFAQ';
+import ProposalsCtaSection from '@/components/common/ProposalsSalesSection/ProposalsCtaSection';
 
 export const metadata: Metadata = {
   title: 'AI Solar Proposal Software to Boost Your Sales | SolarGenix',
@@ -29,7 +29,7 @@ export default async function SolarSalesProposalSoftwarePage() {
       <WhyChooseProposalsSoftware />
       <QualifyLeadsBeforeSendingProposal />
       <ProposalsFAQ />
-      <LeadsCtaSection />
+      <ProposalsCtaSection />
     </>
   );
 }
