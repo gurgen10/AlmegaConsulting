@@ -83,7 +83,6 @@ export default function WhyChooseProposalsSoftware() {
                       alt="Aurora logo"
                       width={100}
                       height={32}
-                      sizes="(max-width: 599.5px) 75px, 24px"
                     />
                   </StyledTableCell>
                   <StyledTableCell align="center">
