@@ -41,11 +41,12 @@ export default function MenuMobile() {
       component="nav"
       sx={{
         width: '100%',
-        height: '100vh',
+        height: '100svh',
         position: 'relative',
         display: 'flex',
         backgroundColor: 'grey.25',
-        padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+        pt: 1,
+        pb: '82px',
         flexDirection: 'column',
       }}
     >
@@ -53,15 +54,13 @@ export default function MenuMobile() {
         sx={{
           overflowY: 'auto',
           flex: 1,
+          px: 2,
           mt: '62px',
-          height: '100vh',
+          height: '100svh',
           backgroundColor: 'grey.25',
-          '& .MuiBox-root:last-child': {
-            borderBottom: 'none',
-          },
         }}
       >
-        {menuItems.map(item => {
+        {menuItems.map((item, index) => {
           const isActive = activeItem === item.key;
           const link = (
             <MuiLink
@@ -93,7 +92,7 @@ export default function MenuMobile() {
                 border: 'none',
                 boxShadow: 'none',
                 padding: 0,
-                borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
+                borderTop: index ? `1px solid ${theme.palette.opacityDark[20]}` : '',
                 '&.MuiAccordion-root.Mui-expanded': {
                   margin: 0,
                 },
@@ -189,7 +188,7 @@ export default function MenuMobile() {
               sx={{
                 py: 2,
                 textAlign: 'left',
-                borderBottom: `1px solid ${theme.palette.opacityDark[20]}`,
+                borderTop: index ? `1px solid ${theme.palette.opacityDark[20]}` : '',
               }}
             >
               {link}
@@ -197,18 +196,18 @@ export default function MenuMobile() {
           );
         })}
         <Box
-          sx={theme => ({
+          sx={{
             left: 0,
-            right: 0,
-            backdropFilter: 'blur(10px) saturate(120%)',
-            WebkitBackdropFilter: 'blur(10px) saturate(120%)',
+            px: 1.25,
+            py: 1,
+            width: '100%',
             display: 'flex',
             gap: 1,
             justifyContent: 'center',
-            position: 'sticky',
-            bottom: theme.spacing(3),
+            position: 'fixed',
             mt: 'auto',
-          })}
+            bottom: '24px',
+          }}
         >
           <Button
             component={Link}
