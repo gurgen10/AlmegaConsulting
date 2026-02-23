@@ -36,7 +36,7 @@ export default function HeroSection() {
         >
           Almega Consulting
         </Typography>
-        <Typography sx={{ textAlign: 'center', width: '100%' }}>Comming soon...</Typography>
+        <Typography sx={{ textAlign: 'center', width: '100%' }}>Coming soon...</Typography>
       </Box>
     </Box>
   );
