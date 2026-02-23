@@ -30,12 +30,62 @@ export const metadata: Metadata = {
       { url: '/favicons/favicon-16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicons/favicon-32.png', sizes: '32x32', type: 'image/png' },
     ],
+    apple: [
+      { url: '/favicons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      {
+        url: '/favicons/favicon-180-dark.png',
+        sizes: '180x180',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/favicons/favicon-180-light.png',
+        sizes: '180x180',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+    other: [
+      {
+        rel: 'icon',
+        url: '/favicons/favicon-16-dark.png',
+        sizes: '16x16',
+        type: 'image/png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        rel: 'icon',
+        url: '/favicons/favicon-32-dark.png',
+        sizes: '32x32',
+        type: 'image/png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        rel: 'icon',
+        url: '/favicons/favicon-16-light.png',
+        sizes: '16x16',
+        type: 'image/png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        rel: 'icon',
+        url: '/favicons/favicon-32-light.png',
+        sizes: '32x32',
+        type: 'image/png',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
   },
   openGraph: {
     url: 'https://almega-consulting.org',
     siteName: 'AlmegaConsulting',
     type: 'website',
-    images: [],
+    images: [
+      {
+        url: 'public/images/AlmegaConsulting.png',
+        width: 1200,
+        height: 630,
+        alt: 'AlmegaConsulting',
+      },
+    ],
   },
 };
 
