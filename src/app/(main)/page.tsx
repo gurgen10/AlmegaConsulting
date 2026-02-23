@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import HeroSection from '@/components/common/HeroSection';
-import PageIsLoading from '@/components/common/PageIsLoading/indexx';
+// import PageIsLoading from '@/components/common/PageIsLoading/indexx';
 
 export const metadata: Metadata = {
   title: 'Amela Consulting - Coming Soon',
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <PageIsLoading />
+      {/* <PageIsLoading /> */}
       <HeroSection />
     </>
   );
