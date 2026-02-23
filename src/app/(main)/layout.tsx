@@ -16,7 +16,7 @@ export default function MainLayout({
   params: Promise<{ locale?: string }>;
 }) {
   return (
-    <BaseLayout header={<Header />} footer={<Footer />} params={Promise.resolve(params)}>
+    <BaseLayout header={<div></div>} footer={<div></div>} params={Promise.resolve(params)}>
       {children}
     </BaseLayout>
   );

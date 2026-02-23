@@ -1,51 +1,17 @@
 import type { Metadata } from 'next';
 import HeroSection from '@/components/common/HeroSection';
-import TrustedIndustrySection from '@/components/common/TrustedIndustrySection';
-import VideoBlockSection from '@/components/common/VideoBlockSection';
-import AutomateYourSolarSection from '@/components/common/AutomateYourSolarSection';
-import AIPoweredSolarSales from '@/components/common/AIPoweredSolarSales';
-import Testimonials from '@/components/common/Testimonials';
-import WhatMakesUsUnique from '@/components/common/WhatMakesUsUnique';
-import Statistics from '@/components/common/Statistics';
-import SeeWhatYourProposalWillLookLike from '@/components/common/SeeWhatYourProposalWillLookLike';
-import WhySolarTeamsLoveOurSalesSoftware from '@/components/common/WhySolarTeamsLoveOurSalesSoftware';
-import BottomCallToAction from '@/components/common/BottomCallToAction';
-import HomepageFaq from '@/components/common/HomepageFaq';
-import Forbs from '@/components/common/Forbs';
 import PageIsLoading from '@/components/common/PageIsLoading/indexx';
 
 export const metadata: Metadata = {
-  title: 'Fastest AI Solar Sales Proposal Software | SolarGenix',
-  description:
-    'Boost your solar sales with Solargenix.ai – the fastest and easiest AI-powered solar proposal creation tool. Automate and simplify your solar business with precision and speed.',
-  keywords: [
-    'solar sales proposal',
-    'AI solar proposal',
-    'fastest solar proposal tool',
-    'easy solar sales',
-    'Solargenix.ai',
-    'solar business automation',
-    'solar quoting tool',
-    'solar software',
-  ],
+  title: 'Amela Consulting - Coming Soon',
+  description: 'Amela Consulting.',
+  keywords: [],
 };
 export default function Home() {
   return (
     <>
       <PageIsLoading />
       <HeroSection />
-      <TrustedIndustrySection />
-      <VideoBlockSection />
-      <AutomateYourSolarSection />
-      <AIPoweredSolarSales />
-      <Forbs />
-      <Testimonials />
-      <WhatMakesUsUnique />
-      <Statistics />
-      <SeeWhatYourProposalWillLookLike />
-      <WhySolarTeamsLoveOurSalesSoftware />
-      <HomepageFaq />
-      <BottomCallToAction />
     </>
   );
 }
