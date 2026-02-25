@@ -222,12 +222,7 @@ export default function Header() {
               router.push('/');
             }}
           >
-            <Image
-              width={165}
-              height={32}
-              src="/icons/solar-genix-dark.svg"
-              alt="SolarGenix Logo"
-            />
+            <Image width={165} height={32} src="/icons/almega-logo.png" alt="Almega Logo" />
           </Box>
           <Box className="nav-menu-items">
             <Box
@@ -238,7 +233,7 @@ export default function Header() {
             >
               <Burger open={drawerOpen} />
             </Box>
-            {isMobile ? (
+            {/* {isMobile ? (
               <Drawer
                 hideBackdrop
                 slotProps={{
@@ -257,7 +252,7 @@ export default function Header() {
               </Drawer>
             ) : (
               <MenuDesktop headerWidth={headerWidth} headerRef={headerRef.current} />
-            )}
+            )} */}
           </Box>
         </Toolbar>
       </AppBar>

@@ -1,10 +1,10 @@
 'use client';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 
 import { CONTAINER_STYLES, SECTION_STYLES_Y, SECTION_STYLES_X } from '@/shared/constants/spacing';
 import { useTranslations } from 'next-intl';
-import './hero.css';
+import Image from 'next/image';
 
 export default function HeroSection() {
   const t = useTranslations('homePage');
@@ -14,29 +14,104 @@ export default function HeroSection() {
       sx={theme => ({
         ...SECTION_STYLES_Y,
         ...SECTION_STYLES_X,
+        position: 'relative',
+        overflow: 'hidden',
+        backgroundImage: 'url(/images/bg-hero-1.webp)',
       })}
     >
       <Box {...CONTAINER_STYLES}>
-        <Typography
-          component={'h1'}
-          typography={'h1'}
-          className="explosive-text"
+        <Stack
           sx={theme => ({
-            color: theme.palette.primary.main,
-            textAlign: 'center',
-            width: '100%',
-            letterSpacing: '0.1em',
-            display: 'inline-block',
-            position: 'relative',
-            transition: 'transform 0.3s ease-in-out',
-            '&:hover': {
-              transform: 'scale(1.05)',
+            maxWidth: 600,
+            justifyContent: 'center',
+            py: 12,
+
+            [theme.breakpoints.down('xl')]: {
+              maxWidth: 500,
+              minHeight: '605px',
+              py: 9,
+            },
+            [theme.breakpoints.down('lg')]: {
+              maxWidth: 460,
+              minHeight: '530px',
+              py: 4,
+            },
+            [theme.breakpoints.down('md')]: {
+              maxWidth: '100%',
+              minHeight: '0',
+              py: 0,
             },
           })}
+          gap={2.75}
         >
-          Almega Consulting
-        </Typography>
-        <Typography sx={{ textAlign: 'center', width: '100%' }}>Coming soon...</Typography>
+          <Box
+            id="header-logo"
+            sx={{
+              cursor: 'pointer',
+              width: 165,
+              height: 'auto',
+            }}
+          >
+            <Image src="/icons/almega-logo.png" alt="Almega Logo" width={165} height={100} />
+          </Box>
+          <Typography
+            component="h1"
+            variant="h3"
+            fontWeight={500}
+            sx={theme => ({ color: theme.palette.common.white })}
+          >
+            {t('heroTitle')}
+          </Typography>
+          <Typography
+            component="p"
+            variant="subtitle2"
+            fontWeight={300}
+            sx={theme => ({ color: theme.palette.tertiary.main })}
+          >
+            {t.rich('heroSubtilte', {
+              bold: chunks => (
+                <Typography variant="inherit" component="strong" fontWeight={700}>
+                  {chunks}
+                </Typography>
+              ),
+            })}
+          </Typography>
+          <Typography
+            component="p"
+            variant="subtitle2"
+            fontWeight={300}
+            sx={theme => ({ color: theme.palette.tertiary.main })}
+          >
+            {t.rich('bodyTitle', {
+              bold: chunks => (
+                <Typography variant="inherit" component="strong" fontWeight={700}>
+                  {chunks}
+                </Typography>
+              ),
+            })}
+          </Typography>
+          <Stack direction="row" gap={2}>
+            <Button
+              size="medium"
+              variant="contained"
+              color="secondary"
+              component="a"
+              target="_blank"
+              href="https://calendly.com/almega-consulting/30min?month=2024-06"
+            >
+              {t('primaryAction')}
+            </Button>
+            <Button
+              size="medium"
+              variant="contained"
+              component="a"
+              target="_blank"
+              href="https://calendly.com/almega-consulting/30min?month=2024-06"
+            >
+              {t('secondaryAction')}
+            </Button>
+          </Stack>
+        </Stack>
       </Box>
     </Box>
   );

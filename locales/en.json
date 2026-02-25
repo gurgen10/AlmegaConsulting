@@ -58,6 +58,11 @@
     "stopRentingPowerOwnIt": "Stop Renting Power. Own It."
   },
   "homePage": {
+    "heroTitle": "Streamline Your Operations. Maximize Your Potential",
+    "heroSubtilte": "We diagnose inefficiencies and implement bespoke processes that turn your complex operations into competitive advantages",
+    "bodyTitle": "Tired of bottlenecks, wasted resources, and disconnected teams? <bold>Almega Consulting</bold> partners with you to build a leaner, more agile, and profitable organization",
+    "primaryAction": "Get a Free Process Audit",
+    "secondaryAction": "Book a Consultation",
     "createSolarPanel": "Create Solar Proposals in Seconds with Our Solar Design Software",
     "description": "Transform your solar sales process with an advanced <bold>AI-driven tool</bold> that generates accurate, instant proposals helping you <bold>close more deals.</bold>",
     "getStartedFree": "Get Started Free",
