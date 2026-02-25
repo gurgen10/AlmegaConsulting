@@ -16,32 +16,18 @@ export default function HeroSection() {
         ...SECTION_STYLES_X,
         position: 'relative',
         overflow: 'hidden',
+        height: '100svh',
         backgroundImage: 'url(/images/bg-hero-1.webp)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
       })}
     >
       <Box {...CONTAINER_STYLES}>
         <Stack
-          sx={theme => ({
+          sx={{
             maxWidth: 600,
             justifyContent: 'center',
-            py: 12,
-
-            [theme.breakpoints.down('xl')]: {
-              maxWidth: 500,
-              minHeight: '605px',
-              py: 9,
-            },
-            [theme.breakpoints.down('lg')]: {
-              maxWidth: 460,
-              minHeight: '530px',
-              py: 4,
-            },
-            [theme.breakpoints.down('md')]: {
-              maxWidth: '100%',
-              minHeight: '0',
-              py: 0,
-            },
-          })}
+          }}
           gap={2.75}
         >
           <Box
