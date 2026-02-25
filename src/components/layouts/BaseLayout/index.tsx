@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'public/images/AlmegaConsulting.png',
+        url: '/icons/almega-logo.png',
         width: 1200,
         height: 630,
         alt: 'AlmegaConsulting',
