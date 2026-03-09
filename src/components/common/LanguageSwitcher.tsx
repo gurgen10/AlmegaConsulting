@@ -1,14 +1,15 @@
 'use client';
 
 import { Box, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
 const LANGUAGES = [
-  { code: 'en', label: 'EN' },
-  { code: 'ru', label: 'RU' },
-  { code: 'am', label: 'AM' },
+  { code: 'en', label: 'EN', flag: '/images/flags/US.svg' },
+  { code: 'ru', label: 'RU', flag: '/images/flags/RU.svg' },
+  { code: 'am', label: 'AM', flag: '/images/flags/AM.svg' },
 ];
 
 export default function LanguageSwitcher() {
@@ -38,13 +39,29 @@ export default function LanguageSwitcher() {
         size="small"
         variant="outlined"
         sx={{ minWidth: 80 }}
-        renderValue={() => LANGUAGES.find(l => l.code === selectedLang)?.label}
+        renderValue={() => {
+          const lang = LANGUAGES.find(l => l.code === selectedLang);
+          return lang ? (
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+              <Image
+                src={lang.flag}
+                alt={lang.label}
+                width={24}
+                height={24}
+                style={{ marginRight: 8 }}
+              />
+            </span>
+          ) : (
+            ''
+          );
+        }}
         MenuProps={{
           disableScrollLock: true,
         }}
       >
-        {LANGUAGES.filter(({ code }) => code !== selectedLang).map(({ code, label }) => (
+        {LANGUAGES.filter(({ code }) => code !== selectedLang).map(({ code, label, flag }) => (
           <MenuItem key={code} value={code}>
+            <Image src={flag} alt={label} width={24} height={24} style={{ marginRight: 8 }} />
             {label}
           </MenuItem>
         ))}
