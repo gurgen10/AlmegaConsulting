@@ -1,13 +1,13 @@
 {
   "header": {
     "company": "Company",
-    "resources": "Resources",
-    "customers": "Customers",
-    "trainings": "Trainings",
-    "services": "Services",
-    "aboutUs": "About us",
-    "contactUs": "Contact Us",
-    "bookDemo": "Book a Demo"
+    "resources": "Ресурсы",
+    "customers": "Клиенты",
+    "trainings": "Тренинги",
+    "services": "Услуги",
+    "aboutUs": "О нас",
+    "contactUs": "Контакты",
+    "bookDemo": "Забронировать демо"
   },
   "footer": {
     "followUs": "Follow us",

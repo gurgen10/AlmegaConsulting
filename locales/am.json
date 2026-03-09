@@ -1,13 +1,13 @@
 {
   "header": {
     "company": "Company",
-    "resources": "Resources",
-    "customers": "Customers",
-    "trainings": "Trainings",
-    "services": "Services",
-    "aboutUs": "About us",
-    "contactUs": "Contact Us",
-    "bookDemo": "Book a Demo"
+    "resources": "Ռեսուրսներ",
+    "customers": "Հաճախորդներ",
+    "trainings": "Թրեյնինգներ",
+    "services": "Ծառայություններ",
+    "aboutUs": "Մեր մասին",
+    "contactUs": "Կապ մեզ հետ",
+    "bookDemo": "Ամրագրել դեմո"
   },
   "footer": {
     "followUs": "Follow us",

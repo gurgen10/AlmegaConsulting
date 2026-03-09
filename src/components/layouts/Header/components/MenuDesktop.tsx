@@ -9,6 +9,7 @@ import { useMemo, useState, useRef } from 'react';
 import MenuTooltip from '@/components/layouts/Header/components/MenuTooltip';
 import { menuItems as defaultMenuItems } from '@/components/layouts/Header/Header.constants';
 import { REGISTER_URL } from '@/shared/constants/common';
+import LanguageSwitcher from '@/components/common/LanguageSwitcher';
 
 interface MenuDesktopProps {
   headerWidth: number;
@@ -140,15 +141,7 @@ export default function MenuDesktop({ headerWidth, headerRef }: MenuDesktopProps
             mx: 2,
           }}
         ></Box>
-        <Button
-          href={REGISTER_URL}
-          component={Link}
-          variant="outlined"
-          size="medium"
-          color="primary"
-        >
-          {t('signUp')}
-        </Button>
+        <LanguageSwitcher />
       </Box>
     </Box>
   );

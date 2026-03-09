@@ -181,33 +181,33 @@ export default function Header() {
               transition: '0.2s linear',
             },
 
-            '&.header-shrink': {
-              my: isMobile ? 0 : 1.5,
-              py: 1,
-              maxWidth: 1376,
+            //   '&.header-shrink': {
+            //     my: isMobile ? 0 : 1.5,
+            //     py: 1,
+            //     maxWidth: 1376,
 
-              '&::before': {
-                transform: 'translateX(-20%)',
-                opacity: 0.9,
-              },
-              '.nav-menu-items': {
-                ml: 4,
-              },
-            },
+            //     '&::before': {
+            //       transform: 'translateX(-20%)',
+            //       opacity: 0.9,
+            //     },
+            //     '.nav-menu-items': {
+            //       ml: 4,
+            //     },
+            //   },
 
-            '&.drawer-open': {
-              borderBottom: `2px solid ${theme.palette.primary.main}`,
-              my: isMobile ? 0 : 1,
-              py: 1.5,
-              img: {
-                height: 34,
-                width: 165,
-              },
-            },
-            borderRadius: isMobile ? 0 : '8px',
-            [theme.breakpoints.down('lg')]: {
-              my: '0 !important',
-            },
+            //   '&.drawer-open': {
+            //     borderBottom: `2px solid ${theme.palette.primary.main}`,
+            //     my: isMobile ? 0 : 1,
+            //     py: 1.5,
+            //     img: {
+            //       height: 34,
+            //       width: 165,
+            //     },
+            //   },
+            //   borderRadius: isMobile ? 0 : '8px',
+            //   [theme.breakpoints.down('lg')]: {
+            //     my: '0 !important',
+            //   },
           }}
         >
           <Box
@@ -233,7 +233,7 @@ export default function Header() {
             >
               <Burger open={drawerOpen} />
             </Box>
-            {/* {isMobile ? (
+            {isMobile ? (
               <Drawer
                 hideBackdrop
                 slotProps={{
@@ -252,7 +252,7 @@ export default function Header() {
               </Drawer>
             ) : (
               <MenuDesktop headerWidth={headerWidth} headerRef={headerRef.current} />
-            )} */}
+            )}
           </Box>
         </Toolbar>
       </AppBar>

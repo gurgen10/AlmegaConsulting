@@ -19,7 +19,7 @@ import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import ArrowRight from '@/components/common/Icons/ArrowRight';
 import { menuItems } from '@/components/layouts/Header/Header.constants';
-import { REGISTER_URL } from '@/shared/constants/common';
+import LanguageSwitcher from '@/components/common/LanguageSwitcher';
 
 export default function MenuMobile() {
   const pathname = usePathname();
@@ -227,24 +227,7 @@ export default function MenuMobile() {
           >
             {t('bookDemo')}
           </Button>
-          <Button
-            href={REGISTER_URL}
-            component={Link}
-            variant="contained"
-            size="medium"
-            color="primary"
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              maxWidth: '173px',
-              minHeight: 42,
-              flex: 1,
-            }}
-          >
-            {t('signUp')}
-          </Button>
+          <LanguageSwitcher />
         </Box>
       </Stack>
     </Box>

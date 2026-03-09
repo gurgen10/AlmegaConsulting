@@ -71,24 +71,28 @@ export const productSubmenuItems: SubMenuItem[] = [
   },
 ];
 
-export const menuItems = [
+interface MenuItem {
+  key: string;
+  url: string;
+  submenuItems?: SubMenuItem[];
+}
+
+export const menuItems: MenuItem[] = [
   {
-    key: 'product',
-    url: '/#product',
-    submenuItems: productSubmenuItems,
+    key: 'resources',
+    url: '/#resources',
   },
   {
-    key: 'pricing',
-    url: '/pricing',
+    key: 'trainings',
+    url: '/#trainings',
   },
   {
-    key: 'features',
-    url: '/#features',
-    submenuItems: featureSubmenuItems,
+    key: 'services',
+    url: '/#services',
   },
   {
-    key: 'blog',
-    url: '/blog',
+    key: 'customers',
+    url: '/#customers',
   },
   {
     key: 'aboutUs',
