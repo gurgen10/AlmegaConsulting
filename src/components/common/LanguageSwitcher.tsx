@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Select, MenuItem } from '@mui/material';
+import { Box, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -22,8 +22,8 @@ export default function LanguageSwitcher() {
     return 'en';
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const lang = event.target.value as string;
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const lang = event.target.value;
     setSelectedLang(lang);
     document.cookie = `locale=${lang};path=/`;
     router.push(pathname);
